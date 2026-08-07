@@ -16,7 +16,7 @@ Built for Instagram & WhatsApp sellers: handmade crafts, clothing boutiques, hom
 
 - **Vite** for build tooling
 
-- **Tailwind CSS 4**
+- **Tailwind CSS 4** 
 
 - **shadcn/ui** (Radix UI primitives)
 
