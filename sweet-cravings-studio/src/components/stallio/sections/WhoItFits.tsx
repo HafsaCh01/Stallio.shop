@@ -21,7 +21,7 @@ const personas: Persona[] = [
     icon: AtSign,
     title: "The Instagram seller",
     description:
-      "Post it, tag it, sell it — straight from your bio link. No more directing followers to a comment thread to ask for prices.",
+      "Post it, tag it, sell it, straight from your bio link. No more directing followers to a comment thread to ask for prices.",
     bestFor: "One link in bio",
   },
   {

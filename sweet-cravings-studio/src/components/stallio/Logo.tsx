@@ -12,7 +12,7 @@ export function Logo({ className }: { className?: string }) {
         height={36}
         className="h-9 w-9 shrink-0"
       />
-      <span className="font-script text-2xl font-bold leading-none tracking-tight text-ink sm:text-[1.75rem]">
+      <span className="font-script text-[1.85rem] leading-none tracking-tight text-ink sm:text-4xl">
         Stallio
       </span>
     </span>

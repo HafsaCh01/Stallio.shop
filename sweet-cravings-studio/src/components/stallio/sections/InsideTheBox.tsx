@@ -7,12 +7,11 @@ import {
   Star,
   Check,
   Clock,
-  X,
-  Truck,
   type LucideIcon,
 } from "lucide-react";
 import { Container } from "../Container";
 import { RouteDivider } from "../RouteDivider";
+import { ProductPreviewCard } from "../ProductPreviewCard";
 import { useReveal } from "@/hooks/use-reveal";
 import prod1 from "@/assets/prod-1.jpg";
 import prod2 from "@/assets/prod-2.jpg";
@@ -32,7 +31,7 @@ const features: Feature[] = [
     icon: LayoutGrid,
     title: "Product pages",
     description:
-      "Every item gets its own page with photos, price, and variants — no more scrolling old posts to find one product.",
+      "Every item gets its own page with photos, price, and variants, so there's no more scrolling old posts to find one product.",
   },
   {
     icon: ShoppingCart,
@@ -58,7 +57,12 @@ export function InsideTheBox() {
   const { ref, visible } = useReveal<HTMLDivElement>();
 
   return (
-    <section id="inside-the-box" className="relative bg-paper-dim">
+    <section id="inside-the-box" className="relative overflow-hidden bg-paper-dim">
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute left-[-10%] bottom-[-8%] h-96 w-96 rounded-full bg-violet/15 blur-[150px]"
+        style={{ animation: "drift-b 26s ease-in-out infinite" }}
+      />
       <Container className="py-16 sm:py-20 lg:py-24">
         <div
           ref={ref}
@@ -72,8 +76,9 @@ export function InsideTheBox() {
               Everything inside your storefront
             </h2>
             <p className="mt-4 max-w-md text-sm leading-relaxed text-ink-soft sm:text-lg">
-              One link opens onto a full storefront — not just a product list.
-              Tap any product in the phone to see the page your customers get.
+              One link opens onto a full storefront, not just a product list.
+              Hover or tap any product in the phone to see the page your
+              customers get.
             </p>
 
             <ul className="mt-8 flex flex-col gap-5 sm:mt-10 sm:gap-6">
@@ -207,7 +212,12 @@ type TabKey = (typeof tabs)[number]["key"];
 
 function StorefrontMockup() {
   const [activeTab, setActiveTab] = useState<TabKey>("shop");
-  const [selected, setSelected] = useState<Product | null>(null);
+  const [pinned, setPinned] = useState<Product | null>(null);
+  const [hovered, setHovered] = useState<Product | null>(null);
+
+  // A click "pins" the preview open (works on touch too); hovering a
+  // product with a mouse previews it without needing a click.
+  const selected = pinned ?? hovered;
 
   return (
     <div className="relative lg:[perspective:1600px]">
@@ -251,7 +261,8 @@ function StorefrontMockup() {
                   type="button"
                   onClick={() => {
                     setActiveTab(tab.key);
-                    setSelected(null);
+                    setPinned(null);
+                    setHovered(null);
                   }}
                   className={`relative pb-2 transition-colors duration-200 ${
                     activeTab === tab.key ? "text-ink" : "hover:text-ink-soft"
@@ -273,11 +284,15 @@ function StorefrontMockup() {
                       key={item.id}
                       type="button"
                       onClick={() =>
-                        setSelected((cur) =>
+                        setPinned((cur) =>
                           cur?.id === item.id ? null : item,
                         )
                       }
-                      aria-label={`View ${item.name}`}
+                      onMouseEnter={() => setHovered(item)}
+                      onMouseLeave={() => setHovered(null)}
+                      onFocus={() => setHovered(item)}
+                      onBlur={() => setHovered(null)}
+                      aria-label={`Preview ${item.name}`}
                       className={`rounded-xl border p-1.5 text-left transition-all duration-200 hover:-translate-y-0.5 hover:border-teal/60 ${
                         selected?.id === item.id
                           ? "border-teal bg-violet/10"
@@ -410,82 +425,10 @@ function StorefrontMockup() {
         </div>
       </div>
 
-      <ProductPopover product={selected} onClose={() => setSelected(null)} />
-    </div>
-  );
-}
-
-function ProductPopover({
-  product,
-  onClose,
-}: {
-  product: Product | null;
-  onClose: () => void;
-}) {
-  const open = Boolean(product);
-
-  return (
-    <div
-      aria-live="polite"
-      className={[
-        "z-30 mx-auto mt-5 w-full max-w-[320px] origin-top transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]",
-        "lg:absolute lg:right-0 lg:top-1/2 lg:mt-0 lg:w-[260px] lg:max-w-none lg:-translate-y-1/2 lg:origin-left",
-        open
-          ? "pointer-events-auto translate-y-0 scale-100 opacity-100 lg:[transform:translateY(-50%)_translateX(4.5rem)_rotateY(-10deg)]"
-          : "pointer-events-none hidden translate-y-3 scale-95 opacity-0 lg:block lg:[transform:translateY(-50%)_translateX(0)_rotateY(-24deg)]",
-      ].join(" ")}
-      style={{ transformStyle: "preserve-3d" }}
-    >
-      {product && (
-        <div className="relative overflow-hidden rounded-3xl border border-violet/30 bg-surface p-4 shadow-[0_30px_70px_-30px_var(--violet)]">
-          <button
-            type="button"
-            onClick={onClose}
-            aria-label="Close product preview"
-            className="absolute right-3 top-3 z-10 flex h-7 w-7 items-center justify-center rounded-full bg-black/60 text-ink transition-colors hover:bg-black"
-          >
-            <X size={14} strokeWidth={2.5} />
-          </button>
-
-          <div className="h-32 w-full overflow-hidden rounded-2xl bg-paper-dim">
-            <img
-              src={product.img}
-              alt={product.name}
-              className="h-full w-full object-cover"
-            />
-          </div>
-
-          <p className="mt-3 text-[10px] font-semibold uppercase tracking-wider text-lime">
-            {product.category}
-          </p>
-          <h3 className="mt-1 truncate font-display text-base font-semibold text-ink">
-            {product.name}
-          </h3>
-          <p className="mt-0.5 font-display text-lg font-semibold text-ink">
-            {product.price}
-          </p>
-
-          <div className="mt-3 flex flex-wrap gap-1.5">
-            {product.sizes.map((size) => (
-              <span
-                key={size}
-                className="rounded-lg border border-ink/12 px-2 py-1 text-[10px] font-medium text-ink-soft"
-              >
-                {size}
-              </span>
-            ))}
-          </div>
-
-          <p className="mt-3 flex items-center gap-1.5 text-[10px] text-ink-soft">
-            <Truck size={12} className="shrink-0 text-teal" />
-            {product.note}
-          </p>
-
-          <span className="mt-4 flex w-full items-center justify-center rounded-full bg-[image:var(--gradient-brand)] px-4 py-2 text-xs font-semibold text-ink">
-            Add to cart
-          </span>
-        </div>
-      )}
+      <ProductPreviewCard
+        product={selected}
+        onClose={pinned ? () => setPinned(null) : undefined}
+      />
     </div>
   );
 }

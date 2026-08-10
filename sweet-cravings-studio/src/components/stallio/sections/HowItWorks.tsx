@@ -16,21 +16,21 @@ const steps: Step[] = [
     icon: Store,
     title: "Create your store",
     description:
-      "Pick a store name and add your profile — your logo, a short bio, and the link handle customers will remember.",
+      "Pick a store name and add your profile: your logo, a short bio, and the link handle customers will remember.",
   },
   {
     number: "02",
     icon: ImagePlus,
     title: "Add your products",
     description:
-      "Upload photos, set prices, and organize items into categories. Edit anything anytime — the storefront updates instantly.",
+      "Upload photos, set prices, and organize items into categories. Edit anything anytime, and the storefront updates instantly.",
   },
   {
     number: "03",
     icon: Share2,
     title: "Share your link",
     description:
-      "Drop it in your Instagram bio or WhatsApp status. Customers browse, order, and pay — no extra app for them to install.",
+      "Drop it in your Instagram bio or WhatsApp status. Customers browse, order, and pay, with no extra app for them to install.",
   },
 ];
 
@@ -38,7 +38,12 @@ export function HowItWorks() {
   const { ref, visible } = useReveal<HTMLDivElement>();
 
   return (
-    <section id="how-it-works" className="relative bg-paper-dim">
+    <section id="how-it-works" className="relative overflow-hidden bg-paper-dim">
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute right-[-8%] top-[-6%] h-80 w-80 rounded-full bg-violet/15 blur-[130px]"
+        style={{ animation: "drift-a 24s ease-in-out infinite" }}
+      />
       <Container className="py-16 sm:py-20 lg:py-24">
         <div className="mx-auto max-w-2xl text-center">
           <span className="text-[10px] font-semibold uppercase tracking-[0.14em] text-lime sm:text-xs">

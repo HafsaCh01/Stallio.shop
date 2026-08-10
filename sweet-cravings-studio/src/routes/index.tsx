@@ -7,10 +7,11 @@ import { Comparison } from "@/components/stallio/sections/Comparison";
 import { HowItWorks } from "@/components/stallio/sections/HowItWorks";
 import { InsideTheBox } from "@/components/stallio/sections/InsideTheBox";
 import { WhyItLands } from "@/components/stallio/sections/WhyItLands";
+import { Testimonials } from "@/components/stallio/sections/Testimonials";
 import { WhatsIncluded } from "@/components/stallio/sections/WhatsIncluded";
 import { FinalCTA } from "@/components/stallio/sections/FinalCTA";
 
-const title = "Stallio — Your shop, one link away";
+const title = "Stallio: Your shop, one link away";
 const description =
   "Turn your Instagram or WhatsApp page into a real online store. Unlimited products, a mobile storefront, and an order dashboard from one shareable link.";
 
@@ -39,6 +40,7 @@ function Index() {
         <HowItWorks />
         <InsideTheBox />
         <WhyItLands />
+        <Testimonials />
         <WhatsIncluded />
         <FinalCTA />
       </main>
