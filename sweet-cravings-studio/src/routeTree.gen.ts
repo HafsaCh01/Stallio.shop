@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as FeaturesRouteImport } from './routes/features'
+import { Route as HowItWorksRouteImport } from './routes/how-it-works'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as RefundPolicyRouteImport } from './routes/refund-policy'
 import { Route as TermsRouteImport } from './routes/terms'
@@ -29,6 +30,11 @@ const AboutRoute = AboutRouteImport.update({
 const FeaturesRoute = FeaturesRouteImport.update({
   id: '/features',
   path: '/features',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HowItWorksRoute = HowItWorksRouteImport.update({
+  id: '/how-it-works',
+  path: '/how-it-works',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PrivacyRoute = PrivacyRouteImport.update({
@@ -51,6 +57,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/features': typeof FeaturesRoute
+  '/how-it-works': typeof HowItWorksRoute
   '/privacy': typeof PrivacyRoute
   '/refund-policy': typeof RefundPolicyRoute
   '/terms': typeof TermsRoute
@@ -59,6 +66,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/features': typeof FeaturesRoute
+  '/how-it-works': typeof HowItWorksRoute
   '/privacy': typeof PrivacyRoute
   '/refund-policy': typeof RefundPolicyRoute
   '/terms': typeof TermsRoute
@@ -68,6 +76,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/features': typeof FeaturesRoute
+  '/how-it-works': typeof HowItWorksRoute
   '/privacy': typeof PrivacyRoute
   '/refund-policy': typeof RefundPolicyRoute
   '/terms': typeof TermsRoute
@@ -75,14 +84,28 @@ export interface FileRoutesById {
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
-    '/' | '/about' | '/features' | '/privacy' | '/refund-policy' | '/terms'
+    | '/'
+    | '/about'
+    | '/features'
+    | '/how-it-works'
+    | '/privacy'
+    | '/refund-policy'
+    | '/terms'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/features' | '/privacy' | '/refund-policy' | '/terms'
+  to:
+    | '/'
+    | '/about'
+    | '/features'
+    | '/how-it-works'
+    | '/privacy'
+    | '/refund-policy'
+    | '/terms'
   id:
     | '__root__'
     | '/'
     | '/about'
     | '/features'
+    | '/how-it-works'
     | '/privacy'
     | '/refund-policy'
     | '/terms'
@@ -92,6 +115,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
   FeaturesRoute: typeof FeaturesRoute
+  HowItWorksRoute: typeof HowItWorksRoute
   PrivacyRoute: typeof PrivacyRoute
   RefundPolicyRoute: typeof RefundPolicyRoute
   TermsRoute: typeof TermsRoute
@@ -118,6 +142,13 @@ declare module '@tanstack/react-router' {
       path: '/features'
       fullPath: '/features'
       preLoaderRoute: typeof FeaturesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/how-it-works': {
+      id: '/how-it-works'
+      path: '/how-it-works'
+      fullPath: '/how-it-works'
+      preLoaderRoute: typeof HowItWorksRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/privacy': {
@@ -148,6 +179,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   FeaturesRoute: FeaturesRoute,
+  HowItWorksRoute: HowItWorksRoute,
   PrivacyRoute: PrivacyRoute,
   RefundPolicyRoute: RefundPolicyRoute,
   TermsRoute: TermsRoute,

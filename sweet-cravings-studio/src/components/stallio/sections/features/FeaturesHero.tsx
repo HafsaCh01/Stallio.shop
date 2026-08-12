@@ -44,11 +44,14 @@ const loopSteps = [
   },
 ];
 
-const accentClasses = {
-  violet: "bg-violet/15 text-violet ring-violet/30",
-  teal: "bg-teal/15 text-teal ring-teal/30",
-  pink: "bg-pink/15 text-pink ring-pink/30",
-  lime: "bg-lime/15 text-lime ring-lime/30",
+const accentClasses: Record<
+  "violet" | "teal" | "pink" | "lime",
+  { icon: string; text: string; ring: string }
+> = {
+  violet: { icon: "bg-violet/15", text: "text-violet", ring: "ring-violet/30" },
+  teal: { icon: "bg-teal/15", text: "text-teal", ring: "ring-teal/30" },
+  pink: { icon: "bg-pink/15", text: "text-pink", ring: "ring-pink/30" },
+  lime: { icon: "bg-lime/15", text: "text-lime", ring: "ring-lime/30" },
 };
 
 export function FeaturesHero() {
@@ -85,9 +88,8 @@ export function FeaturesHero() {
             </h1>
 
             <p className="mt-5 max-w-xl text-base leading-relaxed text-ink-soft sm:text-lg">
-              Storefront, dashboard, and seller tools in one place: hosted
-              link, unlimited catalog and orders, no buyer payment gateway
-              required.
+              Storefront, dashboard, and seller tools in one place: hosted link,
+              unlimited catalog and orders, no buyer payment gateway required.
             </p>
 
             <ul className="mt-7 flex flex-col gap-2.5">
@@ -127,8 +129,7 @@ export function FeaturesHero() {
                   <Store size={20} strokeWidth={2.2} />
                 </span>
                 <p className="pt-1 font-display text-[15px] font-semibold leading-snug text-ink sm:text-base">
-                  Catalog, checkout, orders, and invoices in one dashboard
-                  loop.
+                  Catalog, checkout, orders, and invoices in one dashboard loop.
                 </p>
               </div>
 
@@ -147,10 +148,19 @@ export function FeaturesHero() {
                     <span
                       className={cn(
                         "relative z-10 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-surface text-xs font-bold ring-1",
-                        accentClasses[step.accent],
+                        accentClasses[step.accent].ring,
+                        accentClasses[step.accent].text,
                       )}
                     >
-                      {i + 1}
+                      {/* Opaque backdrop first, so the vertical connector behind never shows through the tint */}
+                      <span
+                        aria-hidden="true"
+                        className={cn(
+                          "absolute inset-0 rounded-full",
+                          accentClasses[step.accent].icon,
+                        )}
+                      />
+                      <span className="relative">{i + 1}</span>
                     </span>
                     <span className="flex flex-1 items-center gap-2.5 rounded-xl border border-ink/10 bg-paper-dim px-3.5 py-3">
                       <step.icon

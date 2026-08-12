@@ -7,16 +7,35 @@ import { cn } from "@/lib/utils";
 const signalSteps = [
   { icon: Send, label: "They DM you", accent: "coral" as const },
   { icon: Store, label: "They tap your link", accent: "violet" as const },
-  { icon: PackageCheck, label: "Order lands in your inbox", accent: "teal" as const },
+  {
+    icon: PackageCheck,
+    label: "Order lands in your inbox",
+    accent: "teal" as const,
+  },
 ];
 
 const signalAccent: Record<
   (typeof signalSteps)[number]["accent"],
-  { icon: string; ring: string; dot: string }
+  { icon: string; text: string; ring: string; dot: string }
 > = {
-  coral: { icon: "bg-coral/15 text-coral", ring: "ring-coral/40", dot: "bg-coral" },
-  violet: { icon: "bg-violet/15 text-violet", ring: "ring-violet/40", dot: "bg-violet" },
-  teal: { icon: "bg-teal/15 text-teal", ring: "ring-teal/40", dot: "bg-teal" },
+  coral: {
+    icon: "bg-coral/15",
+    text: "text-coral",
+    ring: "ring-coral/40",
+    dot: "bg-coral",
+  },
+  violet: {
+    icon: "bg-violet/15",
+    text: "text-violet",
+    ring: "ring-violet/40",
+    dot: "bg-violet",
+  },
+  teal: {
+    icon: "bg-teal/15",
+    text: "text-teal",
+    ring: "ring-teal/40",
+    dot: "bg-teal",
+  },
 };
 
 const friction = [
@@ -47,9 +66,9 @@ export function OurMission() {
             Selling on social should not feel improvised.
           </h2>
           <p className="mt-4 text-sm leading-relaxed text-ink-soft sm:text-base">
-            Most small sellers juggle screenshots, voice notes, and
-            scattered chats. Stallio gives you a single shelf: catalog,
-            checkout cues, and orders in one dashboard.
+            Most small sellers juggle screenshots, voice notes, and scattered
+            chats. Stallio gives you a single shelf: catalog, checkout cues, and
+            orders in one dashboard.
           </p>
         </div>
 
@@ -78,7 +97,6 @@ export function OurMission() {
                   <span
                     className={cn(
                       "relative z-10 flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-paper ring-1",
-                      accent.icon,
                       accent.ring,
                     )}
                     style={{
@@ -87,7 +105,19 @@ export function OurMission() {
                         : undefined,
                     }}
                   >
-                    <step.icon size={20} strokeWidth={2} />
+                    {/* Opaque backdrop first, so the dashed connector behind never shows through the tint */}
+                    <span
+                      aria-hidden="true"
+                      className={cn(
+                        "absolute inset-0 rounded-2xl",
+                        accent.icon,
+                      )}
+                    />
+                    <step.icon
+                      size={20}
+                      strokeWidth={2}
+                      className={cn("relative", accent.text)}
+                    />
                     <span
                       aria-hidden="true"
                       className={cn(

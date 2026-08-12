@@ -11,7 +11,7 @@ type Props = {
 
 const variants = {
   primary:
-    "bg-[image:var(--gradient-brand)] text-ink shadow-lg shadow-violet/25 hover:shadow-xl hover:shadow-violet/40 hover:brightness-110",
+    "bg-violet text-white shadow-lg shadow-violet/25 hover:shadow-xl hover:shadow-violet/40 hover:brightness-110",
   outline: "border border-ink/15 text-ink hover:border-teal hover:text-teal",
   ghost: "text-ink-soft hover:text-ink",
 } as const;

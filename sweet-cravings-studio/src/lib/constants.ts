@@ -10,7 +10,7 @@ export const siteConfig = {
 export const navLinks = [
   { label: "Home", href: "/" },
   { label: "About", href: "/about" },
-  { label: "How It Works", href: "/#how-it-works" },
+  { label: "How It Works", href: "/how-it-works" },
   { label: "Features", href: "/features" },
   { label: "Pricing", href: "/#whats-included" },
   { label: "Contact", href: "/#contact" },
@@ -18,7 +18,7 @@ export const navLinks = [
 
 export const footerLinks = {
   product: [
-    { label: "How it works", href: "/#how-it-works" },
+    { label: "How it works", href: "/how-it-works" },
     { label: "Features", href: "/features" },
     { label: "Pricing", href: "/#whats-included" },
     { label: "About us", href: "/about" },
@@ -40,7 +40,7 @@ export const footerNavLinks = [
   { label: "Home", href: "/" },
   { label: "Pricing", href: "/#whats-included" },
   { label: "About", href: "/about" },
-  { label: "How It Works", href: "/#how-it-works" },
+  { label: "How It Works", href: "/how-it-works" },
   { label: "Features", href: "/features" },
   { label: "Contact", href: "/#contact" },
 ];

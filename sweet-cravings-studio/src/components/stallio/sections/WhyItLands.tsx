@@ -1,4 +1,10 @@
-import { Zap, ShieldCheck, Smartphone, Repeat, type LucideIcon } from "lucide-react";
+import {
+  Zap,
+  ShieldCheck,
+  Smartphone,
+  Repeat,
+  type LucideIcon,
+} from "lucide-react";
 import { Container } from "../Container";
 import { RouteDivider } from "../RouteDivider";
 import { CTAButton } from "../CTAButton";
@@ -116,7 +122,12 @@ export function WhyItLands() {
 
             <dl className="mt-10 grid grid-cols-3 gap-4 border-t border-ink/10 pt-6 sm:max-w-md">
               {stats.map((stat, i) => (
-                <StatItem key={stat.label} stat={stat} index={i} visible={visible} />
+                <StatItem
+                  key={stat.label}
+                  stat={stat}
+                  index={i}
+                  visible={visible}
+                />
               ))}
             </dl>
           </div>
@@ -188,11 +199,19 @@ function ReasonRow({
       <span
         className={cn(
           "relative z-10 flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-surface ring-1 transition-transform duration-300",
-          accent.icon,
           accent.ring,
         )}
       >
-        <reason.icon size={20} strokeWidth={2} />
+        {/* Opaque backdrop first, so the timeline rail behind never shows through the tint */}
+        <span
+          aria-hidden="true"
+          className={cn("absolute inset-0 rounded-2xl", accent.icon)}
+        />
+        <reason.icon
+          size={20}
+          strokeWidth={2}
+          className={cn("relative", accent.text)}
+        />
         <span
           className={cn(
             "absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center rounded-full text-[10px] font-bold text-surface",

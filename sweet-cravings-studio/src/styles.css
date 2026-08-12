@@ -24,12 +24,12 @@
   --teal: #38aafc;
   --teal-dark: #1c8fe0;
   --coral: #f5467f;
-  --violet: #7b50fe;
+  --violet: #5b45e5;
   --magenta: #b83fd1;
-  --pink: #f5467f;
+  --pink: #6d28d9;
   --amber: #fdbe2b;
   --navy: #1a1f3c;
-  --gradient-brand: linear-gradient(90deg, var(--violet), var(--pink));
+  --gradient-brand: linear-gradient(90deg, var(--violet), var(--violet));
   --gradient-warm: linear-gradient(90deg, var(--amber), var(--pink), var(--violet));
   --gradient-awning: linear-gradient(
     90deg,
@@ -43,22 +43,22 @@
 .dark {
   color-scheme: dark;
   --ink: #f5f4fa;
-  --ink-soft: #b3b3d4;
-  --ink-faint: #7f7fa6;
-  --paper: #07060d;
-  --paper-dim: #0b0a14;
-  --surface: #15121f;
+  --ink-soft: #bab4dd;
+  --ink-faint: #8b7fb8;
+  --paper: #120b26;
+  --paper-dim: #170f2f;
+  --surface: #1f1440;
   --lime: #9b7dff;
   --lime-dark: #7b50fe;
   --teal: #5cc0ff;
   --teal-dark: #38aafc;
   --coral: #ff6f9b;
-  --violet: #9b7dff;
+  --violet: #5b45e5;
   --magenta: #d66be8;
-  --pink: #ff6f9b;
+  --pink: #8b5cf6;
   --amber: #ffcc4d;
-  --navy: #030307;
-  --gradient-brand: linear-gradient(90deg, var(--violet), var(--pink));
+  --navy: #0d0720;
+  --gradient-brand: linear-gradient(90deg, var(--violet), var(--violet));
   --gradient-warm: linear-gradient(90deg, var(--amber), var(--pink), var(--violet));
   --gradient-awning: linear-gradient(
     90deg,

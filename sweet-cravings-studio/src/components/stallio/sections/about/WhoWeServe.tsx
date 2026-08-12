@@ -66,14 +66,44 @@ const features: Feature[] = [
 
 const accentClasses: Record<
   Feature["accent"],
-  { icon: string; ring: string; line: string }
+  { icon: string; text: string; ring: string; line: string }
 > = {
-  violet: { icon: "bg-violet/15 text-violet", ring: "ring-violet/40", line: "bg-violet" },
-  teal: { icon: "bg-teal/15 text-teal", ring: "ring-teal/40", line: "bg-teal" },
-  amber: { icon: "bg-amber/15 text-amber", ring: "ring-amber/40", line: "bg-amber" },
-  pink: { icon: "bg-pink/15 text-pink", ring: "ring-pink/40", line: "bg-pink" },
-  lime: { icon: "bg-lime/15 text-lime", ring: "ring-lime/40", line: "bg-lime" },
-  coral: { icon: "bg-coral/15 text-coral", ring: "ring-coral/40", line: "bg-coral" },
+  violet: {
+    icon: "bg-violet/15",
+    text: "text-violet",
+    ring: "ring-violet/40",
+    line: "bg-violet",
+  },
+  teal: {
+    icon: "bg-teal/15",
+    text: "text-teal",
+    ring: "ring-teal/40",
+    line: "bg-teal",
+  },
+  amber: {
+    icon: "bg-amber/15",
+    text: "text-amber",
+    ring: "ring-amber/40",
+    line: "bg-amber",
+  },
+  pink: {
+    icon: "bg-pink/15",
+    text: "text-pink",
+    ring: "ring-pink/40",
+    line: "bg-pink",
+  },
+  lime: {
+    icon: "bg-lime/15",
+    text: "text-lime",
+    ring: "ring-lime/40",
+    line: "bg-lime",
+  },
+  coral: {
+    icon: "bg-coral/15",
+    text: "text-coral",
+    ring: "ring-coral/40",
+    line: "bg-coral",
+  },
 };
 
 export function WhoWeServe() {
@@ -136,17 +166,28 @@ function FeatureRow({
   return (
     <li
       data-visible={visible}
-      className={cn(fromLeft ? "reveal-left" : "reveal-right", "relative flex gap-5 sm:gap-6")}
+      className={cn(
+        fromLeft ? "reveal-left" : "reveal-right",
+        "relative flex gap-5 sm:gap-6",
+      )}
       style={{ transitionDelay: `${index * 110}ms` }}
     >
       <span
         className={cn(
           "relative z-10 flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-surface ring-1 transition-transform duration-300 hover:scale-110",
-          accent.icon,
           accent.ring,
         )}
       >
-        <feature.icon size={20} strokeWidth={2} />
+        {/* Opaque backdrop first, so the timeline rail behind never shows through the tint */}
+        <span
+          aria-hidden="true"
+          className={cn("absolute inset-0 rounded-2xl", accent.icon)}
+        />
+        <feature.icon
+          size={20}
+          strokeWidth={2}
+          className={cn("relative", accent.text)}
+        />
       </span>
 
       <div className="group flex-1 rounded-2xl border border-transparent px-1 py-1 transition-colors duration-300 hover:border-ink/10">
