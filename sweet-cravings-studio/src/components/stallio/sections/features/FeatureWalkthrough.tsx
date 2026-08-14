@@ -1,4 +1,4 @@
-import { useState, type ReactNode } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 import {
   Store,
   Wallet,
@@ -117,10 +117,24 @@ const accentActiveTab = {
   lime: "bg-[linear-gradient(90deg,var(--lime),var(--pink))] text-white shadow-lime/30",
 };
 
+const AUTO_MS = 2000;
+
 export function FeatureWalkthrough() {
   const { ref, visible } = useReveal<HTMLDivElement>();
   const [active, setActive] = useState<TabId>("storefront");
+  const [paused, setPaused] = useState(false);
   const activeTab = tabs.find((t) => t.id === active) ?? tabs[0]!;
+
+  useEffect(() => {
+    if (paused || !visible) return;
+    const id = window.setInterval(() => {
+      setActive((prev) => {
+        const idx = tabs.findIndex((t) => t.id === prev);
+        return tabs[(idx + 1) % tabs.length]!.id;
+      });
+    }, AUTO_MS);
+    return () => window.clearInterval(id);
+  }, [paused, visible]);
 
   return (
     <section id="walkthrough" className="relative overflow-hidden bg-paper">
@@ -180,6 +194,8 @@ export function FeatureWalkthrough() {
           ref={ref}
           data-visible={visible}
           className="reveal mt-10 grid items-center gap-10 sm:mt-12 lg:grid-cols-2 lg:gap-14"
+          onMouseEnter={() => setPaused(true)}
+          onMouseLeave={() => setPaused(false)}
         >
           <div key={activeTab.id} className="animate-fade-up">
             <span
@@ -238,7 +254,7 @@ export function FeatureWalkthrough() {
                   stallio.shop/your-store
                 </span>
               </div>
-              <div className="p-4 sm:p-5">
+              <div className="flex min-h-[300px] flex-col justify-center p-4 sm:min-h-[340px] sm:p-5">
                 {activeTab.id === "storefront" && <StorefrontMock />}
                 {activeTab.id === "checkout" && <CheckoutMock />}
                 {activeTab.id === "dashboard" && <DashboardMock />}
@@ -270,13 +286,13 @@ function StorefrontMock() {
     { name: "Court Classics", price: "Rs 1,749", img: prod4 },
   ];
   return (
-    <div className="grid grid-cols-2 gap-3">
+    <div className="grid grid-cols-2 gap-2.5">
       {products.map((p) => (
         <div
           key={p.name}
           className="group overflow-hidden rounded-xl border border-ink/10 bg-paper-dim"
         >
-          <div className="aspect-square overflow-hidden bg-paper">
+          <div className="aspect-[6/5] overflow-hidden bg-paper">
             <img
               src={p.img}
               alt={p.name}

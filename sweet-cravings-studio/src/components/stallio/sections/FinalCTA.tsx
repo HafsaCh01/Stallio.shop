@@ -49,7 +49,7 @@ export function FinalCTA() {
             </p>
 
             <div className="mt-8 flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:items-center">
-              <CTAButton href="#top" size="lg">
+              <CTAButton href="/signup" size="lg">
                 Create your store
                 <ArrowRight
                   size={17}

@@ -407,3 +407,119 @@ body {
     transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
     box-shadow 0.35s ease;
 }
+
+/* ---------------------------------------------------------------
+ * Auth panel swap: login <-> signup
+ * Both the phone-card and the promo copy carry a view-transition-name,
+ * so when the grid order flips (see AuthShell's `mode` prop), the
+ * browser automatically morphs each one from its old position/size to
+ * its new one — that's what produces the "floats across and swaps
+ * sides" motion. We only need to tune the timing and content crossfade.
+ * --------------------------------------------------------------- */
+.auth-card-vt {
+  view-transition-name: auth-card;
+}
+
+.auth-promo-vt {
+  view-transition-name: auth-promo;
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+::view-transition-group(auth-card),
+::view-transition-group(auth-promo) {
+  animation-duration: 0.65s;
+  animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+::view-transition-old(auth-card),
+::view-transition-new(auth-card),
+::view-transition-old(auth-promo),
+::view-transition-new(auth-promo) {
+  animation-duration: 0.35s;
+  animation-timing-function: ease;
+  animation-fill-mode: both;
+}
+
+/* The FieldShell wrapper already shows a clear violet focus ring
+   (focus-within), so suppress the browser's default focus-visible
+   outline on the input/select itself — otherwise you get a double
+   ring: violet border + a second blue outline drawn on top of it. */
+.field-shell input:focus-visible,
+.field-shell select:focus-visible,
+.field-shell textarea:focus-visible {
+  outline: none;
+}
+
+/* Staggered entrance for form fields on first paint of each auth page */
+@utility auth-field-in {
+  animation: auth-field-in 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes auth-field-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.auth-form > * {
+  animation: auth-field-in 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.auth-form > *:nth-child(1) {
+  animation-delay: 0.02s;
+}
+.auth-form > *:nth-child(2) {
+  animation-delay: 0.07s;
+}
+.auth-form > *:nth-child(3) {
+  animation-delay: 0.12s;
+}
+.auth-form > *:nth-child(4) {
+  animation-delay: 0.17s;
+}
+.auth-form > *:nth-child(5) {
+  animation-delay: 0.22s;
+}
+.auth-form > *:nth-child(6) {
+  animation-delay: 0.27s;
+}
+.auth-form > *:nth-child(7) {
+  animation-delay: 0.32s;
+}
+.auth-form > *:nth-child(8) {
+  animation-delay: 0.37s;
+}
+
+/* Rotating conic gradient ring behind the auth card — the signature glow */
+@utility auth-glow-ring {
+  background: conic-gradient(
+    from var(--auth-glow-angle, 0deg),
+    var(--amber),
+    var(--pink),
+    var(--violet),
+    var(--teal),
+    var(--amber)
+  );
+  animation: auth-glow-spin 10s linear infinite;
+}
+
+@property --auth-glow-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes auth-glow-spin {
+  to {
+    --auth-glow-angle: 360deg;
+  }
+}

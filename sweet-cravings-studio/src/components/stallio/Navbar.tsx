@@ -11,6 +11,8 @@ import {
   X,
   Moon,
   Sun,
+  LogIn,
+  UserPlus,
 } from "lucide-react";
 import { Container } from "./Container";
 import { CTAButton } from "./CTAButton";
@@ -200,8 +202,16 @@ export function Navbar() {
 
         <div className="hidden items-center gap-3 md:flex">
           <ThemeToggle theme={theme} onToggle={toggleTheme} />
-          <CTAButton href="/#final-cta" size="sm">
-            Create your store
+          <Link
+            to="/login"
+            className="inline-flex items-center gap-1.5 whitespace-nowrap rounded-full px-3.5 py-2 text-sm font-medium tracking-tight text-ink-soft transition-colors duration-200 hover:text-ink"
+          >
+            <LogIn size={14} strokeWidth={2.25} aria-hidden="true" />
+            Log In
+          </Link>
+          <CTAButton href="/signup" size="sm">
+            <UserPlus size={14} strokeWidth={2.25} aria-hidden="true" />
+            Start Free
           </CTAButton>
         </div>
 
@@ -286,14 +296,27 @@ export function Navbar() {
               </Link>
             );
           })}
-          <CTAButton
-            href="/#final-cta"
-            size="sm"
-            className="mt-3 w-full"
-            onClick={() => setOpen(false)}
-          >
-            Create your store
-          </CTAButton>
+          <div className="mt-3 flex flex-col gap-2">
+            <CTAButton
+              href="/login"
+              variant="outline"
+              size="sm"
+              className="w-full"
+              onClick={() => setOpen(false)}
+            >
+              <LogIn size={14} strokeWidth={2.25} aria-hidden="true" />
+              Log In
+            </CTAButton>
+            <CTAButton
+              href="/signup"
+              size="sm"
+              className="w-full"
+              onClick={() => setOpen(false)}
+            >
+              <UserPlus size={14} strokeWidth={2.25} aria-hidden="true" />
+              Start Free
+            </CTAButton>
+          </div>
         </Container>
       </div>
     </header>

@@ -14,7 +14,12 @@ import {
 import { Container } from "./Container";
 import { CTAButton } from "./CTAButton";
 import { Logo } from "./Logo";
-import { footerLinks, footerNavLinks, siteConfig, socialLinks } from "@/lib/constants";
+import {
+  footerLinks,
+  footerNavLinks,
+  siteConfig,
+  socialLinks,
+} from "@/lib/constants";
 import { cn } from "@/lib/utils";
 
 const navIcons: Record<string, typeof Home> = {
@@ -40,18 +45,22 @@ function XLogo({ size = 15 }: { size?: number }) {
   );
 }
 
-const socialIcons: Record<string, (props: { size?: number }) => ReactElement> = {
-  Instagram: (props) => <Instagram {...props} strokeWidth={2} />,
-  Facebook: (props) => <Facebook {...props} strokeWidth={2} />,
-  LinkedIn: (props) => <Linkedin {...props} strokeWidth={2} />,
-  X: (props) => <XLogo {...props} />,
-};
+const socialIcons: Record<string, (props: { size?: number }) => ReactElement> =
+  {
+    Instagram: (props) => <Instagram {...props} strokeWidth={2} />,
+    Facebook: (props) => <Facebook {...props} strokeWidth={2} />,
+    LinkedIn: (props) => <Linkedin {...props} strokeWidth={2} />,
+    X: (props) => <XLogo {...props} />,
+  };
 
 export function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer id="contact" className="relative mt-auto overflow-hidden border-t border-white/10 bg-navy">
+    <footer
+      id="contact"
+      className="relative mt-auto overflow-hidden border-t border-white/10 bg-navy"
+    >
       <div
         aria-hidden="true"
         className="pointer-events-none absolute left-1/2 top-0 h-72 w-72 -translate-x-1/2 -translate-y-1/2 rounded-full bg-violet/20 blur-[140px]"
@@ -66,7 +75,7 @@ export function Footer() {
           <p className="mt-4 text-sm leading-relaxed text-ink-soft">
             {siteConfig.tagline} No domain, no payment gateway, no code.
           </p>
-          <CTAButton href="/#final-cta" size="sm" className="mt-6">
+          <CTAButton href="/signup" size="sm" className="mt-6">
             Get Started Free
           </CTAButton>
         </div>

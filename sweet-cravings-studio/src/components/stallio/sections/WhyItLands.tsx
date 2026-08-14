@@ -229,12 +229,6 @@ function ReasonRow({
         <p className="mt-2 max-w-lg text-sm leading-relaxed text-ink-soft sm:text-base">
           {reason.description}
         </p>
-        <span
-          className={cn(
-            "mt-4 block h-px w-10 origin-left scale-x-50 rounded-full opacity-40 transition-transform duration-300 group-hover:scale-x-100 group-hover:opacity-100",
-            accent.line,
-          )}
-        />
       </div>
     </li>
   );

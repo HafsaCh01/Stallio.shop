@@ -134,12 +134,12 @@ export function TheFlow() {
           <div className="relative">
             <div
               aria-hidden="true"
-              className="absolute left-0 right-0 top-[27px] hidden h-0.5 rounded-full bg-ink/10 sm:block"
+              className="absolute left-0 right-0 top-10 hidden h-0.5 rounded-full bg-ink/10 sm:block"
             />
             <div
               aria-hidden="true"
               className={cn(
-                "absolute left-0 top-[27px] hidden h-0.5 rounded-full transition-all duration-500 sm:block",
+                "absolute left-0 top-10 hidden h-0.5 rounded-full transition-all duration-500 sm:block",
                 accent.bar,
               )}
               style={{
