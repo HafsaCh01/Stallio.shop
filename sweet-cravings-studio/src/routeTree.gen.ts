@@ -11,14 +11,17 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
+import { Route as ContactRouteImport } from './routes/contact'
 import { Route as FeaturesRouteImport } from './routes/features'
 import { Route as ForgotPasswordRouteImport } from './routes/forgot-password'
 import { Route as HowItWorksRouteImport } from './routes/how-it-works'
 import { Route as LoginRouteImport } from './routes/login'
+import { Route as PricingRouteImport } from './routes/pricing'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as RefundPolicyRouteImport } from './routes/refund-policy'
 import { Route as SignupRouteImport } from './routes/signup'
 import { Route as TermsRouteImport } from './routes/terms'
+import { Route as VerifyEmailRouteImport } from './routes/verify-email'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -28,6 +31,11 @@ const IndexRoute = IndexRouteImport.update({
 const AboutRoute = AboutRouteImport.update({
   id: '/about',
   path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
 const FeaturesRoute = FeaturesRouteImport.update({
@@ -50,6 +58,11 @@ const LoginRoute = LoginRouteImport.update({
   path: '/login',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PricingRoute = PricingRouteImport.update({
+  id: '/pricing',
+  path: '/pricing',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PrivacyRoute = PrivacyRouteImport.update({
   id: '/privacy',
   path: '/privacy',
@@ -70,94 +83,120 @@ const TermsRoute = TermsRouteImport.update({
   path: '/terms',
   getParentRoute: () => rootRouteImport,
 } as any)
+const VerifyEmailRoute = VerifyEmailRouteImport.update({
+  id: '/verify-email',
+  path: '/verify-email',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/contact': typeof ContactRoute
   '/features': typeof FeaturesRoute
   '/forgot-password': typeof ForgotPasswordRoute
   '/how-it-works': typeof HowItWorksRoute
   '/login': typeof LoginRoute
+  '/pricing': typeof PricingRoute
   '/privacy': typeof PrivacyRoute
   '/refund-policy': typeof RefundPolicyRoute
   '/signup': typeof SignupRoute
   '/terms': typeof TermsRoute
+  '/verify-email': typeof VerifyEmailRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/contact': typeof ContactRoute
   '/features': typeof FeaturesRoute
   '/forgot-password': typeof ForgotPasswordRoute
   '/how-it-works': typeof HowItWorksRoute
   '/login': typeof LoginRoute
+  '/pricing': typeof PricingRoute
   '/privacy': typeof PrivacyRoute
   '/refund-policy': typeof RefundPolicyRoute
   '/signup': typeof SignupRoute
   '/terms': typeof TermsRoute
+  '/verify-email': typeof VerifyEmailRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/contact': typeof ContactRoute
   '/features': typeof FeaturesRoute
   '/forgot-password': typeof ForgotPasswordRoute
   '/how-it-works': typeof HowItWorksRoute
   '/login': typeof LoginRoute
+  '/pricing': typeof PricingRoute
   '/privacy': typeof PrivacyRoute
   '/refund-policy': typeof RefundPolicyRoute
   '/signup': typeof SignupRoute
   '/terms': typeof TermsRoute
+  '/verify-email': typeof VerifyEmailRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
     | '/about'
+    | '/contact'
     | '/features'
     | '/forgot-password'
     | '/how-it-works'
     | '/login'
+    | '/pricing'
     | '/privacy'
     | '/refund-policy'
     | '/signup'
     | '/terms'
+    | '/verify-email'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/about'
+    | '/contact'
     | '/features'
     | '/forgot-password'
     | '/how-it-works'
     | '/login'
+    | '/pricing'
     | '/privacy'
     | '/refund-policy'
     | '/signup'
     | '/terms'
+    | '/verify-email'
   id:
     | '__root__'
     | '/'
     | '/about'
+    | '/contact'
     | '/features'
     | '/forgot-password'
     | '/how-it-works'
     | '/login'
+    | '/pricing'
     | '/privacy'
     | '/refund-policy'
     | '/signup'
     | '/terms'
+    | '/verify-email'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  ContactRoute: typeof ContactRoute
   FeaturesRoute: typeof FeaturesRoute
   ForgotPasswordRoute: typeof ForgotPasswordRoute
   HowItWorksRoute: typeof HowItWorksRoute
   LoginRoute: typeof LoginRoute
+  PricingRoute: typeof PricingRoute
   PrivacyRoute: typeof PrivacyRoute
   RefundPolicyRoute: typeof RefundPolicyRoute
   SignupRoute: typeof SignupRoute
   TermsRoute: typeof TermsRoute
+  VerifyEmailRoute: typeof VerifyEmailRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -174,6 +213,13 @@ declare module '@tanstack/react-router' {
       path: '/about'
       fullPath: '/about'
       preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/features': {
@@ -204,6 +250,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LoginRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/pricing': {
+      id: '/pricing'
+      path: '/pricing'
+      fullPath: '/pricing'
+      preLoaderRoute: typeof PricingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/privacy': {
       id: '/privacy'
       path: '/privacy'
@@ -232,20 +285,30 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TermsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/verify-email': {
+      id: '/verify-email'
+      path: '/verify-email'
+      fullPath: '/verify-email'
+      preLoaderRoute: typeof VerifyEmailRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  ContactRoute: ContactRoute,
   FeaturesRoute: FeaturesRoute,
   ForgotPasswordRoute: ForgotPasswordRoute,
   HowItWorksRoute: HowItWorksRoute,
   LoginRoute: LoginRoute,
+  PricingRoute: PricingRoute,
   PrivacyRoute: PrivacyRoute,
   RefundPolicyRoute: RefundPolicyRoute,
   SignupRoute: SignupRoute,
   TermsRoute: TermsRoute,
+  VerifyEmailRoute: VerifyEmailRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

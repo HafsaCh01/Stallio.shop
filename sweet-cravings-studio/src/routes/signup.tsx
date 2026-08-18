@@ -1,7 +1,7 @@
 import { useRef, useState } from "react";
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
+import { Controller, useForm } from "react-hook-form";
 import {
   AlertCircle,
   ArrowRight,
@@ -19,6 +19,7 @@ import { AuthShell, AuthCard } from "@/components/stallio/auth/AuthShell";
 import { AuthPromo } from "@/components/stallio/auth/AuthPromo";
 import { FormField, FieldShell } from "@/components/stallio/auth/FormField";
 import { PasswordField } from "@/components/stallio/auth/PasswordField";
+import { Combobox } from "@/components/stallio/auth/Combobox";
 import { signupSchema, type SignupValues } from "@/lib/validation/auth";
 import { useAuthNav } from "@/lib/auth-transition";
 import { cn } from "@/lib/utils";
@@ -61,6 +62,12 @@ const currencies = [
   { code: "EUR", label: "EUR — Euro" },
 ];
 
+const countryOptions = countries.map((c) => ({ value: c, label: c }));
+const currencyOptions = currencies.map((c) => ({
+  value: c.code,
+  label: c.label,
+}));
+
 /** Stand-in for a real API call until the backend is wired up. */
 async function fakeCreateShop(values: SignupValues) {
   await new Promise((resolve) => setTimeout(resolve, 1100));
@@ -80,10 +87,13 @@ function Signup() {
   const [logoFile, setLogoFile] = useState<File | null>(null);
   const logoInputRef = useRef<HTMLInputElement>(null);
 
+  const [submittedEmail, setSubmittedEmail] = useState("");
+
   const {
     register,
     handleSubmit,
     watch,
+    control,
     formState: { errors },
   } = useForm<SignupValues>({
     resolver: zodResolver(signupSchema),
@@ -105,6 +115,7 @@ function Signup() {
     setStatus("submitting");
     try {
       await fakeCreateShop(values);
+      setSubmittedEmail(values.email);
       setStatus("success");
     } catch (err) {
       setStatus("idle");
@@ -145,17 +156,20 @@ function Signup() {
               Your shop is ready!
             </p>
             <p className="max-w-xs text-sm text-ink-soft">
-              We&rsquo;ve emailed you a confirmation. Log in to open your
-              dashboard and start adding products.
+              We&rsquo;ve emailed you a verification link. Verify your address
+              to activate your shop and open your dashboard.
             </p>
             <button
               type="button"
               onClick={() =>
-                navigate({ to: "/login", search: { created: true } })
+                navigate({
+                  to: "/verify-email",
+                  search: { email: submittedEmail },
+                })
               }
               className="group mt-2 inline-flex items-center justify-center gap-2 rounded-full bg-violet px-6 py-2.5 text-sm font-semibold text-white shadow-lg shadow-violet/25 transition-all duration-300 hover:-translate-y-0.5 hover:brightness-110"
             >
-              Continue to log in
+              Verify your email
               <ArrowRight
                 size={15}
                 className="transition-transform group-hover:translate-x-0.5"
@@ -288,27 +302,23 @@ function Signup() {
                 label="Country"
                 error={errors.country?.message}
               >
-                <FieldShell
-                  icon={<Globe size={16} strokeWidth={2} />}
-                  error={Boolean(errors.country)}
-                >
-                  <select
-                    id="country"
-                    defaultValue=""
-                    aria-invalid={Boolean(errors.country)}
-                    className="w-full flex-1 appearance-none bg-transparent text-sm text-ink outline-none [color-scheme:light] dark:[color-scheme:dark]"
-                    {...register("country")}
-                  >
-                    <option value="" disabled>
-                      Search country&hellip;
-                    </option>
-                    {countries.map((c) => (
-                      <option key={c} value={c}>
-                        {c}
-                      </option>
-                    ))}
-                  </select>
-                </FieldShell>
+                <Controller
+                  name="country"
+                  control={control}
+                  render={({ field }) => (
+                    <Combobox
+                      id="country"
+                      icon={<Globe size={16} strokeWidth={2} />}
+                      value={field.value}
+                      onChange={field.onChange}
+                      options={countryOptions}
+                      placeholder="Select country"
+                      searchPlaceholder="Search country…"
+                      emptyText="No country found."
+                      error={Boolean(errors.country)}
+                    />
+                  )}
+                />
               </FormField>
             </div>
 
@@ -318,27 +328,23 @@ function Signup() {
                 label="Currency"
                 error={errors.currency?.message}
               >
-                <FieldShell
-                  icon={<Wallet size={16} strokeWidth={2} />}
-                  error={Boolean(errors.currency)}
-                >
-                  <select
-                    id="currency"
-                    defaultValue=""
-                    aria-invalid={Boolean(errors.currency)}
-                    className="w-full flex-1 appearance-none bg-transparent text-sm text-ink outline-none [color-scheme:light] dark:[color-scheme:dark]"
-                    {...register("currency")}
-                  >
-                    <option value="" disabled>
-                      Search currency&hellip;
-                    </option>
-                    {currencies.map((c) => (
-                      <option key={c.code} value={c.code}>
-                        {c.label}
-                      </option>
-                    ))}
-                  </select>
-                </FieldShell>
+                <Controller
+                  name="currency"
+                  control={control}
+                  render={({ field }) => (
+                    <Combobox
+                      id="currency"
+                      icon={<Wallet size={16} strokeWidth={2} />}
+                      value={field.value}
+                      onChange={field.onChange}
+                      options={currencyOptions}
+                      placeholder="Select currency"
+                      searchPlaceholder="Search currency…"
+                      emptyText="No currency found."
+                      error={Boolean(errors.currency)}
+                    />
+                  )}
+                />
               </FormField>
 
               <FormField id="logo" label="Shop Logo" optional>

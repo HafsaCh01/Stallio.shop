@@ -117,7 +117,7 @@ const accentActiveTab = {
   lime: "bg-[linear-gradient(90deg,var(--lime),var(--pink))] text-white shadow-lime/30",
 };
 
-const AUTO_MS = 2000;
+const AUTO_MS = 4200;
 
 export function FeatureWalkthrough() {
   const { ref, visible } = useReveal<HTMLDivElement>();

@@ -12,21 +12,21 @@ export const navLinks = [
   { label: "About", href: "/about" },
   { label: "How It Works", href: "/how-it-works" },
   { label: "Features", href: "/features" },
-  { label: "Pricing", href: "/#whats-included" },
-  { label: "Contact", href: "/#contact" },
+  { label: "Pricing", href: "/pricing" },
+  { label: "Contact", href: "/contact" },
 ];
 
 export const footerLinks = {
   product: [
     { label: "How it works", href: "/how-it-works" },
     { label: "Features", href: "/features" },
-    { label: "Pricing", href: "/#whats-included" },
+    { label: "Pricing", href: "/pricing" },
     { label: "About us", href: "/about" },
   ],
   support: [
     { label: "Getting started", href: "/#final-cta" },
-    { label: "Contact us", href: "/#contact" },
-    { label: "FAQs", href: "/#whats-included" },
+    { label: "Contact us", href: "/contact" },
+    { label: "FAQs", href: "/pricing#faq" },
   ],
   legal: [
     { label: "Privacy Policy", href: "/privacy" },
@@ -38,11 +38,11 @@ export const footerLinks = {
 /** Ordered left-to-right, top-to-bottom for the footer's 2-column icon grid. */
 export const footerNavLinks = [
   { label: "Home", href: "/" },
-  { label: "Pricing", href: "/#whats-included" },
+  { label: "Pricing", href: "/pricing" },
   { label: "About", href: "/about" },
   { label: "How It Works", href: "/how-it-works" },
   { label: "Features", href: "/features" },
-  { label: "Contact", href: "/#contact" },
+  { label: "Contact", href: "/contact" },
 ];
 
 export const socialLinks = [
