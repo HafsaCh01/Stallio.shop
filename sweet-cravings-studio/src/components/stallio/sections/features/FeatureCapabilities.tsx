@@ -23,6 +23,7 @@ import {
   LifeBuoy,
   type LucideIcon,
 } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import { Container } from "../../Container";
 import { RouteDivider } from "../../RouteDivider";
 import { useReveal } from "@/hooks/use-reveal";
@@ -30,107 +31,43 @@ import { cn } from "@/lib/utils";
 
 type Accent = "violet" | "teal" | "pink" | "lime";
 
-type Card = {
+type TranslatedCard = { title: string; description: string };
+type Card = TranslatedCard & {
   icon: LucideIcon;
-  title: string;
-  description: string;
   accent: Accent;
 };
 
 // All 13 cards share one identical shape, size, and styling now — no card
 // is visually promoted over the others.
-const allCards: Card[] = [
-  {
-    icon: Store,
-    title: "A Storefront, Not A Science Project",
-    description:
-      "Buyers browse, pick variants, apply coupons, and order from their phone. Hosted on stallio.shop/yourname in English, Spanish, or Arabic.",
-    accent: "violet",
-  },
-  {
-    icon: Link2,
-    title: "Custom Store Link",
-    description:
-      "One path for bio, WhatsApp, stories, and QR. Copy and paste; we host the shop.",
-    accent: "teal",
-  },
-  {
-    icon: LayoutGrid,
-    title: "Product Catalog",
-    description:
-      "Unlimited products and images. Variants, sale prices, stock, and hide/show without deleting.",
-    accent: "violet",
-  },
-  {
-    icon: ClipboardList,
-    title: "Order Dashboard",
-    description:
-      "Every order in one inbox. Search, filter, mark paid, set delivery status, add tracking.",
-    accent: "pink",
-  },
-  {
-    icon: Smartphone,
-    title: "Mobile-First Storefront",
-    description:
-      "Grid, product pages, and checkout tuned for thumbs, where your buyers actually are.",
-    accent: "lime",
-  },
-  {
-    icon: BadgePercent,
-    title: "Coupons And Promos",
-    description:
-      "Percent or fixed-off codes with optional expiry. Buyers apply them at checkout.",
-    accent: "pink",
-  },
-  {
-    icon: FileText,
-    title: "PDF Invoices",
-    description:
-      "Download a professional invoice per order to send on WhatsApp or email.",
-    accent: "violet",
-  },
-  {
-    icon: Truck,
-    title: "Delivery And COD",
-    description:
-      "Fixed or free-above-minimum delivery, ETA text, checkout notes, and cash on delivery toggle.",
-    accent: "teal",
-  },
-  {
-    icon: FolderTree,
-    title: "Categories And Pages",
-    description:
-      "Group products, run a custom home hero, trust lines, reviews, plus About and Contact.",
-    accent: "lime",
-  },
-  {
-    icon: Wallet,
-    title: "You Control Payment",
-    description:
-      "Tell buyers how to pay by bank, link, or COD. Stallio tracks the order; you confirm when money arrives.",
-    accent: "violet",
-  },
-  {
-    icon: LineChart,
-    title: "Revenue Overview",
-    description:
-      "Charts and totals for paid orders across today, the week, or a custom range.",
-    accent: "lime",
-  },
-  {
-    icon: MessageCircle,
-    title: "Buyer Messages",
-    description:
-      "Contact form submissions land in your inbox so nothing sits only on Instagram.",
-    accent: "teal",
-  },
-  {
-    icon: LifeBuoy,
-    title: "Seller Support",
-    description:
-      "Chat with the Stallio team from your dashboard when you need a hand.",
-    accent: "pink",
-  },
+const cardIcons: LucideIcon[] = [
+  Store,
+  Link2,
+  LayoutGrid,
+  ClipboardList,
+  Smartphone,
+  BadgePercent,
+  FileText,
+  Truck,
+  FolderTree,
+  Wallet,
+  LineChart,
+  MessageCircle,
+  LifeBuoy,
+];
+const cardAccents: Accent[] = [
+  "violet",
+  "teal",
+  "violet",
+  "pink",
+  "lime",
+  "pink",
+  "violet",
+  "teal",
+  "lime",
+  "violet",
+  "lime",
+  "teal",
+  "pink",
 ];
 
 const accentStyles: Record<
@@ -176,8 +113,6 @@ function useSpotlight() {
   };
 }
 
-const TOTAL_CARDS = allCards.length;
-
 // Deterministic "shuffled deck" rotation/jitter per card index, so the
 // stacked look is consistent across renders instead of jumping around.
 const DECK_ROTATIONS = [-7, 5, -3, 8, -6, 4, -9, 6, -2, 7, -5, 3, -8];
@@ -187,6 +122,16 @@ const DECK_JITTER_Y = [-2, 3, -4, 2, -3, 4, -2, 3, -5, 2, -3, 4, -2];
 type Offset = { dx: number; dy: number };
 
 export function FeatureCapabilities() {
+  const { t } = useTranslation("features");
+  const translatedCards = t("capabilities.cards", {
+    returnObjects: true,
+  }) as TranslatedCard[];
+  const allCards: Card[] = translatedCards.map((card, i) => ({
+    ...card,
+    icon: cardIcons[i]!,
+    accent: cardAccents[i]!,
+  }));
+  const TOTAL_CARDS = allCards.length;
   const { ref: revealRef, visible } = useReveal<HTMLDivElement>();
   const wrapperRef = useRef<HTMLDivElement>(null);
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
@@ -339,14 +284,13 @@ export function FeatureCapabilities() {
             ))}
           </div>
           <span className="text-[10px] font-semibold uppercase tracking-[0.14em] text-lime sm:text-xs">
-            What you get
+            {t("capabilities.eyebrow")}
           </span>
           <h2 className="mt-3 font-display text-[1.75rem] font-semibold leading-tight tracking-tight text-ink sm:text-4xl lg:text-[2.75rem]">
-            Capabilities that stay out of your way
+            {t("capabilities.title")}
           </h2>
           <p className="mt-4 text-sm leading-relaxed text-ink-soft sm:text-lg">
-            Built for sellers who already have buyers, not for teams managing
-            DNS, plugins, and payment gateways.
+            {t("capabilities.description")}
           </p>
         </div>
 

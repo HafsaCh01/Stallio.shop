@@ -1,5 +1,6 @@
 import type { ReactElement } from "react";
 import { Link } from "@tanstack/react-router";
+import { useTranslation } from "react-i18next";
 import {
   Home,
   CreditCard,
@@ -23,12 +24,12 @@ import {
 import { cn } from "@/lib/utils";
 
 const navIcons: Record<string, typeof Home> = {
-  Home: Home,
-  Pricing: CreditCard,
-  About: Info,
-  "How It Works": ListChecks,
-  Features: Zap,
-  Contact: Mail,
+  home: Home,
+  pricing: CreditCard,
+  about: Info,
+  howItWorks: ListChecks,
+  features: Zap,
+  contact: Mail,
 };
 
 function XLogo({ size = 15 }: { size?: number }) {
@@ -54,6 +55,7 @@ const socialIcons: Record<string, (props: { size?: number }) => ReactElement> =
   };
 
 export function Footer() {
+  const { t } = useTranslation("common");
   const year = new Date().getFullYear();
 
   return (
@@ -69,39 +71,40 @@ export function Footer() {
       <Container className="grid gap-10 py-14 sm:py-16 lg:grid-cols-[1.1fr_1fr_0.85fr_0.7fr] lg:gap-8">
         {/* Brand */}
         <div className="max-w-xs">
-          <Link to="/" aria-label="Stallio home">
-            <Logo />
+          <Link to="/" aria-label={t("nav.logInLabel")}>
+            <Logo wordmarkClassName="text-white" />
           </Link>
-          <p className="mt-4 text-sm leading-relaxed text-ink-soft">
-            {siteConfig.tagline} No domain, no payment gateway, no code.
+          <p className="mt-4 text-sm leading-relaxed text-[#bab4dd]">
+            {t("site.tagline")} {t("footer.taglineExtra")}
           </p>
           <CTAButton href="/signup" size="sm" className="mt-6">
-            Get Started Free
+            {t("footer.getStartedFree")}
           </CTAButton>
         </div>
 
         {/* Links */}
         <div>
           <h3 className="text-xs font-semibold uppercase tracking-[0.2em] text-lime">
-            Links
+            {t("footer.linksHeading")}
           </h3>
           <ul className="mt-4 grid grid-cols-2 gap-x-4 gap-y-3">
             {footerNavLinks.map((link) => {
-              const Icon = navIcons[link.label];
+              const Icon = navIcons[link.id];
+              const label = t(`nav.${link.id}`);
               return (
-                <li key={link.label}>
+                <li key={link.id}>
                   <a
                     href={link.href}
-                    className="group flex items-center gap-2 text-sm text-ink-soft transition-colors hover:text-ink"
+                    className="group flex min-w-0 items-center gap-2 text-sm text-[#bab4dd] transition-colors hover:text-white"
                   >
                     {Icon && (
                       <Icon
                         size={14}
                         strokeWidth={2}
-                        className="shrink-0 text-ink-faint transition-colors group-hover:text-lime"
+                        className="shrink-0 text-[#8b7fb8] transition-colors group-hover:text-lime"
                       />
                     )}
-                    <span className="truncate">{link.label}</span>
+                    <span className="min-w-0 leading-snug">{label}</span>
                   </a>
                 </li>
               );
@@ -112,23 +115,23 @@ export function Footer() {
         {/* Contact */}
         <div>
           <h3 className="text-xs font-semibold uppercase tracking-[0.2em] text-lime">
-            Contact
+            {t("footer.contactHeading")}
           </h3>
           <a
             href={`mailto:${siteConfig.contactEmail}`}
-            className="mt-4 flex items-center gap-3 rounded-xl border border-ink/10 bg-paper px-4 py-3 text-sm font-semibold text-ink transition-colors hover:border-lime/40"
+            className="mt-4 flex items-center gap-3 rounded-xl border border-white/10 bg-[#1f1440] px-4 py-3 text-sm font-semibold text-white transition-colors hover:border-lime/40"
           >
-            <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border border-ink/10 bg-paper-dim text-lime">
+            <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border border-white/10 bg-[#170f2f] text-lime">
               <Mail size={15} strokeWidth={2} />
             </span>
-            {siteConfig.contactEmail}
+            <span className="min-w-0 break-all">{siteConfig.contactEmail}</span>
           </a>
         </div>
 
         {/* Social */}
         <div>
           <h3 className="text-xs font-semibold uppercase tracking-[0.2em] text-lime">
-            Social
+            {t("footer.socialHeading")}
           </h3>
           <ul className="mt-4 flex items-center gap-2.5">
             {socialLinks.map((social) => {
@@ -141,7 +144,7 @@ export function Footer() {
                     rel="noopener noreferrer"
                     aria-label={social.label}
                     className={cn(
-                      "flex h-10 w-10 items-center justify-center rounded-xl border border-ink/10 bg-paper text-ink-soft transition-colors hover:border-lime/40 hover:text-ink",
+                      "flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-[#1f1440] text-[#bab4dd] transition-colors hover:border-lime/40 hover:text-white",
                     )}
                   >
                     {Icon && <Icon size={16} />}
@@ -154,19 +157,19 @@ export function Footer() {
       </Container>
 
       {/* Bottom bar */}
-      <div className="border-t border-ink/10">
-        <Container className="flex flex-col-reverse items-center gap-4 py-6 text-xs text-ink-faint sm:flex-row sm:justify-between">
+      <div className="border-t border-white/10">
+        <Container className="flex flex-col-reverse items-center gap-4 py-6 text-xs text-[#8b7fb8] sm:flex-row sm:justify-between">
           <p>
-            &copy; {year} {siteConfig.name}. All rights reserved.
+            &copy; {year} {siteConfig.name}. {t("footer.rightsReserved")}
           </p>
           <ul className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2">
             {footerLinks.legal.map((link) => (
-              <li key={link.label}>
+              <li key={link.id}>
                 <a
                   href={link.href}
-                  className="transition-colors hover:text-ink"
+                  className="transition-colors hover:text-white"
                 >
-                  {link.label}
+                  {t(`footer.legal.${link.id}`)}
                 </a>
               </li>
             ))}

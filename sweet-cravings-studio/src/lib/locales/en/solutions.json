@@ -1,0 +1,96 @@
+{
+  "hero": {
+    "eyebrow": "Built for your kind of shop",
+    "titleLine1": "Whatever you sell,",
+    "titleHighlight": "it fits.",
+    "subtitle": "A boutique, a home bakery, and a jewelry maker don't run their shop the same way. Pick what you sell below to see the problem it usually causes, and how Stallio handles it.",
+    "ctaPrimary": "Find your shop type",
+    "ctaSecondary": "Start Free"
+  },
+  "switcher": {
+    "eyebrow": "Pick what you sell",
+    "title": "Same problem, different shop",
+    "tablistLabel": "Business types",
+    "usualProblem": "The usual problem",
+    "howStallioFixes": "How Stallio fixes it",
+    "segments": {
+      "boutiques": {
+        "label": "Clothing Boutiques",
+        "pain": "Buyers ask the same \u201cwhat sizes are left?\u201d question on every single post, and older pieces get buried within a day.",
+        "fix": "A live catalog with sizes and stock per item, so buyers check themselves and nothing gets buried.",
+        "points": {
+          "p1": "Sizes and stock shown per product",
+          "p2": "Older pieces stay browsable, not buried",
+          "p3": "Coupons for restocks and sales"
+        },
+        "ctaAs": "Start free as a boutique"
+      },
+      "bakers": {
+        "label": "Home Bakers",
+        "pain": "Orders live across WhatsApp chats and a paper notebook, so deadlines and delivery dates get missed on busy weekends.",
+        "fix": "One dashboard listing every order with its date and status, checked in one glance each morning.",
+        "points": {
+          "p1": "Every order in one list, not six chats",
+          "p2": "Mark paid, baked, and out for delivery",
+          "p3": "Export the week's orders in one click"
+        },
+        "ctaAs": "Start free as a home baker"
+      },
+      "skincare": {
+        "label": "Skincare Brands",
+        "pain": "A feed of product photos with prices in the caption doesn't give a first-time visitor enough confidence to buy.",
+        "fix": "A proper storefront with categories and stock status that reads as a real brand, not just posts.",
+        "points": {
+          "p1": "Categorized catalog buyers can browse",
+          "p2": "Stock status builds first-time trust",
+          "p3": "Invoice PDFs for every order"
+        },
+        "ctaAs": "Start free as a skincare brand"
+      },
+      "jewelry": {
+        "label": "Jewelry Makers",
+        "pain": "Custom requests get buried in comments and DMs, so pending customizations are easy to lose track of.",
+        "fix": "Manual orders and requests logged straight into the dashboard, so nothing sits in a comment thread.",
+        "points": {
+          "p1": "Add manual or custom phone orders",
+          "p2": "Every request tracked, none lost",
+          "p3": "Update stock the moment a piece sells"
+        },
+        "ctaAs": "Start free as a jewelry maker"
+      },
+      "thrift": {
+        "label": "Thrift Resellers",
+        "pain": "Every new drop means reposting each item again and answering the same price and size questions from scratch.",
+        "fix": "One link per drop. Update stock in the dashboard and it reflects instantly, sold-out marks itself.",
+        "points": {
+          "p1": "One link to share per drop, not per item",
+          "p2": "Items mark themselves sold out",
+          "p3": "Delivery and coupons in one place"
+        },
+        "ctaAs": "Start free as a thrift reseller"
+      },
+      "crafts": {
+        "label": "Handmade Crafts",
+        "pain": "Buyers only ever see your most recent post, so older pieces in your range go completely unseen.",
+        "fix": "A full catalog that's always browsable, so nothing depends on how recently it was posted.",
+        "points": {
+          "p1": "Full range stays visible, always",
+          "p2": "Organize pieces into categories",
+          "p3": "Share one link across every platform"
+        },
+        "ctaAs": "Start free as a craft seller"
+      }
+    }
+  },
+  "cta": {
+    "title": "Don't see your exact shop above?",
+    "subtitle": "These are the six kinds of shops we see most, but the storefront underneath works the same for almost anything you sell.",
+    "ctaPrimary": "Start Free",
+    "ctaSecondary": "Ask us first",
+    "perks": {
+      "freeToStart": "Free to start",
+      "noDomain": "No domain needed",
+      "noCard": "No card required"
+    }
+  }
+}

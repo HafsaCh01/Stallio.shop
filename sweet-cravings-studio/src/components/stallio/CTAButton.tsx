@@ -34,7 +34,7 @@ export function CTAButton({
     <a
       href={href}
       className={cn(
-        "group relative inline-flex items-center justify-center gap-2 overflow-hidden rounded-full font-medium tracking-tight transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0",
+        "group relative inline-flex items-center justify-center gap-2 overflow-hidden whitespace-nowrap rounded-full font-medium tracking-tight transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0",
         variants[variant],
         sizes[size],
         className,

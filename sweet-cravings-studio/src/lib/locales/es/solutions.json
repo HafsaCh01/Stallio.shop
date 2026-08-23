@@ -1,0 +1,96 @@
+{
+  "hero": {
+    "eyebrow": "Hecho para tu tipo de tienda",
+    "titleLine1": "Sea lo que sea que vendas,",
+    "titleHighlight": "encaja.",
+    "subtitle": "Una boutique, una repostera casera y una joyera no manejan su tienda de la misma forma. Elige qu\u00e9 vendes abajo para ver el problema que suele causar, y c\u00f3mo lo resuelve Stallio.",
+    "ctaPrimary": "Encuentra tu tipo de tienda",
+    "ctaSecondary": "Empezar Gratis"
+  },
+  "switcher": {
+    "eyebrow": "Elige qu\u00e9 vendes",
+    "title": "El mismo problema, distinta tienda",
+    "tablistLabel": "Tipos de negocio",
+    "usualProblem": "El problema habitual",
+    "howStallioFixes": "C\u00f3mo lo resuelve Stallio",
+    "segments": {
+      "boutiques": {
+        "label": "Boutiques de Ropa",
+        "pain": "Los compradores preguntan lo mismo, \u00bfqu\u00e9 tallas quedan?, en cada publicaci\u00f3n, y las piezas antiguas quedan enterradas en un d\u00eda.",
+        "fix": "Un cat\u00e1logo en vivo con tallas e inventario por producto, para que los compradores revisen por su cuenta y nada quede enterrado.",
+        "points": {
+          "p1": "Tallas e inventario mostrados por producto",
+          "p2": "Las piezas antiguas se pueden seguir viendo",
+          "p3": "Cupones para reposiciones y rebajas"
+        },
+        "ctaAs": "Empieza gratis como boutique"
+      },
+      "bakers": {
+        "label": "Reposter\u00eda Casera",
+        "pain": "Los pedidos viven repartidos entre chats de WhatsApp y un cuaderno, por lo que las fechas de entrega se pierden los fines de semana ocupados.",
+        "fix": "Un panel que lista cada pedido con su fecha y estado, revisado de un vistazo cada ma\u00f1ana.",
+        "points": {
+          "p1": "Cada pedido en una lista, no en seis chats",
+          "p2": "Marca como pagado, horneado y en camino",
+          "p3": "Exporta los pedidos de la semana con un clic"
+        },
+        "ctaAs": "Empieza gratis como repostera casera"
+      },
+      "skincare": {
+        "label": "Marcas de Cuidado de la Piel",
+        "pain": "Un feed de fotos de productos con precios en el pie de foto no le da a un visitante nuevo suficiente confianza para comprar.",
+        "fix": "Un escaparate real con categor\u00edas y estado de inventario que parece una marca de verdad, no solo publicaciones.",
+        "points": {
+          "p1": "Cat\u00e1logo organizado por categor\u00edas",
+          "p2": "El estado del inventario genera confianza",
+          "p3": "Facturas en PDF para cada pedido"
+        },
+        "ctaAs": "Empieza gratis como marca de cuidado de la piel"
+      },
+      "jewelry": {
+        "label": "Joyer\u00eda Artesanal",
+        "pain": "Las solicitudes personalizadas quedan enterradas en comentarios y DMs, por lo que es f\u00e1cil perder el rastro de las pendientes.",
+        "fix": "Pedidos manuales y solicitudes registrados directamente en el panel, para que nada se quede en un hilo de comentarios.",
+        "points": {
+          "p1": "Agrega pedidos manuales o telef\u00f3nicos personalizados",
+          "p2": "Cada solicitud queda registrada, ninguna se pierde",
+          "p3": "Actualiza el inventario en el momento en que se vende una pieza"
+        },
+        "ctaAs": "Empieza gratis como joyera artesanal"
+      },
+      "thrift": {
+        "label": "Reventa de Ropa Usada",
+        "pain": "Cada nueva tanda significa volver a publicar cada art\u00edculo y responder las mismas preguntas de precio y talla desde cero.",
+        "fix": "Un enlace por tanda. Actualiza el inventario en el panel y se refleja al instante; lo agotado se marca solo.",
+        "points": {
+          "p1": "Un enlace para compartir por tanda, no por art\u00edculo",
+          "p2": "Los art\u00edculos se marcan como agotados solos",
+          "p3": "Entrega y cupones en un solo lugar"
+        },
+        "ctaAs": "Empieza gratis como revendedor de ropa usada"
+      },
+      "crafts": {
+        "label": "Artesan\u00edas Hechas a Mano",
+        "pain": "Los compradores solo ven tu publicaci\u00f3n m\u00e1s reciente, as\u00ed que las piezas antiguas de tu cat\u00e1logo quedan completamente invisibles.",
+        "fix": "Un cat\u00e1logo completo siempre visible, sin depender de qu\u00e9 tan reciente sea la publicaci\u00f3n.",
+        "points": {
+          "p1": "Todo el cat\u00e1logo se mantiene visible, siempre",
+          "p2": "Organiza las piezas en categor\u00edas",
+          "p3": "Comparte un enlace en cualquier plataforma"
+        },
+        "ctaAs": "Empieza gratis como artesano"
+      }
+    }
+  },
+  "cta": {
+    "title": "\u00bfNo ves tu tipo exacto de tienda arriba?",
+    "subtitle": "Estos son los seis tipos de tienda que vemos m\u00e1s, pero el escaparate por dentro funciona igual para casi cualquier cosa que vendas.",
+    "ctaPrimary": "Empezar Gratis",
+    "ctaSecondary": "Pregunta primero",
+    "perks": {
+      "freeToStart": "Gratis para empezar",
+      "noDomain": "Sin necesidad de dominio",
+      "noCard": "Sin tarjeta requerida"
+    }
+  }
+}

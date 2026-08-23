@@ -1,0 +1,58 @@
+{
+  "nav": {
+    "home": "Inicio",
+    "about": "Nosotros",
+    "howItWorks": "C\u00f3mo Funciona",
+    "features": "Funciones",
+    "pricing": "Precios",
+    "solutions": "Soluciones",
+    "contact": "Contacto",
+    "logIn": "Iniciar Sesi\u00f3n",
+    "startFree": "Empezar Gratis",
+    "openMenu": "Abrir men\u00fa",
+    "closeMenu": "Cerrar men\u00fa",
+    "switchToLight": "Cambiar a modo claro",
+    "switchToDark": "Cambiar a modo oscuro",
+    "stallioHome": "Inicio de Stallio",
+    "language": "Idioma"
+  },
+  "marquee": {
+    "clothingBoutiques": "Boutiques de Ropa",
+    "homeBakers": "Reposter\u00eda Casera",
+    "skincareBrands": "Marcas de Cuidado de la Piel",
+    "jewelryMakers": "Joyer\u00eda Artesanal",
+    "thriftResellers": "Reventa de Ropa Usada",
+    "handmadeCrafts": "Artesan\u00edas Hechas a Mano"
+  },
+  "footer": {
+    "tagline": "Tu tienda, a un enlace de distancia.",
+    "description": "Stallio convierte tu p\u00e1gina de Instagram o WhatsApp en una tienda en l\u00ednea real: productos ilimitados, un panel de pedidos y un escaparate m\u00f3vil, todo desde un solo enlace compartible.",
+    "product": "Producto",
+    "support": "Soporte",
+    "legal": "Legal",
+    "howItWorks": "C\u00f3mo funciona",
+    "features": "Funciones",
+    "pricing": "Precios",
+    "solutions": "Soluciones",
+    "aboutUs": "Sobre nosotros",
+    "gettingStarted": "Primeros pasos",
+    "contactUs": "Cont\u00e1ctanos",
+    "faqs": "Preguntas frecuentes",
+    "privacyPolicy": "Pol\u00edtica de Privacidad",
+    "termsOfService": "T\u00e9rminos de Servicio",
+    "refundPolicy": "Pol\u00edtica de Reembolsos",
+    "home": "Inicio",
+    "about": "Nosotros",
+    "contact": "Contacto",
+    "copyright": "\u00a9 {{year}} Stallio. Todos los derechos reservados."
+  },
+  "buttons": {
+    "startFree": "Empezar Gratis",
+    "learnMore": "Saber M\u00e1s",
+    "getStarted": "Comenzar",
+    "seePricing": "Ver Precios",
+    "contactUs": "Cont\u00e1ctanos",
+    "backHome": "Ir al inicio",
+    "tryAgain": "Intentar de nuevo"
+  }
+}

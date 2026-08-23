@@ -1,0 +1,64 @@
+{
+  "hero": {
+    "badge": "Pricing",
+    "titleLead": "Simple numbers.",
+    "titleHighlight": "One full product.",
+    "description": "No tiers to compare, no features locked behind a higher plan. One month on us, then one price, billed however you like.",
+    "trustBullets": ["From $5/mo after trial", "No card to start"],
+    "ctaPrimary": "Start Free",
+    "ctaSecondary": "See What's Included",
+    "firstMonthFree": "First month free",
+    "onePlan": "One plan",
+    "perMonth": "/mo",
+    "orYearly": "or $50/yr",
+    "cardBullets": ["Every tool included", "No add-ons, ever"]
+  },
+  "plan": {
+    "eyebrow": "The plan",
+    "title": "One plan. Everything included.",
+    "description": "No tiers to compare, no features locked behind a higher plan. Pick a billing cycle and see exactly what's on it.",
+    "planName": "Stallio Standard",
+    "monthly": "Monthly",
+    "yearly": "Yearly",
+    "saveAmount": "Save $10",
+    "perMonth": "/mo",
+    "perYear": "/yr",
+    "orBilledYearly": "or $50 billed yearly",
+    "billedOnceYear": "billed once a year",
+    "dueToday": "Due today",
+    "firstMonthFree": "First month free, no card required",
+    "ctaPrimary": "Start Free",
+    "cancelAnytime": "Cancel anytime",
+    "itemizedLabel": "Everything, itemized",
+    "items": [
+      "Hosted stallio.shop link, no domain",
+      "Unlimited products, photos, and orders",
+      "Mobile storefront, cart, and checkout",
+      "Variants, sale prices, and stock",
+      "About and Contact pages",
+      "Coupons and delivery fees",
+      "PDF invoice on every order",
+      "Mark paid, ship, and export CSV",
+      "Shop and dashboard in EN, ES, and AR",
+      "Revenue and order charts",
+      "Buyer messages and support chat",
+      "First month free, no card required"
+    ]
+  },
+  "faq": {
+    "eyebrow": "Still deciding?",
+    "title": "Ask us, or just try it.",
+    "description": "Most questions about billing are answered on the right. For anything else, reach the team directly or start the free month and see the product for yourself.",
+    "ctaPrimary": "Start Free",
+    "ctaSecondary": "Contact Us",
+    "replyTime": "Usually replies within a day at contact@stallio.shop",
+    "items": [
+      { "question": "Do I need my own domain or hosting?", "answer": "No. Every shop gets a hosted stallio.shop/you link the moment you sign up, nothing to buy or configure." },
+      { "question": "How does Stallio handle payments?", "answer": "You set your own method, bank transfer, payment link, or cash on delivery, and Stallio tracks the status of every order for you." },
+      { "question": "Is there a limit on products or orders?", "answer": "No limit on either, on both plans. List one item or one thousand, and every order still lands in your dashboard." },
+      { "question": "What happens when the free month ends?", "answer": "We'll remind you a few days before it ends. Pick monthly or yearly to keep your shop live, or cancel with nothing owed." },
+      { "question": "Can I switch between monthly and yearly?", "answer": "Yes, anytime from your account settings. Your storefront and data carry over exactly as they were." },
+      { "question": "Do both plans really include everything?", "answer": "Yes. Monthly and yearly unlock the identical storefront, dashboard, and tools, yearly simply costs less over time." }
+    ]
+  }
+}

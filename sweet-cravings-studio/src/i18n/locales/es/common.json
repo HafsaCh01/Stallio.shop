@@ -1,0 +1,74 @@
+{
+  "site": {
+    "tagline": "Tu tienda, a un enlace de distancia.",
+    "description": "Stallio convierte tu página de Instagram o WhatsApp en una tienda en línea real: productos ilimitados, un panel de pedidos y un escaparate móvil, todo desde un solo enlace para compartir."
+  },
+  "nav": {
+    "home": "Inicio",
+    "about": "Nosotros",
+    "howItWorks": "Cómo Funciona",
+    "features": "Funciones",
+    "pricing": "Precios",
+    "contact": "Contacto",
+    "primaryLabel": "Principal",
+    "logInLabel": "Inicio de Stallio",
+    "logIn": "Iniciar Sesión",
+    "startFree": "Empieza Gratis",
+    "openMenu": "Abrir menú",
+    "closeMenu": "Cerrar menú",
+    "switchToLight": "Cambiar a modo claro",
+    "switchToDark": "Cambiar a modo oscuro"
+  },
+  "footer": {
+    "taglineExtra": "Sin dominio, sin pasarela de pago, sin código.",
+    "getStartedFree": "Empieza Gratis",
+    "linksHeading": "Enlaces",
+    "contactHeading": "Contacto",
+    "socialHeading": "Redes Sociales",
+    "rightsReserved": "Todos los derechos reservados.",
+    "product": {
+      "howItWorks": "Cómo funciona",
+      "features": "Funciones",
+      "pricing": "Precios",
+      "aboutUs": "Sobre nosotros"
+    },
+    "support": {
+      "gettingStarted": "Primeros pasos",
+      "contactUs": "Contáctanos",
+      "faqs": "Preguntas frecuentes"
+    },
+    "legal": {
+      "privacyPolicy": "Política de Privacidad",
+      "termsOfService": "Términos de Servicio",
+      "refundPolicy": "Política de Reembolsos"
+    }
+  },
+  "marquee": {
+    "clothingBoutiques": "Boutiques de Ropa",
+    "homeBakers": "Reposteras Caseras",
+    "skincareBrands": "Marcas de Cuidado de la Piel",
+    "jewelryMakers": "Joyeras Artesanales",
+    "thriftResellers": "Revendedores de Segunda Mano",
+    "handmadeCrafts": "Artesanías Hechas a Mano"
+  },
+  "legalPage": {
+    "lastUpdated": "Última actualización: {{date}}",
+    "updatedDate": "Agosto de 2026"
+  },
+  "productPreview": {
+    "closeLabel": "Cerrar vista previa del producto",
+    "addToCart": "Añadir al carrito"
+  },
+  "notFound": {
+    "title": "404",
+    "subtitle": "Página no encontrada",
+    "description": "La página que buscas no existe o ha sido movida.",
+    "goHome": "Ir al inicio"
+  },
+  "errorBoundary": {
+    "title": "Esta página no cargó",
+    "description": "Algo salió mal de nuestro lado. Puedes intentar recargar o volver al inicio.",
+    "tryAgain": "Intentar de nuevo",
+    "goHome": "Ir al inicio"
+  }
+}

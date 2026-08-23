@@ -1,0 +1,147 @@
+{
+  "hero": {
+    "eyebrow": "Funciones",
+    "titleLine1": "Todo lo que necesitas",
+    "titleHighlight": "para vender desde un enlace.",
+    "subtitle": "Escaparate, panel y herramientas de venta en un solo lugar: enlace alojado, cat\u00e1logo y pedidos ilimitados, sin pasarela de pago para el comprador.",
+    "checklist": {
+      "link": "Enlace stallio.shop, sin comprar dominio",
+      "unlimited": "Productos, fotos y pedidos ilimitados",
+      "invoices": "Facturas en PDF y exportaci\u00f3n de pedidos",
+      "checkout": "Cupones, costos de env\u00edo y pago contra entrega"
+    },
+    "ctaPrimary": "Empezar Gratis",
+    "ctaSecondary": "Ver C\u00f3mo Funciona",
+    "loopCaption": "Cat\u00e1logo, pago, pedidos y facturas en un solo panel.",
+    "loopSteps": {
+      "orders": "Pedidos con estado de pago y entrega",
+      "products": "Productos con variantes, ofertas e inventario",
+      "coupons": "Cupones y env\u00edo en el pago",
+      "invoice": "Factura en PDF lista para enviar"
+    }
+  },
+  "walkthrough": {
+    "eyebrow": "V\u00e9lo en acci\u00f3n",
+    "title": "Un escaparate, cuatro cosas trabajando juntas",
+    "subtitle": "Explora cada pesta\u00f1a para ver qu\u00e9 obtienen compradores y vendedores, sin cambiar de app.",
+    "tabs": {
+      "storefront": {
+        "label": "Escaparate",
+        "eyebrow": "Lo que ven los compradores",
+        "title": "Un cat\u00e1logo que parece una tienda real",
+        "description": "Cada producto tiene su propia p\u00e1gina con fotos, precio y variantes, en una cuadr\u00edcula que los compradores pueden explorar desde el celular."
+      },
+      "checkout": {
+        "label": "Pago",
+        "eyebrow": "Lo que hacen los compradores",
+        "title": "Del carrito al pedido confirmado, sin pasarela",
+        "description": "Los compradores agregan art\u00edculos, eligen un m\u00e9todo de pago y finalizan la compra sin salir del enlace que compartiste."
+      },
+      "dashboard": {
+        "label": "Panel",
+        "eyebrow": "Con qu\u00e9 manejas la tienda",
+        "title": "Cada pedido en un solo lugar, no en seis chats",
+        "description": "Sigue cada pedido desde que se hace hasta que se entrega, con los datos del comprador a la mano en vez de perdidos en tus DMs."
+      },
+      "chat": {
+        "label": "Chat y Confianza",
+        "eyebrow": "Lo que hace que los compradores vuelvan",
+        "title": "Mant\u00e9n la relaci\u00f3n cercana que ya ten\u00edas por chat",
+        "description": "Un bot\u00f3n de chat directo y las rese\u00f1as visibles mantienen el trato personal que gener\u00f3 confianza en tu p\u00e1gina desde el inicio."
+      }
+    },
+    "bullets": {
+      "unlimited": "Productos y fotos ilimitados",
+      "mobileFirst": "Dise\u00f1o m\u00f3vil primero en cualquier tama\u00f1o de pantalla",
+      "darkMode": "Modo claro y oscuro incluidos",
+      "customBranding": "Nombre de tienda, biograf\u00eda y logo personalizados",
+      "oneCart": "Un solo carrito para todo el cat\u00e1logo",
+      "upiCod": "UPI y pago contra entrega, listos por defecto",
+      "noGateway": "Sin esperar aprobaci\u00f3n de pasarela de pago",
+      "guestCheckout": "Pago como invitado, sin registro para compradores",
+      "liveStatus": "Estado en vivo: pendiente, confirmado, enviado",
+      "buyerDetails": "Nombre, contacto y valor del pedido juntos",
+      "searchable": "Historial de pedidos con b\u00fasqueda",
+      "instantUpdate": "Se actualiza al instante cuando el comprador paga",
+      "tapToChat": "Bot\u00f3n de chat directo en cada producto",
+      "whatsappHandoff": "Env\u00edo directo a WhatsApp",
+      "reviews": "Calificaciones y rese\u00f1as en tu tienda",
+      "repeatBuyers": "Compradores recurrentes reconocidos autom\u00e1ticamente"
+    },
+    "mock": {
+      "paymentMethod": "M\u00e9todo de pago",
+      "cod": "Pago contra entrega",
+      "confirmOrder": "Confirmar pedido",
+      "awaitingConfirmation": "Esperando confirmaci\u00f3n",
+      "confirmed": "Confirmado",
+      "review1": "Ped\u00ed directo desde el enlace de WhatsApp, muy f\u00e1cil.",
+      "review2": "Me encant\u00f3 ver el estado del pedido sin preguntar por DM.",
+      "chatWithSeller": "Chatear con el vendedor"
+    }
+  },
+  "capabilities": {
+    "eyebrow": "Lo que obtienes",
+    "title": "Funciones que no se interponen en tu camino",
+    "subtitle": "Hecho para vendedores que ya tienen compradores, no para equipos gestionando DNS, plugins y pasarelas de pago.",
+    "cards": {
+      "storefront": {
+        "title": "Un Escaparate, No Un Proyecto Cient\u00edfico",
+        "description": "Los compradores navegan, eligen variantes, aplican cupones y ordenan desde su celular. Alojado en stallio.shop/tunombre en ingl\u00e9s, espa\u00f1ol o \u00e1rabe."
+      },
+      "customLink": {
+        "title": "Enlace de Tienda Personalizado",
+        "description": "Un solo enlace para bio, WhatsApp, historias y QR. Copia y pega; nosotros alojamos la tienda."
+      },
+      "catalog": {
+        "title": "Cat\u00e1logo de Productos",
+        "description": "Productos e im\u00e1genes ilimitados. Variantes, precios de oferta, inventario, y ocultar/mostrar sin borrar."
+      },
+      "orderDashboard": {
+        "title": "Panel de Pedidos",
+        "description": "Cada pedido en una sola bandeja. Busca, filtra, marca como pagado, define el estado de entrega, agrega seguimiento."
+      },
+      "mobileFirst": {
+        "title": "Escaparate Pensado para M\u00f3vil",
+        "description": "Cuadr\u00edcula, p\u00e1ginas de producto y pago ajustados para el pulgar, donde realmente est\u00e1n tus compradores."
+      },
+      "coupons": {
+        "title": "Cupones y Promociones",
+        "description": "C\u00f3digos de descuento porcentual o fijo con vencimiento opcional. Los compradores los aplican al pagar."
+      },
+      "invoices": {
+        "title": "Facturas en PDF",
+        "description": "Descarga una factura profesional por pedido para enviar por WhatsApp o correo."
+      },
+      "delivery": {
+        "title": "Entrega y Pago Contra Entrega",
+        "description": "Env\u00edo fijo o gratis desde un m\u00ednimo, texto de tiempo estimado, notas de pedido, y opci\u00f3n de pago contra entrega."
+      },
+      "categories": {
+        "title": "Categor\u00edas y P\u00e1ginas",
+        "description": "Agrupa productos, personaliza el inicio, agrega frases de confianza, rese\u00f1as, adem\u00e1s de Nosotros y Contacto."
+      },
+      "payment": {
+        "title": "T\u00fa Controlas el Pago",
+        "description": "Dile a los compradores c\u00f3mo pagar: banco, enlace o contra entrega. Stallio registra el pedido; t\u00fa confirmas cuando llega el dinero."
+      },
+      "revenue": {
+        "title": "Resumen de Ingresos",
+        "description": "Gr\u00e1ficos y totales de pedidos pagados por hoy, la semana, o un rango personalizado."
+      },
+      "buyerMessages": {
+        "title": "Mensajes de Compradores",
+        "description": "Los mensajes del formulario de contacto llegan a tu bandeja, para que nada se quede solo en Instagram."
+      },
+      "support": {
+        "title": "Soporte al Vendedor",
+        "description": "Chatea con el equipo de Stallio desde tu panel cuando necesites ayuda."
+      }
+    }
+  },
+  "finalCta": {
+    "title": "V\u00e9lo en un escaparate real",
+    "subtitle": "Crea tu tienda en minutos, o explora la demo primero. Sin tarjeta requerida.",
+    "ctaPrimary": "Empezar Gratis",
+    "ctaSecondary": "Ver Tienda Demo"
+  }
+}

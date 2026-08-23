@@ -5,64 +5,34 @@ import {
   ShoppingBag,
   type LucideIcon,
 } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import { Container } from "../Container";
 import { RouteDivider } from "../RouteDivider";
 import { useReveal } from "@/hooks/use-reveal";
 
-type Persona = {
-  icon: LucideIcon;
-  title: string;
-  description: string;
-  bestFor: string;
-};
+const personaIcons: LucideIcon[] = [AtSign, MessageCircle, Package, ShoppingBag];
 
-const personas: Persona[] = [
-  {
-    icon: AtSign,
-    title: "The Instagram seller",
-    description:
-      "Post it, tag it, sell it, straight from your bio link. No more directing followers to a comment thread to ask for prices.",
-    bestFor: "One link in bio",
-  },
-  {
-    icon: MessageCircle,
-    title: "The WhatsApp seller",
-    description:
-      "Stop re-typing the same catalog into every chat. Send one link and let buyers browse, pick, and check out on their own.",
-    bestFor: "Shareable in any chat",
-  },
-  {
-    icon: Package,
-    title: "The home-based maker",
-    description:
-      "Bakers, tailors, and crafters juggling orders in a notebook. Get a real product list and order dashboard instead.",
-    bestFor: "Unlimited products",
-  },
-  {
-    icon: ShoppingBag,
-    title: "The boutique reseller",
-    description:
-      "Thrifted finds, pre-loved fashion, small drops. Give every piece its own page instead of a scroll of old posts.",
-    bestFor: "New drops in minutes",
-  },
-];
+type TranslatedPersona = { title: string; description: string; bestFor: string };
 
 export function WhoItFits() {
+  const { t } = useTranslation("home");
   const { ref, visible } = useReveal<HTMLDivElement>();
+  const personas = t("whoItFits.personas", {
+    returnObjects: true,
+  }) as TranslatedPersona[];
 
   return (
     <section id="who-its-for" className="relative bg-paper-dim">
       <Container className="py-16 sm:py-20 lg:py-24">
         <div className="mx-auto max-w-2xl text-center">
           <span className="text-[10px] font-semibold uppercase tracking-[0.14em] text-lime sm:text-xs">
-            Who it&apos;s for
+            {t("whoItFits.eyebrow")}
           </span>
           <h2 className="mt-3 font-display text-[1.75rem] font-semibold leading-tight tracking-tight text-ink sm:text-4xl lg:text-5xl">
-            Built for however you already sell
+            {t("whoItFits.title")}
           </h2>
           <p className="mt-4 text-sm leading-relaxed text-ink-soft sm:text-lg">
-            You don&apos;t need a website team or a tech background. Here&apos;s
-            who typically opens a store on Stallio.
+            {t("whoItFits.description")}
           </p>
         </div>
 
@@ -77,7 +47,7 @@ export function WhoItFits() {
               className="reveal h-full"
               style={{ transitionDelay: `${i * 90}ms` }}
             >
-              <PersonaCard {...persona} />
+              <PersonaCard icon={personaIcons[i]!} {...persona} />
             </div>
           ))}
         </div>
@@ -88,7 +58,17 @@ export function WhoItFits() {
   );
 }
 
-function PersonaCard({ icon: Icon, title, description, bestFor }: Persona) {
+function PersonaCard({
+  icon: Icon,
+  title,
+  description,
+  bestFor,
+}: {
+  icon: LucideIcon;
+  title: string;
+  description: string;
+  bestFor: string;
+}) {
   return (
     <div className="group relative flex h-full flex-col gap-4 overflow-hidden rounded-3xl bg-surface/60 p-5 transition-all duration-300 hover:-translate-y-1.5 hover:bg-surface hover:shadow-[0_24px_50px_-30px_var(--violet)] sm:p-6">
       <div className="pointer-events-none absolute -right-10 -top-10 h-28 w-28 rounded-full bg-[image:var(--gradient-brand)] opacity-0 blur-2xl transition-opacity duration-300 group-hover:opacity-30" />

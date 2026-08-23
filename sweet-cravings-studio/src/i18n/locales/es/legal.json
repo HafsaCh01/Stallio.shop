@@ -1,0 +1,76 @@
+{
+  "privacy": {
+    "title": "Política de Privacidad",
+    "intro": "Esta Política de Privacidad explica qué información recopila Stallio de los vendedores y sus clientes, cómo se usa, y las opciones disponibles para ti. Al usar Stallio, aceptas las prácticas descritas aquí.",
+    "sections": [
+      {
+        "heading": "Información que recopilamos",
+        "body": "Cuando creas una tienda, recopilamos tu nombre, datos de contacto e información de la tienda como tu catálogo y precios. Cuando un cliente hace un pedido en tu tienda, recopilamos los datos necesarios para completar ese pedido, incluyendo su nombre, número de contacto y dirección de entrega."
+      },
+      {
+        "heading": "Cómo usamos tu información",
+        "body": "Usamos la información recopilada para operar tu tienda, procesar pedidos, ofrecer el panel de pedidos, enviar notificaciones de cuenta y pedidos, y mejorar el producto. No vendemos datos de vendedores ni compradores a terceros."
+      },
+      {
+        "heading": "Compartir datos",
+        "body": "La información se comparte solo cuando es necesario para prestar el servicio, por ejemplo con socios de pago o entrega que elijas usar, o cuando la ley lo requiera."
+      },
+      {
+        "heading": "Tus opciones",
+        "body": "Puedes revisar, actualizar o eliminar la información de tu tienda desde tu panel en cualquier momento. Para solicitar la eliminación de tu cuenta o tus datos, contáctanos a través de los canales de soporte listados en este sitio."
+      },
+      {
+        "heading": "Contacto",
+        "body": "Las preguntas sobre esta política se pueden enviar a través de las opciones de contacto en el pie de página de este sitio."
+      }
+    ]
+  },
+  "terms": {
+    "title": "Términos de Servicio",
+    "intro": "Estos Términos de Servicio rigen tu uso de Stallio para crear y administrar una tienda en línea. Al crear una tienda, aceptas estos términos.",
+    "sections": [
+      {
+        "heading": "Uso de Stallio",
+        "body": "Debes proporcionar información precisa al crear tu tienda y mantener seguras las credenciales de tu cuenta. Eres responsable de los productos que publicas, los precios que fijas y los pedidos que completas."
+      },
+      {
+        "heading": "Uso aceptable",
+        "body": "Las tiendas no pueden publicar artículos ilegales, falsificados o prohibidos, ni usarse para engañar a los clientes. Stallio puede suspender o eliminar tiendas que violen estos términos."
+      },
+      {
+        "heading": "Pagos y pedidos",
+        "body": "Los vendedores son responsables de confirmar y completar los pedidos hechos en su tienda, y de cumplir con los métodos de pago, como UPI o pago contra entrega, que ofrecen a los clientes."
+      },
+      {
+        "heading": "Cambios en el servicio",
+        "body": "Stallio puede actualizar funciones, precios o estos términos de vez en cuando. El uso continuo de la plataforma después de una actualización significa que aceptas los términos revisados."
+      },
+      {
+        "heading": "Contacto",
+        "body": "Las preguntas sobre estos términos se pueden enviar a través de las opciones de contacto en el pie de página de este sitio."
+      }
+    ]
+  },
+  "refundPolicy": {
+    "title": "Política de Reembolsos",
+    "intro": "Stallio es una plataforma de tiendas. Cada vendedor define sus propios términos de reembolso y cancelación para los productos que vende, ya que Stallio no fabrica ni almacena inventario.",
+    "sections": [
+      {
+        "heading": "Términos de reembolso definidos por el vendedor",
+        "body": "Los vendedores individuales pueden mostrar su propia ventana de devolución o reembolso en su tienda. Cuando un vendedor no ha indicado una política, contacta al vendedor directamente a través del enlace de chat de la tienda para solicitar una devolución, cambio o reembolso."
+      },
+      {
+        "heading": "Cancelaciones de pedidos",
+        "body": "Los pedidos generalmente se pueden cancelar antes de que un vendedor los confirme. Una vez que un pedido está confirmado y despachado, la cancelación queda a discreción del vendedor."
+      },
+      {
+        "heading": "Reembolsos de pago",
+        "body": "Para pedidos pagados mediante UPI, un reembolso aprobado se devuelve al método de pago original. Para pedidos con pago contra entrega, los reembolsos se acuerdan directamente con el vendedor."
+      },
+      {
+        "heading": "Disputas",
+        "body": "Si un vendedor y un cliente no pueden resolver una solicitud de reembolso entre ellos, contacta al soporte de Stallio a través de las opciones en el pie de página de este sitio."
+      }
+    ]
+  }
+}

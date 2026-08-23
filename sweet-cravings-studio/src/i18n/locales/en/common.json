@@ -1,0 +1,74 @@
+{
+  "site": {
+    "tagline": "Your shop, one link away.",
+    "description": "Stallio turns your Instagram or WhatsApp page into a real online store: unlimited products, an order dashboard, and a mobile storefront, all from one shareable link."
+  },
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "howItWorks": "How It Works",
+    "features": "Features",
+    "pricing": "Pricing",
+    "contact": "Contact",
+    "primaryLabel": "Primary",
+    "logInLabel": "Stallio home",
+    "logIn": "Log In",
+    "startFree": "Start Free",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "switchToLight": "Switch to light mode",
+    "switchToDark": "Switch to dark mode"
+  },
+  "footer": {
+    "taglineExtra": "No domain, no payment gateway, no code.",
+    "getStartedFree": "Get Started Free",
+    "linksHeading": "Links",
+    "contactHeading": "Contact",
+    "socialHeading": "Social",
+    "rightsReserved": "All rights reserved.",
+    "product": {
+      "howItWorks": "How it works",
+      "features": "Features",
+      "pricing": "Pricing",
+      "aboutUs": "About us"
+    },
+    "support": {
+      "gettingStarted": "Getting started",
+      "contactUs": "Contact us",
+      "faqs": "FAQs"
+    },
+    "legal": {
+      "privacyPolicy": "Privacy Policy",
+      "termsOfService": "Terms of Service",
+      "refundPolicy": "Refund Policy"
+    }
+  },
+  "marquee": {
+    "clothingBoutiques": "Clothing Boutiques",
+    "homeBakers": "Home Bakers",
+    "skincareBrands": "Skincare Brands",
+    "jewelryMakers": "Jewelry Makers",
+    "thriftResellers": "Thrift Resellers",
+    "handmadeCrafts": "Handmade Crafts"
+  },
+  "legalPage": {
+    "lastUpdated": "Last updated: {{date}}",
+    "updatedDate": "August 2026"
+  },
+  "productPreview": {
+    "closeLabel": "Close product preview",
+    "addToCart": "Add to cart"
+  },
+  "notFound": {
+    "title": "404",
+    "subtitle": "Page not found",
+    "description": "The page you're looking for doesn't exist or has been moved.",
+    "goHome": "Go home"
+  },
+  "errorBoundary": {
+    "title": "This page didn't load",
+    "description": "Something went wrong on our end. You can try refreshing or head back home.",
+    "tryAgain": "Try again",
+    "goHome": "Go home"
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "hero": {
+    "eyebrow": "Contact",
+    "titleLine1": "We read",
+    "titleHighlight": "every message",
+    "subtitle": "Product questions, partnership ideas, or something broken: send a note and we'll point you in the right direction."
+  },
+  "form": {
+    "letsTalk": "Let's talk",
+    "panelTitle": "A real person reads every message.",
+    "panelSubtitle": "Tell us what's going on and we'll point you the right way, no ticket queue in between.",
+    "reassurances": {
+      "fastTurnaround": {
+        "title": "Fast turnaround",
+        "text": "Most replies land within a few business days."
+      },
+      "noSpam": {
+        "title": "No spam, ever",
+        "text": "Your details are only ever used to reply to you."
+      },
+      "checkFaq": {
+        "title": "Check the FAQ first",
+        "text": "How It Works and Features answer most common questions."
+      }
+    },
+    "successTitle": "Message sent!",
+    "successSubtitle": "Thanks for reaching out. We'll get back to you within a few business days.",
+    "sendAnother": "Send another message",
+    "sendMessage": "Send a message",
+    "allFieldsRequired": "All fields are required so we can respond with context.",
+    "genericError": "We couldn't send that. Please try again in a moment.",
+    "fields": {
+      "name": "Name",
+      "namePlaceholder": "Your name",
+      "email": "Email",
+      "subject": "Subject",
+      "subjectPlaceholder": "What is this about?",
+      "message": "Message",
+      "messagePlaceholder": "Your message..."
+    },
+    "replyTime": "Typical reply time is a few business days",
+    "sending": "Sending\u2026",
+    "sendButton": "Send Message"
+  },
+  "selfServe": {
+    "eyebrow": "Self-serve",
+    "title": "Trying Stallio first?",
+    "subtitle": "Most answers live in How It Works and Features. Start free anytime.",
+    "howItWorks": "How It Works",
+    "features": "Features"
+  }
+}

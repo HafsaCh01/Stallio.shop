@@ -1,0 +1,111 @@
+{
+  "hero": {
+    "badge": "Cómo funciona",
+    "titleLead": "Del enlace en la biografía a",
+    "titleHighlight": "una tienda en vivo.",
+    "description": "Míralo tomar forma a la derecha: nombra tu tienda, agrega algunos productos y luego envía a los compradores a un enlace. Esa es toda la construcción, de principio a fin.",
+    "firstDraft": "~5 min el primer borrador",
+    "mobileFirst": "Primero móvil",
+    "ctaPrimary": "Empieza Gratis",
+    "ctaSecondary": "Ver Tienda Demo",
+    "stepLabel": "PASO {{number}}",
+    "screens": [
+      { "label": "Nómbrala" },
+      { "label": "Cárgala" },
+      { "label": "Compártela" }
+    ],
+    "storeName": "Nombre de la tienda",
+    "storeNameValue": "El Rincón de Hafsa",
+    "yourLink": "Tu enlace",
+    "linkIsLive": "El enlace está activo",
+    "products": [
+      { "name": "Zapatillas" },
+      { "name": "Zapatos para correr" },
+      { "name": "Botines altos" },
+      { "name": "Agregar foto" }
+    ],
+    "channels": ["Estado de WhatsApp", "Biografía de Instagram", "Chat grupal"],
+    "ordersWaiting": "3 pedidos esperando"
+  },
+  "theFlow": {
+    "eyebrow": "El flujo",
+    "title": "Tres movimientos, cero incertidumbre.",
+    "description": "Toca un paso para ver exactamente qué sucede. Cada movimiento toma minutos, no un manual.",
+    "stepLabel": "PASO {{number}}",
+    "ofTotal": "de 0{{total}}",
+    "steps": [
+      {
+        "title": "Crea tu tienda",
+        "description": "Regístrate, nombra tu tienda, elige tu URL. Obtienes un enlace en vivo que puedes pegar donde sea. Sin DNS, sin despliegue, sin drama.",
+        "bullets": ["Crea tu cuenta", "Agrega el nombre y los detalles de la tienda", "Obtén tu enlace (stallio.shop/tu)"]
+      },
+      {
+        "title": "Agrega tus productos",
+        "description": "Fotos, precios, descripciones breves. Un catálogo que puedes perfeccionar en cualquier momento. Los compradores ven claridad, no caos.",
+        "bullets": ["Agrega fotos de productos", "Define precios y descripciones", "Mantén un catálogo organizado"]
+      },
+      {
+        "title": "Comparte y recibe pedidos",
+        "description": "El mismo enlace en la biografía, historias y chats. Navegan desde el teléfono. Tú sigues todo desde tu panel.",
+        "bullets": ["Coloca el enlace en tu perfil o biografía", "Comparte en chats o publicaciones", "Sigue los pedidos en un solo lugar"]
+      }
+    ]
+  },
+  "channelShowcase": {
+    "eyebrow": "Un enlace, en todas partes",
+    "title": "Ya tienes compradores aquí.",
+    "description": "Stallio no le pide a la gente que vaya a un lugar nuevo. Simplemente le da a los canales que ya usan un enlace que realmente vende.",
+    "footerLink": "El mismo enlace, siempre",
+    "channels": [
+      { "name": "Biografía de Instagram", "placement": "A un toque desde tu perfil" },
+      { "name": "Estado de WhatsApp", "placement": "Fijado arriba de todo" },
+      { "name": "Página de Facebook", "placement": "Botón de tienda, ordenado" },
+      { "name": "Cualquier otro lugar", "placement": "Chats grupales, historias, anuncios" }
+    ]
+  },
+  "liveExperience": {
+    "eyebrow": "Cuando estás en línea",
+    "title": "Una tienda, dos lados.",
+    "description": "Un enlace rápido por fuera. Un panel tranquilo por dentro. Cambia el interruptor para ver ambos.",
+    "views": [
+      {
+        "label": "Tu panel",
+        "eyebrow": "Detrás de escena",
+        "title": "Tú ves el control.",
+        "description": "Pedidos, productos y solicitudes en una sola vista. Actualiza el inventario entre entregas sin abrir diez apps.",
+        "points": [
+          "Marca como pagado, envía y descarga facturas en PDF",
+          "Cupones, entrega e inventario en un solo lugar",
+          "Exporta pedidos o agrega un pedido telefónico manual"
+        ]
+      },
+      {
+        "label": "Su tienda",
+        "eyebrow": "Lo que ven los compradores",
+        "title": "Ellos ven pulcritud.",
+        "description": "Categorías, carrito, cupones y pago, hechos para el teléfono. Los compradores pueden cambiar entre inglés, español o árabe en tu tienda.",
+        "points": [
+          "Carrito y pago en un par de toques",
+          "Tres idiomas, cambiados al instante",
+          "Cupones aplicados antes de que pregunten"
+        ]
+      }
+    ]
+  },
+  "quickAnswers": {
+    "eyebrow": "Antes de empezar",
+    "title": "Respuestas rápidas",
+    "qas": [
+      { "question": "¿Necesito un dominio?", "answer": "No. Tu enlace vive en stallio.shop/tu desde el momento en que te registras." },
+      { "question": "¿Puedo editar después de publicar?", "answer": "Cuando quieras. Precios, fotos e inventario se actualizan al instante en tu enlace en vivo." },
+      { "question": "¿Aún no tienes logo?", "answer": "Empieza con el nombre y los colores de tu tienda. Agrega un logo cuando esté listo." },
+      { "question": "¿Cómo pagan los compradores?", "answer": "Tú defines el método: banco, enlace o pago contra entrega. Stallio rastrea el pedido por ti." }
+    ]
+  },
+  "finalCta": {
+    "title": "Publica el enlace esta noche.",
+    "description": "Gratis para empezar. Sin tarjeta registrada. Si se siente bien, sigue vendiendo desde la misma URL mañana.",
+    "ctaPrimary": "Empieza Gratis",
+    "ctaSecondary": "Explorar Funciones"
+  }
+}

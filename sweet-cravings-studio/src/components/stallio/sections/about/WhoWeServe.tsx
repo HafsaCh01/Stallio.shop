@@ -7,107 +7,51 @@ import {
   FileText,
   type LucideIcon,
 } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import { Container } from "../../Container";
 import { RouteDivider } from "../../RouteDivider";
 import { useReveal } from "@/hooks/use-reveal";
 import { cn } from "@/lib/utils";
 
-type Feature = {
-  icon: LucideIcon;
-  title: string;
-  description: string;
-  accent: "violet" | "teal" | "pink" | "amber" | "lime" | "coral";
-};
+type Accent = "violet" | "teal" | "amber" | "pink" | "lime" | "coral";
 
-const features: Feature[] = [
-  {
-    icon: Zap,
-    title: "Live in minutes",
-    description:
-      "Sign up, name your store, pick your URL path. No technical setup.",
-    accent: "violet",
-  },
-  {
-    icon: LayoutGrid,
-    title: "Products with photos and prices",
-    description:
-      "Upload images, set prices and descriptions. Keep everything in one place.",
-    accent: "teal",
-  },
-  {
-    icon: Link2,
-    title: "One link everywhere",
-    description:
-      "Bio, stories, chats: the same link works on any platform your buyers use.",
-    accent: "amber",
-  },
-  {
-    icon: ClipboardList,
-    title: "Orders in one dashboard",
-    description:
-      "See requests, update stock, and stay on top of fulfillment without digging through DMs.",
-    accent: "pink",
-  },
-  {
-    icon: Store,
-    title: "Storefront buyers trust",
-    description:
-      "Fast, mobile-first layout so your catalog feels intentional, not improvised.",
-    accent: "lime",
-  },
-  {
-    icon: FileText,
-    title: "Seller tools included",
-    description:
-      "Mark orders paid, track delivery, export CSV, and download invoice PDFs without extra apps.",
-    accent: "coral",
-  },
+const featureIcons: LucideIcon[] = [
+  Zap,
+  LayoutGrid,
+  Link2,
+  ClipboardList,
+  Store,
+  FileText,
+];
+const featureAccents: Accent[] = [
+  "violet",
+  "teal",
+  "amber",
+  "pink",
+  "lime",
+  "coral",
 ];
 
 const accentClasses: Record<
-  Feature["accent"],
+  Accent,
   { icon: string; text: string; ring: string; line: string }
 > = {
-  violet: {
-    icon: "bg-violet/15",
-    text: "text-violet",
-    ring: "ring-violet/40",
-    line: "bg-violet",
-  },
-  teal: {
-    icon: "bg-teal/15",
-    text: "text-teal",
-    ring: "ring-teal/40",
-    line: "bg-teal",
-  },
-  amber: {
-    icon: "bg-amber/15",
-    text: "text-amber",
-    ring: "ring-amber/40",
-    line: "bg-amber",
-  },
-  pink: {
-    icon: "bg-pink/15",
-    text: "text-pink",
-    ring: "ring-pink/40",
-    line: "bg-pink",
-  },
-  lime: {
-    icon: "bg-lime/15",
-    text: "text-lime",
-    ring: "ring-lime/40",
-    line: "bg-lime",
-  },
-  coral: {
-    icon: "bg-coral/15",
-    text: "text-coral",
-    ring: "ring-coral/40",
-    line: "bg-coral",
-  },
+  violet: { icon: "bg-violet/15", text: "text-violet", ring: "ring-violet/40", line: "bg-violet" },
+  teal: { icon: "bg-teal/15", text: "text-teal", ring: "ring-teal/40", line: "bg-teal" },
+  amber: { icon: "bg-amber/15", text: "text-amber", ring: "ring-amber/40", line: "bg-amber" },
+  pink: { icon: "bg-pink/15", text: "text-pink", ring: "ring-pink/40", line: "bg-pink" },
+  lime: { icon: "bg-lime/15", text: "text-lime", ring: "ring-lime/40", line: "bg-lime" },
+  coral: { icon: "bg-coral/15", text: "text-coral", ring: "ring-coral/40", line: "bg-coral" },
 };
 
+type TranslatedFeature = { title: string; description: string };
+
 export function WhoWeServe() {
+  const { t } = useTranslation("about");
   const { ref, visible } = useReveal<HTMLOListElement>();
+  const features = t("whoWeServe.features", {
+    returnObjects: true,
+  }) as TranslatedFeature[];
 
   return (
     <section id="what-you-get" className="relative overflow-hidden bg-paper">
@@ -120,10 +64,10 @@ export function WhoWeServe() {
       <Container className="relative py-16 sm:py-20 lg:py-24">
         <div className="mx-auto max-w-2xl text-center">
           <span className="text-[10px] font-semibold uppercase tracking-[0.14em] text-lime sm:text-xs">
-            What you get
+            {t("whoWeServe.eyebrow")}
           </span>
           <h2 className="mt-3 font-display text-[1.75rem] font-semibold leading-tight tracking-tight text-ink sm:text-4xl lg:text-5xl">
-            Everything in one loop: show, sell, ship.
+            {t("whoWeServe.title")}
           </h2>
         </div>
 
@@ -139,6 +83,8 @@ export function WhoWeServe() {
             <FeatureRow
               key={feature.title}
               feature={feature}
+              icon={featureIcons[i]!}
+              accent={featureAccents[i]!}
               index={i}
               visible={visible}
             />
@@ -153,14 +99,18 @@ export function WhoWeServe() {
 
 function FeatureRow({
   feature,
+  icon: Icon,
+  accent: accentKey,
   index,
   visible,
 }: {
-  feature: Feature;
+  feature: TranslatedFeature;
+  icon: LucideIcon;
+  accent: Accent;
   index: number;
   visible: boolean;
 }) {
-  const accent = accentClasses[feature.accent];
+  const accent = accentClasses[accentKey];
   const fromLeft = index % 2 === 0;
 
   return (
@@ -178,16 +128,11 @@ function FeatureRow({
           accent.ring,
         )}
       >
-        {/* Opaque backdrop first, so the timeline rail behind never shows through the tint */}
         <span
           aria-hidden="true"
           className={cn("absolute inset-0 rounded-2xl", accent.icon)}
         />
-        <feature.icon
-          size={20}
-          strokeWidth={2}
-          className={cn("relative", accent.text)}
-        />
+        <Icon size={20} strokeWidth={2} className={cn("relative", accent.text)} />
       </span>
 
       <div className="group flex-1 rounded-2xl border border-transparent px-1 py-1 transition-colors duration-300 hover:border-ink/10">

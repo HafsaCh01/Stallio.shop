@@ -1,17 +1,19 @@
 import { ArrowRight, Target, Zap, Store } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import { Container } from "../../Container";
 import { CTAButton } from "../../CTAButton";
 import { useReveal } from "@/hooks/use-reveal";
 import { cn } from "@/lib/utils";
 
-const stats = [
-  { icon: Target, label: "Simple", description: "No code, no theme maze", accent: "text-violet" },
-  { icon: Zap, label: "Fast", description: "Draft a store in minutes", accent: "text-amber" },
-  { icon: Store, label: "Credible", description: "A link buyers recognize", accent: "text-teal" },
-];
+const statIcons = [Target, Zap, Store];
+const statAccents = ["text-violet", "text-amber", "text-teal"];
+
+type TranslatedStat = { label: string; description: string };
 
 export function AboutCTA() {
+  const { t } = useTranslation("about");
   const { ref, visible } = useReveal<HTMLDivElement>();
+  const stats = t("cta.stats", { returnObjects: true }) as TranslatedStat[];
 
   return (
     <section className="relative overflow-hidden bg-navy">
@@ -30,17 +32,16 @@ export function AboutCTA() {
         <div ref={ref} data-visible={visible} className="reveal">
           <div className="mx-auto max-w-2xl text-center">
             <h2 className="font-display text-[2rem] font-semibold leading-[1.15] tracking-tight text-white sm:text-5xl">
-              Ready to look as serious as you are?
+              {t("cta.title")}
             </h2>
 
             <p className="mx-auto mt-4 max-w-lg text-sm leading-relaxed text-white/70 sm:text-lg">
-              Create a free store, add a few products, and drop your link
-              where people already find you.
+              {t("cta.description")}
             </p>
 
             <div className="mt-8 flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:items-center">
               <CTAButton href="/#final-cta" size="lg">
-                Start Free
+                {t("cta.ctaPrimary")}
                 <ArrowRight
                   size={17}
                   className="transition-transform group-hover:translate-x-0.5"
@@ -52,32 +53,42 @@ export function AboutCTA() {
                 size="lg"
                 className="border-white/20 text-white hover:border-teal hover:text-teal"
               >
-                Contact Us
+                {t("cta.ctaSecondary")}
               </CTAButton>
             </div>
           </div>
 
           <div className="mx-auto mt-14 grid max-w-3xl divide-y divide-white/10 rounded-3xl border border-white/10 bg-white/[0.03] backdrop-blur-sm sm:grid-cols-3 sm:divide-x sm:divide-y-0">
-            {stats.map((stat, i) => (
-              <div
-                key={stat.label}
-                className="group flex flex-col items-center gap-2 px-6 py-8 text-center transition-colors duration-300 hover:bg-white/[0.04]"
-                style={{ transitionDelay: `${i * 90}ms` }}
-              >
-                <span
-                  className={cn(
-                    "transition-transform duration-300 group-hover:scale-110",
-                    stat.accent,
-                  )}
+            {stats.map((stat, i) => {
+              const Icon = statIcons[i]!;
+              return (
+                <div
+                  key={stat.label}
+                  className="group flex flex-col items-center gap-2 px-6 py-8 text-center transition-colors duration-300 hover:bg-white/[0.04]"
+                  style={{ transitionDelay: `${i * 90}ms` }}
                 >
-                  <stat.icon size={26} strokeWidth={2} />
-                </span>
-                <span className={cn("font-display text-lg font-semibold", stat.accent)}>
-                  {stat.label}
-                </span>
-                <span className="text-sm text-white/60">{stat.description}</span>
-              </div>
-            ))}
+                  <span
+                    className={cn(
+                      "transition-transform duration-300 group-hover:scale-110",
+                      statAccents[i],
+                    )}
+                  >
+                    <Icon size={26} strokeWidth={2} />
+                  </span>
+                  <span
+                    className={cn(
+                      "font-display text-lg font-semibold",
+                      statAccents[i],
+                    )}
+                  >
+                    {stat.label}
+                  </span>
+                  <span className="text-sm text-white/60">
+                    {stat.description}
+                  </span>
+                </div>
+              );
+            })}
           </div>
         </div>
       </Container>

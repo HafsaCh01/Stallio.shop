@@ -1,0 +1,93 @@
+{
+  "hero": {
+    "eyebrow": "Sobre Stallio",
+    "titlePrefix": "Una tienda tranquila para quienes",
+    "titleHighlight": "ya tienen compradores.",
+    "subtitle": "Creamos Stallio para vendedores que ya tienen compradores: un enlace alojado, una tienda real y un panel de control. Sin factura de dominio, sin laberinto de constructores de sitios ni pasarela de pago que configurar primero.",
+    "ctaPrimary": "Empezar Gratis",
+    "ctaSecondary": "Ver Tienda Demo",
+    "trustedStorefront": "Tienda confiable",
+    "stats": {
+      "launch": "para lanzar una tienda",
+      "domains": "dominios que comprar",
+      "oneLink": "para todo tu cat\u00e1logo"
+    }
+  },
+  "photoStrip": {
+    "captions": {
+      "footwear": "Calzado",
+      "accessories": "Accesorios",
+      "beauty": "Belleza",
+      "apparel": "Ropa",
+      "homeGoods": "Art\u00edculos para el hogar",
+      "handmade": "Hecho a mano"
+    }
+  },
+  "whoWeServe": {
+    "eyebrow": "Qu\u00e9 obtienes",
+    "title": "Todo en un solo ciclo: mostrar, vender, enviar.",
+    "features": {
+      "liveInMinutes": {
+        "title": "En l\u00ednea en minutos",
+        "description": "Reg\u00edstrate, nombra tu tienda, elige tu ruta de URL. Sin configuraci\u00f3n t\u00e9cnica."
+      },
+      "productsPhotos": {
+        "title": "Productos con fotos y precios",
+        "description": "Sube im\u00e1genes, fija precios y descripciones. Mant\u00e9n todo en un solo lugar."
+      },
+      "oneLinkEverywhere": {
+        "title": "Un enlace para todo",
+        "description": "Bio, historias, chats: el mismo enlace funciona en cualquier plataforma que usen tus compradores."
+      },
+      "ordersDashboard": {
+        "title": "Pedidos en un solo panel",
+        "description": "Ve las solicitudes, actualiza el stock y mant\u00e9n el control del cumplimiento sin buscar entre mensajes directos."
+      },
+      "storefrontTrust": {
+        "title": "Una tienda en la que los compradores conf\u00edan",
+        "description": "Dise\u00f1o r\u00e1pido y pensado primero para m\u00f3vil, para que tu cat\u00e1logo se sienta intencional, no improvisado."
+      },
+      "sellerTools": {
+        "title": "Herramientas de vendedor incluidas",
+        "description": "Marca pedidos como pagados, rastrea la entrega, exporta CSV y descarga PDFs de factura sin apps adicionales."
+      }
+    }
+  },
+  "ourValues": {
+    "eyebrow": "C\u00f3mo pensamos",
+    "title": "Principios detr\u00e1s del producto",
+    "principles": {
+      "realSellers": {
+        "title": "Hecho para vendedores reales",
+        "description": "Cocinas caseras, estudios y proyectos paralelos. No compras corporativas."
+      },
+      "straightforward": {
+        "title": "Sencillo por dise\u00f1o",
+        "description": "Menos botones y complementos. Un camino claro del cat\u00e1logo al pedido."
+      },
+      "roomToGrow": {
+        "title": "Espacio para crecer",
+        "description": "Empieza peque\u00f1o, agrega productos y pule a medida que tu audiencia crece contigo."
+      },
+      "momentum": {
+        "title": "Hecho para el impulso",
+        "description": "Ya sea que est\u00e9s probando una l\u00ednea nueva o publicando cada semana, Stallio est\u00e1 hecho para no estorbar: actualiza productos, ajusta textos y sigue vendiendo sin reconstruir todo un sitio."
+      },
+      "vision": {
+        "title": "Nuestra visi\u00f3n",
+        "description": "Queremos que los vendedores independientes tengan herramientas que se sientan premium y honestas: precios claros, cumplimiento claro, y una tienda que respete el tiempo del comprador tanto como el tuyo."
+      }
+    }
+  },
+  "cta": {
+    "title": "\u00bfListo para verte tan serio como eres?",
+    "subtitle": "Crea una tienda gratis, agrega algunos productos y comparte tu enlace donde la gente ya te encuentra.",
+    "ctaPrimary": "Empezar Gratis",
+    "ctaSecondary": "Cont\u00e1ctanos",
+    "stats": {
+      "simple": { "label": "Simple", "description": "Sin c\u00f3digo, sin laberinto de temas" },
+      "fast": { "label": "R\u00e1pido", "description": "Prepara una tienda en minutos" },
+      "credible": { "label": "Confiable", "description": "Un enlace que los compradores reconocen" }
+    }
+  }
+}

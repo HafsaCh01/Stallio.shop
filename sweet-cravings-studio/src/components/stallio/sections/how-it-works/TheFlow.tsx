@@ -6,89 +6,47 @@ import {
   Check,
   type LucideIcon,
 } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import { Container } from "../../Container";
 import { RouteDivider } from "../../RouteDivider";
 import { useReveal } from "@/hooks/use-reveal";
 import { cn } from "@/lib/utils";
 
-type Step = {
-  number: string;
-  icon: LucideIcon;
-  accent: "violet" | "teal" | "pink";
-  title: string;
-  description: string;
-  bullets: string[];
+type Accent = "violet" | "teal" | "pink";
+const stepNumbers = ["01", "02", "03"];
+const stepIcons: LucideIcon[] = [UserPlus, PackagePlus, Share2];
+const stepAccents: Accent[] = ["violet", "teal", "pink"];
+
+type TranslatedStep = { title: string; description: string; bullets: string[] };
+
+const accentStyles: Record<
+  Accent,
+  { ring: string; text: string; badge: string; bar: string }
+> = {
+  violet: { ring: "ring-violet/30", text: "text-violet", badge: "bg-violet text-white", bar: "bg-violet" },
+  teal: { ring: "ring-teal/30", text: "text-teal", badge: "bg-teal text-white", bar: "bg-teal" },
+  pink: { ring: "ring-pink/30", text: "text-pink", badge: "bg-pink text-white", bar: "bg-pink" },
 };
-
-const steps: Step[] = [
-  {
-    number: "01",
-    icon: UserPlus,
-    accent: "violet",
-    title: "Create your shop",
-    description:
-      "Sign up, name your store, pick your URL. You get a live link you can paste anywhere. No DNS, no deploy, no drama.",
-    bullets: [
-      "Create your account",
-      "Add store name and details",
-      "Get your link (stallio.shop/you)",
-    ],
-  },
-  {
-    number: "02",
-    icon: PackagePlus,
-    accent: "teal",
-    title: "Add your products",
-    description:
-      "Photos, prices, short descriptions. One catalog you can refine anytime. Buyers see clarity, not chaos.",
-    bullets: [
-      "Add product photos",
-      "Set prices and descriptions",
-      "Keep one organized catalog",
-    ],
-  },
-  {
-    number: "03",
-    icon: Share2,
-    accent: "pink",
-    title: "Share and take orders",
-    description:
-      "Same link in bio, stories, and chats. They browse on the phone. You track everything in your dashboard.",
-    bullets: [
-      "Put the link in your profile or bio",
-      "Share in chat or social posts",
-      "Track orders in one place",
-    ],
-  },
-];
-
-const accentStyles = {
-  violet: {
-    ring: "ring-violet/30",
-    text: "text-violet",
-    badge: "bg-violet text-white",
-    bar: "bg-violet",
-  },
-  teal: {
-    ring: "ring-teal/30",
-    text: "text-teal",
-    badge: "bg-teal text-white",
-    bar: "bg-teal",
-  },
-  pink: {
-    ring: "ring-pink/30",
-    text: "text-pink",
-    badge: "bg-pink text-white",
-    bar: "bg-pink",
-  },
-} as const;
 
 const AUTO_MS = 4200;
 
 export function TheFlow() {
+  const { t } = useTranslation("howItWorks");
   const { ref, visible } = useReveal<HTMLDivElement>();
   const [active, setActive] = useState(0);
   const [paused, setPaused] = useState(false);
+
+  const translatedSteps = t("theFlow.steps", {
+    returnObjects: true,
+  }) as TranslatedStep[];
+  const steps = stepNumbers.map((number, i) => ({
+    number,
+    icon: stepIcons[i]!,
+    accent: stepAccents[i]!,
+    title: translatedSteps[i]?.title ?? "",
+    description: translatedSteps[i]?.description ?? "",
+    bullets: translatedSteps[i]?.bullets ?? [],
+  }));
 
   useEffect(() => {
     if (paused || !visible) return;
@@ -96,10 +54,11 @@ export function TheFlow() {
       setActive((prev) => (prev + 1) % steps.length);
     }, AUTO_MS);
     return () => window.clearInterval(id);
-  }, [paused, visible]);
+  }, [paused, visible, steps.length]);
 
   const current = steps[active] ?? steps[0]!;
   const accent = accentStyles[current.accent];
+  const CurrentIcon = current.icon;
 
   return (
     <section id="flow" className="relative overflow-hidden bg-paper-dim">
@@ -112,14 +71,13 @@ export function TheFlow() {
       <Container className="relative py-16 sm:py-20 lg:py-24">
         <div className="mx-auto max-w-2xl text-center">
           <span className="text-[10px] font-semibold uppercase tracking-[0.14em] text-violet sm:text-xs">
-            The flow
+            {t("theFlow.eyebrow")}
           </span>
           <h2 className="mt-3 font-display text-[1.75rem] font-semibold leading-tight tracking-tight text-ink sm:text-4xl lg:text-5xl">
-            Three moves, zero guesswork.
+            {t("theFlow.title")}
           </h2>
           <p className="mt-4 text-sm leading-relaxed text-ink-soft sm:text-lg">
-            Tap a step to see exactly what happens. Every move takes minutes,
-            not a manual.
+            {t("theFlow.description")}
           </p>
         </div>
 
@@ -155,6 +113,7 @@ export function TheFlow() {
                 const stepAccent = accentStyles[step.accent];
                 const isActive = i === active;
                 const isDone = i < active;
+                const StepIcon = step.icon;
                 return (
                   <button
                     key={step.number}
@@ -180,7 +139,7 @@ export function TheFlow() {
                       {isDone ? (
                         <Check size={18} strokeWidth={2.5} />
                       ) : (
-                        <step.icon size={isActive ? 22 : 20} strokeWidth={2} />
+                        <StepIcon size={isActive ? 22 : 20} strokeWidth={2} />
                       )}
                     </span>
                     <span>
@@ -190,7 +149,7 @@ export function TheFlow() {
                           isActive ? stepAccent.text : "text-ink-faint",
                         )}
                       >
-                        STEP {step.number}
+                        {t("theFlow.stepLabel", { number: step.number })}
                       </span>
                       <span
                         className={cn(
@@ -244,13 +203,13 @@ export function TheFlow() {
                     accent.text,
                   )}
                 >
-                  <current.icon size={28} strokeWidth={1.8} />
+                  <CurrentIcon size={28} strokeWidth={1.8} />
                 </span>
                 <span className="mt-3 font-display text-3xl font-bold text-ink">
                   {current.number}
                 </span>
                 <span className="text-[10px] font-semibold uppercase tracking-wider text-ink-faint">
-                  of 0{steps.length}
+                  {t("theFlow.ofTotal", { total: steps.length })}
                 </span>
               </div>
             </div>

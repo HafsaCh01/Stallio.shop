@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import { RouteDivider } from "../../RouteDivider";
 import prod1 from "@/assets/prod-1.jpg";
 import prod2 from "@/assets/prod-2.jpg";
@@ -6,13 +7,13 @@ import prod4 from "@/assets/prod-4.jpg";
 import prod5 from "@/assets/prod-5.jpg";
 import prod6 from "@/assets/prod-6.jpg";
 
-const photos = [
-  { src: prod1, caption: "Footwear" },
-  { src: prod2, caption: "Accessories" },
-  { src: prod3, caption: "Beauty" },
-  { src: prod4, caption: "Apparel" },
-  { src: prod5, caption: "Home goods" },
-  { src: prod6, caption: "Handmade" },
+const photoMeta = [
+  { src: prod1, key: "footwear" },
+  { src: prod2, key: "accessories" },
+  { src: prod3, key: "beauty" },
+  { src: prod4, key: "apparel" },
+  { src: prod5, key: "homeGoods" },
+  { src: prod6, key: "handmade" },
 ];
 
 /**
@@ -20,6 +21,11 @@ const photos = [
  * more animated stand-in for a static gallery grid.
  */
 export function PhotoStrip() {
+  const { t } = useTranslation("about");
+  const photos = photoMeta.map((p) => ({
+    src: p.src,
+    caption: t(`photoStrip.${p.key}`),
+  }));
   const track = [...photos, ...photos];
 
   return (

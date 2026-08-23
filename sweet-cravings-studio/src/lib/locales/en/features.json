@@ -1,0 +1,147 @@
+{
+  "hero": {
+    "eyebrow": "Features",
+    "titleLine1": "Everything you need",
+    "titleHighlight": "to sell from one link.",
+    "subtitle": "Storefront, dashboard, and seller tools in one place: hosted link, unlimited catalog and orders, no buyer payment gateway required.",
+    "checklist": {
+      "link": "stallio.shop link, no domain purchase",
+      "unlimited": "Unlimited products, photos, and orders",
+      "invoices": "PDF invoices and order export",
+      "checkout": "Coupons, delivery fees, and COD at checkout"
+    },
+    "ctaPrimary": "Start Free",
+    "ctaSecondary": "See How It Works",
+    "loopCaption": "Catalog, checkout, orders, and invoices in one dashboard loop.",
+    "loopSteps": {
+      "orders": "Orders with payment and delivery status",
+      "products": "Products with variants, sales, and stock",
+      "coupons": "Coupons and delivery at checkout",
+      "invoice": "PDF invoice ready to send"
+    }
+  },
+  "walkthrough": {
+    "eyebrow": "See it in action",
+    "title": "One storefront, four things working together",
+    "subtitle": "Tap through to see what buyers and sellers each get, without switching apps.",
+    "tabs": {
+      "storefront": {
+        "label": "Storefront",
+        "eyebrow": "What buyers see",
+        "title": "A catalog that reads as a real shop",
+        "description": "Every product gets its own page with photos, price, and variants, laid out in a grid buyers can actually browse on their phone."
+      },
+      "checkout": {
+        "label": "Checkout",
+        "eyebrow": "What buyers do",
+        "title": "Cart to confirmed order, no gateway needed",
+        "description": "Buyers add items, pick a payment method, and check out without leaving the link you shared."
+      },
+      "dashboard": {
+        "label": "Dashboard",
+        "eyebrow": "What you run the shop on",
+        "title": "Every order in one place, not six chats",
+        "description": "Track each order from placed to delivered, with buyer details attached instead of buried in your DMs."
+      },
+      "chat": {
+        "label": "Chat & Trust",
+        "eyebrow": "What keeps buyers coming back",
+        "title": "Keep the DM-style relationship buyers already like",
+        "description": "A tap-to-chat button and visible reviews keep the personal touch that made people trust your page in the first place."
+      }
+    },
+    "bullets": {
+      "unlimited": "Unlimited products and photos",
+      "mobileFirst": "Mobile-first layout on every screen size",
+      "darkMode": "Light and dark mode built in",
+      "customBranding": "Custom store name, bio, and logo",
+      "oneCart": "One cart across the whole catalog",
+      "upiCod": "UPI and cash on delivery, ready by default",
+      "noGateway": "No payment gateway approval to wait on",
+      "guestCheckout": "Guest checkout, zero signup for buyers",
+      "liveStatus": "Live status: pending, confirmed, shipped",
+      "buyerDetails": "Buyer name, contact, and order value together",
+      "searchable": "Searchable order history",
+      "instantUpdate": "Updates the instant a buyer checks out",
+      "tapToChat": "Tap-to-chat button on every product",
+      "whatsappHandoff": "Direct handoff to WhatsApp",
+      "reviews": "Star ratings and reviews on your store",
+      "repeatBuyers": "Repeat buyers recognized automatically"
+    },
+    "mock": {
+      "paymentMethod": "Payment method",
+      "cod": "Cash on delivery",
+      "confirmOrder": "Confirm order",
+      "awaitingConfirmation": "Awaiting confirmation",
+      "confirmed": "Confirmed",
+      "review1": "Ordered straight from the WhatsApp link, so easy.",
+      "review2": "Loved seeing order status without asking in DMs.",
+      "chatWithSeller": "Chat with seller"
+    }
+  },
+  "capabilities": {
+    "eyebrow": "What you get",
+    "title": "Capabilities that stay out of your way",
+    "subtitle": "Built for sellers who already have buyers, not for teams managing DNS, plugins, and payment gateways.",
+    "cards": {
+      "storefront": {
+        "title": "A Storefront, Not A Science Project",
+        "description": "Buyers browse, pick variants, apply coupons, and order from their phone. Hosted on stallio.shop/yourname in English, Spanish, or Arabic."
+      },
+      "customLink": {
+        "title": "Custom Store Link",
+        "description": "One path for bio, WhatsApp, stories, and QR. Copy and paste; we host the shop."
+      },
+      "catalog": {
+        "title": "Product Catalog",
+        "description": "Unlimited products and images. Variants, sale prices, stock, and hide/show without deleting."
+      },
+      "orderDashboard": {
+        "title": "Order Dashboard",
+        "description": "Every order in one inbox. Search, filter, mark paid, set delivery status, add tracking."
+      },
+      "mobileFirst": {
+        "title": "Mobile-First Storefront",
+        "description": "Grid, product pages, and checkout tuned for thumbs, where your buyers actually are."
+      },
+      "coupons": {
+        "title": "Coupons And Promos",
+        "description": "Percent or fixed-off codes with optional expiry. Buyers apply them at checkout."
+      },
+      "invoices": {
+        "title": "PDF Invoices",
+        "description": "Download a professional invoice per order to send on WhatsApp or email."
+      },
+      "delivery": {
+        "title": "Delivery And COD",
+        "description": "Fixed or free-above-minimum delivery, ETA text, checkout notes, and cash on delivery toggle."
+      },
+      "categories": {
+        "title": "Categories And Pages",
+        "description": "Group products, run a custom home hero, trust lines, reviews, plus About and Contact."
+      },
+      "payment": {
+        "title": "You Control Payment",
+        "description": "Tell buyers how to pay by bank, link, or COD. Stallio tracks the order; you confirm when money arrives."
+      },
+      "revenue": {
+        "title": "Revenue Overview",
+        "description": "Charts and totals for paid orders across today, the week, or a custom range."
+      },
+      "buyerMessages": {
+        "title": "Buyer Messages",
+        "description": "Contact form submissions land in your inbox so nothing sits only on Instagram."
+      },
+      "support": {
+        "title": "Seller Support",
+        "description": "Chat with the Stallio team from your dashboard when you need a hand."
+      }
+    }
+  },
+  "finalCta": {
+    "title": "See it on a real storefront",
+    "subtitle": "Spin up your shop in minutes, or browse the demo first. No card on file.",
+    "ctaPrimary": "Start Free",
+    "ctaSecondary": "View Demo Store"
+  }
+}

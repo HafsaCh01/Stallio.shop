@@ -1,9 +1,11 @@
 import { Store, Eye } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import { Container } from "../../Container";
 import { CTAButton } from "../../CTAButton";
 import { useReveal } from "@/hooks/use-reveal";
 
 export function FeaturesFinalCTA() {
+  const { t } = useTranslation("features");
   const { ref, visible } = useReveal<HTMLDivElement>();
 
   return (
@@ -21,21 +23,20 @@ export function FeaturesFinalCTA() {
           className="reveal mx-auto max-w-xl text-center"
         >
           <h2 className="font-display text-[1.75rem] font-semibold leading-tight tracking-tight text-ink sm:text-4xl">
-            See it on a real storefront
+            {t("finalCta.title")}
           </h2>
           <p className="mt-4 text-sm leading-relaxed text-ink-soft sm:text-lg">
-            Spin up your shop in minutes, or browse the demo first. No card on
-            file.
+            {t("finalCta.description")}
           </p>
 
           <div className="mt-8 flex flex-col items-stretch justify-center gap-3 sm:flex-row">
             <CTAButton href="/#final-cta" size="lg">
               <Store size={17} />
-              Start Free
+              {t("finalCta.ctaPrimary")}
             </CTAButton>
             <CTAButton href="/" variant="outline" size="lg">
               <Eye size={17} />
-              View Demo Store
+              {t("finalCta.ctaSecondary")}
             </CTAButton>
           </div>
         </div>

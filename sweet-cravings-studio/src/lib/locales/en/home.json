@@ -1,0 +1,246 @@
+{
+  "hero": {
+    "eyebrow": "For Instagram & WhatsApp sellers",
+    "titleLine1": "Your shop.",
+    "titleHighlight": "One link",
+    "titleLine2": "away.",
+    "subtitle": "Turn your Instagram or WhatsApp page into a real online store. Add products, share one link, and start taking orders. No domain and no payment gateway to set up.",
+    "ctaPrimary": "Create your store",
+    "ctaSecondary": "See how it works",
+    "stats": {
+      "setupTimeLabel": "Setup time",
+      "setupTime": "3 min",
+      "setupTimeSuffix": "to launch",
+      "domainsLabel": "Domains required",
+      "domainsSuffix": "domains needed",
+      "ratingLabel": "Average rating",
+      "ratingSuffix": "seller rating"
+    },
+    "mockup": {
+      "rotateToPortrait": "Rotate storefront to portrait",
+      "rotateToLandscape": "Rotate storefront to landscape",
+      "portrait": "Portrait",
+      "rotate": "Rotate",
+      "yourShop": "Your Shop",
+      "newOrder": "New order"
+    }
+  },
+  "whoItFits": {
+    "eyebrow": "Who it's for",
+    "title": "Built for however you already sell",
+    "subtitle": "You don't need a website team or a tech background. Here's who typically opens a store on Stallio.",
+    "personas": {
+      "instagramSeller": {
+        "title": "The Instagram seller",
+        "description": "Post it, tag it, sell it, straight from your bio link. No more directing followers to a comment thread to ask for prices.",
+        "bestFor": "One link in bio"
+      },
+      "whatsappSeller": {
+        "title": "The WhatsApp seller",
+        "description": "Stop re-typing the same catalog into every chat. Send one link and let buyers browse, pick, and check out on their own.",
+        "bestFor": "Shareable in any chat"
+      },
+      "homeMaker": {
+        "title": "The home-based maker",
+        "description": "Bakers, tailors, and crafters juggling orders in a notebook. Get a real product list and order dashboard instead.",
+        "bestFor": "Unlimited products"
+      },
+      "boutiqueReseller": {
+        "title": "The boutique reseller",
+        "description": "Thrifted finds, pre-loved fashion, small drops. Give every piece its own page instead of a scroll of old posts.",
+        "bestFor": "New drops in minutes"
+      }
+    }
+  },
+  "comparison": {
+    "eyebrow": "Before & after",
+    "title": "Same hustle. Completely different storefront.",
+    "subtitle": "Most sellers start out running their shop through screenshots and comment threads. Stallio just gives that hustle a proper storefront.",
+    "vs": "vs",
+    "beforeLabel": "Before",
+    "afterLabel": "After",
+    "cta": "Try Stallio free",
+    "chatOnly": {
+      "title": "Chat-only selling",
+      "items": [
+        "Copy-pasting prices into every single DM",
+        "Orders scattered across chats",
+        "No single place for prices & photos",
+        "Re-sending the same product photos on repeat",
+        "Customers ask the same questions on repeat",
+        "Chasing screenshots as proof of payment",
+        "Payments and delivery feel improvised"
+      ]
+    },
+    "withStallio": {
+      "title": "With Stallio",
+      "items": [
+        "One link customers browse and order from directly",
+        "One link: catalog + cart",
+        "Clear product pages you can share anywhere",
+        "A live product grid that updates the moment you edit it",
+        "Fewer \u201chow much?\u201d messages",
+        "UPI and cash-on-delivery built into checkout",
+        "A storefront that looks intentional"
+      ]
+    }
+  },
+  "howItWorks": {
+    "eyebrow": "How it works",
+    "title": "Three steps between you and your first order",
+    "subtitle": "No developer, no design tool, no waiting on approval. Most sellers go from signing up to sharing their link in one sitting.",
+    "stepLabel": "STEP",
+    "steps": {
+      "createStore": {
+        "title": "Create your store",
+        "description": "Pick a store name and add your profile: your logo, a short bio, and the link handle customers will remember."
+      },
+      "addProducts": {
+        "title": "Add your products",
+        "description": "Upload photos, set prices, and organize items into categories. Edit anything anytime, and the storefront updates instantly."
+      },
+      "shareLink": {
+        "title": "Share your link",
+        "description": "Drop it in your Instagram bio or WhatsApp status. Customers browse, order, and pay, with no extra app for them to install."
+      }
+    }
+  },
+  "insideTheBox": {
+    "eyebrow": "Inside the box",
+    "title": "Everything inside your storefront",
+    "subtitle": "One link opens onto a full storefront, not just a product list. Hover or tap any product in the phone to see the page your customers get.",
+    "features": {
+      "productPages": {
+        "title": "Product pages",
+        "description": "Every item gets its own page with photos, price, and variants, so there's no more scrolling old posts to find one product."
+      },
+      "cartCheckout": {
+        "title": "Cart & checkout",
+        "description": "Customers add multiple items and check out in one go, with UPI or cash-on-delivery built in."
+      },
+      "orderDashboard": {
+        "title": "Order dashboard",
+        "description": "See every order, its status, and buyer details in one place instead of scattered across chats."
+      },
+      "directChat": {
+        "title": "Direct customer chat",
+        "description": "A tap-to-chat button keeps the personal, DM-style conversation you already have with buyers."
+      }
+    },
+    "mockup": {
+      "yourShop": "Your Shop",
+      "productsCount": "128 products",
+      "cart": "Cart",
+      "tabs": { "shop": "Shop", "orders": "Orders", "reviews": "Reviews" },
+      "preview": "Preview",
+      "awaitingConfirmation": "Awaiting confirmation",
+      "confirmed": "Confirmed",
+      "ordersAwaiting": "3 orders awaiting confirmation",
+      "viewDashboard": "View dashboard",
+      "oneLinkFullStore": "One link, full store"
+    }
+  },
+  "whyItLands": {
+    "eyebrow": "Why it lands",
+    "title": "Why sellers stick with Stallio",
+    "subtitle": "It isn't another dashboard to learn. It removes the four things that quietly cost you orders every week.",
+    "cta": "Start selling free",
+    "stats": {
+      "toFirstSale": "to your first sale",
+      "appsToStitch": "apps to stitch together",
+      "builtForPhone": "built for the phone"
+    },
+    "reasons": {
+      "liveToday": {
+        "title": "Live before the day ends",
+        "description": "No domain, no gateway paperwork, no developer. Sign up, add a few products, share the link, and you're selling tonight."
+      },
+      "mobileFirst": {
+        "title": "Built mobile-first",
+        "description": "Your buyers shop on a phone in a chat app. Every page is designed for a thumb, not a desktop."
+      },
+      "trust": {
+        "title": "Trust, without the guesswork",
+        "description": "Real product pages, clear prices, and order confirmations make a small shop look established."
+      },
+      "worksEverywhere": {
+        "title": "Works everywhere you post",
+        "description": "Bio, status, story, group chat: the same link carries your whole catalog and checkout."
+      }
+    }
+  },
+  "testimonials": {
+    "eyebrow": "Sellers on Stallio",
+    "title": "What they say once they switch",
+    "items": {
+      "ayesha": {
+        "name": "Ayesha",
+        "role": "Thrift reseller, Lahore",
+        "quote": "I stopped answering \u201chow much?\u201d fifty times a day. People just open the link and order."
+      },
+      "bilal": {
+        "name": "Bilal",
+        "role": "Home baker, Karachi",
+        "quote": "Orders finally live in one dashboard instead of six chats and a notebook."
+      },
+      "zainab": {
+        "name": "Zainab",
+        "role": "Skincare brand, Islamabad",
+        "quote": "My storefront looks like a real shop now, not just a grid of product photos."
+      }
+    }
+  },
+  "whatsIncluded": {
+    "eyebrow": "What's included",
+    "titleLine1": "Everything included.",
+    "titleLine2": "Nothing extra to buy.",
+    "countCaption": "tools shipped in, zero add-on fees",
+    "items": {
+      "unlimitedProducts": {
+        "title": "Unlimited products",
+        "description": "No catalog cap, ever. List one item or one thousand."
+      },
+      "mobileOptimized": {
+        "title": "Mobile-optimized storefront",
+        "description": "Every page is built for the phone your customers are on."
+      },
+      "shareableLink": {
+        "title": "One shareable link",
+        "description": "No domain to buy or configure."
+      },
+      "orderDashboard": {
+        "title": "Order dashboard",
+        "description": "Every order and buyer detail in one place."
+      },
+      "upiCod": {
+        "title": "UPI & cash on delivery",
+        "description": "Both built in from day one, no setup needed."
+      },
+      "noGateway": {
+        "title": "No payment gateway required",
+        "description": "Skip the paperwork and approval wait entirely."
+      },
+      "socialSharing": {
+        "title": "Instagram & WhatsApp sharing",
+        "description": "Built to travel through the apps you already sell on."
+      },
+      "freeToStart": {
+        "title": "Free to start",
+        "description": "No card required to open your store."
+      }
+    }
+  },
+  "finalCta": {
+    "eyebrow": "Ready when you are",
+    "titlePrefix": "Give your hustle a",
+    "titleHighlight": "real storefront",
+    "subtitle": "Set up your shop in a few minutes, share one link, and let customers browse and order without a single \u201chow much?\u201d message.",
+    "ctaPrimary": "Create your store",
+    "ctaSecondary": "See how it works",
+    "perks": {
+      "freeToStart": "Free to start",
+      "noDomain": "No domain needed",
+      "noCard": "No card required"
+    }
+  }
+}

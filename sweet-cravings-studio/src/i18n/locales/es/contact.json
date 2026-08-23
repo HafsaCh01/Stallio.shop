@@ -1,0 +1,53 @@
+{
+  "validation": {
+    "nameMin": "Ingresa tu nombre",
+    "nameMax": "El nombre es demasiado largo",
+    "emailRequired": "El correo es obligatorio",
+    "emailInvalid": "Ingresa un correo electrónico válido",
+    "subjectMin": "Dinos de qué se trata",
+    "subjectMax": "El asunto es demasiado largo",
+    "messageMin": "El mensaje debe tener al menos 10 caracteres",
+    "messageMax": "El mensaje es demasiado largo"
+  },
+  "hero": {
+    "badge": "Contacto",
+    "titleLead": "Leemos",
+    "titleHighlight": "cada mensaje",
+    "description": "Preguntas sobre el producto, ideas de colaboración, o algo que no funciona: envíanos una nota y te orientaremos en la dirección correcta."
+  },
+  "form": {
+    "letsTalk": "Hablemos",
+    "title": "Una persona real lee cada mensaje.",
+    "description": "Cuéntanos qué está pasando y te orientaremos correctamente, sin fila de tickets de por medio.",
+    "reassurances": [
+      { "title": "Respuesta rápida", "text": "La mayoría de las respuestas llegan en unos días hábiles." },
+      { "title": "Sin spam, nunca", "text": "Tus datos solo se usan para responderte." },
+      { "title": "Revisa primero las preguntas frecuentes", "text": "Cómo Funciona y Funciones responden la mayoría de las preguntas comunes." }
+    ],
+    "sendAMessage": "Envía un mensaje",
+    "allFieldsRequired": "Todos los campos son obligatorios para poder responder con contexto.",
+    "name": "Nombre",
+    "namePlaceholder": "Tu nombre",
+    "email": "Correo electrónico",
+    "emailPlaceholder": "tu@ejemplo.com",
+    "subject": "Asunto",
+    "subjectPlaceholder": "¿De qué se trata?",
+    "message": "Mensaje",
+    "messagePlaceholder": "Tu mensaje...",
+    "replyTime": "El tiempo de respuesta habitual es de unos días hábiles",
+    "sending": "Enviando\u2026",
+    "sendMessage": "Enviar Mensaje",
+    "genericError": "Algo salió mal.",
+    "sendFailedError": "No pudimos enviar eso. Por favor intenta de nuevo en un momento.",
+    "messageSent": "¡Mensaje enviado!",
+    "thankYou": "Gracias por contactarnos. Te responderemos dentro de unos días hábiles.",
+    "sendAnother": "Enviar otro mensaje"
+  },
+  "selfServe": {
+    "eyebrow": "Autoservicio",
+    "title": "¿Probando Stallio primero?",
+    "description": "La mayoría de las respuestas están en Cómo Funciona y Funciones. Empieza gratis cuando quieras.",
+    "howItWorks": "Cómo Funciona",
+    "features": "Funciones"
+  }
+}

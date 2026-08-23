@@ -1,49 +1,19 @@
 import { useState } from "react";
 import { ArrowRight, Mail, MessageCircle } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import { Container } from "../../Container";
 import { CTAButton } from "../../CTAButton";
 import { RouteDivider } from "../../RouteDivider";
 import { useReveal } from "@/hooks/use-reveal";
 import { cn } from "@/lib/utils";
 
-type QA = { question: string; answer: string };
-
-const faqs: QA[] = [
-  {
-    question: "Do I need my own domain or hosting?",
-    answer:
-      "No. Every shop gets a hosted stallio.shop/you link the moment you sign up, nothing to buy or configure.",
-  },
-  {
-    question: "How does Stallio handle payments?",
-    answer:
-      "You set your own method, bank transfer, payment link, or cash on delivery, and Stallio tracks the status of every order for you.",
-  },
-  {
-    question: "Is there a limit on products or orders?",
-    answer:
-      "No limit on either, on both plans. List one item or one thousand, and every order still lands in your dashboard.",
-  },
-  {
-    question: "What happens when the free month ends?",
-    answer:
-      "We'll remind you a few days before it ends. Pick monthly or yearly to keep your shop live, or cancel with nothing owed.",
-  },
-  {
-    question: "Can I switch between monthly and yearly?",
-    answer:
-      "Yes, anytime from your account settings. Your storefront and data carry over exactly as they were.",
-  },
-  {
-    question: "Do both plans really include everything?",
-    answer:
-      "Yes. Monthly and yearly unlock the identical storefront, dashboard, and tools, yearly simply costs less over time.",
-  },
-];
+type TranslatedFAQ = { question: string; answer: string };
 
 export function PricingFAQ() {
+  const { t } = useTranslation("pricing");
   const { ref, visible } = useReveal<HTMLDivElement>();
   const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const faqs = t("faq.items", { returnObjects: true }) as TranslatedFAQ[];
 
   return (
     <section id="faq" className="relative overflow-hidden bg-paper">
@@ -63,20 +33,18 @@ export function PricingFAQ() {
             className="reveal-left lg:sticky lg:top-28 lg:self-start"
           >
             <span className="text-[10px] font-semibold uppercase tracking-[0.14em] text-violet sm:text-xs">
-              Still deciding?
+              {t("faq.eyebrow")}
             </span>
             <h2 className="mt-3 font-display text-[1.75rem] font-semibold leading-tight tracking-tight text-ink sm:text-4xl">
-              Ask us, or just try it.
+              {t("faq.title")}
             </h2>
             <p className="mt-4 max-w-sm text-sm leading-relaxed text-ink-soft sm:text-base">
-              Most questions about billing are answered on the right. For
-              anything else, reach the team directly or start the free month and
-              see the product for yourself.
+              {t("faq.description")}
             </p>
 
             <div className="mt-7 flex flex-col gap-3 sm:max-w-xs">
               <CTAButton href="/signup" size="lg" className="w-full">
-                Start Free
+                {t("faq.ctaPrimary")}
                 <ArrowRight size={17} />
               </CTAButton>
               <CTAButton
@@ -86,17 +54,17 @@ export function PricingFAQ() {
                 className="w-full"
               >
                 <Mail size={16} />
-                Contact Us
+                {t("faq.ctaSecondary")}
               </CTAButton>
             </div>
 
             <div className="mt-6 inline-flex items-center gap-2 rounded-full border border-ink/10 bg-paper-dim px-4 py-2 font-mono text-[11px] text-ink-soft">
               <MessageCircle
                 size={14}
-                className="text-teal"
+                className="shrink-0 text-teal"
                 strokeWidth={2.2}
               />
-              Usually replies within a day at contact@stallio.shop
+              <span>{t("faq.replyTime")}</span>
             </div>
           </div>
 

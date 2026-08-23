@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link2, RotateCw, Star } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import { Container } from "../Container";
 import { CTAButton } from "../CTAButton";
 import { RouteDivider } from "../RouteDivider";
@@ -8,6 +9,8 @@ import { cn } from "@/lib/utils";
 import logo from "@/assets/logo-stallio.png";
 
 export function Hero() {
+  const { t } = useTranslation("home");
+
   return (
     <section id="top" className="relative overflow-hidden bg-paper">
       <div
@@ -18,59 +21,57 @@ export function Hero() {
       <Container className="grid gap-12 py-14 sm:py-20 lg:grid-cols-[1.05fr_1fr] lg:items-center lg:gap-10 lg:py-28">
         <div className="flex flex-col items-start gap-6">
           <div className="inline-flex items-center gap-2 rounded-full border border-ink/12 bg-paper-dim px-4 py-1.5">
-            <Link2 size={14} className="text-lime" strokeWidth={2.5} />
+            <Link2 size={14} className="text-lime shrink-0" strokeWidth={2.5} />
             <span className="text-[10px] font-semibold uppercase tracking-[0.14em] text-ink-soft sm:text-xs">
-              For Instagram &amp; WhatsApp sellers
+              {t("hero.badge")}
             </span>
           </div>
 
           <h1 className="max-w-xl font-display text-[2.25rem] font-semibold leading-[1.05] tracking-tight text-ink sm:text-6xl lg:text-[4rem]">
-            Your shop.
+            {t("hero.titleLine1")}
             <br />
             <span className="bg-[image:var(--gradient-warm)] bg-clip-text text-transparent">
-              One link
+              {t("hero.titleHighlight")}
             </span>{" "}
-            away.
+            {t("hero.titleSuffix")}
           </h1>
 
           <p className="max-w-md text-base leading-relaxed text-ink-soft sm:text-lg">
-            Turn your Instagram or WhatsApp page into a real online store. Add
-            products, share one link, and start taking orders. No domain and
-            no payment gateway to set up.
+            {t("hero.description")}
           </p>
 
           <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
             <CTAButton href="#final-cta" size="md">
-              Create your store
+              {t("hero.ctaPrimary")}
             </CTAButton>
             <CTAButton href="#how-it-works" variant="outline" size="md">
-              See how it works
+              {t("hero.ctaSecondary")}
             </CTAButton>
           </div>
 
           <dl className="mt-2 flex w-full flex-wrap items-center gap-x-8 gap-y-3 border-t border-ink/10 pt-6">
             <div>
-              <dt className="sr-only">Setup time</dt>
+              <dt className="sr-only">{t("hero.setupTimeSr")}</dt>
               <dd className="font-display text-lg font-semibold text-ink">
-                3 min
+                {t("hero.setupTimeValue")}
                 <span className="ml-1.5 text-sm font-normal text-ink-soft">
-                  to launch
+                  {t("hero.setupTimeLabel")}
                 </span>
               </dd>
             </div>
             <div>
-              <dt className="sr-only">Domains required</dt>
+              <dt className="sr-only">{t("hero.domainsSr")}</dt>
               <dd className="font-display text-lg font-semibold text-ink">
-                0
+                {t("hero.domainsValue")}
                 <span className="ml-1.5 text-sm font-normal text-ink-soft">
-                  domains needed
+                  {t("hero.domainsLabel")}
                 </span>
               </dd>
             </div>
             <div>
-              <dt className="sr-only">Average rating</dt>
+              <dt className="sr-only">{t("hero.ratingSr")}</dt>
               <dd className="flex items-center gap-1 font-display text-lg font-semibold text-ink">
-                4.9
+                {t("hero.ratingValue")}
                 <span
                   className="flex items-center text-amber"
                   aria-hidden="true"
@@ -78,7 +79,7 @@ export function Hero() {
                   <Star size={14} fill="currentColor" strokeWidth={0} />
                 </span>
                 <span className="text-sm font-normal text-ink-soft">
-                  seller rating
+                  {t("hero.ratingLabel")}
                 </span>
               </dd>
             </div>
@@ -95,74 +96,80 @@ export function Hero() {
   );
 }
 
-type HeroItem = PreviewProduct;
+type ItemMeta = {
+  id: string;
+  img: string;
+  sizes: string[];
+};
 
-const portraitItems: HeroItem[] = [
+const portraitMeta: ItemMeta[] = [
   {
     id: "h1",
-    name: "Trail Runner Sneakers",
-    category: "Shoes",
-    price: "Rs 1,499",
     img: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=200&h=200&q=80&auto=format&fit=crop",
     sizes: ["38", "40", "41", "42"],
-    note: "Free delivery on orders above Rs 2,500",
   },
   {
     id: "h2",
-    name: "Everyday Chrono Watch",
-    category: "Accessories",
-    price: "Rs 2,250",
     img: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=200&h=200&q=80&auto=format&fit=crop",
-    note: "Cash on delivery available",
+    sizes: [],
   },
   {
     id: "h3",
-    name: "Minimal Skincare Set",
-    category: "Beauty",
-    price: "Rs 899",
     img: "https://images.unsplash.com/photo-1571781926291-c477ebfd024b?w=200&h=200&q=80&auto=format&fit=crop",
-    note: "Bundle and save 10%",
+    sizes: [],
   },
   {
     id: "h4",
-    name: "Relaxed Denim Jacket",
-    category: "Apparel",
-    price: "Rs 1,750",
     img: "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=200&h=200&q=80&auto=format&fit=crop",
     sizes: ["S", "M", "L"],
-    note: "Only 5 left in stock",
   },
 ];
 
 // Two extra pieces that only appear once the phone is "rotated" to
 // landscape — simulating a wider catalog view with more room per row.
-const landscapeExtraItems: HeroItem[] = [
+const landscapeExtraMeta: ItemMeta[] = [
   {
     id: "h5",
-    name: "Canvas Everyday Tote",
-    category: "Bags",
-    price: "Rs 1,299",
     img: "https://images.unsplash.com/photo-1544816155-12df9643f363?w=200&h=200&q=80&auto=format&fit=crop",
-    note: "New drop this week",
+    sizes: [],
   },
   {
     id: "h6",
-    name: "Suede Loafers",
-    category: "Shoes",
-    price: "Rs 2,499",
     img: "https://images.unsplash.com/photo-1560769629-975ec94e6a86?w=200&h=200&q=80&auto=format&fit=crop",
     sizes: ["39", "41", "43"],
-    note: "Ships next working day",
   },
 ];
 
+const portraitPrices = ["Rs 1,499", "Rs 2,250", "Rs 899", "Rs 1,750"];
+const landscapePrices = ["Rs 1,299", "Rs 2,499"];
+
 function HeroIllustration() {
+  const { t } = useTranslation("home");
   const [rotated, setRotated] = useState(false);
-  const [pinned, setPinned] = useState<HeroItem | null>(null);
-  const [hovered, setHovered] = useState<HeroItem | null>(null);
+  const [pinned, setPinned] = useState<PreviewProduct | null>(null);
+  const [hovered, setHovered] = useState<PreviewProduct | null>(null);
   const selected = pinned ?? hovered;
 
-  const items = rotated ? [...portraitItems, ...landscapeExtraItems] : portraitItems;
+  const translatedItems = t("hero.items", {
+    returnObjects: true,
+  }) as { name: string; category: string; note: string }[];
+
+  const metaList = rotated
+    ? [...portraitMeta, ...landscapeExtraMeta]
+    : portraitMeta;
+  const prices = rotated
+    ? [...portraitPrices, ...landscapePrices]
+    : portraitPrices;
+
+  const items: PreviewProduct[] = metaList.map((meta, i) => ({
+    id: meta.id,
+    img: meta.img,
+    sizes: meta.sizes,
+    name: translatedItems[i]?.name ?? "",
+    category: translatedItems[i]?.category ?? "",
+    note: translatedItems[i]?.note ?? "",
+    price: prices[i] ?? "",
+  }));
 
   return (
     <div className="relative lg:[perspective:1600px]">
@@ -192,9 +199,7 @@ function HeroIllustration() {
           onClick={() => setRotated((v) => !v)}
           aria-pressed={rotated}
           aria-label={
-            rotated
-              ? "Rotate storefront to portrait"
-              : "Rotate storefront to landscape"
+            rotated ? t("hero.rotateToPortrait") : t("hero.rotateToLandscape")
           }
           className="absolute -top-4 right-2 z-20 flex items-center gap-1.5 rounded-full border border-ink/10 bg-surface px-3 py-1.5 text-ink shadow-lg transition-all duration-300 hover:-translate-y-0.5 hover:border-teal/50 hover:text-teal sm:-top-5 sm:right-0 sm:px-3.5 sm:py-2"
         >
@@ -206,8 +211,8 @@ function HeroIllustration() {
               rotated && "rotate-90",
             )}
           />
-          <span className="text-[10px] font-semibold sm:text-xs">
-            {rotated ? "Portrait" : "Rotate"}
+          <span className="whitespace-nowrap text-[10px] font-semibold sm:text-xs">
+            {rotated ? t("hero.portrait") : t("hero.rotate")}
           </span>
         </button>
 
@@ -238,7 +243,7 @@ function HeroIllustration() {
               </div>
               <div className="min-w-0">
                 <p className="truncate font-display text-sm font-semibold text-ink">
-                  Your Shop
+                  {t("hero.yourShop")}
                 </p>
                 <p className="truncate text-[10px] text-ink-faint">
                   stallio.shop/you
@@ -263,7 +268,7 @@ function HeroIllustration() {
                   onMouseLeave={() => setHovered(null)}
                   onFocus={() => setHovered(item)}
                   onBlur={() => setHovered(null)}
-                  aria-label={`Preview ${item.name}`}
+                  aria-label={t("hero.previewLabel", { name: item.name })}
                   className={cn(
                     "rounded-xl border p-1.5 text-left transition-all duration-200 hover:-translate-y-0.5 hover:border-teal/60",
                     selected?.id === item.id
@@ -301,8 +306,8 @@ function HeroIllustration() {
           className="absolute -left-4 -top-3 flex items-center gap-1.5 rounded-full border border-ink/10 bg-surface px-3 py-1.5 shadow-lg sm:-left-10 sm:px-3.5 sm:py-2"
           style={{ animation: "float-slow 5s ease-in-out infinite" }}
         >
-          <Link2 size={13} className="text-lime" strokeWidth={2.5} />
-          <span className="text-[10px] font-semibold text-ink sm:text-xs">
+          <Link2 size={13} className="text-lime shrink-0" strokeWidth={2.5} />
+          <span className="whitespace-nowrap text-[10px] font-semibold text-ink sm:text-xs">
             stallio.shop/you
           </span>
         </div>
@@ -312,12 +317,12 @@ function HeroIllustration() {
           style={{ animation: "float-slow 5s ease-in-out infinite 1.2s" }}
         >
           <span
-            className="h-2 w-2 rounded-full bg-lime"
+            className="h-2 w-2 shrink-0 rounded-full bg-lime"
             style={{ animation: "pulse-dot 1.8s ease-in-out infinite" }}
             aria-hidden="true"
           />
-          <span className="text-[10px] font-semibold sm:text-xs">
-            New order
+          <span className="whitespace-nowrap text-[10px] font-semibold sm:text-xs">
+            {t("hero.newOrder")}
           </span>
         </div>
       </div>

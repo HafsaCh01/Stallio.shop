@@ -1,7 +1,8 @@
-import { useRef, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Controller, useForm } from "react-hook-form";
+import { useTranslation } from "react-i18next";
 import {
   AlertCircle,
   ArrowRight,
@@ -20,7 +21,7 @@ import { AuthPromo } from "@/components/stallio/auth/AuthPromo";
 import { FormField, FieldShell } from "@/components/stallio/auth/FormField";
 import { PasswordField } from "@/components/stallio/auth/PasswordField";
 import { Combobox } from "@/components/stallio/auth/Combobox";
-import { signupSchema, type SignupValues } from "@/lib/validation/auth";
+import { createSignupSchema, type SignupValues } from "@/lib/validation/auth";
 import { useAuthNav } from "@/lib/auth-transition";
 import { cn } from "@/lib/utils";
 
@@ -39,45 +40,8 @@ export const Route = createFileRoute("/signup")({
   component: Signup,
 });
 
-const countries = [
-  "Pakistan",
-  "United States",
-  "United Kingdom",
-  "United Arab Emirates",
-  "Saudi Arabia",
-  "India",
-  "Canada",
-  "Australia",
-  "Germany",
-  "Other",
-];
-
-const currencies = [
-  { code: "PKR", label: "PKR — Pakistani Rupee" },
-  { code: "USD", label: "USD — US Dollar" },
-  { code: "GBP", label: "GBP — British Pound" },
-  { code: "AED", label: "AED — UAE Dirham" },
-  { code: "SAR", label: "SAR — Saudi Riyal" },
-  { code: "INR", label: "INR — Indian Rupee" },
-  { code: "EUR", label: "EUR — Euro" },
-];
-
-const countryOptions = countries.map((c) => ({ value: c, label: c }));
-const currencyOptions = currencies.map((c) => ({
-  value: c.code,
-  label: c.label,
-}));
-
-/** Stand-in for a real API call until the backend is wired up. */
-async function fakeCreateShop(values: SignupValues) {
-  await new Promise((resolve) => setTimeout(resolve, 1100));
-  if (values.username.trim().toLowerCase() === "stallio") {
-    throw new Error("That store URL is already taken. Try another one.");
-  }
-  return true;
-}
-
 function Signup() {
+  const { t, i18n } = useTranslation("auth");
   const navigate = useNavigate();
   const authNav = useAuthNav();
   const [formError, setFormError] = useState<string | null>(null);
@@ -88,6 +52,30 @@ function Signup() {
   const logoInputRef = useRef<HTMLInputElement>(null);
 
   const [submittedEmail, setSubmittedEmail] = useState("");
+
+  const signupSchema = useMemo(
+    () => createSignupSchema(t),
+    [t, i18n.language],
+  );
+
+  const countries = t("signup.countries", { returnObjects: true }) as string[];
+  const currencies = t("signup.currencies", {
+    returnObjects: true,
+  }) as { code: string; label: string }[];
+  const countryOptions = countries.map((c) => ({ value: c, label: c }));
+  const currencyOptions = currencies.map((c) => ({
+    value: c.code,
+    label: c.label,
+  }));
+
+  /** Stand-in for a real API call until the backend is wired up. */
+  const fakeCreateShop = async (values: SignupValues) => {
+    await new Promise((resolve) => setTimeout(resolve, 1100));
+    if (values.username.trim().toLowerCase() === "stallio") {
+      throw new Error(t("signup.usernameTaken"));
+    }
+    return true;
+  };
 
   const {
     register,
@@ -120,7 +108,7 @@ function Signup() {
     } catch (err) {
       setStatus("idle");
       setFormError(
-        err instanceof Error ? err.message : "Something went wrong.",
+        err instanceof Error ? err.message : t("signup.genericError"),
       );
     }
   };
@@ -128,20 +116,20 @@ function Signup() {
   return (
     <AuthShell mode="signup" promo={<AuthPromo />}>
       <AuthCard
-        eyebrow="Get started"
+        eyebrow={t("signup.eyebrow")}
         size="wide"
-        title="Create your shop"
-        subtitle="Free trial, one store link, and a dashboard to manage products and orders."
+        title={t("signup.title")}
+        subtitle={t("signup.subtitle")}
         footer={
           status === "success" ? undefined : (
             <>
-              Already have a shop?{" "}
+              {t("signup.alreadyHaveShop")}{" "}
               <Link
                 to="/login"
                 onClick={authNav("/login")}
                 className="font-semibold text-violet transition-colors hover:text-lime-dark"
               >
-                Log in
+                {t("signup.logIn")}
               </Link>
             </>
           )
@@ -153,11 +141,10 @@ function Signup() {
               <CheckCircle2 size={28} strokeWidth={2} />
             </span>
             <p className="font-display text-lg font-semibold text-ink">
-              Your shop is ready!
+              {t("signup.shopReady")}
             </p>
             <p className="max-w-xs text-sm text-ink-soft">
-              We&rsquo;ve emailed you a verification link. Verify your address
-              to activate your shop and open your dashboard.
+              {t("signup.verifyDescription")}
             </p>
             <button
               type="button"
@@ -169,7 +156,7 @@ function Signup() {
               }
               className="group mt-2 inline-flex items-center justify-center gap-2 rounded-full bg-violet px-6 py-2.5 text-sm font-semibold text-white shadow-lg shadow-violet/25 transition-all duration-300 hover:-translate-y-0.5 hover:brightness-110"
             >
-              Verify your email
+              {t("signup.verifyEmail")}
               <ArrowRight
                 size={15}
                 className="transition-transform group-hover:translate-x-0.5"
@@ -197,7 +184,11 @@ function Signup() {
             )}
 
             <div className="grid gap-5 @sm:grid-cols-2">
-              <FormField id="email" label="Email" error={errors.email?.message}>
+              <FormField
+                id="email"
+                label={t("signup.email")}
+                error={errors.email?.message}
+              >
                 <FieldShell
                   icon={<Mail size={16} strokeWidth={2} />}
                   error={Boolean(errors.email)}
@@ -206,7 +197,7 @@ function Signup() {
                     id="email"
                     type="email"
                     autoComplete="email"
-                    placeholder="you@example.com"
+                    placeholder={t("signup.emailPlaceholder")}
                     aria-invalid={Boolean(errors.email)}
                     className="w-full flex-1 bg-transparent text-sm text-ink outline-none placeholder:text-ink-faint"
                     {...register("email")}
@@ -216,7 +207,7 @@ function Signup() {
 
               <FormField
                 id="shopName"
-                label="Shop name"
+                label={t("signup.shopName")}
                 error={errors.shopName?.message}
               >
                 <FieldShell
@@ -226,7 +217,7 @@ function Signup() {
                   <input
                     id="shopName"
                     autoComplete="organization"
-                    placeholder="My Awesome Shop"
+                    placeholder={t("signup.shopNamePlaceholder")}
                     aria-invalid={Boolean(errors.shopName)}
                     className="w-full flex-1 bg-transparent text-sm text-ink outline-none placeholder:text-ink-faint"
                     {...register("shopName")}
@@ -238,13 +229,9 @@ function Signup() {
             <div className="grid gap-5 @sm:grid-cols-2">
               <FormField
                 id="username"
-                label="Username (Store URL)"
+                label={t("signup.username")}
                 error={errors.username?.message}
-                hint={
-                  !errors.username
-                    ? "Letters, numbers, underscores and hyphens only"
-                    : undefined
-                }
+                hint={!errors.username ? t("signup.usernameHint") : undefined}
               >
                 <FieldShell
                   icon={<AtSign size={16} strokeWidth={2} />}
@@ -253,7 +240,7 @@ function Signup() {
                   <input
                     id="username"
                     autoComplete="off"
-                    placeholder="myshop"
+                    placeholder={t("signup.usernamePlaceholder")}
                     aria-invalid={Boolean(errors.username)}
                     className="w-full flex-1 bg-transparent text-sm text-ink outline-none placeholder:text-ink-faint"
                     {...register("username")}
@@ -263,13 +250,13 @@ function Signup() {
 
               <FormField
                 id="password"
-                label="Password (Min 8 characters)"
+                label={t("signup.password")}
                 error={errors.password?.message}
               >
                 <PasswordField
                   id="password"
                   autoComplete="new-password"
-                  placeholder="Create a strong password"
+                  placeholder={t("signup.passwordPlaceholder")}
                   error={Boolean(errors.password)}
                   showStrength
                   {...register("password")}
@@ -280,7 +267,7 @@ function Signup() {
             <div className="grid gap-5 @sm:grid-cols-2">
               <FormField
                 id="confirmPassword"
-                label="Confirm password"
+                label={t("signup.confirmPassword")}
                 error={errors.confirmPassword?.message}
                 valid={
                   !errors.confirmPassword &&
@@ -291,7 +278,7 @@ function Signup() {
                 <PasswordField
                   id="confirmPassword"
                   autoComplete="new-password"
-                  placeholder="Repeat password"
+                  placeholder={t("signup.confirmPasswordPlaceholder")}
                   error={Boolean(errors.confirmPassword)}
                   {...register("confirmPassword")}
                 />
@@ -299,7 +286,7 @@ function Signup() {
 
               <FormField
                 id="country"
-                label="Country"
+                label={t("signup.country")}
                 error={errors.country?.message}
               >
                 <Controller
@@ -312,9 +299,9 @@ function Signup() {
                       value={field.value}
                       onChange={field.onChange}
                       options={countryOptions}
-                      placeholder="Select country"
-                      searchPlaceholder="Search country…"
-                      emptyText="No country found."
+                      placeholder={t("signup.countryPlaceholder")}
+                      searchPlaceholder={t("signup.countrySearchPlaceholder")}
+                      emptyText={t("signup.countryEmpty")}
                       error={Boolean(errors.country)}
                     />
                   )}
@@ -325,7 +312,7 @@ function Signup() {
             <div className="grid gap-5 @sm:grid-cols-2">
               <FormField
                 id="currency"
-                label="Currency"
+                label={t("signup.currency")}
                 error={errors.currency?.message}
               >
                 <Controller
@@ -338,16 +325,16 @@ function Signup() {
                       value={field.value}
                       onChange={field.onChange}
                       options={currencyOptions}
-                      placeholder="Select currency"
-                      searchPlaceholder="Search currency…"
-                      emptyText="No currency found."
+                      placeholder={t("signup.currencyPlaceholder")}
+                      searchPlaceholder={t("signup.currencySearchPlaceholder")}
+                      emptyText={t("signup.currencyEmpty")}
                       error={Boolean(errors.currency)}
                     />
                   )}
                 />
               </FormField>
 
-              <FormField id="logo" label="Shop Logo" optional>
+              <FormField id="logo" label={t("signup.shopLogo")} optional>
                 <label
                   htmlFor="logo"
                   className={cn(
@@ -364,12 +351,12 @@ function Signup() {
                     aria-hidden="true"
                   />
                   <span className="flex-1 truncate">
-                    {logoFile ? logoFile.name : "Choose Logo"}
+                    {logoFile ? logoFile.name : t("signup.chooseLogo")}
                   </span>
                   {logoFile && (
                     <button
                       type="button"
-                      aria-label="Remove logo"
+                      aria-label={t("signup.removeLogo")}
                       onClick={(e) => {
                         e.preventDefault();
                         setLogoFile(null);
@@ -407,11 +394,11 @@ function Signup() {
               {status === "submitting" ? (
                 <>
                   <Loader2 size={16} className="animate-spin" />
-                  Creating your shop&hellip;
+                  {t("signup.creatingShop")}
                 </>
               ) : (
                 <>
-                  Create My Shop
+                  {t("signup.createMyShop")}
                   <ArrowRight
                     size={16}
                     className="transition-transform group-hover:translate-x-0.5"

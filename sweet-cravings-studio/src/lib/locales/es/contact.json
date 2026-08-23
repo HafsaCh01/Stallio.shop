@@ -1,0 +1,52 @@
+{
+  "hero": {
+    "eyebrow": "Contacto",
+    "titleLine1": "Leemos",
+    "titleHighlight": "cada mensaje",
+    "subtitle": "Preguntas sobre el producto, ideas de colaboraci\u00f3n, o algo que no funciona: env\u00eda una nota y te orientaremos en la direcci\u00f3n correcta."
+  },
+  "form": {
+    "letsTalk": "Hablemos",
+    "panelTitle": "Una persona real lee cada mensaje.",
+    "panelSubtitle": "Cu\u00e9ntanos qu\u00e9 pasa y te orientaremos, sin fila de tickets de por medio.",
+    "reassurances": {
+      "fastTurnaround": {
+        "title": "Respuesta r\u00e1pida",
+        "text": "La mayor\u00eda de las respuestas llegan en pocos d\u00edas h\u00e1biles."
+      },
+      "noSpam": {
+        "title": "Nada de spam, nunca",
+        "text": "Tus datos solo se usan para responderte."
+      },
+      "checkFaq": {
+        "title": "Revisa primero las preguntas frecuentes",
+        "text": "C\u00f3mo Funciona y Funciones responden la mayor\u00eda de las dudas comunes."
+      }
+    },
+    "successTitle": "\u00a1Mensaje enviado!",
+    "successSubtitle": "Gracias por escribirnos. Te responderemos en pocos d\u00edas h\u00e1biles.",
+    "sendAnother": "Enviar otro mensaje",
+    "sendMessage": "Enviar un mensaje",
+    "allFieldsRequired": "Todos los campos son obligatorios para poder responder con contexto.",
+    "genericError": "No pudimos enviarlo. Int\u00e9ntalo de nuevo en un momento.",
+    "fields": {
+      "name": "Nombre",
+      "namePlaceholder": "Tu nombre",
+      "email": "Correo electr\u00f3nico",
+      "subject": "Asunto",
+      "subjectPlaceholder": "\u00bfDe qu\u00e9 se trata?",
+      "message": "Mensaje",
+      "messagePlaceholder": "Tu mensaje..."
+    },
+    "replyTime": "El tiempo de respuesta t\u00edpico es de pocos d\u00edas h\u00e1biles",
+    "sending": "Enviando\u2026",
+    "sendButton": "Enviar Mensaje"
+  },
+  "selfServe": {
+    "eyebrow": "Aut\u00f3nomo",
+    "title": "\u00bfPrimero quieres probar Stallio?",
+    "subtitle": "La mayor\u00eda de las respuestas est\u00e1n en C\u00f3mo Funciona y Funciones. Empieza gratis cuando quieras.",
+    "howItWorks": "C\u00f3mo Funciona",
+    "features": "Funciones"
+  }
+}

@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useTranslation } from "react-i18next";
 import { LegalPage, LegalSection } from "@/components/stallio/LegalPage";
 
 const title = "Terms of Service: Stallio";
@@ -18,52 +19,24 @@ export const Route = createFileRoute("/terms")({
   component: TermsOfService,
 });
 
+type Section = { heading: string; body: string };
+
 function TermsOfService() {
+  const { t } = useTranslation(["legal", "common"]);
+  const sections = t("terms.sections", { returnObjects: true }) as Section[];
+
   return (
-    <LegalPage title="Terms of Service" updated="August 2026">
-      <p>
-        These Terms of Service govern your use of Stallio to create and run
-        an online store. By creating a store, you agree to these terms.
-      </p>
+    <LegalPage
+      title={t("terms.title")}
+      updated={t("common:legalPage.updatedDate")}
+    >
+      <p>{t("terms.intro")}</p>
 
-      <LegalSection heading="Using Stallio">
-        <p>
-          You must provide accurate information when creating your store and
-          keep your account credentials secure. You are responsible for the
-          products you list, the prices you set, and the orders you fulfill.
-        </p>
-      </LegalSection>
-
-      <LegalSection heading="Acceptable use">
-        <p>
-          Stores may not list illegal, counterfeit, or prohibited items, or
-          be used to mislead customers. Stallio may suspend or remove stores
-          that violate these terms.
-        </p>
-      </LegalSection>
-
-      <LegalSection heading="Payments and orders">
-        <p>
-          Sellers are responsible for confirming and fulfilling orders placed
-          through their store, and for honoring the payment methods, such as
-          UPI or cash on delivery, that they offer to customers.
-        </p>
-      </LegalSection>
-
-      <LegalSection heading="Changes to the service">
-        <p>
-          Stallio may update features, pricing, or these terms from time to
-          time. Continued use of the platform after an update means you
-          accept the revised terms.
-        </p>
-      </LegalSection>
-
-      <LegalSection heading="Contact">
-        <p>
-          Questions about these terms can be sent through the contact options
-          in the footer of this site.
-        </p>
-      </LegalSection>
+      {sections.map((section) => (
+        <LegalSection key={section.heading} heading={section.heading}>
+          <p>{section.body}</p>
+        </LegalSection>
+      ))}
     </LegalPage>
   );
 }

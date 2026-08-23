@@ -1,0 +1,246 @@
+{
+  "hero": {
+    "eyebrow": "Para vendedores de Instagram y WhatsApp",
+    "titleLine1": "Tu tienda.",
+    "titleHighlight": "A un enlace",
+    "titleLine2": "de distancia.",
+    "subtitle": "Convierte tu p\u00e1gina de Instagram o WhatsApp en una tienda en l\u00ednea real. Agrega productos, comparte un enlace y empieza a recibir pedidos. Sin dominio ni pasarela de pago que configurar.",
+    "ctaPrimary": "Crea tu tienda",
+    "ctaSecondary": "Ver c\u00f3mo funciona",
+    "stats": {
+      "setupTimeLabel": "Tiempo de configuraci\u00f3n",
+      "setupTime": "3 min",
+      "setupTimeSuffix": "para lanzar",
+      "domainsLabel": "Dominios requeridos",
+      "domainsSuffix": "dominios necesarios",
+      "ratingLabel": "Calificaci\u00f3n promedio",
+      "ratingSuffix": "calificaci\u00f3n de vendedores"
+    },
+    "mockup": {
+      "rotateToPortrait": "Girar tienda a vertical",
+      "rotateToLandscape": "Girar tienda a horizontal",
+      "portrait": "Vertical",
+      "rotate": "Girar",
+      "yourShop": "Tu Tienda",
+      "newOrder": "Nuevo pedido"
+    }
+  },
+  "whoItFits": {
+    "eyebrow": "Para qui\u00e9n es",
+    "title": "Hecho para como ya vendes",
+    "subtitle": "No necesitas un equipo de dise\u00f1o web ni conocimientos t\u00e9cnicos. Estos son los tipos de vendedores que suelen abrir una tienda en Stallio.",
+    "personas": {
+      "instagramSeller": {
+        "title": "El vendedor de Instagram",
+        "description": "Publica, etiqueta, vende, directo desde el enlace de tu biograf\u00eda. Ya no tienes que dirigir a tus seguidores a un hilo de comentarios para preguntar precios.",
+        "bestFor": "Un enlace en la bio"
+      },
+      "whatsappSeller": {
+        "title": "El vendedor de WhatsApp",
+        "description": "Deja de volver a escribir el mismo cat\u00e1logo en cada chat. Env\u00eda un enlace y deja que los compradores naveguen, elijan y paguen por su cuenta.",
+        "bestFor": "Compartible en cualquier chat"
+      },
+      "homeMaker": {
+        "title": "El creador desde casa",
+        "description": "Reposteros, sastres y artesanos que manejan pedidos en un cuaderno. Consigue una lista de productos real y un panel de pedidos en su lugar.",
+        "bestFor": "Productos ilimitados"
+      },
+      "boutiqueReseller": {
+        "title": "El revendedor de boutique",
+        "description": "Ropa de segunda mano, moda pre-amada, lanzamientos peque\u00f1os. Dale a cada pieza su propia p\u00e1gina en lugar de un desplazamiento de publicaciones antiguas.",
+        "bestFor": "Nuevos lanzamientos en minutos"
+      }
+    }
+  },
+  "comparison": {
+    "eyebrow": "Antes y despu\u00e9s",
+    "title": "Mismo esfuerzo. Tienda completamente diferente.",
+    "subtitle": "La mayor\u00eda de los vendedores empiezan manejando su tienda con capturas de pantalla e hilos de comentarios. Stallio le da a ese esfuerzo una tienda como se debe.",
+    "vs": "vs",
+    "beforeLabel": "Antes",
+    "afterLabel": "Despu\u00e9s",
+    "cta": "Prueba Stallio gratis",
+    "chatOnly": {
+      "title": "Venta solo por chat",
+      "items": [
+        "Copiar y pegar precios en cada mensaje directo",
+        "Pedidos dispersos entre chats",
+        "Sin un solo lugar para precios y fotos",
+        "Reenviar las mismas fotos de producto una y otra vez",
+        "Los clientes hacen las mismas preguntas repetidamente",
+        "Perseguir capturas de pantalla como comprobante de pago",
+        "Los pagos y la entrega se sienten improvisados"
+      ]
+    },
+    "withStallio": {
+      "title": "Con Stallio",
+      "items": [
+        "Un enlace donde los clientes navegan y compran directamente",
+        "Un enlace: cat\u00e1logo + carrito",
+        "P\u00e1ginas de producto claras que puedes compartir en cualquier lugar",
+        "Una cuadr\u00edcula de productos en vivo que se actualiza al instante",
+        "Menos mensajes de \u201c\u00bfcu\u00e1nto cuesta?\u201d",
+        "UPI y pago contra entrega integrados en el pago",
+        "Una tienda que se ve intencional"
+      ]
+    }
+  },
+  "howItWorks": {
+    "eyebrow": "C\u00f3mo funciona",
+    "title": "Tres pasos entre t\u00fa y tu primer pedido",
+    "subtitle": "Sin desarrollador, sin herramienta de dise\u00f1o, sin esperar aprobaci\u00f3n. La mayor\u00eda de los vendedores pasan de registrarse a compartir su enlace en una sola sesi\u00f3n.",
+    "stepLabel": "PASO",
+    "steps": {
+      "createStore": {
+        "title": "Crea tu tienda",
+        "description": "Elige un nombre de tienda y agrega tu perfil: tu logo, una breve biograf\u00eda y el enlace que los clientes recordar\u00e1n."
+      },
+      "addProducts": {
+        "title": "Agrega tus productos",
+        "description": "Sube fotos, fija precios y organiza los art\u00edculos en categor\u00edas. Edita lo que quieras en cualquier momento, y la tienda se actualiza al instante."
+      },
+      "shareLink": {
+        "title": "Comparte tu enlace",
+        "description": "P\u00f3nlo en tu biograf\u00eda de Instagram o en tu estado de WhatsApp. Los clientes navegan, piden y pagan, sin necesidad de instalar otra app."
+      }
+    }
+  },
+  "insideTheBox": {
+    "eyebrow": "Dentro de la caja",
+    "title": "Todo dentro de tu tienda",
+    "subtitle": "Un enlace abre una tienda completa, no solo una lista de productos. Pasa el cursor o toca cualquier producto en el tel\u00e9fono para ver la p\u00e1gina que ven tus clientes.",
+    "features": {
+      "productPages": {
+        "title": "P\u00e1ginas de producto",
+        "description": "Cada art\u00edculo tiene su propia p\u00e1gina con fotos, precio y variantes, as\u00ed que ya no hay que buscar en publicaciones antiguas para encontrar un producto."
+      },
+      "cartCheckout": {
+        "title": "Carrito y pago",
+        "description": "Los clientes agregan varios art\u00edculos y pagan de una vez, con UPI o pago contra entrega integrados."
+      },
+      "orderDashboard": {
+        "title": "Panel de pedidos",
+        "description": "Ve cada pedido, su estado y los datos del comprador en un solo lugar en lugar de dispersos entre chats."
+      },
+      "directChat": {
+        "title": "Chat directo con clientes",
+        "description": "Un bot\u00f3n para chatear mantiene la conversaci\u00f3n personal, estilo mensaje directo, que ya tienes con los compradores."
+      }
+    },
+    "mockup": {
+      "yourShop": "Tu Tienda",
+      "productsCount": "128 productos",
+      "cart": "Carrito",
+      "tabs": { "shop": "Tienda", "orders": "Pedidos", "reviews": "Rese\u00f1as" },
+      "preview": "Vista previa",
+      "awaitingConfirmation": "Esperando confirmaci\u00f3n",
+      "confirmed": "Confirmado",
+      "ordersAwaiting": "3 pedidos esperando confirmaci\u00f3n",
+      "viewDashboard": "Ver panel",
+      "oneLinkFullStore": "Un enlace, tienda completa"
+    }
+  },
+  "whyItLands": {
+    "eyebrow": "Por qu\u00e9 funciona",
+    "title": "Por qu\u00e9 los vendedores se quedan con Stallio",
+    "subtitle": "No es otro panel m\u00e1s que aprender. Elimina las cuatro cosas que silenciosamente te cuestan pedidos cada semana.",
+    "cta": "Empieza a vender gratis",
+    "stats": {
+      "toFirstSale": "hasta tu primera venta",
+      "appsToStitch": "apps que combinar",
+      "builtForPhone": "hecho para el tel\u00e9fono"
+    },
+    "reasons": {
+      "liveToday": {
+        "title": "En l\u00ednea antes de que termine el d\u00eda",
+        "description": "Sin dominio, sin papeleo de pasarela, sin desarrollador. Reg\u00edstrate, agrega algunos productos, comparte el enlace, y esta noche ya est\u00e1s vendiendo."
+      },
+      "mobileFirst": {
+        "title": "Hecho primero para m\u00f3vil",
+        "description": "Tus compradores compran desde el tel\u00e9fono en una app de chat. Cada p\u00e1gina est\u00e1 dise\u00f1ada para un pulgar, no para un escritorio."
+      },
+      "trust": {
+        "title": "Confianza, sin adivinar",
+        "description": "P\u00e1ginas de producto reales, precios claros y confirmaciones de pedido hacen que una tienda peque\u00f1a se vea establecida."
+      },
+      "worksEverywhere": {
+        "title": "Funciona donde sea que publiques",
+        "description": "Bio, estado, historia, chat grupal: el mismo enlace lleva todo tu cat\u00e1logo y pago."
+      }
+    }
+  },
+  "testimonials": {
+    "eyebrow": "Vendedores en Stallio",
+    "title": "Lo que dicen despu\u00e9s de cambiarse",
+    "items": {
+      "ayesha": {
+        "name": "Ayesha",
+        "role": "Revendedora de ropa usada, Lahore",
+        "quote": "Dej\u00e9 de responder \u201c\u00bfcu\u00e1nto cuesta?\u201d cincuenta veces al d\u00eda. La gente simplemente abre el enlace y pide."
+      },
+      "bilal": {
+        "name": "Bilal",
+        "role": "Repostero casero, Karachi",
+        "quote": "Los pedidos por fin viven en un solo panel en lugar de seis chats y un cuaderno."
+      },
+      "zainab": {
+        "name": "Zainab",
+        "role": "Marca de cuidado de la piel, Islamabad",
+        "quote": "Mi tienda ahora se ve como una tienda real, no solo una cuadr\u00edcula de fotos de productos."
+      }
+    }
+  },
+  "whatsIncluded": {
+    "eyebrow": "Qu\u00e9 incluye",
+    "titleLine1": "Todo incluido.",
+    "titleLine2": "Nada extra que comprar.",
+    "countCaption": "herramientas incluidas, cero tarifas adicionales",
+    "items": {
+      "unlimitedProducts": {
+        "title": "Productos ilimitados",
+        "description": "Sin l\u00edmite de cat\u00e1logo, nunca. Publica un art\u00edculo o mil."
+      },
+      "mobileOptimized": {
+        "title": "Tienda optimizada para m\u00f3vil",
+        "description": "Cada p\u00e1gina est\u00e1 hecha para el tel\u00e9fono en el que est\u00e1n tus clientes."
+      },
+      "shareableLink": {
+        "title": "Un enlace compartible",
+        "description": "Sin dominio que comprar ni configurar."
+      },
+      "orderDashboard": {
+        "title": "Panel de pedidos",
+        "description": "Cada pedido y dato del comprador en un solo lugar."
+      },
+      "upiCod": {
+        "title": "UPI y pago contra entrega",
+        "description": "Ambos integrados desde el primer d\u00eda, sin configuraci\u00f3n necesaria."
+      },
+      "noGateway": {
+        "title": "Sin pasarela de pago requerida",
+        "description": "Salta por completo el papeleo y la espera de aprobaci\u00f3n."
+      },
+      "socialSharing": {
+        "title": "Compartir en Instagram y WhatsApp",
+        "description": "Hecho para moverse por las apps en las que ya vendes."
+      },
+      "freeToStart": {
+        "title": "Gratis para empezar",
+        "description": "No necesitas tarjeta para abrir tu tienda."
+      }
+    }
+  },
+  "finalCta": {
+    "eyebrow": "Listos cuando t\u00fa lo est\u00e9s",
+    "titlePrefix": "Dale a tu esfuerzo una",
+    "titleHighlight": "tienda de verdad",
+    "subtitle": "Configura tu tienda en unos minutos, comparte un enlace, y deja que los clientes naveguen y pidan sin un solo mensaje de \u201c\u00bfcu\u00e1nto cuesta?\u201d",
+    "ctaPrimary": "Crea tu tienda",
+    "ctaSecondary": "Ver c\u00f3mo funciona",
+    "perks": {
+      "freeToStart": "Gratis para empezar",
+      "noDomain": "Sin dominio necesario",
+      "noCard": "Sin tarjeta requerida"
+    }
+  }
+}

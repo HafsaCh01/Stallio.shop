@@ -1,0 +1,64 @@
+{
+  "hero": {
+    "badge": "Precios",
+    "titleLead": "Números simples.",
+    "titleHighlight": "Un producto completo.",
+    "description": "Sin niveles que comparar, sin funciones bloqueadas detrás de un plan superior. Un mes por nuestra cuenta, y luego un solo precio, facturado como prefieras.",
+    "trustBullets": ["Desde $5/mes después de la prueba", "Sin tarjeta para empezar"],
+    "ctaPrimary": "Empieza Gratis",
+    "ctaSecondary": "Ver Qué Incluye",
+    "firstMonthFree": "Primer mes gratis",
+    "onePlan": "Un plan",
+    "perMonth": "/mes",
+    "orYearly": "o $50/año",
+    "cardBullets": ["Todas las herramientas incluidas", "Sin complementos, nunca"]
+  },
+  "plan": {
+    "eyebrow": "El plan",
+    "title": "Un plan. Todo incluido.",
+    "description": "Sin niveles que comparar, sin funciones bloqueadas detrás de un plan superior. Elige un ciclo de facturación y ve exactamente qué incluye.",
+    "planName": "Stallio Estándar",
+    "monthly": "Mensual",
+    "yearly": "Anual",
+    "saveAmount": "Ahorra $10",
+    "perMonth": "/mes",
+    "perYear": "/año",
+    "orBilledYearly": "o $50 facturados al año",
+    "billedOnceYear": "facturado una vez al año",
+    "dueToday": "A pagar hoy",
+    "firstMonthFree": "Primer mes gratis, sin tarjeta requerida",
+    "ctaPrimary": "Empieza Gratis",
+    "cancelAnytime": "Cancela cuando quieras",
+    "itemizedLabel": "Todo, detallado",
+    "items": [
+      "Enlace stallio.shop alojado, sin dominio",
+      "Productos, fotos y pedidos ilimitados",
+      "Tienda móvil, carrito y pago",
+      "Variantes, precios de oferta e inventario",
+      "Páginas de Nosotros y Contacto",
+      "Cupones y tarifas de entrega",
+      "Factura en PDF en cada pedido",
+      "Marca como pagado, envía y exporta CSV",
+      "Tienda y panel en inglés, español y árabe",
+      "Gráficas de ingresos y pedidos",
+      "Mensajes de compradores y chat de soporte",
+      "Primer mes gratis, sin tarjeta requerida"
+    ]
+  },
+  "faq": {
+    "eyebrow": "¿Aún decidiendo?",
+    "title": "Pregúntanos, o simplemente pruébalo.",
+    "description": "La mayoría de las preguntas sobre facturación se responden a la derecha. Para cualquier otra cosa, contacta al equipo directamente o empieza el mes gratis y ve el producto por ti mismo.",
+    "ctaPrimary": "Empieza Gratis",
+    "ctaSecondary": "Contáctanos",
+    "replyTime": "Normalmente responde en un día a contact@stallio.shop",
+    "items": [
+      { "question": "¿Necesito mi propio dominio o alojamiento?", "answer": "No. Cada tienda obtiene un enlace alojado stallio.shop/tu en el momento en que te registras, nada que comprar o configurar." },
+      { "question": "¿Cómo maneja Stallio los pagos?", "answer": "Tú defines tu propio método: transferencia bancaria, enlace de pago o pago contra entrega, y Stallio rastrea el estado de cada pedido por ti." },
+      { "question": "¿Hay un límite de productos o pedidos?", "answer": "No hay límite en ninguno, en ambos planes. Publica un artículo o mil, y cada pedido sigue llegando a tu panel." },
+      { "question": "¿Qué pasa cuando termina el mes gratis?", "answer": "Te avisaremos unos días antes de que termine. Elige mensual o anual para mantener tu tienda activa, o cancela sin deber nada." },
+      { "question": "¿Puedo cambiar entre mensual y anual?", "answer": "Sí, en cualquier momento desde la configuración de tu cuenta. Tu tienda y tus datos se mantienen exactamente igual." },
+      { "question": "¿Ambos planes realmente incluyen todo?", "answer": "Sí. Mensual y anual desbloquean la misma tienda, panel y herramientas; el anual simplemente cuesta menos con el tiempo." }
+    ]
+  }
+}

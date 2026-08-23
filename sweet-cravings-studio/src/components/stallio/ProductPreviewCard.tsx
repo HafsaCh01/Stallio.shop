@@ -1,4 +1,5 @@
 import { Truck, X } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import { cn } from "@/lib/utils";
 
 export type PreviewProduct = {
@@ -25,6 +26,7 @@ export function ProductPreviewCard({
   onClose?: (() => void) | undefined;
   className?: string;
 }) {
+  const { t } = useTranslation("common");
   const open = Boolean(product);
 
   return (
@@ -46,7 +48,7 @@ export function ProductPreviewCard({
             <button
               type="button"
               onClick={onClose}
-              aria-label="Close product preview"
+              aria-label={t("productPreview.closeLabel")}
               className="absolute right-3 top-3 z-10 flex h-7 w-7 items-center justify-center rounded-full bg-black/60 text-ink transition-colors hover:bg-black"
             >
               <X size={14} strokeWidth={2.5} />

@@ -1,13 +1,15 @@
-import { useState, type ReactElement } from "react";
+import { useMemo, useState, type ReactElement } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
+import { useTranslation } from "react-i18next";
 import {
   AlertCircle,
   ArrowRight,
   CheckCircle2,
   Clock,
   Facebook,
+  HelpCircle,
   Instagram,
   Linkedin,
   Loader2,
@@ -15,8 +17,11 @@ import {
   MessageSquareText,
   Pencil,
   Send,
+  ShieldCheck,
   Sparkles,
   User,
+  Zap,
+  type LucideIcon,
 } from "lucide-react";
 import { Navbar } from "@/components/stallio/Navbar";
 import { Footer } from "@/components/stallio/Footer";
@@ -24,7 +29,10 @@ import { Container } from "@/components/stallio/Container";
 import { CTAButton } from "@/components/stallio/CTAButton";
 import { RouteDivider } from "@/components/stallio/RouteDivider";
 import { FormField, FieldShell } from "@/components/stallio/auth/FormField";
-import { contactSchema, type ContactValues } from "@/lib/validation/contact";
+import {
+  createContactSchema,
+  type ContactValues,
+} from "@/lib/validation/contact";
 import { siteConfig, socialLinks } from "@/lib/constants";
 import { useReveal } from "@/hooks/use-reveal";
 import { cn } from "@/lib/utils";
@@ -71,16 +79,7 @@ const socialMeta: Record<
   X: { icon: (props) => <XLogo {...props} /> },
 };
 
-/** Stand-in for a real API call. No backend is wired up yet, so nothing is
- * actually emailed — this only simulates the network round trip so the
- * loading / success / error states are real and testable. */
-async function fakeSendMessage(values: ContactValues) {
-  await new Promise((resolve) => setTimeout(resolve, 1000));
-  if (values.email.trim().toLowerCase() === "fail@stallio.shop") {
-    throw new Error("We couldn't send that. Please try again in a moment.");
-  }
-  return true;
-}
+const reassuranceIcons: LucideIcon[] = [Zap, ShieldCheck, HelpCircle];
 
 function Contact() {
   return (
@@ -97,6 +96,7 @@ function Contact() {
 }
 
 function ContactHero() {
+  const { t } = useTranslation("contact");
   const { ref, visible } = useReveal<HTMLDivElement>();
 
   return (
@@ -121,20 +121,19 @@ function ContactHero() {
           <span className="inline-flex items-center gap-2 rounded-full border border-ink/12 bg-paper-dim px-4 py-1.5">
             <Sparkles size={14} className="text-lime" strokeWidth={2.5} />
             <span className="text-[10px] font-semibold uppercase tracking-[0.14em] text-ink-soft sm:text-xs">
-              Contact
+              {t("hero.badge")}
             </span>
           </span>
 
           <h1 className="mt-6 font-display text-[2rem] font-semibold leading-[1.1] tracking-tight text-ink sm:text-5xl">
-            We read{" "}
+            {t("hero.titleLead")}{" "}
             <span className="bg-[image:var(--gradient-brand)] bg-clip-text text-transparent">
-              every message
+              {t("hero.titleHighlight")}
             </span>
           </h1>
 
           <p className="mt-5 text-base leading-relaxed text-ink-soft sm:text-lg">
-            Product questions, partnership ideas, or something broken: send a
-            note and we'll point you in the right direction.
+            {t("hero.description")}
           </p>
 
           {/* Quick ways to reach us, inline — not a separate mirrored card */}
@@ -175,10 +174,16 @@ function ContactHero() {
 }
 
 function ContactFormSection() {
+  const { t, i18n } = useTranslation("contact");
   const { ref, visible } = useReveal<HTMLDivElement>();
   const [formError, setFormError] = useState<string | null>(null);
   const [status, setStatus] = useState<"idle" | "submitting" | "success">(
     "idle",
+  );
+
+  const contactSchema = useMemo(
+    () => createContactSchema(t),
+    [t, i18n.language],
   );
 
   const {
@@ -191,6 +196,17 @@ function ContactFormSection() {
     defaultValues: { name: "", email: "", subject: "", message: "" },
   });
 
+  /** Stand-in for a real API call. No backend is wired up yet, so nothing
+   * is actually emailed — this only simulates the network round trip so
+   * the loading / success / error states are real and testable. */
+  const fakeSendMessage = async (values: ContactValues) => {
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+    if (values.email.trim().toLowerCase() === "fail@stallio.shop") {
+      throw new Error(t("form.sendFailedError"));
+    }
+    return true;
+  };
+
   const onSubmit = async (values: ContactValues) => {
     setFormError(null);
     setStatus("submitting");
@@ -200,10 +216,17 @@ function ContactFormSection() {
     } catch (err) {
       setStatus("idle");
       setFormError(
-        err instanceof Error ? err.message : "Something went wrong.",
+        err instanceof Error ? err.message : t("form.genericError"),
       );
     }
   };
+
+  const reassurances = (
+    t("form.reassurances", { returnObjects: true }) as {
+      title: string;
+      text: string;
+    }[]
+  ).map((r, i) => ({ ...r, icon: reassuranceIcons[i]! }));
 
   return (
     <section className="relative overflow-hidden bg-paper-dim">
@@ -211,25 +234,64 @@ function ContactFormSection() {
         <div
           ref={ref}
           data-visible={visible}
-          className="reveal relative mx-auto w-full max-w-2xl"
+          className="reveal relative mx-auto w-full max-w-4xl"
         >
           <div
             aria-hidden="true"
             className="pointer-events-none absolute -inset-4 -z-10 rounded-[2.5rem] bg-violet/10 blur-3xl"
           />
 
-          <div className="overflow-hidden rounded-[2rem] border border-ink/10 bg-surface shadow-[0_50px_100px_-40px_rgba(0,0,0,0.5)]">
+          <div className="grid overflow-hidden rounded-[2rem] border border-ink/10 bg-surface shadow-[0_50px_100px_-40px_rgba(0,0,0,0.5)] lg:grid-cols-[0.85fr_1.15fr]">
+            {/* Info panel */}
+            <div className="relative isolate flex flex-col justify-between gap-10 overflow-hidden border-b border-ink/10 bg-paper p-8 text-ink sm:border-b-0 sm:border-r sm:p-10">
+              <div
+                aria-hidden="true"
+                className="pointer-events-none absolute -right-16 -top-16 h-56 w-56 rounded-full bg-violet/20 blur-[100px]"
+              />
+              <div className="relative">
+                <span className="inline-flex items-center gap-1.5 rounded-full border border-ink/12 bg-paper-dim px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-ink-soft">
+                  <Sparkles size={12} strokeWidth={2.5} className="text-violet" />
+                  {t("form.letsTalk")}
+                </span>
+                <h2 className="mt-4 font-display text-2xl font-semibold leading-tight text-ink sm:text-[1.75rem]">
+                  {t("form.title")}
+                </h2>
+                <p className="mt-3 text-sm leading-relaxed text-ink-soft">
+                  {t("form.description")}
+                </p>
+              </div>
+
+              <ul className="relative flex flex-col gap-4">
+                {reassurances.map((item) => (
+                  <li key={item.title} className="flex items-start gap-3">
+                    <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-violet/12 text-violet">
+                      <item.icon size={16} strokeWidth={2} />
+                    </span>
+                    <div>
+                      <p className="text-sm font-semibold text-ink">
+                        {item.title}
+                      </p>
+                      <p className="mt-0.5 text-xs leading-relaxed text-ink-faint">
+                        {item.text}
+                      </p>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Form side */}
+            <div>
             {status === "success" ? (
               <div className="flex flex-col items-center gap-3 px-8 py-16 text-center sm:px-12">
                 <span className="flex h-16 w-16 items-center justify-center rounded-full bg-lime/15 text-lime-dark">
                   <CheckCircle2 size={30} strokeWidth={2} />
                 </span>
                 <p className="mt-1 font-display text-xl font-semibold text-ink">
-                  Message sent!
+                  {t("form.messageSent")}
                 </p>
                 <p className="max-w-xs text-sm text-ink-soft">
-                  Thanks for reaching out. We'll get back to you within a few
-                  business days.
+                  {t("form.thankYou")}
                 </p>
                 <button
                   type="button"
@@ -239,7 +301,7 @@ function ContactFormSection() {
                   }}
                   className="mt-3 inline-flex items-center gap-2 rounded-full border border-ink/15 px-5 py-2 text-sm font-medium text-ink transition-colors hover:border-violet hover:text-violet"
                 >
-                  Send another message
+                  {t("form.sendAnother")}
                 </button>
               </div>
             ) : (
@@ -250,10 +312,10 @@ function ContactFormSection() {
                   </span>
                   <div>
                     <h2 className="font-display text-base font-semibold tracking-tight text-ink sm:text-lg">
-                      Send a message
+                      {t("form.sendAMessage")}
                     </h2>
                     <p className="text-xs text-ink-soft sm:text-sm">
-                      All fields are required so we can respond with context.
+                      {t("form.allFieldsRequired")}
                     </p>
                   </div>
                 </div>
@@ -280,7 +342,7 @@ function ContactFormSection() {
                   <div className="grid gap-5 sm:grid-cols-2">
                     <FormField
                       id="name"
-                      label="Name"
+                      label={t("form.name")}
                       error={errors.name?.message}
                     >
                       <FieldShell
@@ -290,7 +352,7 @@ function ContactFormSection() {
                         <input
                           id="name"
                           autoComplete="name"
-                          placeholder="Your name"
+                          placeholder={t("form.namePlaceholder")}
                           aria-invalid={Boolean(errors.name)}
                           className="w-full flex-1 bg-transparent text-sm text-ink outline-none placeholder:text-ink-faint"
                           {...register("name")}
@@ -300,7 +362,7 @@ function ContactFormSection() {
 
                     <FormField
                       id="email"
-                      label="Email"
+                      label={t("form.email")}
                       error={errors.email?.message}
                     >
                       <FieldShell
@@ -311,7 +373,7 @@ function ContactFormSection() {
                           id="email"
                           type="email"
                           autoComplete="email"
-                          placeholder="you@example.com"
+                          placeholder={t("form.emailPlaceholder")}
                           aria-invalid={Boolean(errors.email)}
                           className="w-full flex-1 bg-transparent text-sm text-ink outline-none placeholder:text-ink-faint"
                           {...register("email")}
@@ -322,7 +384,7 @@ function ContactFormSection() {
 
                   <FormField
                     id="subject"
-                    label="Subject"
+                    label={t("form.subject")}
                     error={errors.subject?.message}
                   >
                     <FieldShell
@@ -331,7 +393,7 @@ function ContactFormSection() {
                     >
                       <input
                         id="subject"
-                        placeholder="What is this about?"
+                        placeholder={t("form.subjectPlaceholder")}
                         aria-invalid={Boolean(errors.subject)}
                         className="w-full flex-1 bg-transparent text-sm text-ink outline-none placeholder:text-ink-faint"
                         {...register("subject")}
@@ -341,7 +403,7 @@ function ContactFormSection() {
 
                   <FormField
                     id="message"
-                    label="Message"
+                    label={t("form.message")}
                     error={errors.message?.message}
                   >
                     <div
@@ -364,7 +426,7 @@ function ContactFormSection() {
                       <textarea
                         id="message"
                         rows={4}
-                        placeholder="Your message..."
+                        placeholder={t("form.messagePlaceholder")}
                         aria-invalid={Boolean(errors.message)}
                         className="w-full flex-1 resize-none bg-transparent text-sm text-ink outline-none placeholder:text-ink-faint"
                         {...register("message")}
@@ -375,7 +437,7 @@ function ContactFormSection() {
                   <div className="mt-1 flex flex-col items-stretch gap-3 sm:flex-row sm:items-center sm:justify-between">
                     <p className="order-2 flex items-center gap-1.5 text-xs text-ink-faint sm:order-1">
                       <Clock size={13} className="shrink-0 text-lime" />
-                      Typical reply time is a few business days
+                      {t("form.replyTime")}
                     </p>
                     <button
                       type="submit"
@@ -389,12 +451,12 @@ function ContactFormSection() {
                       {status === "submitting" ? (
                         <>
                           <Loader2 size={16} className="animate-spin" />
-                          Sending&hellip;
+                          {t("form.sending")}
                         </>
                       ) : (
                         <>
                           <Send size={15} />
-                          Send Message
+                          {t("form.sendMessage")}
                         </>
                       )}
                     </button>
@@ -402,6 +464,7 @@ function ContactFormSection() {
                 </form>
               </>
             )}
+            </div>
           </div>
         </div>
       </Container>
@@ -412,28 +475,28 @@ function ContactFormSection() {
 }
 
 function SelfServeStrip() {
+  const { t } = useTranslation("contact");
   return (
     <section className="relative overflow-hidden bg-paper">
       <Container className="flex flex-col items-center justify-between gap-6 py-10 sm:py-12 lg:flex-row">
         <div className="text-center lg:text-left">
           <span className="text-[10px] font-semibold uppercase tracking-[0.14em] text-lime sm:text-xs">
-            Self-serve
+            {t("selfServe.eyebrow")}
           </span>
           <h2 className="mt-2 font-display text-lg font-semibold tracking-tight text-ink sm:text-xl">
-            Trying Stallio first?
+            {t("selfServe.title")}
           </h2>
           <p className="mt-1 text-sm text-ink-soft">
-            Most answers live in How It Works and Features. Start free
-            anytime.
+            {t("selfServe.description")}
           </p>
         </div>
 
         <div className="flex shrink-0 flex-col items-stretch gap-3 sm:flex-row">
           <CTAButton href="/how-it-works" variant="outline" size="md">
-            How It Works
+            {t("selfServe.howItWorks")}
           </CTAButton>
           <CTAButton href="/features" size="md">
-            Features
+            {t("selfServe.features")}
             <ArrowRight
               size={15}
               className="transition-transform group-hover:translate-x-0.5"

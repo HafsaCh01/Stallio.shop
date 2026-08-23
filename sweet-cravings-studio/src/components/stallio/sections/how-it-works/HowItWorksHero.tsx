@@ -12,6 +12,7 @@ import {
   Check,
   type LucideIcon,
 } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import prod1 from "@/assets/prod-1.jpg";
 import prod2 from "@/assets/prod-2.jpg";
 import prod3 from "@/assets/prod-3.jpg";
@@ -21,32 +22,27 @@ import { RouteDivider } from "../../RouteDivider";
 import { useReveal } from "@/hooks/use-reveal";
 import { cn } from "@/lib/utils";
 
-type Screen = {
-  number: string;
-  icon: LucideIcon;
-  label: string;
-  accent: "violet" | "teal" | "pink";
-};
+type Accent = "violet" | "teal" | "pink";
+const screenNumbers = ["01", "02", "03"];
+const screenIcons: LucideIcon[] = [Store, ImagePlus, Share2];
+const screenAccents: Accent[] = ["violet", "teal", "pink"];
 
-const screens: Screen[] = [
-  { number: "01", icon: Store, label: "Name it", accent: "violet" },
-  { number: "02", icon: ImagePlus, label: "Load it", accent: "teal" },
-  { number: "03", icon: Share2, label: "Share it", accent: "pink" },
-];
-
-const accentBg = {
+const accentBg: Record<Accent, string> = {
   violet: "bg-violet",
   teal: "bg-teal",
   pink: "bg-pink",
-} as const;
+};
 
-const accentRing = {
+const accentRing: Record<Accent, string> = {
   violet: "ring-violet/30 bg-violet/15 text-violet",
   teal: "ring-teal/30 bg-teal/15 text-teal",
   pink: "ring-pink/30 bg-pink/15 text-pink",
-} as const;
+};
+
+type TranslatedScreen = { label: string };
 
 export function HowItWorksHero() {
+  const { t } = useTranslation("howItWorks");
   const { ref, visible } = useReveal<HTMLDivElement>();
   const [active, setActive] = useState(0);
   const [paused, setPaused] = useState(false);
@@ -55,13 +51,28 @@ export function HowItWorksHero() {
   );
   const scrollDelta = useRef(0);
 
+  const translatedScreens = t("hero.screens", {
+    returnObjects: true,
+  }) as TranslatedScreen[];
+  const screens = screenNumbers.map((number, i) => ({
+    number,
+    icon: screenIcons[i]!,
+    accent: screenAccents[i]!,
+    label: translatedScreens[i]?.label ?? "",
+  }));
+
+  const products = t("hero.products", {
+    returnObjects: true,
+  }) as { name: string }[];
+  const channels = t("hero.channels", { returnObjects: true }) as string[];
+
   useEffect(() => {
     if (paused) return;
     const id = window.setInterval(() => {
       setActive((prev) => (prev + 1) % screens.length);
     }, 1800);
     return () => window.clearInterval(id);
-  }, [paused]);
+  }, [paused, screens.length]);
 
   // Scrolling the page also nudges the phone screen forward.
   useEffect(() => {
@@ -78,9 +89,10 @@ export function HowItWorksHero() {
     };
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  }, [screens.length]);
 
   const current = screens[active] ?? screens[0]!;
+  const CurrentIcon = current.icon;
 
   return (
     <section id="top" className="relative overflow-hidden bg-paper">
@@ -104,45 +116,43 @@ export function HowItWorksHero() {
                 <span className="relative inline-flex h-2 w-2 rounded-full bg-teal" />
               </span>
               <span className="text-[10px] font-semibold uppercase tracking-[0.14em] text-ink-soft sm:text-xs">
-                How it works
+                {t("hero.badge")}
               </span>
             </div>
 
             <h1 className="mt-6 font-display text-[2.1rem] font-semibold leading-[1.1] tracking-tight text-ink sm:text-5xl lg:text-[3.3rem]">
-              From bio link to{" "}
+              {t("hero.titleLead")}{" "}
               <span className="bg-[image:var(--gradient-brand)] bg-clip-text text-transparent">
-                live storefront.
+                {t("hero.titleHighlight")}
               </span>
             </h1>
 
             <p className="mt-5 max-w-xl text-base leading-relaxed text-ink-soft sm:text-lg">
-              Watch it come together on the right: name your shop, drop in a few
-              products, then send buyers to one link. That's the whole build,
-              start to finish.
+              {t("hero.description")}
             </p>
 
             <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-2 text-xs text-ink-faint sm:text-sm">
               <span className="inline-flex items-center gap-1.5">
                 <Clock size={14} className="text-teal" />
-                ~5 min first draft
+                {t("hero.firstDraft")}
               </span>
               <span className="text-ink-faint/50">·</span>
               <span className="inline-flex items-center gap-1.5">
                 <Smartphone size={14} className="text-pink" />
-                Mobile first
+                {t("hero.mobileFirst")}
               </span>
             </div>
 
             <div className="mt-8 flex flex-col items-stretch gap-3 sm:flex-row">
               <CTAButton href="/#final-cta" size="lg">
-                Start Free
+                {t("hero.ctaPrimary")}
                 <ArrowRight
                   size={17}
                   className="transition-transform group-hover:translate-x-0.5"
                 />
               </CTAButton>
               <CTAButton href="/" variant="outline" size="lg">
-                View Demo Store
+                {t("hero.ctaSecondary")}
               </CTAButton>
             </div>
           </div>
@@ -184,11 +194,11 @@ export function HowItWorksHero() {
                           accentRing[current.accent],
                         )}
                       >
-                        <current.icon size={15} strokeWidth={2.2} />
+                        <CurrentIcon size={15} strokeWidth={2.2} />
                       </span>
                       <div>
                         <p className="font-display text-[9px] font-semibold tracking-wider text-ink-faint">
-                          STEP {current.number}
+                          {t("hero.stepLabel", { number: current.number })}
                         </p>
                         <p className="text-xs font-semibold text-ink">
                           {current.label}
@@ -200,15 +210,15 @@ export function HowItWorksHero() {
                       <div className="mt-5 space-y-3">
                         <div className="rounded-xl border border-ink/10 bg-surface p-3.5">
                           <p className="text-[9px] font-semibold uppercase tracking-wide text-ink-faint">
-                            Store name
+                            {t("hero.storeName")}
                           </p>
                           <p className="mt-1 font-display text-sm font-semibold text-ink">
-                            Hafsa's Corner
+                            {t("hero.storeNameValue")}
                           </p>
                         </div>
                         <div className="rounded-xl border border-teal/30 bg-teal/10 p-3.5">
                           <p className="text-[9px] font-semibold uppercase tracking-wide text-teal">
-                            Your link
+                            {t("hero.yourLink")}
                           </p>
                           <p className="mt-1 font-display text-sm font-semibold text-ink">
                             stallio.shop/hafsa
@@ -216,7 +226,7 @@ export function HowItWorksHero() {
                         </div>
                         <div className="flex items-center gap-1.5 text-[10px] font-semibold text-lime">
                           <Check size={12} strokeWidth={3} />
-                          Link is live
+                          {t("hero.linkIsLive")}
                         </div>
                       </div>
                     )}
@@ -224,10 +234,10 @@ export function HowItWorksHero() {
                     {active === 1 && (
                       <div className="mt-5 grid grid-cols-2 gap-2.5">
                         {[
-                          { name: "Sneakers", price: "$24", img: prod1 },
-                          { name: "Running shoes", price: "$18", img: prod2 },
-                          { name: "High-tops", price: "$16", img: prod3 },
-                          { name: "Add photo", price: "+" },
+                          { name: products[0]?.name ?? "", price: "$24", img: prod1 },
+                          { name: products[1]?.name ?? "", price: "$18", img: prod2 },
+                          { name: products[2]?.name ?? "", price: "$16", img: prod3 },
+                          { name: products[3]?.name ?? "", price: "+" },
                         ].map((p, i) => (
                           <div
                             key={p.name}
@@ -264,31 +274,29 @@ export function HowItWorksHero() {
 
                     {active === 2 && (
                       <div className="mt-5 space-y-2.5">
-                        {["WhatsApp status", "Instagram bio", "Group chat"].map(
-                          (ch, i) => (
-                            <div
-                              key={ch}
-                              className="flex items-center justify-between rounded-xl border border-ink/10 bg-surface p-3"
+                        {channels.map((ch, i) => (
+                          <div
+                            key={ch}
+                            className="flex items-center justify-between rounded-xl border border-ink/10 bg-surface p-3"
+                          >
+                            <span className="text-xs font-medium text-ink">
+                              {ch}
+                            </span>
+                            <span
+                              className={cn(
+                                "flex h-6 w-6 items-center justify-center rounded-full",
+                                i === 0 && "bg-lime/20 text-lime",
+                                i === 1 && "bg-pink/20 text-pink",
+                                i === 2 && "bg-teal/20 text-teal",
+                              )}
                             >
-                              <span className="text-xs font-medium text-ink">
-                                {ch}
-                              </span>
-                              <span
-                                className={cn(
-                                  "flex h-6 w-6 items-center justify-center rounded-full",
-                                  i === 0 && "bg-lime/20 text-lime",
-                                  i === 1 && "bg-pink/20 text-pink",
-                                  i === 2 && "bg-teal/20 text-teal",
-                                )}
-                              >
-                                <Check size={11} strokeWidth={3} />
-                              </span>
-                            </div>
-                          ),
-                        )}
+                              <Check size={11} strokeWidth={3} />
+                            </span>
+                          </div>
+                        ))}
                         <div className="rounded-xl bg-[image:var(--gradient-brand)] p-3 text-center">
                           <p className="text-[11px] font-semibold text-white">
-                            3 orders waiting
+                            {t("hero.ordersWaiting")}
                           </p>
                         </div>
                       </div>

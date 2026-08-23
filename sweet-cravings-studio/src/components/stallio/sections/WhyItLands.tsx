@@ -5,6 +5,7 @@ import {
   Repeat,
   type LucideIcon,
 } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import { Container } from "../Container";
 import { RouteDivider } from "../RouteDivider";
 import { CTAButton } from "../CTAButton";
@@ -12,15 +13,14 @@ import { useReveal } from "@/hooks/use-reveal";
 import { useCountUp } from "@/hooks/use-count-up";
 import { cn } from "@/lib/utils";
 
-type Reason = {
-  icon: LucideIcon;
-  title: string;
-  description: string;
-  accent: "violet" | "teal" | "pink" | "lime";
-};
+type Accent = "violet" | "teal" | "pink" | "lime";
+
+const reasonIcons: LucideIcon[] = [Zap, Smartphone, ShieldCheck, Repeat];
+const reasonAccents: Accent[] = ["violet", "teal", "pink", "lime"];
+const statValues = [3, 0, 100];
 
 const accentClasses: Record<
-  Reason["accent"],
+  Accent,
   { icon: string; ring: string; line: string; text: string }
 > = {
   violet: {
@@ -49,45 +49,19 @@ const accentClasses: Record<
   },
 };
 
-const reasons: Reason[] = [
-  {
-    icon: Zap,
-    title: "Live before the day ends",
-    description:
-      "No domain, no gateway paperwork, no developer. Sign up, add a few products, share the link — you're selling tonight.",
-    accent: "violet",
-  },
-  {
-    icon: Smartphone,
-    title: "Built mobile-first",
-    description:
-      "Your buyers shop on a phone in a chat app. Every page is designed for a thumb, not a desktop.",
-    accent: "teal",
-  },
-  {
-    icon: ShieldCheck,
-    title: "Trust, without the guesswork",
-    description:
-      "Real product pages, clear prices, and order confirmations make a small shop look established.",
-    accent: "pink",
-  },
-  {
-    icon: Repeat,
-    title: "Works everywhere you post",
-    description:
-      "Bio, status, story, group chat: the same link carries your whole catalog and checkout.",
-    accent: "lime",
-  },
-];
-
-const stats = [
-  { value: 3, suffix: " min", label: "to your first sale" },
-  { value: 0, suffix: "", label: "apps to stitch together" },
-  { value: 100, suffix: "%", label: "built for the phone" },
-];
+type TranslatedReason = { title: string; description: string };
+type TranslatedStat = { suffix: string; label: string };
 
 export function WhyItLands() {
+  const { t } = useTranslation("home");
   const { ref, visible } = useReveal<HTMLDivElement>();
+
+  const reasons = t("whyItLands.reasons", {
+    returnObjects: true,
+  }) as TranslatedReason[];
+  const stats = (
+    t("whyItLands.stats", { returnObjects: true }) as TranslatedStat[]
+  ).map((stat, i) => ({ ...stat, value: statValues[i]! }));
 
   return (
     <section id="why-it-lands" className="relative overflow-hidden bg-paper">
@@ -107,27 +81,21 @@ export function WhyItLands() {
             className="reveal-left lg:sticky lg:top-28 lg:self-start"
           >
             <span className="text-[10px] font-semibold uppercase tracking-[0.14em] text-lime sm:text-xs">
-              Why it lands
+              {t("whyItLands.eyebrow")}
             </span>
             <h2 className="mt-3 font-display text-[1.75rem] font-semibold leading-tight tracking-tight text-ink sm:text-4xl lg:text-[2.75rem]">
-              Why sellers stick with Stallio
+              {t("whyItLands.title")}
             </h2>
             <p className="mt-4 max-w-md text-sm leading-relaxed text-ink-soft sm:text-lg">
-              It isn&apos;t another dashboard to learn. It removes the four
-              things that quietly cost you orders every week.
+              {t("whyItLands.description")}
             </p>
             <CTAButton href="/#final-cta" size="md" className="mt-7">
-              Start selling free
+              {t("whyItLands.cta")}
             </CTAButton>
 
             <dl className="mt-10 grid grid-cols-3 gap-4 border-t border-ink/10 pt-6 sm:max-w-md">
               {stats.map((stat, i) => (
-                <StatItem
-                  key={stat.label}
-                  stat={stat}
-                  index={i}
-                  visible={visible}
-                />
+                <StatItem key={stat.label} stat={stat} index={i} visible={visible} />
               ))}
             </dl>
           </div>
@@ -142,6 +110,8 @@ export function WhyItLands() {
               <ReasonRow
                 key={reason.title}
                 reason={reason}
+                icon={reasonIcons[i]!}
+                accent={reasonAccents[i]!}
                 index={i}
                 visible={visible}
               />
@@ -160,7 +130,7 @@ function StatItem({
   index,
   visible,
 }: {
-  stat: (typeof stats)[number];
+  stat: TranslatedStat & { value: number };
   index: number;
   visible: boolean;
 }) {
@@ -181,14 +151,18 @@ function StatItem({
 
 function ReasonRow({
   reason,
+  icon: Icon,
+  accent: accentKey,
   index,
   visible,
 }: {
-  reason: Reason;
+  reason: TranslatedReason;
+  icon: LucideIcon;
+  accent: Accent;
   index: number;
   visible: boolean;
 }) {
-  const accent = accentClasses[reason.accent];
+  const accent = accentClasses[accentKey];
 
   return (
     <li
@@ -207,11 +181,7 @@ function ReasonRow({
           aria-hidden="true"
           className={cn("absolute inset-0 rounded-2xl", accent.icon)}
         />
-        <reason.icon
-          size={20}
-          strokeWidth={2}
-          className={cn("relative", accent.text)}
-        />
+        <Icon size={20} strokeWidth={2} className={cn("relative", accent.text)} />
         <span
           className={cn(
             "absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center rounded-full text-[10px] font-bold text-surface",

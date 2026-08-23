@@ -1,41 +1,21 @@
 import { Store, ImagePlus, Share2, type LucideIcon } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import { Container } from "../Container";
 import { RouteDivider } from "../RouteDivider";
 import { useReveal } from "@/hooks/use-reveal";
 
-type Step = {
-  number: string;
-  icon: LucideIcon;
-  title: string;
-  description: string;
-};
+const stepIcons: LucideIcon[] = [Store, ImagePlus, Share2];
+const stepNumbers = ["01", "02", "03"];
 
-const steps: Step[] = [
-  {
-    number: "01",
-    icon: Store,
-    title: "Create your store",
-    description:
-      "Pick a store name and add your profile: your logo, a short bio, and the link handle customers will remember.",
-  },
-  {
-    number: "02",
-    icon: ImagePlus,
-    title: "Add your products",
-    description:
-      "Upload photos, set prices, and organize items into categories. Edit anything anytime, and the storefront updates instantly.",
-  },
-  {
-    number: "03",
-    icon: Share2,
-    title: "Share your link",
-    description:
-      "Drop it in your Instagram bio or WhatsApp status. Customers browse, order, and pay, with no extra app for them to install.",
-  },
-];
+type TranslatedStep = { title: string; description: string };
 
 export function HowItWorks() {
+  const { t } = useTranslation("home");
   const { ref, visible } = useReveal<HTMLDivElement>();
+
+  const steps = t("howItWorks.steps", {
+    returnObjects: true,
+  }) as TranslatedStep[];
 
   return (
     <section id="how-it-works" className="relative overflow-hidden bg-paper-dim">
@@ -47,14 +27,13 @@ export function HowItWorks() {
       <Container className="py-16 sm:py-20 lg:py-24">
         <div className="mx-auto max-w-2xl text-center">
           <span className="text-[10px] font-semibold uppercase tracking-[0.14em] text-lime sm:text-xs">
-            How it works
+            {t("howItWorks.eyebrow")}
           </span>
           <h2 className="mt-3 font-display text-[1.75rem] font-semibold leading-tight tracking-tight text-ink sm:text-4xl lg:text-5xl">
-            Three steps between you and your first order
+            {t("howItWorks.title")}
           </h2>
           <p className="mt-4 text-sm leading-relaxed text-ink-soft sm:text-lg">
-            No developer, no design tool, no waiting on approval. Most sellers
-            go from signing up to sharing their link in one sitting.
+            {t("howItWorks.description")}
           </p>
         </div>
 
@@ -81,12 +60,18 @@ export function HowItWorks() {
           <div className="flex flex-col gap-10 lg:grid lg:grid-cols-3 lg:gap-8">
             {steps.map((step, i) => (
               <div
-                key={step.number}
+                key={stepNumbers[i]}
                 data-visible={visible}
                 className="reveal"
                 style={{ transitionDelay: `${i * 120}ms` }}
               >
-                <StepCard step={step} />
+                <StepCard
+                  number={stepNumbers[i]!}
+                  icon={stepIcons[i]!}
+                  title={step.title}
+                  description={step.description}
+                  stepLabel={t("howItWorks.stepLabel", { number: stepNumbers[i]! })}
+                />
               </div>
             ))}
           </div>
@@ -98,9 +83,18 @@ export function HowItWorks() {
   );
 }
 
-function StepCard({ step }: { step: Step }) {
-  const { number, icon: Icon, title, description } = step;
-
+function StepCard({
+  icon: Icon,
+  title,
+  description,
+  stepLabel,
+}: {
+  number: string;
+  icon: LucideIcon;
+  title: string;
+  description: string;
+  stepLabel: string;
+}) {
   return (
     <div className="group relative flex gap-5 lg:flex-col lg:items-center lg:gap-0 lg:text-center">
       <span className="relative z-10 flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-surface text-lime transition-all duration-300 group-hover:-translate-y-1 group-hover:bg-[image:var(--gradient-brand)] group-hover:text-ink">
@@ -108,7 +102,7 @@ function StepCard({ step }: { step: Step }) {
       </span>
       <div className="pt-1 lg:pt-0">
         <span className="font-display text-xs font-semibold tracking-wider text-ink-faint lg:mt-4 lg:block">
-          STEP {number}
+          {stepLabel}
         </span>
         <h3 className="mt-1 font-display text-lg font-semibold text-ink">
           {title}

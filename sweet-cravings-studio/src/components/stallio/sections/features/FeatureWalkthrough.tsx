@@ -7,6 +7,7 @@ import {
   Check,
   type LucideIcon,
 } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import { Container } from "../../Container";
 import { RouteDivider } from "../../RouteDivider";
 import { useReveal } from "@/hooks/use-reveal";
@@ -17,100 +18,45 @@ import prod3 from "@/assets/prod-3.jpg";
 import prod4 from "@/assets/prod-4.jpg";
 
 type TabId = "storefront" | "checkout" | "dashboard" | "chat";
+type Accent = "violet" | "teal" | "pink" | "lime";
 
-type Tab = {
-  id: TabId;
+const tabIds: TabId[] = ["storefront", "checkout", "dashboard", "chat"];
+const tabIcons: Record<TabId, LucideIcon> = {
+  storefront: Store,
+  checkout: Wallet,
+  dashboard: ClipboardList,
+  chat: MessageCircle,
+};
+const tabAccents: Record<TabId, Accent> = {
+  storefront: "violet",
+  checkout: "pink",
+  dashboard: "teal",
+  chat: "lime",
+};
+
+type TranslatedTab = {
   label: string;
-  icon: LucideIcon;
-  accent: "violet" | "teal" | "pink" | "lime";
   eyebrow: string;
   title: string;
   description: string;
   bullets: string[];
 };
 
-const tabs: Tab[] = [
-  {
-    id: "storefront",
-    label: "Storefront",
-    icon: Store,
-    accent: "violet",
-    eyebrow: "What buyers see",
-    title: "A catalog that reads as a real shop",
-    description:
-      "Every product gets its own page with photos, price, and variants, laid out in a grid buyers can actually browse on their phone.",
-    bullets: [
-      "Unlimited products and photos",
-      "Mobile-first layout on every screen size",
-      "Light and dark mode built in",
-      "Custom store name, bio, and logo",
-    ],
-  },
-  {
-    id: "checkout",
-    label: "Checkout",
-    icon: Wallet,
-    accent: "pink",
-    eyebrow: "What buyers do",
-    title: "Cart to confirmed order, no gateway needed",
-    description:
-      "Buyers add items, pick a payment method, and check out without leaving the link you shared.",
-    bullets: [
-      "One cart across the whole catalog",
-      "UPI and cash on delivery, ready by default",
-      "No payment gateway approval to wait on",
-      "Guest checkout, zero signup for buyers",
-    ],
-  },
-  {
-    id: "dashboard",
-    label: "Dashboard",
-    icon: ClipboardList,
-    accent: "teal",
-    eyebrow: "What you run the shop on",
-    title: "Every order in one place, not six chats",
-    description:
-      "Track each order from placed to delivered, with buyer details attached instead of buried in your DMs.",
-    bullets: [
-      "Live status: pending, confirmed, shipped",
-      "Buyer name, contact, and order value together",
-      "Searchable order history",
-      "Updates the instant a buyer checks out",
-    ],
-  },
-  {
-    id: "chat",
-    label: "Chat & Trust",
-    icon: MessageCircle,
-    accent: "lime",
-    eyebrow: "What keeps buyers coming back",
-    title: "Keep the DM-style relationship buyers already like",
-    description:
-      "A tap-to-chat button and visible reviews keep the personal touch that made people trust your page in the first place.",
-    bullets: [
-      "Tap-to-chat button on every product",
-      "Direct handoff to WhatsApp",
-      "Star ratings and reviews on your store",
-      "Repeat buyers recognized automatically",
-    ],
-  },
-];
-
-const accentText = {
+const accentText: Record<Accent, string> = {
   violet: "text-violet",
   teal: "text-teal",
   pink: "text-pink",
   lime: "text-lime",
 };
 
-const accentBg = {
+const accentBg: Record<Accent, string> = {
   violet: "bg-violet/15 text-violet ring-violet/30",
   teal: "bg-teal/15 text-teal ring-teal/30",
   pink: "bg-pink/15 text-pink ring-pink/30",
   lime: "bg-lime/15 text-lime ring-lime/30",
 };
 
-const accentActiveTab = {
+const accentActiveTab: Record<Accent, string> = {
   violet: "bg-[image:var(--gradient-brand)] text-white shadow-violet/30",
   teal: "bg-[linear-gradient(90deg,var(--teal),var(--violet))] text-white shadow-teal/30",
   pink: "bg-[image:var(--gradient-brand)] text-white shadow-pink/30",
@@ -120,17 +66,30 @@ const accentActiveTab = {
 const AUTO_MS = 4200;
 
 export function FeatureWalkthrough() {
+  const { t } = useTranslation("features");
   const { ref, visible } = useReveal<HTMLDivElement>();
   const [active, setActive] = useState<TabId>("storefront");
   const [paused, setPaused] = useState(false);
-  const activeTab = tabs.find((t) => t.id === active) ?? tabs[0]!;
+
+  const tabsData = t("walkthrough.tabs", {
+    returnObjects: true,
+  }) as Record<TabId, TranslatedTab>;
+
+  const tabs = tabIds.map((id) => ({
+    id,
+    icon: tabIcons[id],
+    accent: tabAccents[id],
+    ...tabsData[id],
+  }));
+
+  const activeTab = tabs.find((tab) => tab.id === active) ?? tabs[0]!;
 
   useEffect(() => {
     if (paused || !visible) return;
     const id = window.setInterval(() => {
       setActive((prev) => {
-        const idx = tabs.findIndex((t) => t.id === prev);
-        return tabs[(idx + 1) % tabs.length]!.id;
+        const idx = tabIds.indexOf(prev);
+        return tabIds[(idx + 1) % tabIds.length]!;
       });
     }, AUTO_MS);
     return () => window.clearInterval(id);
@@ -147,25 +106,25 @@ export function FeatureWalkthrough() {
       <Container className="relative py-16 sm:py-20 lg:py-24">
         <div className="mx-auto max-w-2xl text-center">
           <span className="text-[10px] font-semibold uppercase tracking-[0.14em] text-violet sm:text-xs">
-            See it in action
+            {t("walkthrough.eyebrow")}
           </span>
           <h2 className="mt-3 font-display text-[1.75rem] font-semibold leading-tight tracking-tight text-ink sm:text-4xl lg:text-[2.75rem]">
-            One storefront, four things working together
+            {t("walkthrough.title")}
           </h2>
           <p className="mt-4 text-sm leading-relaxed text-ink-soft sm:text-lg">
-            Tap through to see what buyers and sellers each get, without
-            switching apps.
+            {t("walkthrough.description")}
           </p>
         </div>
 
         {/* Tab switcher */}
         <div
           role="tablist"
-          aria-label="Feature walkthrough"
+          aria-label={t("walkthrough.tabsLabel")}
           className="mx-auto mt-9 flex max-w-full flex-wrap items-center justify-center gap-2 sm:mt-11"
         >
           {tabs.map((tab) => {
             const isActive = tab.id === active;
+            const Icon = tab.icon;
             return (
               <button
                 key={tab.id}
@@ -175,14 +134,11 @@ export function FeatureWalkthrough() {
                 className={cn(
                   "inline-flex items-center gap-2 rounded-full border px-4 py-2 text-xs font-semibold tracking-tight transition-all duration-300 sm:text-sm",
                   isActive
-                    ? cn(
-                        "border-transparent shadow-lg",
-                        accentActiveTab[tab.accent],
-                      )
+                    ? cn("border-transparent shadow-lg", accentActiveTab[tab.accent])
                     : "border-ink/12 bg-surface text-ink-soft hover:border-ink/25 hover:text-ink",
                 )}
               >
-                <tab.icon size={15} strokeWidth={2.3} />
+                <Icon size={15} strokeWidth={2.3} />
                 {tab.label}
               </button>
             );
@@ -251,7 +207,7 @@ export function FeatureWalkthrough() {
                 <span className="h-2.5 w-2.5 rounded-full bg-amber/70" />
                 <span className="h-2.5 w-2.5 rounded-full bg-teal/70" />
                 <span className="ml-2 rounded-full bg-surface px-3 py-1 text-[10px] font-medium text-ink-faint ring-1 ring-ink/10">
-                  stallio.shop/your-store
+                  {t("walkthrough.storeUrlLabel")}
                 </span>
               </div>
               <div className="flex min-h-[300px] flex-col justify-center p-4 sm:min-h-[340px] sm:p-5">
@@ -314,6 +270,7 @@ function StorefrontMock() {
 }
 
 function CheckoutMock() {
+  const { t } = useTranslation("features");
   return (
     <div className="flex flex-col gap-3">
       <MockRow>
@@ -326,11 +283,13 @@ function CheckoutMock() {
           <div className="flex flex-1 items-center justify-between">
             <div>
               <p className="text-xs font-semibold text-ink sm:text-sm">
-                Chunky Sneakers
+                {t("walkthrough.checkoutMock.product1")}
               </p>
               <p className="text-[11px] text-ink-faint">Rs 999</p>
             </div>
-            <span className="text-[11px] font-medium text-ink-soft">x1</span>
+            <span className="text-[11px] font-medium text-ink-soft">
+              {t("walkthrough.checkoutMock.qty")}
+            </span>
           </div>
         </div>
       </MockRow>
@@ -344,40 +303,43 @@ function CheckoutMock() {
           <div className="flex flex-1 items-center justify-between">
             <div>
               <p className="text-xs font-semibold text-ink sm:text-sm">
-                Everyday Runners
+                {t("walkthrough.checkoutMock.product2")}
               </p>
               <p className="text-[11px] text-ink-faint">Rs 1,249</p>
             </div>
-            <span className="text-[11px] font-medium text-ink-soft">x1</span>
+            <span className="text-[11px] font-medium text-ink-soft">
+              {t("walkthrough.checkoutMock.qty")}
+            </span>
           </div>
         </div>
       </MockRow>
       <div className="rounded-xl border border-violet/25 bg-violet/10 px-3.5 py-3">
         <p className="text-[10px] font-semibold uppercase tracking-[0.1em] text-violet">
-          Payment method
+          {t("walkthrough.checkoutMock.paymentMethod")}
         </p>
         <div className="mt-2 flex gap-2">
           <span className="rounded-full bg-surface px-3 py-1.5 text-[11px] font-medium text-ink shadow-sm ring-1 ring-ink/10">
-            UPI
+            {t("walkthrough.checkoutMock.upi")}
           </span>
           <span className="rounded-full px-3 py-1.5 text-[11px] font-medium text-ink-soft">
-            Cash on delivery
+            {t("walkthrough.checkoutMock.cod")}
           </span>
         </div>
       </div>
       <button className="w-full rounded-full bg-[image:var(--gradient-brand)] py-3 text-xs font-semibold text-white sm:text-sm">
-        Confirm order · Rs 2,248
+        {t("walkthrough.checkoutMock.confirmOrder")}
       </button>
     </div>
   );
 }
 
 function DashboardMock() {
+  const { t } = useTranslation("features");
   const orders = [
-    { id: "#1042", name: "Ayesha K.", status: "Awaiting confirmation", tone: "pending" as const },
-    { id: "#1041", name: "Bilal R.", status: "Confirmed", tone: "done" as const },
-    { id: "#1039", name: "Sana M.", status: "Confirmed", tone: "done" as const },
-    { id: "#1037", name: "Hamza T.", status: "Awaiting confirmation", tone: "pending" as const },
+    { id: "#1042", name: "Ayesha K.", status: t("walkthrough.dashboardMock.awaitingConfirmation"), tone: "pending" as const },
+    { id: "#1041", name: "Bilal R.", status: t("walkthrough.dashboardMock.confirmed"), tone: "done" as const },
+    { id: "#1039", name: "Sana M.", status: t("walkthrough.dashboardMock.confirmed"), tone: "done" as const },
+    { id: "#1037", name: "Hamza T.", status: t("walkthrough.dashboardMock.awaitingConfirmation"), tone: "pending" as const },
   ];
   return (
     <div className="flex flex-col gap-2.5">
@@ -404,15 +366,16 @@ function DashboardMock() {
 }
 
 function ChatMock() {
+  const { t } = useTranslation("features");
   const messages = [
     {
       name: "Zainab",
-      text: "Ordered straight from the WhatsApp link, so easy.",
+      text: t("walkthrough.chatMock.review1"),
       rating: 5,
     },
     {
       name: "Hamza",
-      text: "Loved seeing order status without asking in DMs.",
+      text: t("walkthrough.chatMock.review2"),
       rating: 5,
     },
   ];
@@ -437,7 +400,7 @@ function ChatMock() {
       ))}
       <button className="flex items-center justify-center gap-2 rounded-full bg-[image:var(--gradient-brand)] py-3 text-xs font-semibold text-white sm:text-sm">
         <MessageCircle size={14} />
-        Chat with seller
+        {t("walkthrough.chatMock.chatWithSeller")}
       </button>
     </div>
   );

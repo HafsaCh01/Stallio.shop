@@ -9,6 +9,7 @@ import {
   Clock,
   type LucideIcon,
 } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import { Container } from "../Container";
 import { RouteDivider } from "../RouteDivider";
 import { ProductPreviewCard } from "../ProductPreviewCard";
@@ -20,41 +21,21 @@ import prod4 from "@/assets/prod-4.jpg";
 import prod5 from "@/assets/prod-5.jpg";
 import prod6 from "@/assets/prod-6.jpg";
 
-type Feature = {
-  icon: LucideIcon;
-  title: string;
-  description: string;
-};
-
-const features: Feature[] = [
-  {
-    icon: LayoutGrid,
-    title: "Product pages",
-    description:
-      "Every item gets its own page with photos, price, and variants, so there's no more scrolling old posts to find one product.",
-  },
-  {
-    icon: ShoppingCart,
-    title: "Cart & checkout",
-    description:
-      "Customers add multiple items and check out in one go, with UPI or cash-on-delivery built in.",
-  },
-  {
-    icon: BarChart3,
-    title: "Order dashboard",
-    description:
-      "See every order, its status, and buyer details in one place instead of scattered across chats.",
-  },
-  {
-    icon: MessageSquare,
-    title: "Direct customer chat",
-    description:
-      "A tap-to-chat button keeps the personal, DM-style conversation you already have with buyers.",
-  },
+const featureIcons: LucideIcon[] = [
+  LayoutGrid,
+  ShoppingCart,
+  BarChart3,
+  MessageSquare,
 ];
 
+type TranslatedFeature = { title: string; description: string };
+
 export function InsideTheBox() {
+  const { t } = useTranslation("home");
   const { ref, visible } = useReveal<HTMLDivElement>();
+  const features = t("insideTheBox.features", {
+    returnObjects: true,
+  }) as TranslatedFeature[];
 
   return (
     <section id="inside-the-box" className="relative overflow-hidden bg-paper-dim">
@@ -70,33 +51,34 @@ export function InsideTheBox() {
         >
           <div data-visible={visible} className="reveal">
             <span className="text-[10px] font-semibold uppercase tracking-[0.14em] text-lime sm:text-xs">
-              Inside the box
+              {t("insideTheBox.eyebrow")}
             </span>
             <h2 className="mt-3 font-display text-[1.75rem] font-semibold leading-tight tracking-tight text-ink sm:text-4xl lg:text-[2.75rem]">
-              Everything inside your storefront
+              {t("insideTheBox.title")}
             </h2>
             <p className="mt-4 max-w-md text-sm leading-relaxed text-ink-soft sm:text-lg">
-              One link opens onto a full storefront, not just a product list.
-              Hover or tap any product in the phone to see the page your
-              customers get.
+              {t("insideTheBox.description")}
             </p>
 
             <ul className="mt-8 flex flex-col gap-5 sm:mt-10 sm:gap-6">
-              {features.map(({ icon: Icon, title, description }) => (
-                <li key={title} className="flex gap-4">
-                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-violet/15 text-teal">
-                    <Icon size={19} strokeWidth={2} />
-                  </span>
-                  <div className="min-w-0">
-                    <h3 className="font-display text-base font-semibold text-ink">
-                      {title}
-                    </h3>
-                    <p className="mt-1 text-sm leading-relaxed text-ink-soft">
-                      {description}
-                    </p>
-                  </div>
-                </li>
-              ))}
+              {features.map((feature, i) => {
+                const Icon = featureIcons[i]!;
+                return (
+                  <li key={feature.title} className="flex gap-4">
+                    <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-violet/15 text-teal">
+                      <Icon size={19} strokeWidth={2} />
+                    </span>
+                    <div className="min-w-0">
+                      <h3 className="font-display text-base font-semibold text-ink">
+                        {feature.title}
+                      </h3>
+                      <p className="mt-1 text-sm leading-relaxed text-ink-soft">
+                        {feature.description}
+                      </p>
+                    </div>
+                  </li>
+                );
+              })}
             </ul>
           </div>
 
@@ -111,6 +93,33 @@ export function InsideTheBox() {
   );
 }
 
+type ProductMeta = { id: string; img: string };
+
+const productMeta: ProductMeta[] = [
+  { id: "p1", img: prod1 },
+  { id: "p2", img: prod2 },
+  { id: "p3", img: prod3 },
+  { id: "p4", img: prod4 },
+  { id: "p5", img: prod5 },
+  { id: "p6", img: prod6 },
+];
+const productPrices = [
+  "Rs 999",
+  "Rs 1,249",
+  "Rs 1,499",
+  "Rs 1,749",
+  "Rs 1,999",
+  "Rs 2,249",
+];
+const productSizes = [
+  ["38", "39", "40", "41"],
+  ["39", "40", "42"],
+  ["40", "41", "43"],
+  ["38", "41", "42"],
+  ["39", "40", "41", "44"],
+  ["38", "40", "42"],
+];
+
 type Product = {
   id: string;
   name: string;
@@ -121,99 +130,60 @@ type Product = {
   note: string;
 };
 
-const products: Product[] = [
-  {
-    id: "p1",
-    name: "Chunky Sneakers",
-    price: "Rs 999",
-    img: prod1,
-    category: "Shoes",
-    sizes: ["38", "39", "40", "41"],
-    note: "Free delivery on orders above Rs 2,500",
-  },
-  {
-    id: "p2",
-    name: "Everyday Runners",
-    price: "Rs 1,249",
-    img: prod2,
-    category: "Shoes",
-    sizes: ["39", "40", "42"],
-    note: "Cash on delivery available",
-  },
-  {
-    id: "p3",
-    name: "Retro High-Tops",
-    price: "Rs 1,499",
-    img: prod3,
-    category: "Shoes",
-    sizes: ["40", "41", "43"],
-    note: "Only 4 pairs left in stock",
-  },
-  {
-    id: "p4",
-    name: "Court Classics",
-    price: "Rs 1,749",
-    img: prod4,
-    category: "Shoes",
-    sizes: ["38", "41", "42"],
-    note: "Ships next working day",
-  },
-  {
-    id: "p5",
-    name: "Street Trainers",
-    price: "Rs 1,999",
-    img: prod5,
-    category: "Shoes",
-    sizes: ["39", "40", "41", "44"],
-    note: "New drop this week",
-  },
-  {
-    id: "p6",
-    name: "Weekend Slip-Ons",
-    price: "Rs 2,249",
-    img: prod6,
-    category: "Shoes",
-    sizes: ["38", "40", "42"],
-    note: "Bundle 2 and save 10%",
-  },
+const orderIds = ["#1042", "#1041", "#1039"];
+const orderStatuses: ("pending" | "confirmed")[] = [
+  "pending",
+  "pending",
+  "confirmed",
 ];
+const reviewRatings = [5, 5, 4];
 
-const orders = [
-  { id: "#1042", buyer: "Ayesha K.", status: "pending" as const },
-  { id: "#1041", buyer: "Bilal R.", status: "pending" as const },
-  { id: "#1039", buyer: "Sana M.", status: "confirmed" as const },
-];
-
-const reviews = [
-  {
-    name: "Zainab",
-    rating: 5,
-    note: "Ordered straight from the WhatsApp link, so easy.",
-  },
-  {
-    name: "Hamza",
-    rating: 5,
-    note: "Loved seeing order status without asking in DMs.",
-  },
-  {
-    name: "Mehak",
-    rating: 4,
-    note: "Store looks legit, not just a chat catalog anymore.",
-  },
-];
-
-const tabs = [
-  { key: "shop" as const, label: "Shop" },
-  { key: "orders" as const, label: "Orders" },
-  { key: "reviews" as const, label: "Reviews" },
-];
-
-type TabKey = (typeof tabs)[number]["key"];
+type TabKey = "shop" | "orders" | "reviews";
+const tabKeys: TabKey[] = ["shop", "orders", "reviews"];
 
 function StorefrontMockup() {
+  const { t } = useTranslation("home");
   const [activeTab, setActiveTab] = useState<TabKey>("shop");
   const [pinned, setPinned] = useState<Product | null>(null);
   const [hovered, setHovered] = useState<Product | null>(null);
+
+  const translatedProducts = t("insideTheBox.products", {
+    returnObjects: true,
+  }) as { name: string; category: string; note: string }[];
+  const products: Product[] = productMeta.map((meta, i) => ({
+    id: meta.id,
+    img: meta.img,
+    price: productPrices[i]!,
+    sizes: productSizes[i]!,
+    name: translatedProducts[i]?.name ?? "",
+    category: translatedProducts[i]?.category ?? "",
+    note: translatedProducts[i]?.note ?? "",
+  }));
+
+  const translatedOrders = t("insideTheBox.orders", {
+    returnObjects: true,
+  }) as { buyer: string }[];
+  const orders = orderIds.map((id, i) => ({
+    id,
+    buyer: translatedOrders[i]?.buyer ?? "",
+    status: orderStatuses[i]!,
+  }));
+
+  const translatedReviews = t("insideTheBox.reviews", {
+    returnObjects: true,
+  }) as { name: string; note: string }[];
+  const reviews = translatedReviews.map((review, i) => ({
+    ...review,
+    rating: reviewRatings[i]!,
+  }));
+
+  const translatedTabs = t("insideTheBox.tabs", {
+    returnObjects: true,
+  }) as { key: string; label: string }[];
+  const tabs = tabKeys.map((key, i) => ({
+    key,
+    label: translatedTabs[i]?.label ?? key,
+  }));
 
   // A click "pins" the preview open (works on touch too); hovering a
   // product with a mouse previews it without needing a click.
@@ -243,14 +213,14 @@ function StorefrontMockup() {
             <div className="flex items-center justify-between gap-2 px-4 pt-4">
               <div className="min-w-0">
                 <p className="truncate font-display text-sm font-semibold text-ink">
-                  Your Shop
+                  {t("insideTheBox.yourShop")}
                 </p>
                 <p className="truncate text-[10px] text-ink-faint">
-                  128 products &bull; Lahore
+                  {t("insideTheBox.productsCount")}
                 </p>
               </div>
-              <span className="flex h-8 shrink-0 items-center rounded-full bg-black px-3 text-[10px] font-semibold text-teal">
-                Cart &bull; 2
+              <span className="flex h-8 shrink-0 items-center whitespace-nowrap rounded-full bg-black px-3 text-[10px] font-semibold text-teal">
+                {t("insideTheBox.cart")}
               </span>
             </div>
 
@@ -264,7 +234,7 @@ function StorefrontMockup() {
                     setPinned(null);
                     setHovered(null);
                   }}
-                  className={`relative pb-2 transition-colors duration-200 ${
+                  className={`relative whitespace-nowrap pb-2 transition-colors duration-200 ${
                     activeTab === tab.key ? "text-ink" : "hover:text-ink-soft"
                   }`}
                 >
@@ -292,7 +262,9 @@ function StorefrontMockup() {
                       onMouseLeave={() => setHovered(null)}
                       onFocus={() => setHovered(item)}
                       onBlur={() => setHovered(null)}
-                      aria-label={`Preview ${item.name}`}
+                      aria-label={t("insideTheBox.previewLabel", {
+                        name: item.name,
+                      })}
                       className={`rounded-xl border p-1.5 text-left transition-all duration-200 hover:-translate-y-0.5 hover:border-teal/60 ${
                         selected?.id === item.id
                           ? "border-teal bg-violet/10"
@@ -338,8 +310,8 @@ function StorefrontMockup() {
                         </p>
                         <p className="truncate text-[10px] text-ink-faint">
                           {order.status === "pending"
-                            ? "Awaiting confirmation"
-                            : "Confirmed"}
+                            ? t("insideTheBox.awaitingConfirmation")
+                            : t("insideTheBox.confirmed")}
                         </p>
                       </div>
                       <span
@@ -404,11 +376,11 @@ function StorefrontMockup() {
                   aria-hidden="true"
                 />
                 <span className="truncate text-[10px] font-medium text-ink-soft">
-                  3 orders awaiting confirmation
+                  {t("insideTheBox.ordersAwaiting")}
                 </span>
               </div>
               <span className="shrink-0 text-[10px] font-semibold text-lime">
-                View dashboard
+                {t("insideTheBox.viewDashboard")}
               </span>
             </div>
           </div>
@@ -418,9 +390,9 @@ function StorefrontMockup() {
           className="absolute -left-4 -top-3 flex items-center gap-1.5 rounded-full border border-ink/10 bg-paper px-3 py-1.5 shadow-lg sm:-left-10 sm:px-3.5 sm:py-2"
           style={{ animation: "float-slow 5s ease-in-out infinite" }}
         >
-          <LayoutGrid size={13} className="text-teal" strokeWidth={2.5} />
-          <span className="text-[10px] font-semibold text-ink sm:text-xs">
-            One link, full store
+          <LayoutGrid size={13} className="text-teal shrink-0" strokeWidth={2.5} />
+          <span className="whitespace-nowrap text-[10px] font-semibold text-ink sm:text-xs">
+            {t("insideTheBox.oneLinkFullStore")}
           </span>
         </div>
       </div>

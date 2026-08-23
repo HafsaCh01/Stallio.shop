@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Link, useRouterState } from "@tanstack/react-router";
+import { useTranslation } from "react-i18next";
 import {
   Home,
   Info,
@@ -18,6 +19,7 @@ import { Container } from "./Container";
 import { CTAButton } from "./CTAButton";
 import { Logo } from "./Logo";
 import { Marquee } from "./Marquee";
+import { LanguageSwitcher, LanguageSwitcherMobile } from "./LanguageSwitcher";
 import { navLinks } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 import { useTheme } from "@/lib/theme";
@@ -29,12 +31,13 @@ function ThemeToggle({
   theme: "light" | "dark";
   onToggle: () => void;
 }) {
+  const { t } = useTranslation("common");
   return (
     <button
       type="button"
       onClick={onToggle}
       aria-label={
-        theme === "dark" ? "Switch to light mode" : "Switch to dark mode"
+        theme === "dark" ? t("nav.switchToLight") : t("nav.switchToDark")
       }
       className="relative inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-ink/12 bg-paper-dim text-ink-soft transition-all duration-300 hover:-translate-y-0.5 hover:border-teal/50 hover:text-ink"
     >
@@ -63,17 +66,18 @@ function ThemeToggle({
 }
 
 const navIcons: Record<string, typeof Home> = {
-  Home: Home,
-  About: Info,
-  "How It Works": ListChecks,
-  Features: Zap,
-  Pricing: CreditCard,
-  Contact: Mail,
+  home: Home,
+  about: Info,
+  howItWorks: ListChecks,
+  features: Zap,
+  pricing: CreditCard,
+  contact: Mail,
 };
 
 type Highlight = { left: number; width: number; opacity: number };
 
 export function Navbar() {
+  const { t } = useTranslation("common");
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [mounted, setMounted] = useState(false);
@@ -91,9 +95,9 @@ export function Navbar() {
   const isActive = (href: string) => !href.includes("#") && href === pathname;
   const activeLink = navLinks.find((l) => isActive(l.href));
 
-  const moveHighlightTo = (label: string | undefined) => {
+  const moveHighlightTo = (id: string | undefined) => {
     const nav = navRef.current;
-    const el = label ? linkRefs.current[label] : null;
+    const el = id ? linkRefs.current[id] : null;
     if (!nav || !el) {
       setHighlight((h) => ({ ...h, opacity: 0 }));
       return;
@@ -112,7 +116,7 @@ export function Navbar() {
   }, []);
 
   useEffect(() => {
-    moveHighlightTo(activeLink?.label);
+    moveHighlightTo(activeLink?.id);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pathname, mounted]);
 
@@ -133,96 +137,106 @@ export function Navbar() {
     >
       <Marquee />
 
-      <Container className="grid h-16 grid-cols-[minmax(0,1fr)_auto] items-center gap-4 border-b border-ink/10 sm:h-20 md:flex md:justify-between">
-        <Link
-          to="/"
-          aria-label="Stallio home"
-          className="group min-w-0 transition-transform duration-300 hover:scale-[1.03]"
-        >
-          <Logo />
-        </Link>
+      <Container className="grid h-16 max-w-7xl grid-cols-[minmax(0,1fr)_auto] items-center gap-3 border-b border-ink/10 sm:h-20 md:flex md:items-center md:justify-between xl:grid xl:grid-cols-[1fr_auto_1fr] xl:gap-3">
+        <div className="contents xl:col-start-2 xl:flex xl:items-center xl:gap-4">
+          <Link
+            to="/"
+            aria-label={t("nav.logInLabel")}
+            className="group shrink-0 justify-self-start transition-transform duration-300 hover:scale-[1.03]"
+          >
+            <Logo />
+          </Link>
 
-        <nav
-          ref={navRef}
-          aria-label="Primary"
-          onMouseLeave={() => moveHighlightTo(activeLink?.label)}
-          className="relative hidden items-center gap-1 rounded-full border border-ink/10 bg-surface/60 p-1 md:flex lg:gap-1"
-        >
-          <span
-            aria-hidden="true"
-            className="pointer-events-none absolute inset-y-1 rounded-full bg-paper shadow-[0_2px_10px_-2px_rgba(0,0,0,0.25)] transition-all duration-300 ease-out"
-            style={{
-              left: highlight.left,
-              width: highlight.width,
-              opacity: highlight.opacity,
-            }}
-          />
+          <nav
+            ref={navRef}
+            aria-label={t("nav.primaryLabel")}
+            onMouseLeave={() => moveHighlightTo(activeLink?.id)}
+            className="relative hidden shrink-0 items-center gap-1 rounded-full border border-ink/10 bg-surface/60 p-1 xl:flex"
+          >
+            <span
+              aria-hidden="true"
+              className="pointer-events-none absolute inset-y-1 rounded-full bg-paper shadow-[0_2px_10px_-2px_rgba(0,0,0,0.25)] transition-all duration-300 ease-out"
+              style={{
+                left: highlight.left,
+                width: highlight.width,
+                opacity: highlight.opacity,
+              }}
+            />
 
-          {navLinks.map((link) => {
-            const Icon = navIcons[link.label];
-            const active = isActive(link.href);
-            const className = cn(
-              "relative z-10 flex items-center gap-1.5 whitespace-nowrap rounded-full px-3.5 py-2 text-sm font-medium tracking-tight transition-colors duration-200 lg:px-4",
-              active ? "text-ink" : "text-ink-soft hover:text-ink",
-            );
-            const isHash = link.href.includes("#");
-            const setRef = (el: HTMLElement | null) => {
-              linkRefs.current[link.label] = el;
-            };
+            {navLinks.map((link) => {
+              const Icon = navIcons[link.id];
+              const label = t(`nav.${link.id}`);
+              const active = isActive(link.href);
+              const className = cn(
+                "relative z-10 flex items-center gap-1.5 whitespace-nowrap rounded-full px-2.5 py-2 text-sm font-medium tracking-tight transition-colors duration-200",
+                active ? "text-ink" : "text-ink-soft hover:text-ink",
+              );
+              const isHash = link.href.includes("#");
+              const setRef = (el: HTMLElement | null) => {
+                linkRefs.current[link.id] = el;
+              };
 
-            return isHash ? (
-              <a
-                key={link.label}
-                ref={setRef}
-                href={link.href}
-                onMouseEnter={() => moveHighlightTo(link.label)}
-                className={className}
-              >
-                {Icon && (
-                  <Icon size={14} strokeWidth={2.25} aria-hidden="true" />
-                )}
-                {link.label}
-              </a>
-            ) : (
-              <Link
-                key={link.label}
-                ref={setRef}
-                to={link.href}
-                onMouseEnter={() => moveHighlightTo(link.label)}
-                className={className}
-              >
-                {Icon && (
-                  <Icon size={14} strokeWidth={2.25} aria-hidden="true" />
-                )}
-                {link.label}
-              </Link>
-            );
-          })}
-        </nav>
+              return isHash ? (
+                <a
+                  key={link.id}
+                  ref={setRef}
+                  href={link.href}
+                  onMouseEnter={() => moveHighlightTo(link.id)}
+                  className={className}
+                >
+                  {Icon && (
+                    <Icon size={14} strokeWidth={2.25} aria-hidden="true" />
+                  )}
+                  {label}
+                </a>
+              ) : (
+                <Link
+                  key={link.id}
+                  ref={setRef}
+                  to={link.href}
+                  onMouseEnter={() => moveHighlightTo(link.id)}
+                  className={className}
+                >
+                  {Icon && (
+                    <Icon size={14} strokeWidth={2.25} aria-hidden="true" />
+                  )}
+                  {label}
+                </Link>
+              );
+            })}
+          </nav>
+        </div>
 
-        <div className="hidden items-center gap-3 md:flex">
+        <div className="hidden shrink-0 items-center gap-2 justify-self-end xl:col-start-3 xl:flex">
+          <LanguageSwitcher />
           <ThemeToggle theme={theme} onToggle={toggleTheme} />
           <Link
             to="/login"
-            className="inline-flex items-center gap-1.5 whitespace-nowrap rounded-full px-3.5 py-2 text-sm font-medium tracking-tight text-ink-soft transition-colors duration-200 hover:text-ink"
+            className="inline-flex shrink-0 items-center gap-1.5 whitespace-nowrap rounded-full px-2.5 py-2 text-sm font-medium tracking-tight text-ink-soft transition-colors duration-200 hover:text-ink"
           >
             <LogIn size={14} strokeWidth={2.25} aria-hidden="true" />
-            Log In
+            {t("nav.logIn")}
           </Link>
-          <CTAButton href="/signup" size="sm">
+          <CTAButton href="/signup" size="sm" className="shrink-0">
             <UserPlus size={14} strokeWidth={2.25} aria-hidden="true" />
-            Start Free
+            {t("nav.startFree")}
           </CTAButton>
         </div>
 
-        <div className="flex items-center gap-1.5 md:hidden">
+        {/* Hamburger covers everything below `xl`. Translated nav labels
+            (e.g. "Cómo Funciona", "Iniciar Sesión") are noticeably longer
+            than their English counterparts, so the full pill-nav + actions
+            row now only appears once there's enough room at `xl` and up —
+            below that it collapses to the hamburger instead of squeezing
+            and overlapping the logo. */}
+        <div className="flex items-center gap-1.5 xl:hidden">
           <ThemeToggle theme={theme} onToggle={toggleTheme} />
           <button
             type="button"
             onClick={() => setOpen((v) => !v)}
             aria-expanded={open}
             aria-controls="mobile-menu"
-            aria-label={open ? "Close menu" : "Open menu"}
+            aria-label={open ? t("nav.closeMenu") : t("nav.openMenu")}
             className="relative inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-ink transition-colors hover:bg-ink/10"
           >
             <Menu
@@ -251,12 +265,13 @@ export function Navbar() {
         id="mobile-menu"
         className={cn(
           "overflow-hidden border-b border-ink/10 bg-paper transition-[max-height] duration-300 ease-in-out md:hidden",
-          open ? "max-h-96" : "max-h-0",
+          open ? "max-h-[36rem]" : "max-h-0",
         )}
       >
         <Container className="flex flex-col gap-1 pb-6 pt-2">
           {navLinks.map((link, i) => {
-            const Icon = navIcons[link.label];
+            const Icon = navIcons[link.id];
+            const label = t(`nav.${link.id}`);
             const active = isActive(link.href);
             const className = cn(
               "flex items-center gap-2.5 rounded-lg px-3 py-2.5 text-base font-medium transition-all duration-300",
@@ -270,7 +285,7 @@ export function Navbar() {
 
             return isHash ? (
               <a
-                key={link.label}
+                key={link.id}
                 href={link.href}
                 onClick={() => setOpen(false)}
                 className={className}
@@ -279,11 +294,11 @@ export function Navbar() {
                 {Icon && (
                   <Icon size={17} strokeWidth={2.25} aria-hidden="true" />
                 )}
-                {link.label}
+                {label}
               </a>
             ) : (
               <Link
-                key={link.label}
+                key={link.id}
                 to={link.href}
                 onClick={() => setOpen(false)}
                 className={className}
@@ -292,10 +307,11 @@ export function Navbar() {
                 {Icon && (
                   <Icon size={17} strokeWidth={2.25} aria-hidden="true" />
                 )}
-                {link.label}
+                {label}
               </Link>
             );
           })}
+          <LanguageSwitcherMobile className="mt-3" />
           <div className="mt-3 flex flex-col gap-2">
             <CTAButton
               href="/login"
@@ -305,7 +321,7 @@ export function Navbar() {
               onClick={() => setOpen(false)}
             >
               <LogIn size={14} strokeWidth={2.25} aria-hidden="true" />
-              Log In
+              {t("nav.logIn")}
             </CTAButton>
             <CTAButton
               href="/signup"
@@ -314,7 +330,7 @@ export function Navbar() {
               onClick={() => setOpen(false)}
             >
               <UserPlus size={14} strokeWidth={2.25} aria-hidden="true" />
-              Start Free
+              {t("nav.startFree")}
             </CTAButton>
           </div>
         </Container>

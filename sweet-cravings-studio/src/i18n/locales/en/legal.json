@@ -1,0 +1,76 @@
+{
+  "privacy": {
+    "title": "Privacy Policy",
+    "intro": "This Privacy Policy explains what information Stallio collects from sellers and their customers, how it is used, and the choices available to you. By using Stallio, you agree to the practices described here.",
+    "sections": [
+      {
+        "heading": "Information we collect",
+        "body": "When you create a store, we collect your name, contact details, and store information such as your catalog and pricing. When a customer places an order through your store, we collect the details needed to fulfill that order, including their name, contact number, and delivery address."
+      },
+      {
+        "heading": "How we use your information",
+        "body": "We use collected information to operate your storefront, process orders, provide the order dashboard, send account and order notifications, and improve the product. We do not sell seller or buyer data to third parties."
+      },
+      {
+        "heading": "Data sharing",
+        "body": "Information is shared only where necessary to deliver the service, for example with payment or delivery partners you choose to use, or where required by law."
+      },
+      {
+        "heading": "Your choices",
+        "body": "You can review, update, or delete your store information from your dashboard at any time. To request deletion of your account or data, contact us through the support channels listed on this site."
+      },
+      {
+        "heading": "Contact",
+        "body": "Questions about this policy can be sent through the contact options in the footer of this site."
+      }
+    ]
+  },
+  "terms": {
+    "title": "Terms of Service",
+    "intro": "These Terms of Service govern your use of Stallio to create and run an online store. By creating a store, you agree to these terms.",
+    "sections": [
+      {
+        "heading": "Using Stallio",
+        "body": "You must provide accurate information when creating your store and keep your account credentials secure. You are responsible for the products you list, the prices you set, and the orders you fulfill."
+      },
+      {
+        "heading": "Acceptable use",
+        "body": "Stores may not list illegal, counterfeit, or prohibited items, or be used to mislead customers. Stallio may suspend or remove stores that violate these terms."
+      },
+      {
+        "heading": "Payments and orders",
+        "body": "Sellers are responsible for confirming and fulfilling orders placed through their store, and for honoring the payment methods, such as UPI or cash on delivery, that they offer to customers."
+      },
+      {
+        "heading": "Changes to the service",
+        "body": "Stallio may update features, pricing, or these terms from time to time. Continued use of the platform after an update means you accept the revised terms."
+      },
+      {
+        "heading": "Contact",
+        "body": "Questions about these terms can be sent through the contact options in the footer of this site."
+      }
+    ]
+  },
+  "refundPolicy": {
+    "title": "Refund Policy",
+    "intro": "Stallio is a storefront platform. Each seller sets their own refund and cancellation terms for the products they sell, since Stallio does not manufacture or hold inventory itself.",
+    "sections": [
+      {
+        "heading": "Seller-set refund terms",
+        "body": "Individual sellers may display their own return or refund window on their storefront. Where a seller has not stated a policy, contact the seller directly through the store's chat link to request a return, exchange, or refund."
+      },
+      {
+        "heading": "Order cancellations",
+        "body": "Orders can typically be cancelled before a seller confirms them. Once an order is confirmed and dispatched, cancellation is at the seller's discretion."
+      },
+      {
+        "heading": "Payment refunds",
+        "body": "For orders paid through UPI, an approved refund is returned to the original payment method. For cash on delivery orders, refunds are arranged directly with the seller."
+      },
+      {
+        "heading": "Disputes",
+        "body": "If a seller and customer cannot resolve a refund request between themselves, contact Stallio support through the options in the footer of this site."
+      }
+    ]
+  }
+}

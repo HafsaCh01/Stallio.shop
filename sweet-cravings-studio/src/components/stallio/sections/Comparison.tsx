@@ -1,45 +1,31 @@
 import { Check, X } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import { Container } from "../Container";
 import { CTAButton } from "../CTAButton";
 import { RouteDivider } from "../RouteDivider";
 import { useReveal } from "@/hooks/use-reveal";
 
-const chatOnly = [
-  "Copy-pasting prices into every single DM",
-  "Orders scattered across chats",
-  "No single place for prices & photos",
-  "Re-sending the same product photos on repeat",
-  "Customers ask the same questions on repeat",
-  "Chasing screenshots as proof of payment",
-  "Payments and delivery feel improvised",
-];
-
-const withStallio = [
-  "One link customers browse and order from directly",
-  "One link: catalog + cart",
-  "Clear product pages you can share anywhere",
-  "A live product grid that updates the moment you edit it",
-  "Fewer “how much?” messages",
-  "UPI and cash-on-delivery built into checkout",
-  "A storefront that looks intentional",
-];
-
 export function Comparison() {
+  const { t } = useTranslation("home");
   const { ref, visible } = useReveal<HTMLDivElement>(0.15);
+
+  const chatOnly = t("comparison.chatOnly", { returnObjects: true }) as string[];
+  const withStallio = t("comparison.withStallio", {
+    returnObjects: true,
+  }) as string[];
 
   return (
     <section id="compare" className="relative overflow-hidden bg-paper">
       <Container className="py-16 sm:py-20 lg:py-24">
         <div className="mx-auto max-w-2xl text-center">
           <span className="text-[10px] font-semibold uppercase tracking-[0.14em] text-lime sm:text-xs">
-            Before &amp; after
+            {t("comparison.eyebrow")}
           </span>
           <h2 className="mt-3 font-display text-[1.75rem] font-semibold leading-tight tracking-tight text-ink sm:text-4xl lg:text-5xl">
-            Same hustle. Completely different storefront.
+            {t("comparison.title")}
           </h2>
           <p className="mt-4 text-sm leading-relaxed text-ink-soft sm:text-lg">
-            Most sellers start out running their shop through screenshots and
-            comment threads. Stallio just gives that hustle a proper storefront.
+            {t("comparison.description")}
           </p>
         </div>
 
@@ -49,13 +35,15 @@ export function Comparison() {
         >
           <ComparePanel
             tone="bad"
-            title="Chat-only selling"
+            title={t("comparison.chatOnlyTitle")}
+            beforeAfterLabel={t("comparison.before")}
             items={chatOnly}
             visible={visible}
           />
           <ComparePanel
             tone="good"
-            title="With Stallio"
+            title={t("comparison.withStallioTitle")}
+            beforeAfterLabel={t("comparison.after")}
             items={withStallio}
             visible={visible}
           />
@@ -65,13 +53,13 @@ export function Comparison() {
             className="reveal absolute left-1/2 top-1/2 z-20 hidden h-14 w-14 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-2xl border border-ink/10 bg-surface text-xs font-bold uppercase tracking-widest text-ink shadow-[0_16px_40px_-16px_rgba(0,0,0,0.9)] lg:flex"
             style={{ transitionDelay: "420ms" }}
           >
-            vs
+            {t("comparison.vs")}
           </span>
         </div>
 
         <div className="mt-10 flex justify-center sm:mt-12">
           <CTAButton href="#final-cta" size="md">
-            Try Stallio free
+            {t("comparison.cta")}
           </CTAButton>
         </div>
       </Container>
@@ -86,11 +74,13 @@ function ComparePanel({
   title,
   items,
   visible,
+  beforeAfterLabel,
 }: {
   tone: "bad" | "good";
   title: string;
   items: string[];
   visible: boolean;
+  beforeAfterLabel: string;
 }) {
   const good = tone === "good";
   const Icon = good ? Check : X;
@@ -123,7 +113,7 @@ function ComparePanel({
         >
           <Icon size={20} strokeWidth={3} />
         </span>
-        <h3 className="truncate font-display text-xl font-semibold text-ink sm:text-2xl">
+        <h3 className="font-display text-xl font-semibold leading-snug text-ink sm:text-2xl">
           {title}
         </h3>
       </div>
@@ -155,7 +145,7 @@ function ComparePanel({
       </ul>
 
       <span className="relative mt-6 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-ink-faint lg:hidden">
-        {good ? "After" : "Before"}
+        {beforeAfterLabel}
       </span>
     </div>
   );

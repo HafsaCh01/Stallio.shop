@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { useTranslation } from "react-i18next";
 import { Navbar } from "./Navbar";
 import { Footer } from "./Footer";
 import { Container } from "./Container";
@@ -12,6 +13,7 @@ export function LegalPage({
   updated: string;
   children: ReactNode;
 }) {
+  const { t } = useTranslation("common");
   return (
     <div className="flex min-h-screen flex-col bg-paper font-sans text-ink">
       <Navbar />
@@ -20,7 +22,9 @@ export function LegalPage({
           <h1 className="font-display text-3xl font-semibold tracking-tight text-ink sm:text-4xl">
             {title}
           </h1>
-          <p className="mt-2 text-sm text-ink-faint">Last updated: {updated}</p>
+          <p className="mt-2 text-sm text-ink-faint">
+            {t("legalPage.lastUpdated", { date: updated })}
+          </p>
           <div className="prose-legal mt-8 flex flex-col gap-6 text-sm leading-relaxed text-ink-soft sm:text-base">
             {children}
           </div>

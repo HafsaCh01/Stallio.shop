@@ -1,0 +1,58 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "howItWorks": "How It Works",
+    "features": "Features",
+    "pricing": "Pricing",
+    "solutions": "Solutions",
+    "contact": "Contact",
+    "logIn": "Log In",
+    "startFree": "Start Free",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "switchToLight": "Switch to light mode",
+    "switchToDark": "Switch to dark mode",
+    "stallioHome": "Stallio home",
+    "language": "Language"
+  },
+  "marquee": {
+    "clothingBoutiques": "Clothing Boutiques",
+    "homeBakers": "Home Bakers",
+    "skincareBrands": "Skincare Brands",
+    "jewelryMakers": "Jewelry Makers",
+    "thriftResellers": "Thrift Resellers",
+    "handmadeCrafts": "Handmade Crafts"
+  },
+  "footer": {
+    "tagline": "Your shop, one link away.",
+    "description": "Stallio turns your Instagram or WhatsApp page into a real online store: unlimited products, an order dashboard, and a mobile storefront, all from one shareable link.",
+    "product": "Product",
+    "support": "Support",
+    "legal": "Legal",
+    "howItWorks": "How it works",
+    "features": "Features",
+    "pricing": "Pricing",
+    "solutions": "Solutions",
+    "aboutUs": "About us",
+    "gettingStarted": "Getting started",
+    "contactUs": "Contact us",
+    "faqs": "FAQs",
+    "privacyPolicy": "Privacy Policy",
+    "termsOfService": "Terms of Service",
+    "refundPolicy": "Refund Policy",
+    "home": "Home",
+    "about": "About",
+    "contact": "Contact",
+    "copyright": "\u00a9 {{year}} Stallio. All rights reserved."
+  },
+  "buttons": {
+    "startFree": "Start Free",
+    "learnMore": "Learn More",
+    "getStarted": "Get Started",
+    "seePricing": "See Pricing",
+    "contactUs": "Contact Us",
+    "backHome": "Go home",
+    "tryAgain": "Try again"
+  }
+}

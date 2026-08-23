@@ -1,57 +1,63 @@
 import { z } from "zod";
-
-export const loginSchema = z.object({
-  email: z
-    .string()
-    .min(1, "Email is required")
-    .email("Enter a valid email address"),
-  password: z.string().min(1, "Password is required"),
-  remember: z.boolean().optional(),
-});
-
-export type LoginValues = z.infer<typeof loginSchema>;
+import type { TFunction } from "i18next";
 
 const usernamePattern = /^[a-zA-Z0-9_-]+$/;
 
-export const signupSchema = z
-  .object({
-    shopName: z
-      .string()
-      .min(2, "Shop name must be at least 2 characters")
-      .max(60, "Shop name is too long"),
-    username: z
-      .string()
-      .min(3, "Store URL must be at least 3 characters")
-      .max(30, "Store URL is too long")
-      .regex(usernamePattern, "Letters, numbers, underscores and hyphens only"),
+export function createLoginSchema(t: TFunction<"auth">) {
+  return z.object({
     email: z
       .string()
-      .min(1, "Email is required")
-      .email("Enter a valid email address"),
-    password: z
-      .string()
-      .min(8, "Password must be at least 8 characters")
-      .regex(/[A-Z]/, "Include at least one uppercase letter")
-      .regex(/[0-9]/, "Include at least one number"),
-    confirmPassword: z.string().min(1, "Please confirm your password"),
-    country: z.string().min(1, "Select your country"),
-    currency: z.string().min(1, "Select your currency"),
-  })
-  .refine((data) => data.password === data.confirmPassword, {
-    message: "Passwords don't match",
-    path: ["confirmPassword"],
+      .min(1, t("validation.emailRequired"))
+      .email(t("validation.emailInvalid")),
+    password: z.string().min(1, t("validation.passwordRequired")),
+    remember: z.boolean().optional(),
   });
+}
+export type LoginValues = z.infer<ReturnType<typeof createLoginSchema>>;
 
-export type SignupValues = z.infer<typeof signupSchema>;
+export function createSignupSchema(t: TFunction<"auth">) {
+  return z
+    .object({
+      shopName: z
+        .string()
+        .min(2, t("validation.shopNameMin"))
+        .max(60, t("validation.shopNameMax")),
+      username: z
+        .string()
+        .min(3, t("validation.usernameMin"))
+        .max(30, t("validation.usernameMax"))
+        .regex(usernamePattern, t("validation.usernamePattern")),
+      email: z
+        .string()
+        .min(1, t("validation.emailRequired"))
+        .email(t("validation.emailInvalid")),
+      password: z
+        .string()
+        .min(8, t("validation.passwordMin8"))
+        .regex(/[A-Z]/, t("validation.passwordUppercase"))
+        .regex(/[0-9]/, t("validation.passwordNumber")),
+      confirmPassword: z.string().min(1, t("validation.confirmPasswordRequired")),
+      country: z.string().min(1, t("validation.countryRequired")),
+      currency: z.string().min(1, t("validation.currencyRequired")),
+    })
+    .refine((data) => data.password === data.confirmPassword, {
+      message: t("validation.passwordsDontMatch"),
+      path: ["confirmPassword"],
+    });
+}
+export type SignupValues = z.infer<ReturnType<typeof createSignupSchema>>;
 
-export const forgotPasswordSchema = z.object({
-  email: z
-    .string()
-    .min(1, "Email is required")
-    .email("Enter a valid email address"),
-});
-
-export type ForgotPasswordValues = z.infer<typeof forgotPasswordSchema>;
+export function createForgotPasswordSchema(t: TFunction<"auth">) {
+  return z.object({
+    email: z
+      .string()
+      .min(1, t("validation.emailRequired"))
+      .email(t("validation.emailInvalid")),
+  });
+}
+export type ForgotPasswordValues = z.infer<
+  ReturnType<typeof createForgotPasswordSchema>
+>;
 
 /** Rough 0-4 password strength score used by the signup strength meter. */
 export function getPasswordStrength(password: string): number {

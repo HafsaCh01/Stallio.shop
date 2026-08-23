@@ -1,0 +1,53 @@
+{
+  "validation": {
+    "nameMin": "Enter your name",
+    "nameMax": "Name is too long",
+    "emailRequired": "Email is required",
+    "emailInvalid": "Enter a valid email address",
+    "subjectMin": "Tell us what this is about",
+    "subjectMax": "Subject is too long",
+    "messageMin": "Message should be at least 10 characters",
+    "messageMax": "Message is too long"
+  },
+  "hero": {
+    "badge": "Contact",
+    "titleLead": "We read",
+    "titleHighlight": "every message",
+    "description": "Product questions, partnership ideas, or something broken: send a note and we'll point you in the right direction."
+  },
+  "form": {
+    "letsTalk": "Let's talk",
+    "title": "A real person reads every message.",
+    "description": "Tell us what's going on and we'll point you the right way, no ticket queue in between.",
+    "reassurances": [
+      { "title": "Fast turnaround", "text": "Most replies land within a few business days." },
+      { "title": "No spam, ever", "text": "Your details are only ever used to reply to you." },
+      { "title": "Check the FAQ first", "text": "How It Works and Features answer most common questions." }
+    ],
+    "sendAMessage": "Send a message",
+    "allFieldsRequired": "All fields are required so we can respond with context.",
+    "name": "Name",
+    "namePlaceholder": "Your name",
+    "email": "Email",
+    "emailPlaceholder": "you@example.com",
+    "subject": "Subject",
+    "subjectPlaceholder": "What is this about?",
+    "message": "Message",
+    "messagePlaceholder": "Your message...",
+    "replyTime": "Typical reply time is a few business days",
+    "sending": "Sending\u2026",
+    "sendMessage": "Send Message",
+    "genericError": "Something went wrong.",
+    "sendFailedError": "We couldn't send that. Please try again in a moment.",
+    "messageSent": "Message sent!",
+    "thankYou": "Thanks for reaching out. We'll get back to you within a few business days.",
+    "sendAnother": "Send another message"
+  },
+  "selfServe": {
+    "eyebrow": "Self-serve",
+    "title": "Trying Stallio first?",
+    "description": "Most answers live in How It Works and Features. Start free anytime.",
+    "howItWorks": "How It Works",
+    "features": "Features"
+  }
+}

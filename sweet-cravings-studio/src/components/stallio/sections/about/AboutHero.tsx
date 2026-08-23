@@ -1,5 +1,6 @@
 import { useRef, useState } from "react";
 import { Sparkles, Link2, ArrowRight, ShieldCheck } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import { Container } from "../../Container";
 import { CTAButton } from "../../CTAButton";
 import { RouteDivider } from "../../RouteDivider";
@@ -10,14 +11,15 @@ import prod1 from "@/assets/prod-1.jpg";
 import prod2 from "@/assets/prod-2.jpg";
 import prod3 from "@/assets/prod-3.jpg";
 
-const stats = [
-  { value: 3, suffix: " min", label: "to launch a store" },
-  { value: 0, suffix: "", label: "domains to buy" },
-  { value: 1, suffix: " link", label: "for your whole catalog" },
-];
+const statValues = [3, 0, 1];
+type TranslatedStat = { suffix: string; label: string };
 
 export function AboutHero() {
+  const { t } = useTranslation("about");
   const { ref, visible } = useReveal<HTMLDivElement>();
+  const stats = (
+    t("hero.stats", { returnObjects: true }) as TranslatedStat[]
+  ).map((stat, i) => ({ ...stat, value: statValues[i]! }));
 
   return (
     <section id="top" className="relative overflow-hidden bg-paper">
@@ -38,33 +40,31 @@ export function AboutHero() {
             <div className="inline-flex items-center gap-2 rounded-full border border-ink/12 bg-paper-dim px-4 py-1.5">
               <Sparkles size={14} className="text-lime" strokeWidth={2.5} />
               <span className="text-[10px] font-semibold uppercase tracking-[0.14em] text-ink-soft sm:text-xs">
-                About Stallio
+                {t("hero.badge")}
               </span>
             </div>
 
             <h1 className="mt-6 font-display text-[2.1rem] font-semibold leading-[1.1] tracking-tight text-ink sm:text-5xl lg:text-[3.4rem]">
-              A calm storefront for people who{" "}
+              {t("hero.titleLead")}{" "}
               <span className="bg-[image:var(--gradient-warm)] bg-clip-text text-transparent">
-                already have buyers.
+                {t("hero.titleHighlight")}
               </span>
             </h1>
 
             <p className="mt-5 max-w-xl text-base leading-relaxed text-ink-soft sm:text-lg">
-              We built Stallio for sellers who already have buyers: one
-              hosted link, a real storefront, and a dashboard. No domain
-              bill, site builder maze, or payment gateway to wire up first.
+              {t("hero.description")}
             </p>
 
             <div className="mt-8 flex flex-col items-stretch gap-3 sm:flex-row">
               <CTAButton href="/#final-cta" size="lg">
-                Start Free
+                {t("hero.ctaPrimary")}
                 <ArrowRight
                   size={17}
                   className="transition-transform group-hover:translate-x-0.5"
                 />
               </CTAButton>
               <CTAButton href="/#inside-the-box" variant="outline" size="lg">
-                View Demo Store
+                {t("hero.ctaSecondary")}
               </CTAButton>
             </div>
 
@@ -94,7 +94,7 @@ function StatItem({
   index,
   visible,
 }: {
-  stat: (typeof stats)[number];
+  stat: TranslatedStat & { value: number };
   index: number;
   visible: boolean;
 }) {
@@ -118,6 +118,7 @@ const collagePhotos = [
 ];
 
 function PhotoCollage() {
+  const { t } = useTranslation("about");
   return (
     <div className="relative mx-auto h-72 w-full max-w-md sm:h-80">
       {collagePhotos.map((photo, i) => (
@@ -140,7 +141,7 @@ function PhotoCollage() {
       >
         <ShieldCheck size={13} className="text-lime" strokeWidth={2.5} />
         <span className="text-[10px] font-semibold sm:text-xs">
-          Trusted storefront
+          {t("hero.trustedBadge")}
         </span>
       </div>
     </div>

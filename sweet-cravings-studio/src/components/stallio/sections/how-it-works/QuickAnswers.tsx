@@ -7,47 +7,25 @@ import {
   Plus,
   type LucideIcon,
 } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import { Container } from "../../Container";
 import { RouteDivider } from "../../RouteDivider";
 import { useReveal } from "@/hooks/use-reveal";
 import { cn } from "@/lib/utils";
 
-type QA = {
-  icon: LucideIcon;
-  question: string;
-  answer: string;
-};
+const qaIcons: LucideIcon[] = [Globe, Pencil, Palette, Wallet];
 
-const qas: QA[] = [
-  {
-    icon: Globe,
-    question: "Do I need a domain?",
-    answer:
-      "No. Your link lives at stallio.shop/you from the moment you sign up.",
-  },
-  {
-    icon: Pencil,
-    question: "Can I edit after publishing?",
-    answer:
-      "Anytime. Prices, photos, and stock update on your live link instantly.",
-  },
-  {
-    icon: Palette,
-    question: "No logo yet?",
-    answer:
-      "Start with your store name and colors. Add a logo whenever it's ready.",
-  },
-  {
-    icon: Wallet,
-    question: "How do buyers pay?",
-    answer:
-      "You set the method, bank, link, or COD. Stallio tracks the order for you.",
-  },
-];
+type TranslatedQA = { question: string; answer: string };
 
 export function QuickAnswers() {
+  const { t } = useTranslation("howItWorks");
   const { ref, visible } = useReveal<HTMLDivElement>();
   const [openIndex, setOpenIndex] = useState<number | null>(0);
+
+  const translatedQas = t("quickAnswers.qas", {
+    returnObjects: true,
+  }) as TranslatedQA[];
+  const qas = translatedQas.map((qa, i) => ({ ...qa, icon: qaIcons[i]! }));
 
   return (
     <section
@@ -57,10 +35,10 @@ export function QuickAnswers() {
       <Container className="relative py-16 sm:py-20 lg:py-24">
         <div className="mx-auto max-w-2xl text-center">
           <span className="text-[10px] font-semibold uppercase tracking-[0.14em] text-lime sm:text-xs">
-            Before you start
+            {t("quickAnswers.eyebrow")}
           </span>
           <h2 className="mt-3 font-display text-[1.75rem] font-semibold leading-tight tracking-tight text-ink sm:text-4xl">
-            Quick answers
+            {t("quickAnswers.title")}
           </h2>
         </div>
 
@@ -71,6 +49,7 @@ export function QuickAnswers() {
         >
           {qas.map((qa, i) => {
             const isOpen = openIndex === i;
+            const Icon = qa.icon;
             return (
               <div
                 key={qa.question}
@@ -93,7 +72,7 @@ export function QuickAnswers() {
                       isOpen ? "bg-teal text-white" : "bg-teal/15 text-teal",
                     )}
                   >
-                    <qa.icon size={16} strokeWidth={2.1} />
+                    <Icon size={16} strokeWidth={2.1} />
                   </span>
                   <span className="flex-1 font-display text-sm font-semibold text-ink sm:text-base">
                     {qa.question}

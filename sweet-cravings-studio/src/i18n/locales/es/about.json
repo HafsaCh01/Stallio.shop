@@ -1,0 +1,58 @@
+{
+  "hero": {
+    "badge": "Sobre Stallio",
+    "titleLead": "Una tienda tranquila para quienes",
+    "titleHighlight": "ya tienen compradores.",
+    "description": "Creamos Stallio para vendedores que ya tienen compradores: un enlace alojado, una tienda real y un panel de control. Sin factura de dominio, sin laberinto de constructores de sitios, sin pasarela de pago que configurar primero.",
+    "ctaPrimary": "Empieza Gratis",
+    "ctaSecondary": "Ver Tienda Demo",
+    "trustedBadge": "Tienda confiable",
+    "stats": [
+      { "suffix": " min", "label": "para lanzar una tienda" },
+      { "suffix": "", "label": "dominios que comprar" },
+      { "suffix": " enlace", "label": "para todo tu catálogo" }
+    ]
+  },
+  "photoStrip": {
+    "footwear": "Calzado",
+    "accessories": "Accesorios",
+    "beauty": "Belleza",
+    "apparel": "Ropa",
+    "homeGoods": "Artículos para el hogar",
+    "handmade": "Hecho a mano"
+  },
+  "whoWeServe": {
+    "eyebrow": "Qué obtienes",
+    "title": "Todo en un solo ciclo: mostrar, vender, enviar.",
+    "features": [
+      { "title": "En línea en minutos", "description": "Regístrate, nombra tu tienda, elige la ruta de tu URL. Sin configuración técnica." },
+      { "title": "Productos con fotos y precios", "description": "Sube imágenes, define precios y descripciones. Mantén todo en un solo lugar." },
+      { "title": "Un enlace en todas partes", "description": "Biografía, historias, chats: el mismo enlace funciona en cualquier plataforma que usen tus compradores." },
+      { "title": "Pedidos en un solo panel", "description": "Ve las solicitudes, actualiza el inventario y mantente al día con los envíos sin buscar entre mensajes directos." },
+      { "title": "Una tienda en la que confían los compradores", "description": "Diseño rápido y pensado para móvil para que tu catálogo se sienta intencional, no improvisado." },
+      { "title": "Herramientas para vendedores incluidas", "description": "Marca pedidos como pagados, rastrea entregas, exporta CSV y descarga facturas en PDF sin apps adicionales." }
+    ]
+  },
+  "ourValues": {
+    "eyebrow": "Cómo pensamos",
+    "title": "Principios detrás del producto",
+    "principles": [
+      { "title": "Hecho para vendedores reales", "description": "Cocinas caseras, estudios y proyectos secundarios. No adquisiciones empresariales." },
+      { "title": "Sencillo por diseño", "description": "Menos ajustes y complementos. Un camino claro del catálogo al pedido." },
+      { "title": "Espacio para crecer", "description": "Empieza pequeño, agrega productos y perfecciona a medida que crece tu audiencia contigo." },
+      { "title": "Hecho para mantener el ritmo", "description": "Ya sea que estés probando una nueva línea o publicando cada semana, Stallio está pensado para no estorbar: actualiza productos, ajusta textos y sigue vendiendo sin reconstruir todo un sitio." },
+      { "title": "Nuestra visión", "description": "Queremos que los vendedores independientes tengan herramientas que se sientan premium y honestas: precios claros, envíos claros, y una tienda que respete el tiempo del comprador tanto como el tuyo." }
+    ]
+  },
+  "cta": {
+    "title": "¿Listo para verte tan serio como lo eres?",
+    "description": "Crea una tienda gratis, agrega algunos productos y coloca tu enlace donde la gente ya te encuentra.",
+    "ctaPrimary": "Empieza Gratis",
+    "ctaSecondary": "Contáctanos",
+    "stats": [
+      { "label": "Simple", "description": "Sin código, sin laberinto de plantillas" },
+      { "label": "Rápido", "description": "Arma una tienda en minutos" },
+      { "label": "Confiable", "description": "Un enlace que los compradores reconocen" }
+    ]
+  }
+}

@@ -1,0 +1,221 @@
+{
+  "hero": {
+    "badge": "For Instagram & WhatsApp sellers",
+    "titleLine1": "Your shop.",
+    "titleHighlight": "One link",
+    "titleSuffix": "away.",
+    "description": "Turn your Instagram or WhatsApp page into a real online store. Add products, share one link, and start taking orders. No domain and no payment gateway to set up.",
+    "ctaPrimary": "Create your store",
+    "ctaSecondary": "See how it works",
+    "setupTimeSr": "Setup time",
+    "setupTimeValue": "3 min",
+    "setupTimeLabel": "to launch",
+    "domainsSr": "Domains required",
+    "domainsValue": "0",
+    "domainsLabel": "domains needed",
+    "ratingSr": "Average rating",
+    "ratingValue": "4.9",
+    "ratingLabel": "seller rating",
+    "rotateToLandscape": "Rotate storefront to landscape",
+    "rotateToPortrait": "Rotate storefront to portrait",
+    "rotate": "Rotate",
+    "portrait": "Portrait",
+    "yourShop": "Your Shop",
+    "newOrder": "New order",
+    "previewLabel": "Preview {{name}}",
+    "items": [
+      { "name": "Trail Runner Sneakers", "category": "Shoes", "note": "Free delivery on orders above Rs 2,500" },
+      { "name": "Everyday Chrono Watch", "category": "Accessories", "note": "Cash on delivery available" },
+      { "name": "Minimal Skincare Set", "category": "Beauty", "note": "Bundle and save 10%" },
+      { "name": "Relaxed Denim Jacket", "category": "Apparel", "note": "Only 5 left in stock" },
+      { "name": "Canvas Everyday Tote", "category": "Bags", "note": "New drop this week" },
+      { "name": "Suede Loafers", "category": "Shoes", "note": "Ships next working day" }
+    ]
+  },
+  "howItWorks": {
+    "eyebrow": "How it works",
+    "title": "Three steps between you and your first order",
+    "description": "No developer, no design tool, no waiting on approval. Most sellers go from signing up to sharing their link in one sitting.",
+    "stepLabel": "STEP {{number}}",
+    "steps": [
+      {
+        "title": "Create your store",
+        "description": "Pick a store name and add your profile: your logo, a short bio, and the link handle customers will remember."
+      },
+      {
+        "title": "Add your products",
+        "description": "Upload photos, set prices, and organize items into categories. Edit anything anytime, and the storefront updates instantly."
+      },
+      {
+        "title": "Share your link",
+        "description": "Drop it in your Instagram bio or WhatsApp status. Customers browse, order, and pay, with no extra app for them to install."
+      }
+    ]
+  },
+  "whatsIncluded": {
+    "eyebrow": "What's included",
+    "titleLine1": "Everything included.",
+    "titleLine2": "Nothing extra to buy.",
+    "counterLabel": "tools shipped in, zero add-on fees",
+    "items": [
+      { "title": "Unlimited products", "description": "No catalog cap, ever. List one item or one thousand." },
+      { "title": "Mobile-optimized storefront", "description": "Every page is built for the phone your customers are on." },
+      { "title": "One shareable link", "description": "No domain to buy or configure." },
+      { "title": "Order dashboard", "description": "Every order and buyer detail in one place." },
+      { "title": "UPI & cash on delivery", "description": "Both built in from day one, no setup needed." },
+      { "title": "No payment gateway required", "description": "Skip the paperwork and approval wait entirely." },
+      { "title": "Instagram & WhatsApp sharing", "description": "Built to travel through the apps you already sell on." },
+      { "title": "Free to start", "description": "No card required to open your store." }
+    ]
+  },
+  "whoItFits": {
+    "eyebrow": "Who it's for",
+    "title": "Built for however you already sell",
+    "description": "You don't need a website team or a tech background. Here's who typically opens a store on Stallio.",
+    "personas": [
+      {
+        "title": "The Instagram seller",
+        "description": "Post it, tag it, sell it, straight from your bio link. No more directing followers to a comment thread to ask for prices.",
+        "bestFor": "One link in bio"
+      },
+      {
+        "title": "The WhatsApp seller",
+        "description": "Stop re-typing the same catalog into every chat. Send one link and let buyers browse, pick, and check out on their own.",
+        "bestFor": "Shareable in any chat"
+      },
+      {
+        "title": "The home-based maker",
+        "description": "Bakers, tailors, and crafters juggling orders in a notebook. Get a real product list and order dashboard instead.",
+        "bestFor": "Unlimited products"
+      },
+      {
+        "title": "The boutique reseller",
+        "description": "Thrifted finds, pre-loved fashion, small drops. Give every piece its own page instead of a scroll of old posts.",
+        "bestFor": "New drops in minutes"
+      }
+    ]
+  },
+  "whyItLands": {
+    "eyebrow": "Why it lands",
+    "title": "Why sellers stick with Stallio",
+    "description": "It isn't another dashboard to learn. It removes the four things that quietly cost you orders every week.",
+    "cta": "Start selling free",
+    "reasons": [
+      {
+        "title": "Live before the day ends",
+        "description": "No domain, no gateway paperwork, no developer. Sign up, add a few products, share the link, and you're selling tonight."
+      },
+      {
+        "title": "Built mobile-first",
+        "description": "Your buyers shop on a phone in a chat app. Every page is designed for a thumb, not a desktop."
+      },
+      {
+        "title": "Trust, without the guesswork",
+        "description": "Real product pages, clear prices, and order confirmations make a small shop look established."
+      },
+      {
+        "title": "Works everywhere you post",
+        "description": "Bio, status, story, group chat: the same link carries your whole catalog and checkout."
+      }
+    ],
+    "stats": [
+      { "suffix": " min", "label": "to your first sale" },
+      { "suffix": "", "label": "apps to stitch together" },
+      { "suffix": "%", "label": "built for the phone" }
+    ]
+  },
+  "comparison": {
+    "eyebrow": "Before & after",
+    "title": "Same hustle. Completely different storefront.",
+    "description": "Most sellers start out running their shop through screenshots and comment threads. Stallio just gives that hustle a proper storefront.",
+    "chatOnlyTitle": "Chat-only selling",
+    "withStallioTitle": "With Stallio",
+    "vs": "vs",
+    "before": "Before",
+    "after": "After",
+    "cta": "Try Stallio free",
+    "chatOnly": [
+      "Copy-pasting prices into every single DM",
+      "Orders scattered across chats",
+      "No single place for prices & photos",
+      "Re-sending the same product photos on repeat",
+      "Customers ask the same questions on repeat",
+      "Chasing screenshots as proof of payment",
+      "Payments and delivery feel improvised"
+    ],
+    "withStallio": [
+      "One link customers browse and order from directly",
+      "One link: catalog + cart",
+      "Clear product pages you can share anywhere",
+      "A live product grid that updates the moment you edit it",
+      "Fewer \u201chow much?\u201d messages",
+      "UPI and cash-on-delivery built into checkout",
+      "A storefront that looks intentional"
+    ]
+  },
+  "testimonials": {
+    "eyebrow": "Sellers on Stallio",
+    "title": "What they say once they switch",
+    "items": [
+      { "name": "Ayesha", "role": "Thrift reseller, Lahore", "quote": "I stopped answering \u201chow much?\u201d fifty times a day. People just open the link and order." },
+      { "name": "Bilal", "role": "Home baker, Karachi", "quote": "Orders finally live in one dashboard instead of six chats and a notebook." },
+      { "name": "Zainab", "role": "Skincare brand, Islamabad", "quote": "My storefront looks like a real shop now, not just a grid of product photos." }
+    ]
+  },
+  "finalCta": {
+    "badge": "Ready when you are",
+    "titleLead": "Give your hustle a",
+    "titleHighlight": "real storefront",
+    "description": "Set up your shop in a few minutes, share one link, and let customers browse and order without a single \u201chow much?\u201d message.",
+    "ctaPrimary": "Create your store",
+    "ctaSecondary": "See how it works",
+    "perks": [
+      { "label": "Free to start" },
+      { "label": "No domain needed" },
+      { "label": "No card required" }
+    ]
+  },
+  "insideTheBox": {
+    "eyebrow": "Inside the box",
+    "title": "Everything inside your storefront",
+    "description": "One link opens onto a full storefront, not just a product list. Hover or tap any product in the phone to see the page your customers get.",
+    "previewLabel": "Preview {{name}}",
+    "yourShop": "Your Shop",
+    "productsCount": "128 products \u2022 Lahore",
+    "cart": "Cart \u2022 2",
+    "awaitingConfirmation": "Awaiting confirmation",
+    "confirmed": "Confirmed",
+    "ordersAwaiting": "3 orders awaiting confirmation",
+    "viewDashboard": "View dashboard",
+    "oneLinkFullStore": "One link, full store",
+    "features": [
+      { "title": "Product pages", "description": "Every item gets its own page with photos, price, and variants, so there's no more scrolling old posts to find one product." },
+      { "title": "Cart & checkout", "description": "Customers add multiple items and check out in one go, with UPI or cash-on-delivery built in." },
+      { "title": "Order dashboard", "description": "See every order, its status, and buyer details in one place instead of scattered across chats." },
+      { "title": "Direct customer chat", "description": "A tap-to-chat button keeps the personal, DM-style conversation you already have with buyers." }
+    ],
+    "tabs": [
+      { "key": "shop", "label": "Shop" },
+      { "key": "orders", "label": "Orders" },
+      { "key": "reviews", "label": "Reviews" }
+    ],
+    "products": [
+      { "name": "Chunky Sneakers", "category": "Shoes", "note": "Free delivery on orders above Rs 2,500" },
+      { "name": "Everyday Runners", "category": "Shoes", "note": "Cash on delivery available" },
+      { "name": "Retro High-Tops", "category": "Shoes", "note": "Only 4 pairs left in stock" },
+      { "name": "Court Classics", "category": "Shoes", "note": "Ships next working day" },
+      { "name": "Street Trainers", "category": "Shoes", "note": "New drop this week" },
+      { "name": "Weekend Slip-Ons", "category": "Shoes", "note": "Bundle 2 and save 10%" }
+    ],
+    "orders": [
+      { "buyer": "Ayesha K." },
+      { "buyer": "Bilal R." },
+      { "buyer": "Sana M." }
+    ],
+    "reviews": [
+      { "name": "Zainab", "note": "Ordered straight from the WhatsApp link, so easy." },
+      { "name": "Hamza", "note": "Loved seeing order status without asking in DMs." },
+      { "name": "Mehak", "note": "Store looks legit, not just a chat catalog anymore." }
+    ]
+  }
+}

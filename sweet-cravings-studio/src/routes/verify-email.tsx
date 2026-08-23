@@ -1,5 +1,6 @@
 import { useRef, useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { useTranslation } from "react-i18next";
 import {
   AlertTriangle,
   ArrowLeft,
@@ -45,6 +46,7 @@ function checkCode(code: string) {
 }
 
 function VerifyEmail() {
+  const { t } = useTranslation("auth");
   const search = Route.useSearch();
   const email = search.email ?? "";
 
@@ -142,9 +144,9 @@ function VerifyEmail() {
     <AuthShell mode="signup" promo={<AuthPromo />}>
       {phase === "success" ? (
         <AuthCard
-          eyebrow="You're in"
-          title="Email verified!"
-          subtitle="Your account is active. Log in to open your dashboard and start adding products."
+          eyebrow={t("verifyEmail.successEyebrow")}
+          title={t("verifyEmail.successTitle")}
+          subtitle={t("verifyEmail.successSubtitle")}
         >
           <div className="flex flex-col items-center gap-4 py-2 text-center">
             <span className="flex h-14 w-14 items-center justify-center rounded-full bg-lime/15 text-lime-dark">
@@ -154,7 +156,7 @@ function VerifyEmail() {
               to="/login"
               className="group relative mt-1 inline-flex w-full max-w-xs items-center justify-center gap-2 overflow-hidden rounded-full bg-violet px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-violet/25 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-violet/40 hover:brightness-110"
             >
-              Continue to log in
+              {t("verifyEmail.continueToLogin")}
               <ArrowRight
                 size={16}
                 className="transition-transform group-hover:translate-x-0.5"
@@ -164,12 +166,12 @@ function VerifyEmail() {
         </AuthCard>
       ) : (
         <AuthCard
-          eyebrow="One last step"
-          title="Enter verification code"
+          eyebrow={t("verifyEmail.eyebrow")}
+          title={t("verifyEmail.title")}
           subtitle={
             email
-              ? `We sent a ${CODE_LENGTH}-digit code to ${email}.`
-              : `We sent a ${CODE_LENGTH}-digit code to your inbox.`
+              ? t("verifyEmail.subtitleWithEmail", { count: CODE_LENGTH, email })
+              : t("verifyEmail.subtitleNoEmail", { count: CODE_LENGTH })
           }
           footer={
             <Link
@@ -177,7 +179,7 @@ function VerifyEmail() {
               className="inline-flex items-center justify-center gap-1.5 font-semibold text-violet transition-colors hover:text-lime-dark"
             >
               <ArrowLeft size={14} strokeWidth={2.25} />
-              Wrong email? Go back
+              {t("verifyEmail.wrongEmail")}
             </Link>
           }
         >
@@ -210,7 +212,7 @@ function VerifyEmail() {
                   maxLength={1}
                   value={digit}
                   disabled={phase === "verifying"}
-                  aria-label={`Digit ${index + 1}`}
+                  aria-label={t("verifyEmail.digitLabel", { number: index + 1 })}
                   aria-invalid={phase === "error"}
                   onChange={(e) => handleChange(index, e.target.value)}
                   onKeyDown={(e) => handleKeyDown(index, e)}
@@ -231,24 +233,24 @@ function VerifyEmail() {
               {phase === "verifying" && (
                 <span className="inline-flex items-center gap-1.5 text-ink-soft">
                   <Loader2 size={14} className="animate-spin" />
-                  Verifying&hellip;
+                  {t("verifyEmail.verifying")}
                 </span>
               )}
               {phase === "error" && (
                 <span className="inline-flex items-center gap-1.5 text-coral">
                   <AlertTriangle size={14} strokeWidth={2.25} />
-                  That code doesn&rsquo;t look right. Try again.
+                  {t("verifyEmail.codeIncorrect")}
                 </span>
               )}
               {phase === "entering" && resendStatus === "sent" && (
                 <span className="text-ink-soft">
-                  Code resent. Check your inbox.
+                  {t("verifyEmail.codeResent")}
                 </span>
               )}
             </div>
 
             <div className="flex flex-col items-center gap-1.5 text-sm text-ink-soft">
-              <span>Didn&rsquo;t get a code?</span>
+              <span>{t("verifyEmail.noCodeReceived")}</span>
               <button
                 type="button"
                 onClick={handleResend}
@@ -258,12 +260,12 @@ function VerifyEmail() {
                 {resendStatus === "sending" ? (
                   <>
                     <Loader2 size={15} className="animate-spin" />
-                    Sending&hellip;
+                    {t("verifyEmail.sending")}
                   </>
                 ) : cooldown > 0 ? (
-                  `Resend in ${cooldown}s`
+                  t("verifyEmail.resendIn", { seconds: cooldown })
                 ) : (
-                  "Resend code"
+                  t("verifyEmail.resendCode")
                 )}
               </button>
             </div>

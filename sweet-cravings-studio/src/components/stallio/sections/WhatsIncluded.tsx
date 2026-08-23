@@ -9,72 +9,38 @@ import {
   Gift,
   type LucideIcon,
 } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import { Container } from "../Container";
 import { RouteDivider } from "../RouteDivider";
 import { useReveal } from "@/hooks/use-reveal";
 import { useCountUp } from "@/hooks/use-count-up";
 import { cn } from "@/lib/utils";
 
-type Item = {
-  icon: LucideIcon;
-  title: string;
-  description: string;
-  accent: "amber" | "pink" | "violet" | "teal";
-};
+type Accent = "amber" | "pink" | "violet" | "teal";
 
-const items: Item[] = [
-  {
-    icon: InfinityIcon,
-    title: "Unlimited products",
-    description: "No catalog cap, ever. List one item or one thousand.",
-    accent: "violet",
-  },
-  {
-    icon: Smartphone,
-    title: "Mobile-optimized storefront",
-    description: "Every page is built for the phone your customers are on.",
-    accent: "teal",
-  },
-  {
-    icon: Link2,
-    title: "One shareable link",
-    description: "No domain to buy or configure.",
-    accent: "amber",
-  },
-  {
-    icon: ClipboardList,
-    title: "Order dashboard",
-    description: "Every order and buyer detail in one place.",
-    accent: "pink",
-  },
-  {
-    icon: Wallet,
-    title: "UPI & cash on delivery",
-    description: "Both built in from day one, no setup needed.",
-    accent: "violet",
-  },
-  {
-    icon: Ban,
-    title: "No payment gateway required",
-    description: "Skip the paperwork and approval wait entirely.",
-    accent: "teal",
-  },
-  {
-    icon: Instagram,
-    title: "Instagram & WhatsApp sharing",
-    description: "Built to travel through the apps you already sell on.",
-    accent: "amber",
-  },
-  {
-    icon: Gift,
-    title: "Free to start",
-    description: "No card required to open your store.",
-    accent: "pink",
-  },
+const itemIcons: LucideIcon[] = [
+  InfinityIcon,
+  Smartphone,
+  Link2,
+  ClipboardList,
+  Wallet,
+  Ban,
+  Instagram,
+  Gift,
+];
+const itemAccents: Accent[] = [
+  "violet",
+  "teal",
+  "amber",
+  "pink",
+  "violet",
+  "teal",
+  "amber",
+  "pink",
 ];
 
 const accentClasses: Record<
-  Item["accent"],
+  Accent,
   { icon: string; glow: string; border: string }
 > = {
   amber: {
@@ -99,8 +65,14 @@ const accentClasses: Record<
   },
 };
 
+type TranslatedItem = { title: string; description: string };
+
 export function WhatsIncluded() {
+  const { t } = useTranslation("home");
   const { ref, visible } = useReveal<HTMLDivElement>();
+  const items = t("whatsIncluded.items", {
+    returnObjects: true,
+  }) as TranslatedItem[];
   const includedCount = useCountUp(items.length, visible, 900);
 
   return (
@@ -114,11 +86,11 @@ export function WhatsIncluded() {
         <div className="mx-auto flex max-w-3xl flex-col items-center gap-6 text-center sm:flex-row sm:justify-between sm:gap-8 sm:text-left">
           <div>
             <span className="text-[10px] font-semibold uppercase tracking-[0.14em] text-lime sm:text-xs">
-              What&apos;s included
+              {t("whatsIncluded.eyebrow")}
             </span>
             <h2 className="mt-3 font-display text-[1.75rem] font-semibold leading-tight tracking-tight text-ink sm:text-4xl">
-              Everything included.
-              <br className="hidden sm:block" /> Nothing extra to buy.
+              {t("whatsIncluded.titleLine1")}
+              <br className="hidden sm:block" /> {t("whatsIncluded.titleLine2")}
             </h2>
           </div>
           <div
@@ -128,8 +100,8 @@ export function WhatsIncluded() {
             <span className="font-display text-4xl font-semibold tabular-nums text-lime">
               {includedCount}
             </span>
-            <span className="max-w-[7rem] text-left text-xs leading-snug text-ink-soft">
-              tools shipped in, zero add-on fees
+            <span className="max-w-[8rem] text-left text-xs leading-snug text-ink-soft">
+              {t("whatsIncluded.counterLabel")}
             </span>
           </div>
         </div>
@@ -139,7 +111,8 @@ export function WhatsIncluded() {
           className="mx-auto mt-14 grid max-w-5xl gap-5 sm:grid-cols-2 lg:mt-16 lg:grid-cols-4 lg:gap-5"
         >
           {items.map((item, i) => {
-            const accent = accentClasses[item.accent];
+            const accent = accentClasses[itemAccents[i]!];
+            const Icon = itemIcons[i]!;
             return (
               <div
                 key={item.title}
@@ -168,7 +141,7 @@ export function WhatsIncluded() {
                         accent.icon,
                       )}
                     >
-                      <item.icon size={20} strokeWidth={2} />
+                      <Icon size={20} strokeWidth={2} />
                     </span>
                   </div>
 

@@ -1,0 +1,93 @@
+{
+  "hero": {
+    "eyebrow": "About Stallio",
+    "titlePrefix": "A calm storefront for people who",
+    "titleHighlight": "already have buyers.",
+    "subtitle": "We built Stallio for sellers who already have buyers: one hosted link, a real storefront, and a dashboard. No domain bill, site builder maze, or payment gateway to wire up first.",
+    "ctaPrimary": "Start Free",
+    "ctaSecondary": "View Demo Store",
+    "trustedStorefront": "Trusted storefront",
+    "stats": {
+      "launch": "to launch a store",
+      "domains": "domains to buy",
+      "oneLink": "for your whole catalog"
+    }
+  },
+  "photoStrip": {
+    "captions": {
+      "footwear": "Footwear",
+      "accessories": "Accessories",
+      "beauty": "Beauty",
+      "apparel": "Apparel",
+      "homeGoods": "Home goods",
+      "handmade": "Handmade"
+    }
+  },
+  "whoWeServe": {
+    "eyebrow": "What you get",
+    "title": "Everything in one loop: show, sell, ship.",
+    "features": {
+      "liveInMinutes": {
+        "title": "Live in minutes",
+        "description": "Sign up, name your store, pick your URL path. No technical setup."
+      },
+      "productsPhotos": {
+        "title": "Products with photos and prices",
+        "description": "Upload images, set prices and descriptions. Keep everything in one place."
+      },
+      "oneLinkEverywhere": {
+        "title": "One link everywhere",
+        "description": "Bio, stories, chats: the same link works on any platform your buyers use."
+      },
+      "ordersDashboard": {
+        "title": "Orders in one dashboard",
+        "description": "See requests, update stock, and stay on top of fulfillment without digging through DMs."
+      },
+      "storefrontTrust": {
+        "title": "Storefront buyers trust",
+        "description": "Fast, mobile-first layout so your catalog feels intentional, not improvised."
+      },
+      "sellerTools": {
+        "title": "Seller tools included",
+        "description": "Mark orders paid, track delivery, export CSV, and download invoice PDFs without extra apps."
+      }
+    }
+  },
+  "ourValues": {
+    "eyebrow": "How we think",
+    "title": "Principles behind the product",
+    "principles": {
+      "realSellers": {
+        "title": "Built for real sellers",
+        "description": "Home kitchens, studios, and side hustles. Not enterprise procurement."
+      },
+      "straightforward": {
+        "title": "Straightforward by design",
+        "description": "Fewer knobs and plugins. A clear path from catalog to order."
+      },
+      "roomToGrow": {
+        "title": "Room to grow",
+        "description": "Start small, add products and polish as your audience grows with you."
+      },
+      "momentum": {
+        "title": "Built for momentum",
+        "description": "Whether you are testing a new line or shipping every week, Stallio is meant to stay out of the way: update products, tweak copy, and keep selling without rebuilding a whole site."
+      },
+      "vision": {
+        "title": "Our vision",
+        "description": "We want independent sellers to have tools that feel premium and honest: clear pricing, clear fulfillment, and a storefront that respects the buyer's time as much as yours."
+      }
+    }
+  },
+  "cta": {
+    "title": "Ready to look as serious as you are?",
+    "subtitle": "Create a free store, add a few products, and drop your link where people already find you.",
+    "ctaPrimary": "Start Free",
+    "ctaSecondary": "Contact Us",
+    "stats": {
+      "simple": { "label": "Simple", "description": "No code, no theme maze" },
+      "fast": { "label": "Fast", "description": "Draft a store in minutes" },
+      "credible": { "label": "Credible", "description": "A link buyers recognize" }
+    }
+  }
+}

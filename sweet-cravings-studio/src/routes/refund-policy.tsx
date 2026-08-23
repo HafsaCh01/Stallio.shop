@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useTranslation } from "react-i18next";
 import { LegalPage, LegalSection } from "@/components/stallio/LegalPage";
 
 const title = "Refund Policy: Stallio";
@@ -18,47 +19,26 @@ export const Route = createFileRoute("/refund-policy")({
   component: RefundPolicy,
 });
 
+type Section = { heading: string; body: string };
+
 function RefundPolicy() {
+  const { t } = useTranslation(["legal", "common"]);
+  const sections = t("refundPolicy.sections", {
+    returnObjects: true,
+  }) as Section[];
+
   return (
-    <LegalPage title="Refund Policy" updated="August 2026">
-      <p>
-        Stallio is a storefront platform. Each seller sets their own refund
-        and cancellation terms for the products they sell, since Stallio does
-        not manufacture or hold inventory itself.
-      </p>
+    <LegalPage
+      title={t("refundPolicy.title")}
+      updated={t("common:legalPage.updatedDate")}
+    >
+      <p>{t("refundPolicy.intro")}</p>
 
-      <LegalSection heading="Seller-set refund terms">
-        <p>
-          Individual sellers may display their own return or refund window on
-          their storefront. Where a seller has not stated a policy, contact
-          the seller directly through the store's chat link to request a
-          return, exchange, or refund.
-        </p>
-      </LegalSection>
-
-      <LegalSection heading="Order cancellations">
-        <p>
-          Orders can typically be cancelled before a seller confirms them.
-          Once an order is confirmed and dispatched, cancellation is at the
-          seller's discretion.
-        </p>
-      </LegalSection>
-
-      <LegalSection heading="Payment refunds">
-        <p>
-          For orders paid through UPI, an approved refund is returned to the
-          original payment method. For cash on delivery orders, refunds are
-          arranged directly with the seller.
-        </p>
-      </LegalSection>
-
-      <LegalSection heading="Disputes">
-        <p>
-          If a seller and customer cannot resolve a refund request between
-          themselves, contact Stallio support through the options in the
-          footer of this site.
-        </p>
-      </LegalSection>
+      {sections.map((section) => (
+        <LegalSection key={section.heading} heading={section.heading}>
+          <p>{section.body}</p>
+        </LegalSection>
+      ))}
     </LegalPage>
   );
 }

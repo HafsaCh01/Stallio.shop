@@ -1,0 +1,221 @@
+{
+  "hero": {
+    "badge": "Para vendedores de Instagram y WhatsApp",
+    "titleLine1": "Tu tienda.",
+    "titleHighlight": "Un enlace",
+    "titleSuffix": "de distancia.",
+    "description": "Convierte tu página de Instagram o WhatsApp en una tienda en línea real. Agrega productos, comparte un enlace y empieza a recibir pedidos. Sin dominio ni pasarela de pago que configurar.",
+    "ctaPrimary": "Crea tu tienda",
+    "ctaSecondary": "Ver cómo funciona",
+    "setupTimeSr": "Tiempo de configuración",
+    "setupTimeValue": "3 min",
+    "setupTimeLabel": "para lanzar",
+    "domainsSr": "Dominios requeridos",
+    "domainsValue": "0",
+    "domainsLabel": "dominios necesarios",
+    "ratingSr": "Calificación promedio",
+    "ratingValue": "4.9",
+    "ratingLabel": "calificación de vendedores",
+    "rotateToLandscape": "Girar la tienda a horizontal",
+    "rotateToPortrait": "Girar la tienda a vertical",
+    "rotate": "Girar",
+    "portrait": "Vertical",
+    "yourShop": "Tu Tienda",
+    "newOrder": "Nuevo pedido",
+    "previewLabel": "Vista previa de {{name}}",
+    "items": [
+      { "name": "Zapatillas Trail Runner", "category": "Zapatos", "note": "Envío gratis en pedidos superiores a Rs 2,500" },
+      { "name": "Reloj Cronógrafo Diario", "category": "Accesorios", "note": "Pago contra entrega disponible" },
+      { "name": "Set de Cuidado Facial Minimalista", "category": "Belleza", "note": "Compra el paquete y ahorra 10%" },
+      { "name": "Chaqueta de Mezclilla Relajada", "category": "Ropa", "note": "Solo quedan 5 en stock" },
+      { "name": "Bolso Tote de Lona Diario", "category": "Bolsos", "note": "Nueva colección esta semana" },
+      { "name": "Mocasines de Gamuza", "category": "Zapatos", "note": "Se envía al siguiente día hábil" }
+    ]
+  },
+  "howItWorks": {
+    "eyebrow": "Cómo funciona",
+    "title": "Tres pasos entre tú y tu primer pedido",
+    "description": "Sin desarrollador, sin herramienta de diseño, sin esperar aprobación. La mayoría de los vendedores pasan de registrarse a compartir su enlace en una sola sesión.",
+    "stepLabel": "PASO {{number}}",
+    "steps": [
+      {
+        "title": "Crea tu tienda",
+        "description": "Elige un nombre para tu tienda y agrega tu perfil: tu logo, una breve biografía y el enlace que tus clientes recordarán."
+      },
+      {
+        "title": "Agrega tus productos",
+        "description": "Sube fotos, define precios y organiza los artículos en categorías. Edita lo que quieras en cualquier momento, y la tienda se actualiza al instante."
+      },
+      {
+        "title": "Comparte tu enlace",
+        "description": "Colócalo en tu biografía de Instagram o en tu estado de WhatsApp. Los clientes navegan, piden y pagan sin instalar ninguna app extra."
+      }
+    ]
+  },
+  "whatsIncluded": {
+    "eyebrow": "Qué incluye",
+    "titleLine1": "Todo incluido.",
+    "titleLine2": "Nada extra que comprar.",
+    "counterLabel": "herramientas incluidas, cero costos adicionales",
+    "items": [
+      { "title": "Productos ilimitados", "description": "Sin límite de catálogo, nunca. Publica un artículo o mil." },
+      { "title": "Tienda optimizada para móvil", "description": "Cada página está diseñada para el teléfono de tus clientes." },
+      { "title": "Un enlace para compartir", "description": "Sin dominio que comprar o configurar." },
+      { "title": "Panel de pedidos", "description": "Cada pedido y dato del comprador en un solo lugar." },
+      { "title": "UPI y pago contra entrega", "description": "Ambos incluidos desde el primer día, sin configuración." },
+      { "title": "Sin pasarela de pago requerida", "description": "Olvídate por completo del papeleo y la espera de aprobación." },
+      { "title": "Compartir en Instagram y WhatsApp", "description": "Diseñado para moverse por las apps donde ya vendes." },
+      { "title": "Gratis para empezar", "description": "No se necesita tarjeta para abrir tu tienda." }
+    ]
+  },
+  "whoItFits": {
+    "eyebrow": "Para quién es",
+    "title": "Hecho para como ya vendes",
+    "description": "No necesitas un equipo de desarrollo web ni conocimientos técnicos. Así es quién suele abrir una tienda en Stallio.",
+    "personas": [
+      {
+        "title": "El vendedor de Instagram",
+        "description": "Publícalo, etiquétalo, véndelo, directo desde el enlace de tu biografía. Deja de dirigir a tus seguidores a un hilo de comentarios para preguntar precios.",
+        "bestFor": "Un enlace en la biografía"
+      },
+      {
+        "title": "El vendedor de WhatsApp",
+        "description": "Deja de volver a escribir el mismo catálogo en cada chat. Envía un enlace y deja que los compradores naveguen, elijan y paguen por su cuenta.",
+        "bestFor": "Para compartir en cualquier chat"
+      },
+      {
+        "title": "El creador desde casa",
+        "description": "Reposteras, sastres y artesanos que manejan pedidos en un cuaderno. Consigue una lista de productos real y un panel de pedidos en su lugar.",
+        "bestFor": "Productos ilimitados"
+      },
+      {
+        "title": "El revendedor de boutique",
+        "description": "Hallazgos de segunda mano, moda preamada, pequeñas colecciones. Dale a cada pieza su propia página en lugar de un scroll de publicaciones viejas.",
+        "bestFor": "Nuevas colecciones en minutos"
+      }
+    ]
+  },
+  "whyItLands": {
+    "eyebrow": "Por qué funciona",
+    "title": "Por qué los vendedores se quedan con Stallio",
+    "description": "No es otro panel más que aprender. Elimina las cuatro cosas que silenciosamente te cuestan pedidos cada semana.",
+    "cta": "Empieza a vender gratis",
+    "reasons": [
+      {
+        "title": "En línea antes de que termine el día",
+        "description": "Sin dominio, sin papeleo de pasarela, sin desarrollador. Regístrate, agrega algunos productos, comparte el enlace y estarás vendiendo esta noche."
+      },
+      {
+        "title": "Diseñado primero para móvil",
+        "description": "Tus compradores compran desde el teléfono en una app de chat. Cada página está diseñada para un pulgar, no para un escritorio."
+      },
+      {
+        "title": "Confianza, sin adivinar",
+        "description": "Páginas de producto reales, precios claros y confirmaciones de pedido hacen que una pequeña tienda se vea establecida."
+      },
+      {
+        "title": "Funciona donde sea que publiques",
+        "description": "Biografía, estado, historia, chat grupal: el mismo enlace lleva todo tu catálogo y el pago."
+      }
+    ],
+    "stats": [
+      { "suffix": " min", "label": "para tu primera venta" },
+      { "suffix": "", "label": "apps que combinar" },
+      { "suffix": "%", "label": "diseñado para el móvil" }
+    ]
+  },
+  "comparison": {
+    "eyebrow": "Antes y después",
+    "title": "El mismo esfuerzo. Una tienda completamente diferente.",
+    "description": "La mayoría de los vendedores empiezan manejando su tienda a través de capturas de pantalla e hilos de comentarios. Stallio simplemente le da a ese esfuerzo una tienda como se debe.",
+    "chatOnlyTitle": "Venta solo por chat",
+    "withStallioTitle": "Con Stallio",
+    "vs": "vs",
+    "before": "Antes",
+    "after": "Después",
+    "cta": "Prueba Stallio gratis",
+    "chatOnly": [
+      "Copiar y pegar precios en cada mensaje directo",
+      "Pedidos dispersos entre varios chats",
+      "Ningún lugar único para precios y fotos",
+      "Reenviar las mismas fotos de producto una y otra vez",
+      "Los clientes hacen las mismas preguntas una y otra vez",
+      "Perseguir capturas de pantalla como comprobante de pago",
+      "Los pagos y las entregas se sienten improvisados"
+    ],
+    "withStallio": [
+      "Un enlace donde los clientes navegan y piden directamente",
+      "Un enlace: catálogo + carrito",
+      "Páginas de producto claras que puedes compartir donde sea",
+      "Una cuadrícula de productos en vivo que se actualiza al momento de editar",
+      "Menos mensajes de \u201c¿cuánto cuesta?\u201d",
+      "UPI y pago contra entrega integrados en el pago",
+      "Una tienda que se ve intencional"
+    ]
+  },
+  "testimonials": {
+    "eyebrow": "Vendedores en Stallio",
+    "title": "Lo que dicen una vez que cambian",
+    "items": [
+      { "name": "Ayesha", "role": "Revendedora de segunda mano, Lahore", "quote": "Dejé de responder \u201c¿cuánto cuesta?\u201d cincuenta veces al día. La gente simplemente abre el enlace y pide." },
+      { "name": "Bilal", "role": "Repostero casero, Karachi", "quote": "Los pedidos por fin viven en un solo panel en lugar de seis chats y un cuaderno." },
+      { "name": "Zainab", "role": "Marca de cuidado de la piel, Islamabad", "quote": "Mi tienda ahora se ve como un negocio real, no solo una cuadrícula de fotos de productos." }
+    ]
+  },
+  "finalCta": {
+    "badge": "Cuando tú quieras",
+    "titleLead": "Dale a tu esfuerzo una",
+    "titleHighlight": "tienda de verdad",
+    "description": "Configura tu tienda en pocos minutos, comparte un enlace y deja que los clientes naveguen y pidan sin un solo mensaje de \u201c¿cuánto cuesta?\u201d.",
+    "ctaPrimary": "Crea tu tienda",
+    "ctaSecondary": "Ver cómo funciona",
+    "perks": [
+      { "label": "Gratis para empezar" },
+      { "label": "No se necesita dominio" },
+      { "label": "No se requiere tarjeta" }
+    ]
+  },
+  "insideTheBox": {
+    "eyebrow": "Dentro de la caja",
+    "title": "Todo dentro de tu tienda",
+    "description": "Un enlace abre toda una tienda, no solo una lista de productos. Pasa el cursor o toca cualquier producto en el teléfono para ver la página que reciben tus clientes.",
+    "previewLabel": "Vista previa de {{name}}",
+    "yourShop": "Tu Tienda",
+    "productsCount": "128 productos \u2022 Lahore",
+    "cart": "Carrito \u2022 2",
+    "awaitingConfirmation": "Esperando confirmación",
+    "confirmed": "Confirmado",
+    "ordersAwaiting": "3 pedidos esperando confirmación",
+    "viewDashboard": "Ver panel",
+    "oneLinkFullStore": "Un enlace, tienda completa",
+    "features": [
+      { "title": "Páginas de producto", "description": "Cada artículo tiene su propia página con fotos, precio y variantes, así que ya no hay que buscar entre publicaciones viejas un producto." },
+      { "title": "Carrito y pago", "description": "Los clientes agregan varios artículos y pagan de una vez, con UPI o pago contra entrega integrados." },
+      { "title": "Panel de pedidos", "description": "Ve cada pedido, su estado y los datos del comprador en un solo lugar en lugar de dispersos entre chats." },
+      { "title": "Chat directo con el cliente", "description": "Un botón para chatear con un toque mantiene la conversación personal, estilo mensaje directo, que ya tienes con los compradores." }
+    ],
+    "tabs": [
+      { "key": "shop", "label": "Tienda" },
+      { "key": "orders", "label": "Pedidos" },
+      { "key": "reviews", "label": "Reseñas" }
+    ],
+    "products": [
+      { "name": "Zapatillas Chunky", "category": "Zapatos", "note": "Envío gratis en pedidos superiores a Rs 2,500" },
+      { "name": "Runners Diarios", "category": "Zapatos", "note": "Pago contra entrega disponible" },
+      { "name": "Botines Retro", "category": "Zapatos", "note": "Solo quedan 4 pares en stock" },
+      { "name": "Clásicos de Cancha", "category": "Zapatos", "note": "Se envía al siguiente día hábil" },
+      { "name": "Tenis Urbanos", "category": "Zapatos", "note": "Nueva colección esta semana" },
+      { "name": "Slip-Ons de Fin de Semana", "category": "Zapatos", "note": "Lleva 2 y ahorra 10%" }
+    ],
+    "orders": [
+      { "buyer": "Ayesha K." },
+      { "buyer": "Bilal R." },
+      { "buyer": "Sana M." }
+    ],
+    "reviews": [
+      { "name": "Zainab", "note": "Pedí directo desde el enlace de WhatsApp, muy fácil." },
+      { "name": "Hamza", "note": "Me encantó ver el estado del pedido sin preguntar por mensaje." },
+      { "name": "Mehak", "note": "La tienda se ve legítima, ya no solo un catálogo de chat." }
+    ]
+  }
+}

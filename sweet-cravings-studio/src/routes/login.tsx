@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
+import { useTranslation } from "react-i18next";
 import {
   AlertCircle,
   ArrowRight,
@@ -13,7 +14,7 @@ import { AuthShell, AuthCard } from "@/components/stallio/auth/AuthShell";
 import { AuthPromo } from "@/components/stallio/auth/AuthPromo";
 import { FormField, FieldShell } from "@/components/stallio/auth/FormField";
 import { PasswordField } from "@/components/stallio/auth/PasswordField";
-import { loginSchema, type LoginValues } from "@/lib/validation/auth";
+import { createLoginSchema, type LoginValues } from "@/lib/validation/auth";
 import { useAuthNav } from "@/lib/auth-transition";
 import { cn } from "@/lib/utils";
 
@@ -33,18 +34,8 @@ export const Route = createFileRoute("/login")({
   component: Login,
 });
 
-/** Stand-in for a real API call until the backend is wired up. */
-async function fakeSignIn(values: LoginValues) {
-  await new Promise((resolve) => setTimeout(resolve, 900));
-  if (values.email.trim().toLowerCase() === "fail@stallio.shop") {
-    throw new Error(
-      "We couldn't find an account with that email and password.",
-    );
-  }
-  return true;
-}
-
 function Login() {
+  const { t, i18n } = useTranslation("auth");
   const navigate = useNavigate();
   const authNav = useAuthNav();
   const search = Route.useSearch();
@@ -53,6 +44,17 @@ function Login() {
   const [status, setStatus] = useState<"idle" | "submitting" | "success">(
     "idle",
   );
+
+  const loginSchema = useMemo(() => createLoginSchema(t), [t, i18n.language]);
+
+  /** Stand-in for a real API call until the backend is wired up. */
+  const fakeSignIn = async (values: LoginValues) => {
+    await new Promise((resolve) => setTimeout(resolve, 900));
+    if (values.email.trim().toLowerCase() === "fail@stallio.shop") {
+      throw new Error(t("login.invalidCredentials"));
+    }
+    return true;
+  };
 
   const {
     register,
@@ -74,27 +76,25 @@ function Login() {
       }, 900);
     } catch (err) {
       setStatus("idle");
-      setFormError(
-        err instanceof Error ? err.message : "Something went wrong.",
-      );
+      setFormError(err instanceof Error ? err.message : t("login.genericError"));
     }
   };
 
   return (
     <AuthShell mode="login" promo={<AuthPromo />}>
       <AuthCard
-        eyebrow="Welcome back"
-        title="Log in to Stallio"
-        subtitle="Pick up right where you left off and keep your storefront running."
+        eyebrow={t("login.eyebrow")}
+        title={t("login.title")}
+        subtitle={t("login.subtitle")}
         footer={
           <>
-            New to Stallio?{" "}
+            {t("login.newToStallio")}{" "}
             <Link
               to="/signup"
               onClick={authNav("/signup")}
               className="font-semibold text-violet transition-colors hover:text-lime-dark"
             >
-              Create your shop
+              {t("login.createShop")}
             </Link>
           </>
         }
@@ -106,7 +106,7 @@ function Login() {
               strokeWidth={2.25}
               className="mt-0.5 shrink-0 text-lime-dark"
             />
-            <p>Your shop is ready. Log in to open your dashboard.</p>
+            <p>{t("login.shopReady")}</p>
           </div>
         )}
 
@@ -116,11 +116,9 @@ function Login() {
               <CheckCircle2 size={28} strokeWidth={2} />
             </span>
             <p className="font-display text-lg font-semibold text-ink">
-              Welcome back!
+              {t("login.welcomeBack")}
             </p>
-            <p className="text-sm text-ink-soft">
-              Redirecting you to your dashboard&hellip;
-            </p>
+            <p className="text-sm text-ink-soft">{t("login.redirecting")}</p>
           </div>
         ) : (
           <form
@@ -142,7 +140,11 @@ function Login() {
               </div>
             )}
 
-            <FormField id="email" label="Email" error={errors.email?.message}>
+            <FormField
+              id="email"
+              label={t("login.email")}
+              error={errors.email?.message}
+            >
               <FieldShell
                 icon={<Mail size={16} strokeWidth={2} />}
                 error={Boolean(errors.email)}
@@ -151,7 +153,7 @@ function Login() {
                   id="email"
                   type="email"
                   autoComplete="email"
-                  placeholder="you@example.com"
+                  placeholder={t("login.emailPlaceholder")}
                   aria-invalid={Boolean(errors.email)}
                   aria-describedby={errors.email ? "email-error" : undefined}
                   className="w-full flex-1 bg-transparent text-sm text-ink outline-none placeholder:text-ink-faint"
@@ -162,14 +164,14 @@ function Login() {
 
             <FormField
               id="password"
-              label="Password"
+              label={t("login.password")}
               error={errors.password?.message}
             >
               <div className="flex flex-col gap-1.5">
                 <PasswordField
                   id="password"
                   autoComplete="current-password"
-                  placeholder="Your password"
+                  placeholder={t("login.passwordPlaceholder")}
                   error={Boolean(errors.password)}
                   aria-invalid={Boolean(errors.password)}
                   {...register("password")}
@@ -179,7 +181,7 @@ function Login() {
                     to="/forgot-password"
                     className="text-xs font-semibold text-violet transition-colors hover:text-lime-dark"
                   >
-                    Forgot password?
+                    {t("login.forgotPassword")}
                   </Link>
                 </div>
               </div>
@@ -191,7 +193,7 @@ function Login() {
                 className="h-4 w-4 rounded border-ink/25 text-violet accent-[var(--violet)] focus-visible:outline-none"
                 {...register("remember")}
               />
-              Keep me signed in
+              {t("login.rememberMe")}
             </label>
 
             <button
@@ -208,11 +210,11 @@ function Login() {
               {status === "submitting" ? (
                 <>
                   <Loader2 size={16} className="animate-spin" />
-                  Signing in&hellip;
+                  {t("login.signingIn")}
                 </>
               ) : (
                 <>
-                  Sign In
+                  {t("login.signIn")}
                   <ArrowRight
                     size={16}
                     className="transition-transform group-hover:translate-x-0.5"

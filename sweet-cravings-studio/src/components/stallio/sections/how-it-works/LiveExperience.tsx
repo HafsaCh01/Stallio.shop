@@ -10,56 +10,49 @@ import {
   CreditCard,
   type LucideIcon,
 } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import { Container } from "../../Container";
 import { RouteDivider } from "../../RouteDivider";
 import { useReveal } from "@/hooks/use-reveal";
 import { cn } from "@/lib/utils";
 
-type View = {
-  id: "dashboard" | "storefront";
+type ViewId = "dashboard" | "storefront";
+
+const viewIds: ViewId[] = ["dashboard", "storefront"];
+const viewIcons: Record<ViewId, LucideIcon> = {
+  dashboard: LayoutGrid,
+  storefront: Smartphone,
+};
+const viewPointIcons: Record<ViewId, LucideIcon[]> = {
+  dashboard: [FileText, Tag, Boxes],
+  storefront: [ShoppingBag, Globe, CreditCard],
+};
+
+type TranslatedView = {
   label: string;
-  icon: LucideIcon;
   eyebrow: string;
   title: string;
   description: string;
-  points: { icon: LucideIcon; text: string }[];
+  points: string[];
 };
 
-const views: View[] = [
-  {
-    id: "dashboard",
-    label: "Your dashboard",
-    icon: LayoutGrid,
-    eyebrow: "Behind the scenes",
-    title: "You see control.",
-    description:
-      "Orders, products, and requests in one view. Update stock between deliveries without opening ten apps.",
-    points: [
-      { icon: FileText, text: "Mark paid, ship, and download invoice PDFs" },
-      { icon: Tag, text: "Coupons, delivery, and stock in one place" },
-      { icon: Boxes, text: "Export orders or add a manual phone order" },
-    ],
-  },
-  {
-    id: "storefront",
-    label: "Their storefront",
-    icon: Smartphone,
-    eyebrow: "What buyers see",
-    title: "They see polish.",
-    description:
-      "Categories, cart, coupons, and checkout, built for the phone. Buyers can switch English, Spanish, or Arabic on your store.",
-    points: [
-      { icon: ShoppingBag, text: "Cart and checkout in a couple of taps" },
-      { icon: Globe, text: "Three languages, switched instantly" },
-      { icon: CreditCard, text: "Coupons applied before they ask" },
-    ],
-  },
-];
-
 export function LiveExperience() {
+  const { t } = useTranslation("howItWorks");
   const { ref, visible } = useReveal<HTMLDivElement>();
-  const [activeId, setActiveId] = useState<View["id"]>("dashboard");
+  const [activeId, setActiveId] = useState<ViewId>("dashboard");
+
+  const translatedViews = t("liveExperience.views", {
+    returnObjects: true,
+  }) as TranslatedView[];
+  const views = viewIds.map((id, i) => ({
+    id,
+    icon: viewIcons[id],
+    pointIcons: viewPointIcons[id],
+    ...translatedViews[i]!,
+  }));
+
   const active = views.find((v) => v.id === activeId)!;
+  const ActiveIcon = active.icon;
 
   return (
     <section id="live" className="relative overflow-hidden bg-paper">
@@ -71,15 +64,14 @@ export function LiveExperience() {
 
       <Container className="relative py-16 sm:py-20 lg:py-24">
         <div className="mx-auto max-w-2xl text-center">
-          <span className="text-[10px] font-semibold uppercase tracking-[0.14em] text-teal sm:text-xs">
-            When you're live
+          <span className="text-[10px] font-semibold uppercase tracking-[0.14em] text-violet sm:text-xs">
+            {t("liveExperience.eyebrow")}
           </span>
           <h2 className="mt-3 font-display text-[1.75rem] font-semibold leading-tight tracking-tight text-ink sm:text-4xl lg:text-5xl">
-            One storefront, two sides.
+            {t("liveExperience.title")}
           </h2>
           <p className="mt-4 text-sm leading-relaxed text-ink-soft sm:text-lg">
-            A fast link on the outside. A calm dashboard on the inside. Flip the
-            toggle to see both.
+            {t("liveExperience.description")}
           </p>
         </div>
 
@@ -90,23 +82,26 @@ export function LiveExperience() {
         >
           {/* Toggle */}
           <div className="mx-auto flex w-fit gap-1 rounded-full border border-ink/10 bg-paper-dim p-1">
-            {views.map((view) => (
-              <button
-                key={view.id}
-                type="button"
-                onClick={() => setActiveId(view.id)}
-                aria-pressed={view.id === activeId}
-                className={cn(
-                  "flex items-center gap-2 rounded-full px-4 py-2 text-xs font-semibold transition-all duration-300 sm:px-5 sm:text-sm",
-                  view.id === activeId
-                    ? "bg-surface text-ink shadow-md"
-                    : "text-ink-faint hover:text-ink-soft",
-                )}
-              >
-                <view.icon size={14} />
-                {view.label}
-              </button>
-            ))}
+            {views.map((view) => {
+              const Icon = view.icon;
+              return (
+                <button
+                  key={view.id}
+                  type="button"
+                  onClick={() => setActiveId(view.id)}
+                  aria-pressed={view.id === activeId}
+                  className={cn(
+                    "flex items-center gap-2 rounded-full px-4 py-2 text-xs font-semibold transition-all duration-300 sm:px-5 sm:text-sm",
+                    view.id === activeId
+                      ? "bg-surface text-ink shadow-md"
+                      : "text-ink-faint hover:text-ink-soft",
+                  )}
+                >
+                  <Icon size={14} />
+                  {view.label}
+                </button>
+              );
+            })}
           </div>
 
           {/* Panel */}
@@ -121,7 +116,7 @@ export function LiveExperience() {
                   "bg-[image:var(--gradient-brand)]",
                 )}
               >
-                <active.icon size={26} strokeWidth={1.8} />
+                <ActiveIcon size={26} strokeWidth={1.8} />
               </span>
 
               <div>
@@ -135,16 +130,23 @@ export function LiveExperience() {
                   {active.description}
                 </p>
 
-                <ul className="mt-6 flex flex-col gap-3 border-t border-ink/10 pt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:border-t-0 sm:pt-0">
-                  {active.points.map((point) => (
-                    <li
-                      key={point.text}
-                      className="flex items-start gap-2.5 rounded-xl border border-ink/10 bg-surface/60 p-3 text-xs font-medium text-ink sm:flex-col sm:gap-2 sm:text-sm"
-                    >
-                      <point.icon size={15} className="shrink-0 text-lime" />
-                      {point.text}
-                    </li>
-                  ))}
+                <ul className="mt-6 flex flex-col divide-y divide-ink/10 border-t border-ink/10 pt-1 sm:grid sm:grid-cols-3 sm:gap-px sm:divide-y-0 sm:border-t-0 sm:pt-0 sm:overflow-hidden sm:rounded-xl sm:border sm:border-ink/10 sm:bg-ink/10">
+                  {active.points.map((point, i) => {
+                    const PointIcon = active.pointIcons[i]!;
+                    return (
+                      <li
+                        key={point}
+                        className="flex items-center gap-3 bg-surface/70 px-1 py-3.5 text-xs font-medium text-ink-soft transition-colors duration-200 hover:bg-surface hover:text-ink sm:flex-col sm:items-start sm:gap-2.5 sm:px-4 sm:py-4 sm:text-sm"
+                      >
+                        <PointIcon
+                          size={15}
+                          strokeWidth={2}
+                          className="shrink-0 text-violet"
+                        />
+                        <span className="leading-snug">{point}</span>
+                      </li>
+                    );
+                  })}
                 </ul>
               </div>
             </div>

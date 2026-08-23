@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Check, ShieldCheck, Sparkles } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import { Container } from "../../Container";
 import { CTAButton } from "../../CTAButton";
 import { RouteDivider } from "../../RouteDivider";
@@ -8,27 +9,14 @@ import { cn } from "@/lib/utils";
 
 type Billing = "monthly" | "yearly";
 
-const items = [
-  "Hosted stallio.shop link, no domain",
-  "Unlimited products, photos, and orders",
-  "Mobile storefront, cart, and checkout",
-  "Variants, sale prices, and stock",
-  "About and Contact pages",
-  "Coupons and delivery fees",
-  "PDF invoice on every order",
-  "Mark paid, ship, and export CSV",
-  "Shop and dashboard in EN, ES, and AR",
-  "Revenue and order charts",
-  "Buyer messages and support chat",
-  "First month free, no card required",
-];
-
 export function PricingPlan() {
+  const { t } = useTranslation("pricing");
   const { ref, visible } = useReveal<HTMLDivElement>();
   const [billing, setBilling] = useState<Billing>("monthly");
+  const items = t("plan.items", { returnObjects: true }) as string[];
 
   const price = billing === "monthly" ? "$5" : "$50";
-  const unit = billing === "monthly" ? "/mo" : "/yr";
+  const unit = billing === "monthly" ? t("plan.perMonth") : t("plan.perYear");
 
   return (
     <section id="plan" className="relative overflow-hidden bg-paper-dim">
@@ -41,14 +29,13 @@ export function PricingPlan() {
       <Container className="relative py-16 sm:py-20 lg:py-24">
         <div className="mx-auto max-w-2xl text-center">
           <span className="text-[10px] font-semibold uppercase tracking-[0.14em] text-lime sm:text-xs">
-            The plan
+            {t("plan.eyebrow")}
           </span>
           <h2 className="mt-3 font-display text-[1.75rem] font-semibold leading-tight tracking-tight text-ink sm:text-4xl">
-            One plan. Everything included.
+            {t("plan.title")}
           </h2>
           <p className="mt-4 text-sm leading-relaxed text-ink-soft sm:text-base">
-            No tiers to compare, no features locked behind a higher plan. Pick
-            a billing cycle and see exactly what's on it.
+            {t("plan.description")}
           </p>
         </div>
 
@@ -69,7 +56,7 @@ export function PricingPlan() {
                 <div className="inline-flex items-center gap-1.5 rounded-full bg-violet/15 px-3 py-1.5">
                   <Sparkles size={12} className="text-violet" strokeWidth={2.5} />
                   <span className="text-[10px] font-semibold uppercase tracking-[0.14em] text-violet">
-                    Stallio Standard
+                    {t("plan.planName")}
                   </span>
                 </div>
 
@@ -79,16 +66,16 @@ export function PricingPlan() {
                     active={billing === "monthly"}
                     onClick={() => setBilling("monthly")}
                   >
-                    Monthly
+                    {t("plan.monthly")}
                   </ToggleButton>
                   <ToggleButton
                     active={billing === "yearly"}
                     onClick={() => setBilling("yearly")}
                   >
-                    Yearly
+                    {t("plan.yearly")}
                   </ToggleButton>
-                  <span className="absolute -right-2.5 -top-3 rounded-full bg-amber px-1.5 py-0.5 text-[9px] font-bold text-navy shadow-sm">
-                    Save $10
+                  <span className="absolute -right-2.5 -top-3 whitespace-nowrap rounded-full bg-amber px-1.5 py-0.5 text-[9px] font-bold text-navy shadow-sm">
+                    {t("plan.saveAmount")}
                   </span>
                 </div>
 
@@ -101,30 +88,32 @@ export function PricingPlan() {
                   </span>
                 </div>
                 <p className="mt-1 text-xs text-ink-faint">
-                  {billing === "monthly" ? "or $50 billed yearly" : "billed once a year"}
+                  {billing === "monthly"
+                    ? t("plan.orBilledYearly")
+                    : t("plan.billedOnceYear")}
                 </p>
               </div>
 
               <div className="relative flex flex-col gap-4">
                 <div className="rounded-2xl border border-ink/10 bg-surface px-4 py-3.5">
                   <span className="block font-mono text-[10px] uppercase tracking-[0.14em] text-ink-faint">
-                    Due today
+                    {t("plan.dueToday")}
                   </span>
                   <span className="block font-mono text-2xl font-semibold text-ink">
                     $0.00
                   </span>
                   <span className="mt-0.5 block text-xs text-ink-soft">
-                    First month free, no card required
+                    {t("plan.firstMonthFree")}
                   </span>
                 </div>
 
                 <CTAButton href="/signup" size="lg" className="w-full">
-                  Start Free
+                  {t("plan.ctaPrimary")}
                 </CTAButton>
 
                 <p className="flex items-center justify-center gap-1.5 text-center text-xs text-ink-faint">
                   <ShieldCheck size={13} className="text-lime" />
-                  Cancel anytime
+                  {t("plan.cancelAnytime")}
                 </p>
               </div>
             </div>
@@ -132,7 +121,7 @@ export function PricingPlan() {
             {/* Right: itemized checklist */}
             <div className="bg-surface p-8 sm:p-10 lg:p-9">
               <span className="text-[10px] font-semibold uppercase tracking-[0.14em] text-ink-faint">
-                Everything, itemized
+                {t("plan.itemizedLabel")}
               </span>
               <ul className="mt-5 grid gap-x-8 gap-y-4 sm:grid-cols-2">
                 {items.map((item) => (
@@ -171,7 +160,7 @@ function ToggleButton({
       onClick={onClick}
       aria-pressed={active}
       className={cn(
-        "rounded-full px-4 py-1.5 text-xs font-semibold transition-colors duration-300",
+        "whitespace-nowrap rounded-full px-4 py-1.5 text-xs font-semibold transition-colors duration-300",
         active
           ? "bg-violet text-white"
           : "text-ink-faint hover:text-ink",

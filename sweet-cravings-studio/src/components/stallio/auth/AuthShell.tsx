@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import { Link } from "@tanstack/react-router";
+import { useTranslation } from "react-i18next";
 import { Navbar } from "@/components/stallio/Navbar";
 import { Container } from "@/components/stallio/Container";
 import { siteConfig } from "@/lib/constants";
@@ -14,6 +15,7 @@ export function AuthShell({
   promo: ReactNode;
   children: ReactNode;
 }) {
+  const { t } = useTranslation("auth");
   return (
     <div className="relative flex min-h-screen flex-col bg-paper font-sans text-ink">
       <div
@@ -73,15 +75,15 @@ export function AuthShell({
       <footer className="relative z-10 border-t border-ink/10 py-6">
         <Container className="flex flex-col items-center justify-between gap-3 text-xs text-ink-faint sm:flex-row">
           <p>
-            &copy; {new Date().getFullYear()} {siteConfig.name}. All rights
-            reserved.
+            &copy; {new Date().getFullYear()} {siteConfig.name}.{" "}
+            {t("shell.rightsReserved")}
           </p>
           <div className="flex items-center gap-4">
             <Link to="/privacy" className="transition-colors hover:text-ink">
-              Privacy
+              {t("shell.privacy")}
             </Link>
             <Link to="/terms" className="transition-colors hover:text-ink">
-              Terms
+              {t("shell.terms")}
             </Link>
           </div>
         </Container>

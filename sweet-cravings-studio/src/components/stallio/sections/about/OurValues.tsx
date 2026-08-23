@@ -6,52 +6,22 @@ import {
   Heart,
   type LucideIcon,
 } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import { Container } from "../../Container";
 import { RouteDivider } from "../../RouteDivider";
 import { useReveal } from "@/hooks/use-reveal";
 import { cn } from "@/lib/utils";
 
-type Principle = {
-  icon: LucideIcon;
-  title: string;
-  description: string;
-};
+const principleIcons: LucideIcon[] = [Users, ShieldCheck, Compass, Rocket, Heart];
 
-const principles: Principle[] = [
-  {
-    icon: Users,
-    title: "Built for real sellers",
-    description:
-      "Home kitchens, studios, and side hustles. Not enterprise procurement.",
-  },
-  {
-    icon: ShieldCheck,
-    title: "Straightforward by design",
-    description:
-      "Fewer knobs and plugins. A clear path from catalog to order.",
-  },
-  {
-    icon: Compass,
-    title: "Room to grow",
-    description:
-      "Start small, add products and polish as your audience grows with you.",
-  },
-  {
-    icon: Rocket,
-    title: "Built for momentum",
-    description:
-      "Whether you are testing a new line or shipping every week, Stallio is meant to stay out of the way: update products, tweak copy, and keep selling without rebuilding a whole site.",
-  },
-  {
-    icon: Heart,
-    title: "Our vision",
-    description:
-      "We want independent sellers to have tools that feel premium and honest: clear pricing, clear fulfillment, and a storefront that respects the buyer's time as much as yours.",
-  },
-];
+type TranslatedPrinciple = { title: string; description: string };
 
 export function OurValues() {
+  const { t } = useTranslation("about");
   const { ref, visible } = useReveal<HTMLDivElement>();
+  const principles = t("ourValues.principles", {
+    returnObjects: true,
+  }) as TranslatedPrinciple[];
 
   return (
     <section id="how-we-think" className="relative overflow-hidden bg-paper-dim">
@@ -64,10 +34,10 @@ export function OurValues() {
       <Container className="relative py-16 sm:py-20 lg:py-24">
         <div className="mx-auto max-w-2xl text-center">
           <span className="text-[10px] font-semibold uppercase tracking-[0.14em] text-lime sm:text-xs">
-            How we think
+            {t("ourValues.eyebrow")}
           </span>
           <h2 className="mt-3 font-display text-[1.75rem] font-semibold leading-tight tracking-tight text-ink sm:text-4xl lg:text-5xl">
-            Principles behind the product
+            {t("ourValues.title")}
           </h2>
         </div>
 
@@ -76,6 +46,7 @@ export function OurValues() {
             <PrincipleRow
               key={principle.title}
               principle={principle}
+              icon={principleIcons[i]!}
               index={i}
               visible={visible}
             />
@@ -90,10 +61,12 @@ export function OurValues() {
 
 function PrincipleRow({
   principle,
+  icon: Icon,
   index,
   visible,
 }: {
-  principle: Principle;
+  principle: TranslatedPrinciple;
+  icon: LucideIcon;
   index: number;
   visible: boolean;
 }) {
@@ -112,12 +85,12 @@ function PrincipleRow({
           "hidden h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-violet/15 text-violet transition-all duration-300 group-hover:scale-110 group-hover:bg-[image:var(--gradient-brand)] group-hover:text-ink sm:flex",
         )}
       >
-        <principle.icon size={20} strokeWidth={2} />
+        <Icon size={20} strokeWidth={2} />
       </span>
 
       <div>
         <div className="flex items-center gap-2.5 sm:hidden">
-          <principle.icon size={18} strokeWidth={2} className="text-violet" />
+          <Icon size={18} strokeWidth={2} className="text-violet" />
           <h3 className="font-display text-base font-semibold text-ink">
             {principle.title}
           </h3>

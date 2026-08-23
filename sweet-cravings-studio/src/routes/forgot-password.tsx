@@ -1,26 +1,27 @@
-import { useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
+import { useTranslation } from "react-i18next";
 import {
   AlertCircle,
   ArrowLeft,
+  ArrowRight,
   Loader2,
   Mail,
   MailCheck,
-  Send,
 } from "lucide-react";
 import { AuthShell, AuthCard } from "@/components/stallio/auth/AuthShell";
 import { AuthPromo } from "@/components/stallio/auth/AuthPromo";
 import { FormField, FieldShell } from "@/components/stallio/auth/FormField";
 import {
-  forgotPasswordSchema,
+  createForgotPasswordSchema,
   type ForgotPasswordValues,
 } from "@/lib/validation/auth";
 import { cn } from "@/lib/utils";
 
 const title = "Forgot Password: Stallio";
-const description = "Reset the password for your Stallio account.";
+const description = "Reset your Stallio account password.";
 
 export const Route = createFileRoute("/forgot-password")({
   head: () => ({
@@ -33,19 +34,21 @@ export const Route = createFileRoute("/forgot-password")({
   component: ForgotPassword,
 });
 
-/** Stand-in for a real API call until the backend is wired up. */
-async function fakeSendResetLink(_values: ForgotPasswordValues) {
-  await new Promise((resolve) => setTimeout(resolve, 900));
-  return true;
-}
-
-const RESEND_COOLDOWN = 30;
+const RESEND_SECONDS = 30;
 
 function ForgotPassword() {
+  const { t, i18n } = useTranslation("auth");
   const [formError, setFormError] = useState<string | null>(null);
-  const [status, setStatus] = useState<"idle" | "submitting" | "sent">("idle");
-  const [sentTo, setSentTo] = useState("");
+  const [status, setStatus] = useState<"idle" | "submitting" | "sent">(
+    "idle",
+  );
+  const [sentEmail, setSentEmail] = useState("");
   const [cooldown, setCooldown] = useState(0);
+
+  const forgotPasswordSchema = useMemo(
+    () => createForgotPasswordSchema(t),
+    [t, i18n.language],
+  );
 
   const {
     register,
@@ -57,60 +60,63 @@ function ForgotPassword() {
     defaultValues: { email: "" },
   });
 
-  const startCooldown = () => {
-    setCooldown(RESEND_COOLDOWN);
-    const interval = window.setInterval(() => {
-      setCooldown((c) => {
-        if (c <= 1) {
-          window.clearInterval(interval);
-          return 0;
-        }
-        return c - 1;
-      });
-    }, 1000);
+  /** Stand-in for a real API call until the backend is wired up. */
+  const fakeSendReset = async () => {
+    await new Promise((resolve) => setTimeout(resolve, 900));
+    return true;
   };
 
   const onSubmit = async (values: ForgotPasswordValues) => {
     setFormError(null);
     setStatus("submitting");
     try {
-      await fakeSendResetLink(values);
-      setSentTo(values.email);
+      await fakeSendReset();
+      setSentEmail(values.email);
       setStatus("sent");
-      startCooldown();
+      setCooldown(RESEND_SECONDS);
     } catch (err) {
       setStatus("idle");
       setFormError(
-        err instanceof Error ? err.message : "Something went wrong.",
+        err instanceof Error ? err.message : t("forgotPassword.genericError"),
       );
     }
   };
 
   const handleResend = async () => {
     if (cooldown > 0) return;
-    setStatus("submitting");
-    await fakeSendResetLink({ email: sentTo || getValues("email") });
-    setStatus("sent");
-    startCooldown();
+    await fakeSendReset();
+    setCooldown(RESEND_SECONDS);
   };
+
+  useEffect(() => {
+    if (cooldown <= 0) return;
+    const id = window.setInterval(() => {
+      setCooldown((c) => Math.max(0, c - 1));
+    }, 1000);
+    return () => window.clearInterval(id);
+  }, [cooldown]);
 
   return (
     <AuthShell mode="login" promo={<AuthPromo />}>
       <AuthCard
-        eyebrow="Password reset"
-        title={status === "sent" ? "Check your email" : "Forgot password"}
+        eyebrow={t("forgotPassword.eyebrow")}
+        title={
+          status === "sent"
+            ? t("forgotPassword.titleSent")
+            : t("forgotPassword.title")
+        }
         subtitle={
           status === "sent"
-            ? `We sent a reset link to ${sentTo}. Follow it to choose a new password.`
-            : "Enter your account email. We will send a link to choose a new password."
+            ? t("forgotPassword.subtitleSent", { email: sentEmail })
+            : t("forgotPassword.subtitle")
         }
         footer={
           <Link
             to="/login"
-            className="inline-flex items-center justify-center gap-1.5 font-semibold text-violet transition-colors hover:text-lime-dark"
+            className="inline-flex items-center gap-1.5 font-semibold text-violet transition-colors hover:text-lime-dark"
           >
             <ArrowLeft size={14} strokeWidth={2.25} />
-            Back to sign in
+            {t("forgotPassword.backToSignIn")}
           </Link>
         }
       >
@@ -120,22 +126,24 @@ function ForgotPassword() {
               <MailCheck size={28} strokeWidth={2} />
             </span>
             <p className="max-w-xs text-sm text-ink-soft">
-              Didn&rsquo;t get it? Check your spam folder, or send it again.
+              {t("forgotPassword.notReceived")}
             </p>
             <button
               type="button"
               onClick={handleResend}
               disabled={cooldown > 0}
-              className="inline-flex items-center gap-2 rounded-full border border-ink/15 px-5 py-2 text-sm font-medium text-ink transition-colors hover:border-teal hover:text-teal disabled:pointer-events-none disabled:opacity-60"
+              className="text-sm font-semibold text-violet transition-colors hover:text-lime-dark disabled:cursor-not-allowed disabled:text-ink-faint"
             >
-              {cooldown > 0 ? `Resend in ${cooldown}s` : "Resend link"}
+              {cooldown > 0
+                ? t("forgotPassword.resendIn", { seconds: cooldown })
+                : t("forgotPassword.resendLink")}
             </button>
           </div>
         ) : (
           <form
             onSubmit={handleSubmit(onSubmit)}
             noValidate
-            className="flex flex-col gap-5"
+            className="auth-form flex flex-col gap-5"
           >
             {formError && (
               <div
@@ -151,7 +159,11 @@ function ForgotPassword() {
               </div>
             )}
 
-            <FormField id="email" label="Email" error={errors.email?.message}>
+            <FormField
+              id="email"
+              label={t("forgotPassword.email")}
+              error={errors.email?.message}
+            >
               <FieldShell
                 icon={<Mail size={16} strokeWidth={2} />}
                 error={Boolean(errors.email)}
@@ -160,7 +172,7 @@ function ForgotPassword() {
                   id="email"
                   type="email"
                   autoComplete="email"
-                  placeholder="you@example.com"
+                  placeholder={t("forgotPassword.emailPlaceholder")}
                   aria-invalid={Boolean(errors.email)}
                   className="w-full flex-1 bg-transparent text-sm text-ink outline-none placeholder:text-ink-faint"
                   {...register("email")}
@@ -172,18 +184,25 @@ function ForgotPassword() {
               type="submit"
               disabled={status === "submitting"}
               className={cn(
-                "group relative mt-1 inline-flex w-full items-center justify-center gap-2 overflow-hidden rounded-full bg-violet px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-violet/25 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-violet/40 hover:brightness-110 disabled:pointer-events-none disabled:opacity-70",
+                "group relative mt-1 inline-flex w-full items-center justify-center gap-2 overflow-hidden rounded-full bg-violet px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-violet/25 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-violet/40 hover:brightness-110 active:translate-y-0 active:scale-[0.98] disabled:pointer-events-none disabled:opacity-70",
               )}
             >
+              <span
+                aria-hidden="true"
+                className="pointer-events-none absolute inset-y-0 -left-1/3 w-1/3 skew-x-12 bg-white/25 opacity-0 transition-opacity duration-200 group-hover:opacity-100 group-hover:[animation:sheen_0.9s_ease-out]"
+              />
               {status === "submitting" ? (
                 <>
                   <Loader2 size={16} className="animate-spin" />
-                  Sending&hellip;
+                  {t("forgotPassword.sending")}
                 </>
               ) : (
                 <>
-                  <Send size={15} />
-                  Send Reset Link
+                  {t("forgotPassword.sendResetLink")}
+                  <ArrowRight
+                    size={16}
+                    className="transition-transform group-hover:translate-x-0.5"
+                  />
                 </>
               )}
             </button>

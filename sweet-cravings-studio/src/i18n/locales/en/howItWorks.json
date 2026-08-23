@@ -1,0 +1,111 @@
+{
+  "hero": {
+    "badge": "How it works",
+    "titleLead": "From bio link to",
+    "titleHighlight": "live storefront.",
+    "description": "Watch it come together on the right: name your shop, drop in a few products, then send buyers to one link. That's the whole build, start to finish.",
+    "firstDraft": "~5 min first draft",
+    "mobileFirst": "Mobile first",
+    "ctaPrimary": "Start Free",
+    "ctaSecondary": "View Demo Store",
+    "stepLabel": "STEP {{number}}",
+    "screens": [
+      { "label": "Name it" },
+      { "label": "Load it" },
+      { "label": "Share it" }
+    ],
+    "storeName": "Store name",
+    "storeNameValue": "Hafsa's Corner",
+    "yourLink": "Your link",
+    "linkIsLive": "Link is live",
+    "products": [
+      { "name": "Sneakers" },
+      { "name": "Running shoes" },
+      { "name": "High-tops" },
+      { "name": "Add photo" }
+    ],
+    "channels": ["WhatsApp status", "Instagram bio", "Group chat"],
+    "ordersWaiting": "3 orders waiting"
+  },
+  "theFlow": {
+    "eyebrow": "The flow",
+    "title": "Three moves, zero guesswork.",
+    "description": "Tap a step to see exactly what happens. Every move takes minutes, not a manual.",
+    "stepLabel": "STEP {{number}}",
+    "ofTotal": "of 0{{total}}",
+    "steps": [
+      {
+        "title": "Create your shop",
+        "description": "Sign up, name your store, pick your URL. You get a live link you can paste anywhere. No DNS, no deploy, no drama.",
+        "bullets": ["Create your account", "Add store name and details", "Get your link (stallio.shop/you)"]
+      },
+      {
+        "title": "Add your products",
+        "description": "Photos, prices, short descriptions. One catalog you can refine anytime. Buyers see clarity, not chaos.",
+        "bullets": ["Add product photos", "Set prices and descriptions", "Keep one organized catalog"]
+      },
+      {
+        "title": "Share and take orders",
+        "description": "Same link in bio, stories, and chats. They browse on the phone. You track everything in your dashboard.",
+        "bullets": ["Put the link in your profile or bio", "Share in chat or social posts", "Track orders in one place"]
+      }
+    ]
+  },
+  "channelShowcase": {
+    "eyebrow": "One link, everywhere",
+    "title": "You already have buyers here.",
+    "description": "Stallio doesn't ask people to go somewhere new. It just gives the channels they already use one link that actually sells.",
+    "footerLink": "Same link, every single time",
+    "channels": [
+      { "name": "Instagram bio", "placement": "One tap from your profile" },
+      { "name": "WhatsApp status", "placement": "Pinned above the fold" },
+      { "name": "Facebook page", "placement": "Shop button, sorted" },
+      { "name": "Anywhere else", "placement": "Group chats, stories, ads" }
+    ]
+  },
+  "liveExperience": {
+    "eyebrow": "When you're live",
+    "title": "One storefront, two sides.",
+    "description": "A fast link on the outside. A calm dashboard on the inside. Flip the toggle to see both.",
+    "views": [
+      {
+        "label": "Your dashboard",
+        "eyebrow": "Behind the scenes",
+        "title": "You see control.",
+        "description": "Orders, products, and requests in one view. Update stock between deliveries without opening ten apps.",
+        "points": [
+          "Mark paid, ship, and download invoice PDFs",
+          "Coupons, delivery, and stock in one place",
+          "Export orders or add a manual phone order"
+        ]
+      },
+      {
+        "label": "Their storefront",
+        "eyebrow": "What buyers see",
+        "title": "They see polish.",
+        "description": "Categories, cart, coupons, and checkout, built for the phone. Buyers can switch English, Spanish, or Arabic on your store.",
+        "points": [
+          "Cart and checkout in a couple of taps",
+          "Three languages, switched instantly",
+          "Coupons applied before they ask"
+        ]
+      }
+    ]
+  },
+  "quickAnswers": {
+    "eyebrow": "Before you start",
+    "title": "Quick answers",
+    "qas": [
+      { "question": "Do I need a domain?", "answer": "No. Your link lives at stallio.shop/you from the moment you sign up." },
+      { "question": "Can I edit after publishing?", "answer": "Anytime. Prices, photos, and stock update on your live link instantly." },
+      { "question": "No logo yet?", "answer": "Start with your store name and colors. Add a logo whenever it's ready." },
+      { "question": "How do buyers pay?", "answer": "You set the method, bank, link, or COD. Stallio tracks the order for you." }
+    ]
+  },
+  "finalCta": {
+    "title": "Ship the link tonight.",
+    "description": "Free to start. No card on file. If it feels right, keep selling from the same URL tomorrow.",
+    "ctaPrimary": "Start Free",
+    "ctaSecondary": "Explore Features"
+  }
+}

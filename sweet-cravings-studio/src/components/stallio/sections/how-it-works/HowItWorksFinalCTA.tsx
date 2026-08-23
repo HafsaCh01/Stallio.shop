@@ -1,9 +1,11 @@
 import { Store, Sparkles } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import { Container } from "../../Container";
 import { CTAButton } from "../../CTAButton";
 import { useReveal } from "@/hooks/use-reveal";
 
 export function HowItWorksFinalCTA() {
+  const { t } = useTranslation("howItWorks");
   const { ref, visible } = useReveal<HTMLDivElement>();
 
   return (
@@ -21,21 +23,20 @@ export function HowItWorksFinalCTA() {
           className="reveal mx-auto max-w-xl text-center"
         >
           <h2 className="font-display text-[1.75rem] font-semibold leading-tight tracking-tight text-ink sm:text-4xl">
-            Ship the link tonight.
+            {t("finalCta.title")}
           </h2>
           <p className="mt-4 text-sm leading-relaxed text-ink-soft sm:text-lg">
-            Free to start. No card on file. If it feels right, keep selling from
-            the same URL tomorrow.
+            {t("finalCta.description")}
           </p>
 
           <div className="mt-8 flex flex-col items-stretch justify-center gap-3 sm:flex-row">
             <CTAButton href="/#final-cta" size="lg">
               <Store size={17} />
-              Start Free
+              {t("finalCta.ctaPrimary")}
             </CTAButton>
             <CTAButton href="/features" variant="outline" size="lg">
               <Sparkles size={17} />
-              Explore Features
+              {t("finalCta.ctaSecondary")}
             </CTAButton>
           </div>
         </div>

@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import { AlertCircle, CheckCircle2 } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import { cn } from "@/lib/utils";
 
 type Props = {
@@ -24,6 +25,7 @@ export function FormField({
   className,
   children,
 }: Props) {
+  const { t } = useTranslation("auth");
   return (
     <div className={cn("flex flex-col gap-1.5", className)}>
       <div className="flex items-baseline justify-between gap-2">
@@ -34,7 +36,11 @@ export function FormField({
           {label}
           {!optional && <span className="ml-0.5 text-coral">*</span>}
         </label>
-        {optional && <span className="text-xs text-ink-faint">Optional</span>}
+        {optional && (
+          <span className="text-xs text-ink-faint">
+            {t("formField.optional")}
+          </span>
+        )}
       </div>
 
       {children}
@@ -51,7 +57,7 @@ export function FormField({
       ) : valid ? (
         <p className="flex items-center gap-1.5 text-xs font-medium text-teal-dark">
           <CheckCircle2 size={13} strokeWidth={2.25} className="shrink-0" />
-          Looks good
+          {t("formField.looksGood")}
         </p>
       ) : hint ? (
         <p className="text-xs text-ink-faint">{hint}</p>

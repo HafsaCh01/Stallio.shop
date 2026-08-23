@@ -1,0 +1,88 @@
+{
+  "hero": {
+    "eyebrow": "Precios",
+    "titleLine1": "N\u00fameros simples.",
+    "titleHighlight": "Un producto completo.",
+    "subtitle": "Sin niveles que comparar, sin funciones bloqueadas detr\u00e1s de un plan superior. Un mes por nuestra cuenta, luego un solo precio, facturado como prefieras.",
+    "trust": {
+      "fromPrice": "Desde $5/mes despu\u00e9s de la prueba",
+      "noCard": "Sin tarjeta para empezar"
+    },
+    "ctaPrimary": "Empezar Gratis",
+    "ctaSecondary": "Ver Qu\u00e9 Incluye",
+    "card": {
+      "firstMonthFree": "Primer mes gratis",
+      "onePlan": "Un plan",
+      "mo": "mes",
+      "orYr": "o $50/a\u00f1o",
+      "everyTool": "Todas las herramientas incluidas",
+      "noAddons": "Sin complementos, nunca"
+    }
+  },
+  "plan": {
+    "eyebrow": "El plan",
+    "title": "Un plan. Todo incluido.",
+    "subtitle": "Sin niveles que comparar, sin funciones bloqueadas detr\u00e1s de un plan superior. Elige un ciclo de facturaci\u00f3n y mira exactamente qu\u00e9 incluye.",
+    "standard": "Stallio Est\u00e1ndar",
+    "monthly": "Mensual",
+    "yearly": "Anual",
+    "save": "Ahorra $10",
+    "mo": "/mes",
+    "yr": "/a\u00f1o",
+    "orYearly": "o $50 facturado anualmente",
+    "billedYearly": "facturado una vez al a\u00f1o",
+    "dueToday": "A pagar hoy",
+    "firstMonthNoCard": "Primer mes gratis, sin tarjeta requerida",
+    "ctaStart": "Empezar Gratis",
+    "cancelAnytime": "Cancela cuando quieras",
+    "itemizedLabel": "Todo, detallado",
+    "items": {
+      "hostedLink": "Enlace stallio.shop alojado, sin dominio",
+      "unlimited": "Productos, fotos y pedidos ilimitados",
+      "mobileStorefront": "Escaparate, carrito y pago m\u00f3viles",
+      "variants": "Variantes, precios de oferta e inventario",
+      "aboutContact": "P\u00e1ginas de Nosotros y Contacto",
+      "coupons": "Cupones y costos de env\u00edo",
+      "invoice": "Factura en PDF en cada pedido",
+      "markPaid": "Marca como pagado, env\u00eda y exporta CSV",
+      "languages": "Tienda y panel en ingl\u00e9s, espa\u00f1ol y \u00e1rabe",
+      "revenueCharts": "Gr\u00e1ficos de ingresos y pedidos",
+      "buyerMessages": "Mensajes de compradores y chat de soporte",
+      "firstMonthFree": "Primer mes gratis, sin tarjeta requerida"
+    }
+  },
+  "faq": {
+    "eyebrow": "\u00bfA\u00fan decidiendo?",
+    "title": "Preg\u00fantanos, o solo pru\u00e9balo.",
+    "subtitle": "La mayor\u00eda de las preguntas sobre facturaci\u00f3n se responden a la derecha. Para lo dem\u00e1s, contacta al equipo directamente o empieza el mes gratis y compru\u00e9balo t\u00fa mismo.",
+    "ctaStart": "Empezar Gratis",
+    "ctaContact": "Cont\u00e1ctanos",
+    "replyTime": "Normalmente respondemos en un d\u00eda a contact@stallio.shop",
+    "items": {
+      "domain": {
+        "question": "\u00bfNecesito mi propio dominio o hosting?",
+        "answer": "No. Cada tienda recibe un enlace alojado stallio.shop/tunombre al registrarte, nada que comprar ni configurar."
+      },
+      "payments": {
+        "question": "\u00bfC\u00f3mo maneja Stallio los pagos?",
+        "answer": "T\u00fa defines tu propio m\u00e9todo: transferencia bancaria, enlace de pago, o pago contra entrega, y Stallio registra el estado de cada pedido por ti."
+      },
+      "limits": {
+        "question": "\u00bfHay un l\u00edmite de productos o pedidos?",
+        "answer": "Sin l\u00edmite en ninguno de los dos, en ambos planes. Lista un art\u00edculo o mil, y cada pedido sigue llegando a tu panel."
+      },
+      "freeMonthEnds": {
+        "question": "\u00bfQu\u00e9 pasa cuando termina el mes gratis?",
+        "answer": "Te avisaremos unos d\u00edas antes de que termine. Elige mensual o anual para mantener tu tienda activa, o cancela sin deber nada."
+      },
+      "switchPlans": {
+        "question": "\u00bfPuedo cambiar entre mensual y anual?",
+        "answer": "S\u00ed, cuando quieras desde la configuraci\u00f3n de tu cuenta. Tu tienda y tus datos se mantienen exactamente igual."
+      },
+      "everythingIncluded": {
+        "question": "\u00bfLos dos planes realmente incluyen todo?",
+        "answer": "S\u00ed. Mensual y anual desbloquean el mismo escaparate, panel y herramientas; el anual simplemente cuesta menos con el tiempo."
+      }
+    }
+  }
+}
