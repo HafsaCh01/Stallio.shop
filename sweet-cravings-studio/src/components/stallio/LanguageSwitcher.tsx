@@ -24,7 +24,7 @@ export function LanguageSwitcher({ className }: { className?: string }) {
       <Languages
         size={13}
         strokeWidth={2.25}
-        className="ml-1.5 mr-0.5 shrink-0 text-ink-faint"
+        className="ms-1.5 me-0.5 shrink-0 text-ink-faint"
         aria-hidden="true"
       />
       {SUPPORTED_LANGUAGES.map((lang) => (

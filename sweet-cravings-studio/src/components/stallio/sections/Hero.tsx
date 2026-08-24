@@ -54,7 +54,7 @@ export function Hero() {
               <dt className="sr-only">{t("hero.setupTimeSr")}</dt>
               <dd className="font-display text-lg font-semibold text-ink">
                 {t("hero.setupTimeValue")}
-                <span className="ml-1.5 text-sm font-normal text-ink-soft">
+                <span className="ms-1.5 text-sm font-normal text-ink-soft">
                   {t("hero.setupTimeLabel")}
                 </span>
               </dd>
@@ -63,7 +63,7 @@ export function Hero() {
               <dt className="sr-only">{t("hero.domainsSr")}</dt>
               <dd className="font-display text-lg font-semibold text-ink">
                 {t("hero.domainsValue")}
-                <span className="ml-1.5 text-sm font-normal text-ink-soft">
+                <span className="ms-1.5 text-sm font-normal text-ink-soft">
                   {t("hero.domainsLabel")}
                 </span>
               </dd>

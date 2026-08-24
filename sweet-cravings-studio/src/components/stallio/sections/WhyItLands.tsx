@@ -104,7 +104,7 @@ export function WhyItLands() {
           <ol className="relative flex flex-col gap-8 sm:gap-10">
             <span
               aria-hidden="true"
-              className="absolute left-6 top-2 bottom-2 hidden w-px bg-ink/10 sm:block"
+              className="absolute start-6 top-2 bottom-2 hidden w-px bg-ink/10 sm:block"
             />
             {reasons.map((reason, i) => (
               <ReasonRow
@@ -184,7 +184,7 @@ function ReasonRow({
         <Icon size={20} strokeWidth={2} className={cn("relative", accent.text)} />
         <span
           className={cn(
-            "absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center rounded-full text-[10px] font-bold text-surface",
+            "absolute -end-1 -top-1 flex h-5 w-5 items-center justify-center rounded-full text-[10px] font-bold text-surface",
             accent.line,
           )}
         >

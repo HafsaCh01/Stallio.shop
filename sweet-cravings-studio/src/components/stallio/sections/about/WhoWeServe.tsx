@@ -77,7 +77,7 @@ export function WhoWeServe() {
         >
           <span
             aria-hidden="true"
-            className="absolute left-6 top-2 bottom-2 hidden w-px bg-ink/10 sm:block"
+            className="absolute start-6 top-2 bottom-2 hidden w-px bg-ink/10 sm:block"
           />
           {features.map((feature, i) => (
             <FeatureRow

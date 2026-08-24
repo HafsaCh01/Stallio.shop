@@ -44,7 +44,7 @@ export function CTAButton({
       {variant === "primary" && (
         <span
           aria-hidden="true"
-          className="pointer-events-none absolute inset-y-0 -left-1/3 w-1/3 skew-x-12 bg-white/25 opacity-0 transition-opacity duration-200 group-hover:opacity-100 group-hover:[animation:sheen_0.9s_ease-out]"
+          className="cta-sheen pointer-events-none absolute inset-y-0 -left-1/3 w-1/3 skew-x-12 bg-white/25 opacity-0 transition-opacity duration-200 group-hover:opacity-100 group-hover:[animation:sheen_0.9s_ease-out]"
         />
       )}
       <span className="relative inline-flex items-center gap-2">

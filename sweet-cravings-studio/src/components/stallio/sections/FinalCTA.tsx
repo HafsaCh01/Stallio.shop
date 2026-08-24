@@ -52,7 +52,7 @@ export function FinalCTA() {
                 {t("finalCta.ctaPrimary")}
                 <ArrowRight
                   size={17}
-                  className="transition-transform group-hover:translate-x-0.5"
+                  className="icon-directional transition-transform group-hover:translate-x-0.5 rtl:group-hover:-translate-x-0.5"
                 />
               </CTAButton>
               <CTAButton href="#how-it-works" variant="outline" size="lg">

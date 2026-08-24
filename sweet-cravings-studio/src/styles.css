@@ -94,6 +94,21 @@
 }
 
 /*
+ * Arabic typography.
+ * Space Grotesk / Inter / IBM Plex Mono have no Arabic glyphs, so [lang="ar"]
+ * swaps the display and body fonts for an Arabic-supporting pairing. Cairo
+ * mirrors Space Grotesk's geometric, slightly display-y character for
+ * headings; IBM Plex Sans Arabic pairs naturally with the existing
+ * IBM Plex Mono used elsewhere in the brand. --font-script is left as-is:
+ * the "Stallio" wordmark stays in Latin script in every language.
+ */
+html[lang="ar"] {
+  --font-display: "Cairo", "IBM Plex Sans Arabic", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "IBM Plex Sans Arabic", "Cairo", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "IBM Plex Sans Arabic", "IBM Plex Mono", ui-monospace, monospace;
+}
+
+/*
  * Design system definition.
  *
  * The @theme inline block maps CSS custom properties to Tailwind utility
@@ -370,6 +385,36 @@ body {
   100% {
     transform: translateX(220%);
   }
+}
+
+/* RTL-aware direction fixes ----------------------------------------------
+ * Most flex/grid layouts in this codebase re-flow correctly for free once
+ * `dir="rtl"` is set on <html>, since `flex-direction: row` and grid
+ * auto-placement both follow the writing direction natively. The handful
+ * of things that DON'T flip automatically are handled explicitly below:
+ * icons that visually encode "forward" motion, and transform/animation-
+ * based effects that move along the physical (not logical) X axis.
+ */
+
+/* Apply to any icon that means "next / forward / continue" (arrows,
+ * chevrons pointing in reading direction) so it mirrors under RTL. */
+[dir="rtl"] .icon-directional {
+  transform: scaleX(-1);
+}
+
+/* The marquee track scrolls via translateX(-50%), which is a physical-axis
+ * transform. Reversing the animation direction under RTL keeps the ticker
+ * moving in the same *visual* direction relative to the now-mirrored text. */
+[dir="rtl"] .marquee-track {
+  animation-direction: reverse;
+}
+
+/* CTAButton's hover "sheen" sweeps across the button; reposition its
+ * starting edge under RTL so it still sweeps in from the button's leading
+ * edge (a purely cosmetic touch-up, the diagonal skew reads fine either way). */
+[dir="rtl"] .cta-sheen {
+  left: auto;
+  right: -33.333%;
 }
 
 /* Scroll reveal utility -------------------------------------------------- */

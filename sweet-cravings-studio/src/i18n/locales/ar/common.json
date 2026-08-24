@@ -1,0 +1,74 @@
+{
+  "site": {
+    "tagline": "متجرك، على بُعد رابط واحد.",
+    "description": "يحوّل ستاليو صفحتك على إنستغرام أو واتساب إلى متجر إلكتروني حقيقي: منتجات غير محدودة، لوحة تحكم للطلبات، وواجهة متجر متوافقة مع الجوال، كل ذلك من رابط واحد قابل للمشاركة."
+  },
+  "nav": {
+    "home": "الرئيسية",
+    "about": "من نحن",
+    "howItWorks": "كيف يعمل",
+    "features": "المميزات",
+    "pricing": "الأسعار",
+    "contact": "تواصل معنا",
+    "primaryLabel": "التنقل الرئيسي",
+    "logInLabel": "الصفحة الرئيسية لستاليو",
+    "logIn": "تسجيل الدخول",
+    "startFree": "ابدأ مجانًا",
+    "openMenu": "فتح القائمة",
+    "closeMenu": "إغلاق القائمة",
+    "switchToLight": "التبديل إلى الوضع الفاتح",
+    "switchToDark": "التبديل إلى الوضع الداكن"
+  },
+  "footer": {
+    "taglineExtra": "بدون نطاق، وبدون بوابة دفع، وبدون برمجة.",
+    "getStartedFree": "ابدأ مجانًا الآن",
+    "linksHeading": "روابط",
+    "contactHeading": "تواصل معنا",
+    "socialHeading": "تابعنا",
+    "rightsReserved": "جميع الحقوق محفوظة.",
+    "product": {
+      "howItWorks": "كيف يعمل",
+      "features": "المميزات",
+      "pricing": "الأسعار",
+      "aboutUs": "من نحن"
+    },
+    "support": {
+      "gettingStarted": "دليل البدء",
+      "contactUs": "تواصل معنا",
+      "faqs": "الأسئلة الشائعة"
+    },
+    "legal": {
+      "privacyPolicy": "سياسة الخصوصية",
+      "termsOfService": "شروط الخدمة",
+      "refundPolicy": "سياسة الاسترداد"
+    }
+  },
+  "marquee": {
+    "clothingBoutiques": "متاجر الأزياء",
+    "homeBakers": "صانعو الحلويات المنزلية",
+    "skincareBrands": "علامات العناية بالبشرة",
+    "jewelryMakers": "صانعو المجوهرات",
+    "thriftResellers": "بائعو الملابس المستعملة",
+    "handmadeCrafts": "الحرف اليدوية"
+  },
+  "legalPage": {
+    "lastUpdated": "آخر تحديث: {{date}}",
+    "updatedDate": "أغسطس 2026"
+  },
+  "productPreview": {
+    "closeLabel": "إغلاق معاينة المنتج",
+    "addToCart": "أضف إلى السلة"
+  },
+  "notFound": {
+    "title": "404",
+    "subtitle": "الصفحة غير موجودة",
+    "description": "الصفحة التي تبحث عنها غير موجودة أو تم نقلها.",
+    "goHome": "العودة إلى الرئيسية"
+  },
+  "errorBoundary": {
+    "title": "لم يتم تحميل هذه الصفحة",
+    "description": "حدث خطأ ما من جانبنا. يمكنك إعادة تحميل الصفحة أو العودة إلى الرئيسية.",
+    "tryAgain": "حاول مرة أخرى",
+    "goHome": "العودة إلى الرئيسية"
+  }
+}
