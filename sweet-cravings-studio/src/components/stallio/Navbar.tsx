@@ -137,8 +137,8 @@ export function Navbar() {
     >
       <Marquee />
 
-      <Container className="grid h-16 max-w-7xl grid-cols-[minmax(0,1fr)_auto] items-center gap-3 border-b border-ink/10 sm:h-20 md:flex md:items-center md:justify-between xl:grid xl:grid-cols-[1fr_auto_1fr] xl:gap-3">
-        <div className="contents xl:col-start-2 xl:flex xl:items-center xl:gap-4">
+      <Container className="grid h-16 max-w-7xl grid-cols-[minmax(0,1fr)_auto] items-center gap-3 border-b border-ink/10 sm:h-20 md:flex md:items-center md:justify-between min-[1080px]:grid min-[1080px]:grid-cols-[1fr_auto_1fr] min-[1080px]:gap-2">
+        <div className="contents min-[1080px]:col-start-2 min-[1080px]:flex min-[1080px]:items-center min-[1080px]:gap-2">
           <Link
             to="/"
             aria-label={t("nav.logInLabel")}
@@ -151,7 +151,7 @@ export function Navbar() {
             ref={navRef}
             aria-label={t("nav.primaryLabel")}
             onMouseLeave={() => moveHighlightTo(activeLink?.id)}
-            className="relative hidden shrink-0 items-center gap-1 rounded-full border border-ink/10 bg-surface/60 p-1 xl:flex"
+            className="relative hidden shrink-0 items-center gap-0.5 rounded-full border border-ink/10 bg-surface/60 p-1 min-[1080px]:flex"
           >
             <span
               aria-hidden="true"
@@ -168,7 +168,7 @@ export function Navbar() {
               const label = t(`nav.${link.id}`);
               const active = isActive(link.href);
               const className = cn(
-                "relative z-10 flex items-center gap-1.5 whitespace-nowrap rounded-full px-2.5 py-2 text-sm font-medium tracking-tight transition-colors duration-200",
+                "relative z-10 flex items-center gap-1.5 whitespace-nowrap rounded-full px-2 py-1.5 text-[13px] font-medium tracking-tight transition-colors duration-200 xl:px-2.5 xl:py-2 xl:text-sm",
                 active ? "text-ink" : "text-ink-soft hover:text-ink",
               );
               const isHash = link.href.includes("#");
@@ -185,7 +185,12 @@ export function Navbar() {
                   className={className}
                 >
                   {Icon && (
-                    <Icon size={14} strokeWidth={2.25} aria-hidden="true" />
+                    <Icon
+                      size={14}
+                      strokeWidth={2.25}
+                      aria-hidden="true"
+                      className="hidden xl:block"
+                    />
                   )}
                   {label}
                 </a>
@@ -198,7 +203,12 @@ export function Navbar() {
                   className={className}
                 >
                   {Icon && (
-                    <Icon size={14} strokeWidth={2.25} aria-hidden="true" />
+                    <Icon
+                      size={14}
+                      strokeWidth={2.25}
+                      aria-hidden="true"
+                      className="hidden xl:block"
+                    />
                   )}
                   {label}
                 </Link>
@@ -207,29 +217,38 @@ export function Navbar() {
           </nav>
         </div>
 
-        <div className="hidden shrink-0 items-center gap-2 justify-self-end xl:col-start-3 xl:flex">
+        <div className="hidden shrink-0 items-center gap-1 justify-self-end min-[1080px]:col-start-3 min-[1080px]:flex xl:gap-2">
           <LanguageSwitcher />
           <ThemeToggle theme={theme} onToggle={toggleTheme} />
           <Link
             to="/login"
-            className="inline-flex shrink-0 items-center gap-1.5 whitespace-nowrap rounded-full px-2.5 py-2 text-sm font-medium tracking-tight text-ink-soft transition-colors duration-200 hover:text-ink"
+            className="inline-flex shrink-0 items-center gap-1.5 whitespace-nowrap rounded-full px-2 py-2 text-[13px] font-medium tracking-tight text-ink-soft transition-colors duration-200 hover:text-ink xl:px-2.5 xl:text-sm"
           >
-            <LogIn size={14} strokeWidth={2.25} aria-hidden="true" />
+            <LogIn
+              size={14}
+              strokeWidth={2.25}
+              aria-hidden="true"
+              className="hidden xl:block"
+            />
             {t("nav.logIn")}
           </Link>
-          <CTAButton href="/signup" size="sm" className="shrink-0">
-            <UserPlus size={14} strokeWidth={2.25} aria-hidden="true" />
+          <CTAButton
+            href="/signup"
+            size="sm"
+            className="shrink-0 !px-3 xl:!px-4"
+          >
+            <UserPlus
+              size={14}
+              strokeWidth={2.25}
+              aria-hidden="true"
+              className="hidden xl:block"
+            />
             {t("nav.startFree")}
           </CTAButton>
         </div>
 
-        {/* Hamburger covers everything below `xl`. Translated nav labels
-            (e.g. "Cómo Funciona", "Iniciar Sesión") are noticeably longer
-            than their English counterparts, so the full pill-nav + actions
-            row now only appears once there's enough room at `xl` and up —
-            below that it collapses to the hamburger instead of squeezing
-            and overlapping the logo. */}
-        <div className="flex items-center gap-1.5 xl:hidden">
+        {/* Hamburger covers everything below `lg`. */}
+        <div className="flex items-center gap-1.5 min-[1080px]:hidden">
           <ThemeToggle theme={theme} onToggle={toggleTheme} />
           <button
             type="button"
@@ -264,7 +283,7 @@ export function Navbar() {
       <div
         id="mobile-menu"
         className={cn(
-          "overflow-hidden border-b border-ink/10 bg-paper transition-[max-height] duration-300 ease-in-out md:hidden",
+          "overflow-hidden border-b border-ink/10 bg-paper transition-[max-height] duration-300 ease-in-out min-[1080px]:hidden",
           open ? "max-h-[36rem]" : "max-h-0",
         )}
       >

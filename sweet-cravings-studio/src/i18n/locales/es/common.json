@@ -52,8 +52,9 @@
     "handmadeCrafts": "Artesanías Hechas a Mano"
   },
   "legalPage": {
+    "backToHome": "Volver Al Inicio",
     "lastUpdated": "Última actualización: {{date}}",
-    "updatedDate": "Agosto de 2026"
+    "updatedDate": "1 de junio de 2026"
   },
   "productPreview": {
     "closeLabel": "Cerrar vista previa del producto",

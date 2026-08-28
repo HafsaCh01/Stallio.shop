@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useTranslation } from "react-i18next";
-import { LegalPage, LegalSection } from "@/components/stallio/LegalPage";
+import { LegalPage } from "@/components/stallio/LegalPage";
 
 const title = "Privacy Policy: Stallio";
 const description =
@@ -19,24 +19,20 @@ export const Route = createFileRoute("/privacy")({
   component: PrivacyPolicy,
 });
 
-type Section = { heading: string; body: string };
+type Section = { heading: string; paragraphs: string[] };
 
 function PrivacyPolicy() {
   const { t } = useTranslation(["legal", "common"]);
-  const sections = t("privacy.sections", { returnObjects: true }) as Section[];
+  const sections = t("privacy.sections", {
+    returnObjects: true,
+  }) as Section[];
 
   return (
     <LegalPage
       title={t("privacy.title")}
       updated={t("common:legalPage.updatedDate")}
-    >
-      <p>{t("privacy.intro")}</p>
-
-      {sections.map((section) => (
-        <LegalSection key={section.heading} heading={section.heading}>
-          <p>{section.body}</p>
-        </LegalSection>
-      ))}
-    </LegalPage>
+      intro={t("privacy.intro")}
+      sections={sections}
+    />
   );
 }

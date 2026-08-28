@@ -140,7 +140,7 @@ function ContactHero() {
           <div className="mt-7 flex flex-wrap items-center justify-center gap-2.5">
             <a
               href={`mailto:${siteConfig.contactEmail}`}
-              className="group flex items-center gap-2 rounded-full border border-ink/12 bg-paper-dim py-2 pl-2 pr-4 text-sm font-medium text-ink-soft transition-colors duration-200 hover:border-violet/40 hover:text-ink"
+              className="group flex items-center gap-2 rounded-full border border-ink/12 bg-paper-dim py-2 ps-2 pe-4 text-sm font-medium text-ink-soft transition-colors duration-200 hover:border-violet/40 hover:text-ink"
             >
               <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-violet/15 text-violet">
                 <Mail size={12} strokeWidth={2.25} />

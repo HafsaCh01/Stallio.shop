@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useTranslation } from "react-i18next";
-import { LegalPage, LegalSection } from "@/components/stallio/LegalPage";
+import { LegalPage } from "@/components/stallio/LegalPage";
 
 const title = "Terms of Service: Stallio";
 const description =
@@ -19,7 +19,7 @@ export const Route = createFileRoute("/terms")({
   component: TermsOfService,
 });
 
-type Section = { heading: string; body: string };
+type Section = { heading: string; paragraphs: string[] };
 
 function TermsOfService() {
   const { t } = useTranslation(["legal", "common"]);
@@ -29,14 +29,8 @@ function TermsOfService() {
     <LegalPage
       title={t("terms.title")}
       updated={t("common:legalPage.updatedDate")}
-    >
-      <p>{t("terms.intro")}</p>
-
-      {sections.map((section) => (
-        <LegalSection key={section.heading} heading={section.heading}>
-          <p>{section.body}</p>
-        </LegalSection>
-      ))}
-    </LegalPage>
+      intro={t("terms.intro")}
+      sections={sections}
+    />
   );
 }

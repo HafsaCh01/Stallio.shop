@@ -34,7 +34,7 @@ export function FormField({
           className="text-sm font-medium tracking-tight text-ink"
         >
           {label}
-          {!optional && <span className="ml-0.5 text-coral">*</span>}
+          {!optional && <span className="ms-0.5 text-coral">*</span>}
         </label>
         {optional && (
           <span className="text-xs text-ink-faint">

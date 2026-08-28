@@ -52,8 +52,9 @@
     "handmadeCrafts": "Handmade Crafts"
   },
   "legalPage": {
+    "backToHome": "Back To Home",
     "lastUpdated": "Last updated: {{date}}",
-    "updatedDate": "August 2026"
+    "updatedDate": "1st June 2026"
   },
   "productPreview": {
     "closeLabel": "Close product preview",

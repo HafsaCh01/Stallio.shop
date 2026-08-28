@@ -138,7 +138,7 @@ export function Combobox({
                     size={14}
                     strokeWidth={2.5}
                     className={cn(
-                      "mr-2 shrink-0 text-violet",
+                      "me-2 shrink-0 text-violet",
                       value === option.value ? "opacity-100" : "opacity-0",
                     )}
                     aria-hidden="true"

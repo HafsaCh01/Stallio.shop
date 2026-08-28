@@ -206,7 +206,7 @@ export function FeatureWalkthrough() {
                 <span className="h-2.5 w-2.5 rounded-full bg-pink/70" />
                 <span className="h-2.5 w-2.5 rounded-full bg-amber/70" />
                 <span className="h-2.5 w-2.5 rounded-full bg-teal/70" />
-                <span className="ml-2 rounded-full bg-surface px-3 py-1 text-[10px] font-medium text-ink-faint ring-1 ring-ink/10">
+                <span className="ms-2 rounded-full bg-surface px-3 py-1 text-[10px] font-medium text-ink-faint ring-1 ring-ink/10">
                   {t("walkthrough.storeUrlLabel")}
                 </span>
               </div>

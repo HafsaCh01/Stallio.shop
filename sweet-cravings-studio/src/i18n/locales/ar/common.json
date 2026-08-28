@@ -52,8 +52,9 @@
     "handmadeCrafts": "الحرف اليدوية"
   },
   "legalPage": {
+    "backToHome": "العودة إلى الرئيسية",
     "lastUpdated": "آخر تحديث: {{date}}",
-    "updatedDate": "أغسطس 2026"
+    "updatedDate": "1 يونيو 2026"
   },
   "productPreview": {
     "closeLabel": "إغلاق معاينة المنتج",
